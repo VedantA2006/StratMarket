@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tear-Sheet: 5-Engine Trend Shield (Rank #6)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --card-bg: #0d121d;
+      --card-border: #1a2333;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-green: #10b981;
+      --accent-red: #f43f5e;
+      --accent-cyan: #06b6d4;
+      --accent-gold: #f59e0b;
+      --accent-purple: #a855f7;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      padding: 24px;
+    }
+    .container { max-width: 1440px; margin: 0 auto; }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 28px;
+    }
+    .header-title h1 {
+      font-size: 24px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+    .badge-gold { background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-green { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-cyan { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.3); }
+    .badge-red { background: rgba(244, 63, 94, 0.15); color: var(--accent-red); border: 1px solid rgba(244, 63, 94, 0.3); }
+    
+    .nav-links { display: flex; gap: 12px; }
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover { background: rgba(255, 255, 255, 0.1); color: var(--text-main); }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .kpi-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .kpi-value {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: var(--font-mono);
+    }
+    .val-green { color: var(--accent-green); }
+    .val-cyan { color: var(--accent-cyan); }
+    .val-gold { color: var(--accent-gold); }
+    .val-red { color: var(--accent-red); }
+
+    .chart-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+    .chart-box { height: 320px; width: 100%; position: relative; }
+    .chart-box-sm { height: 180px; width: 100%; position: relative; }
+
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+    th {
+      padding: 12px 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--card-border);
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+    }
+    tr:hover td { background: rgba(255, 255, 255, 0.02); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-title">
+        <h1>5-Engine Trend Shield <span class="badge badge-gold">Rank #6</span> <span class="badge badge-green">Single-Digit DD (9.74%)</span></h1>
+        <p style="color:var(--text-muted); font-size:13px; margin-top:4px;">Balanced Multi-Session Trend Capture | Real MetaTrader 5 Broker Feed (360,000 M5 Bars, 2021-2026)</p>
+      </div>
+      <div class="nav-links">
+        <a href="../../Portfolio_Ensembles_Leaderboard.html" class="nav-btn">&larr; Master Leaderboard</a>
+        <a href="backtest_trades.csv" class="nav-btn" download>📥 Download CSV</a>
+      </div>
+    </div>
+
+    <!-- KPI Grid -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">5-Year Net Profit</div>
+        <div class="kpi-value val-green">+$116,330.74</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">+465.3% on $25k base</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Maximum Drawdown</div>
+        <div class="kpi-value val-red">9.74%</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">$6,952.67 peak-to-trough</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Profit Factor</div>
+        <div class="kpi-value val-cyan">2.16</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Gross Win / Gross Loss</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Calmar Ratio</div>
+        <div class="kpi-value val-gold">9.56</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Annualized Return / Max DD</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Annualized Sharpe</div>
+        <div class="kpi-value val-cyan">1.74</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Monthly return stdev normalized</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Payoff Ratio</div>
+        <div class="kpi-value val-green">7.10 : 1</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Avg Win vs Avg Loss</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Total Closed Trades</div>
+        <div class="kpi-value">604</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Win Rate: 23.3%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Max Consec Losses</div>
+        <div class="kpi-value val-gold">23</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Longest unbroken loss streak</div>
+      </div>
+    </div>
+
+    <!-- Equity Curve -->
+    <div class="chart-container">
+      <div style="display:flex; justify-content:space-between; margin-bottom:14px;">
+        <h3 style="font-size:15px; font-weight:700;">Chronological Equity Curve ($25,000 Base Capital)</h3>
+        <span style="font-size:12px; color:var(--text-muted); font-family:var(--font-mono);">Peak: $142,189.32</span>
+      </div>
+      <div class="chart-box">
+        <canvas id="equityChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Underwater Drawdown -->
+    <div class="chart-container">
+      <div style="display:flex; justify-content:space-between; margin-bottom:14px;">
+        <h3 style="font-size:15px; font-weight:700; color:var(--accent-red);">Underwater Drawdown Curve (Strictly &lt; 10.0%)</h3>
+        <span style="font-size:12px; color:var(--text-muted); font-family:var(--font-mono);">Max DD: -9.74%</span>
+      </div>
+      <div class="chart-box-sm">
+        <canvas id="ddChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Engine Architecture Table -->
+    <div class="table-container">
+      <h3 style="font-size:15px; font-weight:700; margin-bottom:14px;">Engine Architecture & Conviction Sizing Matrix</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Strategy File</th>
+            <th>Conviction Weight</th>
+            <th>Dollar Risk / Trade</th>
+            <th>Solo MT5 Profit</th>
+            <th>Solo PF</th>
+            <th>Solo Max DD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;">rank_005_+$25,799_strat_15071e01.py</td>
+            <td><span class="badge badge-gold">1.25x</span></td>
+            <td>$312.50</td>
+            <td class="val-green" style="font-weight:700;">+$34,126.16</td>
+            <td>2.93</td>
+            <td style="color:var(--accent-red);">7.7%</td>
+        </tr><tr>
+            <td style="font-weight:600;">rank_009_+$24,552_strat_0974f2e8.py</td>
+            <td><span class="badge badge-gold">1.25x</span></td>
+            <td>$312.50</td>
+            <td class="val-green" style="font-weight:700;">+$26,506.83</td>
+            <td>2.36</td>
+            <td style="color:var(--accent-red);">6.6%</td>
+        </tr><tr>
+            <td style="font-weight:600;">rank_041_+$14,982_strat_3ad60d13.py</td>
+            <td><span class="badge badge-gold">1.25x</span></td>
+            <td>$312.50</td>
+            <td class="val-green" style="font-weight:700;">+$15,983.55</td>
+            <td>2.31</td>
+            <td style="color:var(--accent-red);">5.5%</td>
+        </tr><tr>
+            <td style="font-weight:600;">rank_027_+$17,863_strat_b9a5598c.py</td>
+            <td><span class="badge badge-gold">0.75x</span></td>
+            <td>$187.50</td>
+            <td class="val-green" style="font-weight:700;">+$13,497.29</td>
+            <td>2.31</td>
+            <td style="color:var(--accent-red);">9.0%</td>
+        </tr><tr>
+            <td style="font-weight:600;">rank_002_+$37,669_strat_8d2ba493.py</td>
+            <td><span class="badge badge-gold">0.40x</span></td>
+            <td>$100.00</td>
+            <td class="val-green" style="font-weight:700;">+$26,092.75</td>
+            <td>1.34</td>
+            <td style="color:var(--accent-red);">19.6%</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Monthly PnL Grid -->
+    <div class="table-container">
+      <h3 style="font-size:15px; font-weight:700; margin-bottom:14px;">Monthly Cash Flow Distribution (38/61 Green Months)</h3>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(110px, 1fr)); gap:10px;">
+        <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2021-09</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$220</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2021-10</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$1,729</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2021-11</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$5,564</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2021-12</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-1,308</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-01</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$88</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-02</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$5,251</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-03</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$1,686</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-04</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-68</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-05</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-232</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-06</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$456</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-07</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$3,482</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-08</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$896</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-09</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$5,621</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-10</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-1,340</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-11</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$10,011</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2022-12</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-799</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-01</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$253</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-02</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$8,034</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-03</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$5,524</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-04</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-1,399</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-05</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-1,000</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-06</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-1,545</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-07</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$1,228</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-08</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-1,778</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-09</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$1,786</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-10</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$1,383</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-11</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$1,521</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2023-12</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$8,420</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-01</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-976</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-02</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$4,459</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-03</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$4,442</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-04</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-2,166</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-05</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$1,795</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-06</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$8,767</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-07</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-1,859</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-08</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-2,736</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-09</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$3,225</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-10</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-329</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-11</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$2,655</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2024-12</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-964</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-01</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-703</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-02</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-1,167</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-03</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-2,104</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-04</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$2,763</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-05</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$5,467</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-06</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-1,168</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-07</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$989</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-08</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$16,830</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-09</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-1,463</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-10</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$1,893</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-11</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$964</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2025-12</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-2,267</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2026-01</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$857</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2026-02</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$1,755</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2026-03</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$4,369</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2026-04</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-1,600</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2026-05</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$7</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2026-06</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$8,259</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2026-07</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$5,230</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2026-08</div>
+            <div class="val-green" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">+$8,282</div>
+        </div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2026-09</div>
+            <div class="val-red" style="font-size:15px; font-weight:800; font-family:var(--font-mono);">$-859</div><div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:10px 14px; text-align:center;">
+            <div style="font-size:11px; color:var(--text-muted); font-weight:600;">2026-10</div>
+            <div style="font-size:15px; font-weight:800; font-family:var(--font-mono); color:var(--text-muted);">$0</div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trade Audit Log Sample -->
+    <div class="table-container">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+        <h3 style="font-size:15px; font-weight:700;">Audited Closed Trades Log (Sample First 60 of 604 Trades)</h3>
+        <a href="backtest_trades.csv" class="nav-btn" download>Download Complete Trade Log (.CSV)</a>
+      </div>
+      <div style="overflow-x:auto; max-height:450px; overflow-y:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Exit Date</th>
+              <th>Side</th>
+              <th>Engine</th>
+              <th>Weight</th>
+              <th>Entry Price</th>
+              <th>Exit Price</th>
+              <th>Reason</th>
+              <th>Net PnL</th>
+              <th>Equity</th>
+              <th>Drawdown</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td>#1</td>
+            <td>2021-09-28 14:00</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,748.42</td>
+            <td>$1,732.96</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$335.53</td>
+            <td style="font-family:var(--font-mono);">$25,335.53</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#2</td>
+            <td>2021-09-29 17:10</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,736.40</td>
+            <td>$1,731.09</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-115.19</td>
+            <td style="font-family:var(--font-mono);">$25,220.34</td>
+            <td style="color:var(--accent-red);">0.45%</td>
+        </tr><tr>
+            <td>#3</td>
+            <td>2021-10-08 15:40</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,757.23</td>
+            <td>$1,775.13</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$388.52</td>
+            <td style="font-family:var(--font-mono);">$25,608.87</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#4</td>
+            <td>2021-10-08 16:00</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_005_+$25,799_strat_</td>
+            <td>1.25x</td>
+            <td>$1,737.49</td>
+            <td>$1,777.68</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$2,726.08</td>
+            <td style="font-family:var(--font-mono);">$28,334.94</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#5</td>
+            <td>2021-10-08 17:10</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_041_+$14,982_strat_</td>
+            <td>1.25x</td>
+            <td>$1,770.89</td>
+            <td>$1,765.62</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-357.43</td>
+            <td style="font-family:var(--font-mono);">$27,977.52</td>
+            <td style="color:var(--accent-red);">1.26%</td>
+        </tr><tr>
+            <td>#6</td>
+            <td>2021-10-08 17:10</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,771.14</td>
+            <td>$1,765.73</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-117.42</td>
+            <td style="font-family:var(--font-mono);">$27,860.10</td>
+            <td style="color:var(--accent-red);">1.68%</td>
+        </tr><tr>
+            <td>#7</td>
+            <td>2021-10-08 17:10</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_027_+$17,863_strat_</td>
+            <td>0.75x</td>
+            <td>$1,770.89</td>
+            <td>$1,765.62</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-214.45</td>
+            <td style="font-family:var(--font-mono);">$27,645.65</td>
+            <td style="color:var(--accent-red);">2.43%</td>
+        </tr><tr>
+            <td>#8</td>
+            <td>2021-10-13 16:15</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,759.81</td>
+            <td>$1,765.19</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-116.76</td>
+            <td style="font-family:var(--font-mono);">$27,528.88</td>
+            <td style="color:var(--accent-red);">2.84%</td>
+        </tr><tr>
+            <td>#9</td>
+            <td>2021-10-18 09:05</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,770.47</td>
+            <td>$1,765.10</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-116.49</td>
+            <td style="font-family:var(--font-mono);">$27,412.39</td>
+            <td style="color:var(--accent-red);">3.26%</td>
+        </tr><tr>
+            <td>#10</td>
+            <td>2021-10-20 15:35</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,768.60</td>
+            <td>$1,785.88</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$375.10</td>
+            <td style="font-family:var(--font-mono);">$27,787.49</td>
+            <td style="color:var(--accent-red);">1.93%</td>
+        </tr><tr>
+            <td>#11</td>
+            <td>2021-10-21 15:20</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_009_+$24,552_strat_</td>
+            <td>1.25x</td>
+            <td>$1,777.49</td>
+            <td>$1,782.80</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-359.96</td>
+            <td style="font-family:var(--font-mono);">$27,427.52</td>
+            <td style="color:var(--accent-red);">3.20%</td>
+        </tr><tr>
+            <td>#12</td>
+            <td>2021-10-22 19:20</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_005_+$25,799_strat_</td>
+            <td>1.25x</td>
+            <td>$1,787.60</td>
+            <td>$1,792.96</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-363.36</td>
+            <td style="font-family:var(--font-mono);">$27,064.16</td>
+            <td style="color:var(--accent-red);">4.48%</td>
+        </tr><tr>
+            <td>#13</td>
+            <td>2021-10-29 11:35</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,797.24</td>
+            <td>$1,791.93</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-115.19</td>
+            <td style="font-family:var(--font-mono);">$26,948.97</td>
+            <td style="color:var(--accent-red);">4.89%</td>
+        </tr><tr>
+            <td>#14</td>
+            <td>2021-11-05 15:30</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,795.16</td>
+            <td>$1,789.85</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-115.19</td>
+            <td style="font-family:var(--font-mono);">$26,833.79</td>
+            <td style="color:var(--accent-red);">5.30%</td>
+        </tr><tr>
+            <td>#15</td>
+            <td>2021-11-10 16:35</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_009_+$24,552_strat_</td>
+            <td>1.25x</td>
+            <td>$1,840.08</td>
+            <td>$1,865.62</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$1,732.14</td>
+            <td style="font-family:var(--font-mono);">$28,565.92</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#16</td>
+            <td>2021-11-16 10:55</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_041_+$14,982_strat_</td>
+            <td>1.25x</td>
+            <td>$1,840.08</td>
+            <td>$1,872.82</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$2,220.81</td>
+            <td style="font-family:var(--font-mono);">$30,786.74</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#17</td>
+            <td>2021-11-22 15:35</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_005_+$25,799_strat_</td>
+            <td>1.25x</td>
+            <td>$1,840.08</td>
+            <td>$1,834.74</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-362.18</td>
+            <td style="font-family:var(--font-mono);">$30,424.56</td>
+            <td style="color:var(--accent-red);">1.18%</td>
+        </tr><tr>
+            <td>#18</td>
+            <td>2021-11-22 15:35</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,840.08</td>
+            <td>$1,834.74</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-115.90</td>
+            <td style="font-family:var(--font-mono);">$30,308.67</td>
+            <td style="color:var(--accent-red);">1.55%</td>
+        </tr><tr>
+            <td>#19</td>
+            <td>2021-11-23 11:30</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_041_+$14,982_strat_</td>
+            <td>1.25x</td>
+            <td>$1,830.35</td>
+            <td>$1,797.86</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$2,204.25</td>
+            <td style="font-family:var(--font-mono);">$32,512.92</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#20</td>
+            <td>2021-12-01 09:15</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,790.99</td>
+            <td>$1,785.57</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-117.63</td>
+            <td style="font-family:var(--font-mono);">$32,395.28</td>
+            <td style="color:var(--accent-red);">0.36%</td>
+        </tr><tr>
+            <td>#21</td>
+            <td>2021-12-07 16:10</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_005_+$25,799_strat_</td>
+            <td>1.25x</td>
+            <td>$1,772.82</td>
+            <td>$1,778.19</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-364.21</td>
+            <td style="font-family:var(--font-mono);">$32,031.07</td>
+            <td style="color:var(--accent-red);">1.48%</td>
+        </tr><tr>
+            <td>#22</td>
+            <td>2021-12-14 16:00</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,774.45</td>
+            <td>$1,769.16</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-114.81</td>
+            <td style="font-family:var(--font-mono);">$31,916.26</td>
+            <td style="color:var(--accent-red);">1.84%</td>
+        </tr><tr>
+            <td>#23</td>
+            <td>2021-12-20 15:30</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,799.84</td>
+            <td>$1,794.25</td>
+            <td>Gap SL</td>
+            <td class="val-red" style="font-weight:700;">$-121.46</td>
+            <td style="font-family:var(--font-mono);">$31,794.81</td>
+            <td style="color:var(--accent-red);">2.21%</td>
+        </tr><tr>
+            <td>#24</td>
+            <td>2021-12-23 16:30</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,810.18</td>
+            <td>$1,804.88</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-114.97</td>
+            <td style="font-family:var(--font-mono);">$31,679.83</td>
+            <td style="color:var(--accent-red);">2.56%</td>
+        </tr><tr>
+            <td>#25</td>
+            <td>2021-12-23 17:00</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,800.31</td>
+            <td>$1,805.61</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-114.97</td>
+            <td style="font-family:var(--font-mono);">$31,564.86</td>
+            <td style="color:var(--accent-red);">2.92%</td>
+        </tr><tr>
+            <td>#26</td>
+            <td>2021-12-27 03:10</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_041_+$14,982_strat_</td>
+            <td>1.25x</td>
+            <td>$1,805.62</td>
+            <td>$1,810.93</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-359.96</td>
+            <td style="font-family:var(--font-mono);">$31,204.90</td>
+            <td style="color:var(--accent-red);">4.02%</td>
+        </tr><tr>
+            <td>#27</td>
+            <td>2022-01-03 01:05</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_041_+$14,982_strat_</td>
+            <td>1.25x</td>
+            <td>$1,822.89</td>
+            <td>$1,831.12</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$557.98</td>
+            <td style="font-family:var(--font-mono);">$31,762.88</td>
+            <td style="color:var(--accent-red);">2.31%</td>
+        </tr><tr>
+            <td>#28</td>
+            <td>2022-01-03 15:55</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_009_+$24,552_strat_</td>
+            <td>1.25x</td>
+            <td>$1,817.28</td>
+            <td>$1,806.86</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$706.66</td>
+            <td style="font-family:var(--font-mono);">$32,469.54</td>
+            <td style="color:var(--accent-red);">0.13%</td>
+        </tr><tr>
+            <td>#29</td>
+            <td>2022-01-04 14:15</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,806.48</td>
+            <td>$1,801.20</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-114.54</td>
+            <td style="font-family:var(--font-mono);">$32,355.00</td>
+            <td style="color:var(--accent-red);">0.49%</td>
+        </tr><tr>
+            <td>#30</td>
+            <td>2022-01-05 15:40</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,815.92</td>
+            <td>$1,826.70</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$234.01</td>
+            <td style="font-family:var(--font-mono);">$32,589.01</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#31</td>
+            <td>2022-01-13 17:30</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,821.65</td>
+            <td>$1,816.30</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-116.11</td>
+            <td style="font-family:var(--font-mono);">$32,472.90</td>
+            <td style="color:var(--accent-red);">0.36%</td>
+        </tr><tr>
+            <td>#32</td>
+            <td>2022-01-14 16:30</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,826.57</td>
+            <td>$1,821.26</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-115.19</td>
+            <td style="font-family:var(--font-mono);">$32,357.71</td>
+            <td style="color:var(--accent-red);">0.71%</td>
+        </tr><tr>
+            <td>#33</td>
+            <td>2022-01-20 11:50</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,842.17</td>
+            <td>$1,836.87</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-114.97</td>
+            <td style="font-family:var(--font-mono);">$32,242.74</td>
+            <td style="color:var(--accent-red);">1.06%</td>
+        </tr><tr>
+            <td>#34</td>
+            <td>2022-01-20 18:20</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,846.32</td>
+            <td>$1,841.04</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-114.54</td>
+            <td style="font-family:var(--font-mono);">$32,128.20</td>
+            <td style="color:var(--accent-red);">1.41%</td>
+        </tr><tr>
+            <td>#35</td>
+            <td>2022-01-21 14:25</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_009_+$24,552_strat_</td>
+            <td>1.25x</td>
+            <td>$1,831.47</td>
+            <td>$1,836.78</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-359.96</td>
+            <td style="font-family:var(--font-mono);">$31,768.24</td>
+            <td style="color:var(--accent-red);">2.52%</td>
+        </tr><tr>
+            <td>#36</td>
+            <td>2022-01-21 14:25</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_005_+$25,799_strat_</td>
+            <td>1.25x</td>
+            <td>$1,831.47</td>
+            <td>$1,836.78</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-359.96</td>
+            <td style="font-family:var(--font-mono);">$31,408.27</td>
+            <td style="color:var(--accent-red);">3.62%</td>
+        </tr><tr>
+            <td>#37</td>
+            <td>2022-01-26 13:50</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,848.42</td>
+            <td>$1,843.12</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-114.97</td>
+            <td style="font-family:var(--font-mono);">$31,293.30</td>
+            <td style="color:var(--accent-red);">3.98%</td>
+        </tr><tr>
+            <td>#38</td>
+            <td>2022-02-04 15:20</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,790.26</td>
+            <td>$1,814.17</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$519.10</td>
+            <td style="font-family:var(--font-mono);">$31,812.40</td>
+            <td style="color:var(--accent-red);">2.38%</td>
+        </tr><tr>
+            <td>#39</td>
+            <td>2022-02-04 16:10</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,797.40</td>
+            <td>$1,802.80</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-117.25</td>
+            <td style="font-family:var(--font-mono);">$31,695.14</td>
+            <td style="color:var(--accent-red);">2.74%</td>
+        </tr><tr>
+            <td>#40</td>
+            <td>2022-02-11 15:45</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,830.35</td>
+            <td>$1,825.12</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-113.45</td>
+            <td style="font-family:var(--font-mono);">$31,581.69</td>
+            <td style="color:var(--accent-red);">3.09%</td>
+        </tr><tr>
+            <td>#41</td>
+            <td>2022-02-11 20:45</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_041_+$14,982_strat_</td>
+            <td>1.25x</td>
+            <td>$1,847.12</td>
+            <td>$1,856.90</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$663.47</td>
+            <td style="font-family:var(--font-mono);">$32,245.17</td>
+            <td style="color:var(--accent-red);">1.06%</td>
+        </tr><tr>
+            <td>#42</td>
+            <td>2022-02-15 14:20</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_009_+$24,552_strat_</td>
+            <td>1.25x</td>
+            <td>$1,867.62</td>
+            <td>$1,846.94</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$1,402.84</td>
+            <td style="font-family:var(--font-mono);">$33,648.01</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#43</td>
+            <td>2022-02-17 05:55</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,869.88</td>
+            <td>$1,875.25</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-116.55</td>
+            <td style="font-family:var(--font-mono);">$33,531.46</td>
+            <td style="color:var(--accent-red);">0.35%</td>
+        </tr><tr>
+            <td>#44</td>
+            <td>2022-02-17 10:25</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_041_+$14,982_strat_</td>
+            <td>1.25x</td>
+            <td>$1,872.53</td>
+            <td>$1,878.80</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$425.38</td>
+            <td style="font-family:var(--font-mono);">$33,956.83</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#45</td>
+            <td>2022-02-17 15:40</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,875.62</td>
+            <td>$1,897.10</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$466.23</td>
+            <td style="font-family:var(--font-mono);">$34,423.06</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#46</td>
+            <td>2022-02-18 17:40</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,896.65</td>
+            <td>$1,891.34</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-115.19</td>
+            <td style="font-family:var(--font-mono);">$34,307.88</td>
+            <td style="color:var(--accent-red);">0.33%</td>
+        </tr><tr>
+            <td>#47</td>
+            <td>2022-02-21 02:15</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_027_+$17,863_strat_</td>
+            <td>0.75x</td>
+            <td>$1,884.81</td>
+            <td>$1,907.67</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$930.53</td>
+            <td style="font-family:var(--font-mono);">$35,238.40</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#48</td>
+            <td>2022-02-21 02:55</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_041_+$14,982_strat_</td>
+            <td>1.25x</td>
+            <td>$1,903.41</td>
+            <td>$1,898.04</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-364.21</td>
+            <td style="font-family:var(--font-mono);">$34,874.19</td>
+            <td style="color:var(--accent-red);">1.03%</td>
+        </tr><tr>
+            <td>#49</td>
+            <td>2022-02-21 02:55</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,903.41</td>
+            <td>$1,898.04</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-116.55</td>
+            <td style="font-family:var(--font-mono);">$34,757.64</td>
+            <td style="color:var(--accent-red);">1.36%</td>
+        </tr><tr>
+            <td>#50</td>
+            <td>2022-02-22 03:00</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,912.17</td>
+            <td>$1,906.80</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-116.55</td>
+            <td style="font-family:var(--font-mono);">$34,641.09</td>
+            <td style="color:var(--accent-red);">1.70%</td>
+        </tr><tr>
+            <td>#51</td>
+            <td>2022-02-22 03:00</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_041_+$14,982_strat_</td>
+            <td>1.25x</td>
+            <td>$1,912.17</td>
+            <td>$1,906.80</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-364.21</td>
+            <td style="font-family:var(--font-mono);">$34,276.88</td>
+            <td style="color:var(--accent-red);">2.73%</td>
+        </tr><tr>
+            <td>#52</td>
+            <td>2022-02-24 13:55</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_009_+$24,552_strat_</td>
+            <td>1.25x</td>
+            <td>$1,969.11</td>
+            <td>$1,963.81</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-359.29</td>
+            <td style="font-family:var(--font-mono);">$33,917.59</td>
+            <td style="color:var(--accent-red);">3.75%</td>
+        </tr><tr>
+            <td>#53</td>
+            <td>2022-02-24 17:00</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_005_+$25,799_strat_</td>
+            <td>1.25x</td>
+            <td>$1,931.59</td>
+            <td>$1,938.16</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-355.19</td>
+            <td style="font-family:var(--font-mono);">$33,562.40</td>
+            <td style="color:var(--accent-red);">4.76%</td>
+        </tr><tr>
+            <td>#54</td>
+            <td>2022-02-24 21:25</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_009_+$24,552_strat_</td>
+            <td>1.25x</td>
+            <td>$1,937.18</td>
+            <td>$1,887.34</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$3,097.14</td>
+            <td style="font-family:var(--font-mono);">$36,659.54</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#55</td>
+            <td>2022-02-28 17:45</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,911.92</td>
+            <td>$1,906.61</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-115.19</td>
+            <td style="font-family:var(--font-mono);">$36,544.35</td>
+            <td style="color:var(--accent-red);">0.31%</td>
+        </tr><tr>
+            <td>#56</td>
+            <td>2022-03-04 02:50</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,950.02</td>
+            <td>$1,944.65</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-116.55</td>
+            <td style="font-family:var(--font-mono);">$36,427.81</td>
+            <td style="color:var(--accent-red);">0.63%</td>
+        </tr><tr>
+            <td>#57</td>
+            <td>2022-03-07 08:05</td>
+            <td><span class="badge badge-green">LONG</span></td>
+            <td>rank_027_+$17,863_strat_</td>
+            <td>0.75x</td>
+            <td>$1,981.23</td>
+            <td>$1,975.94</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-215.17</td>
+            <td style="font-family:var(--font-mono);">$36,212.64</td>
+            <td style="color:var(--accent-red);">1.22%</td>
+        </tr><tr>
+            <td>#58</td>
+            <td>2022-03-08 07:30</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,987.15</td>
+            <td>$1,992.45</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-114.97</td>
+            <td style="font-family:var(--font-mono);">$36,097.67</td>
+            <td style="color:var(--accent-red);">1.53%</td>
+        </tr><tr>
+            <td>#59</td>
+            <td>2022-03-09 16:05</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_009_+$24,552_strat_</td>
+            <td>1.25x</td>
+            <td>$2,024.38</td>
+            <td>$1,983.30</td>
+            <td>TP</td>
+            <td class="val-green" style="font-weight:700;">+$2,787.06</td>
+            <td style="font-family:var(--font-mono);">$38,884.73</td>
+            <td style="color:var(--accent-red);">0.00%</td>
+        </tr><tr>
+            <td>#60</td>
+            <td>2022-03-11 13:50</td>
+            <td><span class="badge badge-red">SHORT</span></td>
+            <td>rank_002_+$37,669_strat_</td>
+            <td>0.40x</td>
+            <td>$1,979.05</td>
+            <td>$1,984.48</td>
+            <td>SL</td>
+            <td class="val-red" style="font-weight:700;">$-117.90</td>
+            <td style="font-family:var(--font-mono);">$38,766.83</td>
+            <td style="color:var(--accent-red);">0.30%</td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const labels = ["2021-09-28", "2021-10-08", "2021-10-08", "2021-10-20", "2021-10-29", "2021-11-16", "2021-11-23", "2021-12-14", "2021-12-23", "2022-01-03", "2022-01-13", "2022-01-20", "2022-01-26", "2022-02-11", "2022-02-17", "2022-02-18", "2022-02-21", "2022-02-24", "2022-02-28", "2022-03-08", "2022-03-11", "2022-03-23", "2022-03-28", "2022-04-12", "2022-04-28", "2022-06-01", "2022-06-06", "2022-06-29", "2022-07-06", "2022-07-13", "2022-07-21", "2022-07-28", "2022-08-10", "2022-08-24", "2022-09-15", "2022-09-15", "2022-09-21", "2022-09-26", "2022-10-07", "2022-10-13", "2022-10-21", "2022-10-28", "2022-11-02", "2022-11-08", "2022-11-11", "2022-11-15", "2022-11-18", "2022-11-28", "2022-12-02", "2022-12-14", "2022-12-15", "2023-01-09", "2023-01-17", "2023-01-26", "2023-02-03", "2023-02-09", "2023-02-14", "2023-03-06", "2023-03-13", "2023-03-28", "2023-03-31", "2023-04-05", "2023-04-10", "2023-04-12", "2023-04-14", "2023-04-20", "2023-04-28", "2023-05-04", "2023-05-12", "2023-05-22", "2023-06-06", "2023-06-13", "2023-06-20", "2023-07-05", "2023-07-12", "2023-07-18", "2023-07-28", "2023-08-09", "2023-08-18", "2023-08-29", "2023-09-01", "2023-09-06", "2023-09-08", "2023-09-19", "2023-09-28", "2023-10-03", "2023-10-06", "2023-10-09", "2023-10-16", "2023-10-18", "2023-11-03", "2023-11-22", "2023-12-04", "2023-12-04", "2023-12-07", "2023-12-13", "2023-12-14", "2023-12-15", "2023-12-27", "2024-01-02", "2024-01-08", "2024-01-16", "2024-01-29", "2024-02-05", "2024-02-12", "2024-02-13", "2024-02-14", "2024-02-16", "2024-02-23", "2024-03-01", "2024-03-01", "2024-03-12", "2024-03-21", "2024-03-28", "2024-04-04", "2024-04-11", "2024-04-23", "2024-05-06", "2024-05-09", "2024-05-15", "2024-05-20", "2024-05-30", "2024-06-06", "2024-06-07", "2024-06-12", "2024-06-20", "2024-06-26", "2024-07-10", "2024-07-12", "2024-07-29", "2024-08-01", "2024-08-16", "2024-08-16", "2024-08-23", "2024-09-11", "2024-09-13", "2024-09-23", "2024-10-01", "2024-10-04", "2024-10-11", "2024-10-18", "2024-10-29", "2024-11-05", "2024-11-11", "2024-11-19", "2024-11-25", "2024-12-06", "2024-12-12", "2024-12-19", "2025-01-02", "2025-01-13", "2025-01-27", "2025-01-30", "2025-02-11", "2025-02-19", "2025-02-28", "2025-03-04", "2025-03-17", "2025-03-27", "2025-04-02", "2025-04-16", "2025-04-22", "2025-04-24", "2025-04-30", "2025-05-06", "2025-05-16", "2025-05-19", "2025-05-22", "2025-05-28", "2025-06-05", "2025-06-11", "2025-07-03", "2025-07-11", "2025-07-21", "2025-07-28", "2025-08-04", "2025-08-19", "2025-08-21", "2025-08-29", "2025-09-09", "2025-09-18", "2025-09-23", "2025-09-30", "2025-10-20", "2025-10-24", "2025-11-10", "2025-11-28", "2025-12-17", "2025-12-24", "2025-12-31", "2026-02-10", "2026-02-17", "2026-02-27", "2026-03-19", "2026-04-01", "2026-04-23", "2026-04-29", "2026-05-06", "2026-05-27", "2026-06-09", "2026-08-19", "2026-09-30"];
+    const equityData = [25335.53, 28334.94, 27645.65, 27787.49, 26948.97, 30786.74, 32512.92, 31916.26, 31564.86, 32469.54, 32472.9, 32128.2, 31293.3, 31581.69, 33531.46, 34307.88, 34757.64, 33917.59, 36544.35, 36097.67, 39619.63, 39037.06, 38345.93, 37999.65, 38162.46, 37814.02, 38184.56, 38500.09, 38156.36, 37298.0, 36849.72, 41869.18, 43471.45, 42880.42, 44490.73, 51440.23, 50840.7, 49605.4, 48270.62, 48351.84, 47508.19, 47161.48, 46711.66, 46795.71, 51274.49, 54242.54, 58252.06, 57172.17, 57781.92, 57181.59, 56491.4, 57093.76, 56501.76, 56741.88, 58380.07, 61910.12, 64776.55, 64924.99, 65299.95, 71027.13, 70186.92, 70292.02, 69609.47, 68759.4, 68057.95, 69263.17, 68670.16, 69084.27, 68739.45, 67903.01, 67553.21, 67202.7, 66357.72, 65759.97, 65607.37, 67700.97, 67353.01, 67001.04, 66409.56, 65575.34, 68595.36, 67727.3, 67306.15, 66958.36, 67361.23, 66426.41, 65493.14, 64795.08, 65444.79, 68743.88, 68041.67, 70742.09, 71866.15, 73027.2, 75231.61, 75546.8, 78063.62, 77465.04, 77788.46, 78569.11, 77977.25, 77844.32, 77824.13, 78319.04, 77476.53, 78842.82, 83326.62, 82470.47, 82283.18, 83065.98, 86930.94, 86331.17, 85962.62, 85366.87, 86386.4, 85263.21, 84443.73, 85765.93, 86131.51, 86570.89, 85801.22, 86468.73, 86122.3, 88151.88, 87461.71, 88208.18, 94354.56, 94531.18, 93849.01, 93261.29, 92427.53, 91848.71, 91003.36, 90410.48, 90648.74, 94566.5, 94110.06, 93520.1, 92562.13, 91939.77, 92789.98, 92831.06, 93190.83, 93498.38, 93853.56, 96318.04, 95729.4, 95820.77, 95228.26, 95554.65, 95208.22, 94517.93, 94654.48, 93819.36, 93471.35, 93127.09, 92290.87, 91700.69, 91599.06, 90909.45, 91558.46, 91220.68, 94462.91, 94127.76, 101548.61, 100973.38, 100145.6, 99706.09, 99367.31, 99021.09, 98201.79, 97756.69, 97651.29, 99672.41, 99074.03, 107977.58, 107137.96, 106283.94, 115904.06, 117069.82, 116400.35, 115285.25, 114441.07, 113886.15, 116333.84, 115517.93, 117297.57, 116466.11, 116079.04, 115030.99, 115784.73, 115000.01, 117642.99, 122438.93, 121900.04, 121251.92, 120411.6, 121079.56, 120418.74, 128677.9, 136931.11, 141330.74];
+    const ddData = [-0.0, -0.0, -2.43, -1.93, -4.89, -0.0, -0.0, -1.84, -2.92, -0.13, -0.36, -1.41, -3.98, -3.09, -0.35, -0.33, -1.36, -3.75, -0.31, -1.53, -0.0, -1.47, -3.21, -4.09, -3.68, -4.56, -3.62, -2.83, -3.69, -5.86, -6.99, -0.0, -0.27, -1.62, -0.0, -0.0, -1.17, -3.57, -6.16, -6.0, -7.64, -8.32, -9.19, -9.03, -0.32, -0.21, -0.0, -1.85, -0.81, -1.84, -3.02, -1.99, -3.0, -2.59, -0.0, -0.19, -0.0, -0.0, -0.55, -0.5, -1.68, -1.53, -2.49, -3.68, -4.66, -2.97, -3.8, -3.22, -3.71, -4.88, -5.37, -5.86, -7.04, -7.88, -8.09, -5.16, -5.65, -6.14, -6.97, -8.14, -3.91, -5.12, -5.71, -6.2, -5.64, -6.95, -8.25, -9.23, -8.32, -3.7, -4.68, -0.9, -0.0, -0.31, -0.31, -0.0, -0.15, -0.91, -0.5, -0.15, -0.9, -1.07, -1.09, -0.47, -1.54, -0.15, -0.0, -1.03, -1.25, -0.31, -0.0, -0.69, -1.11, -1.8, -0.63, -1.92, -2.86, -1.34, -0.92, -0.66, -1.54, -0.78, -1.18, -0.0, -0.78, -0.0, -0.0, -0.5, -1.22, -1.84, -2.71, -3.32, -4.21, -4.84, -4.59, -0.46, -0.94, -1.56, -2.57, -3.23, -2.33, -2.29, -1.91, -1.59, -1.21, -0.0, -0.61, -0.52, -1.13, -0.79, -1.15, -1.87, -1.73, -2.59, -2.96, -3.31, -4.18, -4.79, -4.9, -5.62, -4.94, -5.29, -1.93, -2.27, -0.0, -0.57, -1.38, -1.81, -2.15, -2.49, -3.3, -3.73, -3.84, -1.85, -2.44, -0.0, -0.78, -1.57, -0.0, -0.0, -0.57, -1.52, -2.25, -2.72, -0.63, -1.33, -1.13, -1.83, -2.15, -3.04, -2.4, -3.06, -0.84, -0.35, -0.79, -1.32, -2.0, -1.46, -1.99, -0.0, -0.0, -0.6];
+
+    new Chart(document.getElementById('equityChart'), {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Portfolio Equity ($)',
+          data: equityData,
+          borderColor: '#10b981',
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: true,
+          backgroundColor: 'rgba(16, 185, 129, 0.08)',
+          tension: 0.1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94a3b8', maxTicksLimit: 12 } },
+          y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94a3b8', callback: v => '$' + v.toLocaleString() } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('ddChart'), {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Drawdown (%)',
+          data: ddData,
+          borderColor: '#f43f5e',
+          borderWidth: 1.5,
+          pointRadius: 0,
+          fill: true,
+          backgroundColor: 'rgba(244, 63, 94, 0.15)',
+          tension: 0.1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94a3b8', maxTicksLimit: 12 } },
+          y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94a3b8', callback: v => v + '%' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

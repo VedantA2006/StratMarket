@@ -308,6 +308,14 @@ export const db = {
     sort?: string;
     includeDrafts?: boolean;
   }): Promise<StrategySeedItem[]> {
+    // Ensure memory store stays synchronized with latest seed data
+    INITIAL_STRATEGIES.forEach((s) => {
+      const existing = globalStore.strategies.get(s.id);
+      if (!existing || existing.ensembleFolder !== s.ensembleFolder || existing.name !== s.name) {
+        globalStore.strategies.set(s.id, { ...s });
+      }
+    });
+
     let list = Array.from(globalStore.strategies.values()) as StrategySeedItem[];
 
     // Visibility filter
@@ -375,6 +383,13 @@ export const db = {
   },
 
   async getStrategyBySlug(slugOrId: string): Promise<StrategySeedItem | null> {
+    INITIAL_STRATEGIES.forEach((s) => {
+      const existing = globalStore.strategies.get(s.id);
+      if (!existing || existing.ensembleFolder !== s.ensembleFolder || existing.name !== s.name) {
+        globalStore.strategies.set(s.id, { ...s });
+      }
+    });
+
     const s =
       globalStore.strategies.get(slugOrId.toUpperCase()) ||
       Array.from(globalStore.strategies.values()).find(

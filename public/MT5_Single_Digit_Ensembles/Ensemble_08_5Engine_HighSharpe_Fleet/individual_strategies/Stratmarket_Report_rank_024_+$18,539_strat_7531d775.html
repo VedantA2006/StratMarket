@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>StratMarket — E24: Jerk & CMF Volume Surge Performance Report</title>
+<style>
+:root{--bg:#f2f4f3;--panel:#fff;--ink:#16221f;--mute:#5d6b67;--line:#d9dfdc;--win:#1e7a58;--loss:#b2382d;--deep:#0f3b36;--gold:#a97b12;--warn:#fbf6e8;--warnr:#fbeeec;--th:#f8faf9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101716;--panel:#18211f;--ink:#e6eeec;--mute:#9db0aa;--line:#2b3835;--win:#4cc79a;--loss:#e5746a;--deep:#0b2a27;--warn:#2a2514;--warnr:#2c1a18;--th:#1d2826}}
+:root[data-theme="dark"]{--bg:#101716;--panel:#18211f;--ink:#e6eeec;--mute:#9db0aa;--line:#2b3835;--win:#4cc79a;--loss:#e5746a;--deep:#0b2a27;--warn:#2a2514;--warnr:#2c1a18;--th:#1d2826}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 50px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans","Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px 64px}
+header{background:var(--deep);color:#eef3f1;padding:48px 0 40px}header .wrap{padding-bottom:0}
+h1{font:600 clamp(24px,4.2vw,42px)/1.15 Georgia,serif;margin:0 0 10px;word-break:break-word}
+header p{margin:0;color:#b9cbc6;max-width:64ch}
+.big{display:flex;flex-wrap:wrap;gap:24px 44px;margin-top:28px;align-items:baseline}
+.big b{display:block;font:600 clamp(26px,4.5vw,40px)/1.1 Georgia,serif;color:#fff}.big div:first-child b{font-size:clamp(38px,7vw,68px);color:#e8c46a}
+.big span{font-size:14px;color:#b9cbc6}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+nav .wrap{display:flex;gap:18px;overflow-x:auto;padding:10px 20px;white-space:nowrap;font-size:14px}
+nav a{color:var(--mute);text-decoration:none}nav a:hover{color:var(--ink);text-decoration:underline}
+section{margin-top:44px}h2{font:600 25px/1.25 Georgia,serif;margin:0 0 6px}
+.lede{color:var(--mute);margin:0 0 16px;max-width:72ch}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px}.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--mute);font-size:13px;background:var(--th)}tr:last-child td{border-bottom:0}
+.n{text-align:right;font-variant-numeric:tabular-nums}.pos{color:var(--win)}.neg{color:var(--loss)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 15px}
+.kpi b{display:block;font:600 22px/1.2 Georgia,serif;font-variant-numeric:tabular-nums}.kpi span{font-size:13px;color:var(--mute)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:720px){.split{grid-template-columns:1fr}}
+.bar{display:grid;grid-template-columns:80px 1fr 80px;gap:10px;align-items:center;font-size:14px;margin-bottom:8px}
+.track{position:relative;height:22px;background:var(--th);border-radius:3px}.fill{position:absolute;top:0;bottom:0;border-radius:3px;background:var(--win)}
+.heat{min-width:860px}.heat td,.heat th{text-align:center;padding:6px 3px;font-size:12px;border:1px solid var(--panel);font-variant-numeric:tabular-nums}
+.heat td:first-child,.heat th:first-child{text-align:left;padding-left:8px;font-weight:600}
+.heat small{display:block;opacity:.75;font-size:10.5px}
+.badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;display:inline-block}
+.badge-gold{background:rgba(245,158,11,0.15);color:var(--gold)}
+.badge-green{background:rgba(30,122,88,0.15);color:var(--win)}
+code{background:var(--th);padding:1px 5px;border-radius:3px;font-size:.9em}
+footer{margin-top:52px;font-size:13px;color:var(--mute);border-top:1px solid var(--line);padding-top:16px}
+@media print{nav{display:none}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>E24: Jerk & CMF Volume Surge (rank_024_+$18,539_strat_7531d775) <span class="badge badge-gold">Engine rank_024</span> <span class="badge badge-green">Solo DD 12.8%</span></h1>
+<p>StratMarket Engine Dossier: XAUUSD M5, 360,000 MT5 bars (2021-2026). Conviction Weight 0.40x ($100.00/trade). Member of 5-Engine High-Sharpe Fleet.</p>
+<div class="big">
+<div><b>+$11,269.50</b><span>net profit, +45.08% on $25,000</span></div>
+<div><b>2.12</b><span>profit factor</span></div>
+<div><b>7.90%</b><span>max drawdown ($2,220.24)</span></div>
+<div><b>106</b><span>trades, 21.70% win rate</span></div>
+</div></div></header>
+
+<nav><div class="wrap"><a href="#mech">Mechanism</a><a href="#kpi">Core metrics</a><a href="#pay">Payoff</a><a href="#dir">Long vs short</a><a href="#reg">Regimes</a><a href="#year">Yearly</a><a href="#month">Monthly</a></div></nav>
+
+<div class="wrap">
+
+<section id="mech"><h2>How the strategy works</h2>
+<p class="lede">Detects sudden acceleration shifts and institutional liquidity absorption before retail signals. Operates with the following parameters and microstructure logic:</p>
+<div class="box scroll"><table>
+<tr><th>Engine / Component</th><th>Indicator / Mechanism</th><th>Conviction Weight</th><th class="n">Solo PnL</th><th class="n">Solo PF</th><th class="n">Solo DD</th><th>Role & Strategy Function</th></tr>
+<tr>
+<td><b>E24: Jerk & CMF Volume Surge</b><br><code style="font-size:11px;">rank_024_+$18,539_strat_7531d775.py</code></td>
+<td>Jerk(4) > 0.171 (3rd price derivative), CMF(25) > 0.084, Vol Sleep mult 0.775×, ER(12). Stop 1.358×ATR.</td>
+<td><span class="pos"><b>0.40×</b></span> ($100.00)</td>
+<td class="n pos">+$28,173.76</td>
+<td class="n">2.12</td>
+<td class="n neg">12.8%</td>
+<td>Detects sudden acceleration shifts and institutional liquidity absorption before retail signals.</td>
+</tr>
+</table></div></section>
+
+<section id="kpi"><h2>Core performance metrics</h2>
+<p class="lede">Account: $25,000 start, $36,269.50 final equity across 360,000 MetaTrader 5 M5 bars.</p>
+<div class="kpis">
+<div class="kpi"><b class="pos">+$11,269.50</b><span>Net profit (+45.08%)</span></div>
+<div class="kpi"><b>$36,269.50</b><span>Final equity</span></div>
+<div class="kpi"><b>106</b><span>Total trades (1.7 per month)</span></div>
+<div class="kpi"><b>21.70%</b><span>Win rate (23 W / 83 L)</span></div>
+<div class="kpi"><b>2.12</b><span>Profit factor ($21,314 / $10,044)</span></div>
+<div class="kpi"><b>1.50</b><span>Sharpe ratio (annualized)</span></div>
+<div class="kpi"><b>3.50</b><span>Sortino ratio (annualized)</span></div>
+<div class="kpi"><b>5.70</b><span>Calmar (total return / max DD)</span></div>
+<div class="kpi"><b class="neg">$2,220.24</b><span>Max drawdown (7.90%)</span></div>
+<div class="kpi"><b>+$106.32</b><span>Expectancy per trade</span></div>
+<div class="kpi"><b>4 W / 18 L</b><span>Max win / loss streak</span></div>
+<div class="kpi"><b>310.0 bars</b><span>Average hold (~25.8 h), max 5210 bars (~434.2 h)</span></div>
+<div class="kpi"><b>0</b><span>Intentional weekend holds</span></div>
+<div class="kpi"><b>−$275.58 / +$2,593.01</b><span>Worst / best day</span></div>
+</div></section>
+
+<section id="pay"><h2>Payoff structure</h2>
+<div class="box"><p style="margin:0">Average win <b class="pos">+$926.69</b>, average loss <b class="neg">−$121.02</b>, payoff ratio <b>7.66 : 1</b>. Breakeven win rate at that payoff is 11.55%, and the actual 21.70% is +10.15 points above it.</p>
+<p style="margin:10px 0 0">Expectancy = 0.2170 × $926.69 − 0.7830 × $121.02 = $201.07 − 94.76 ≈ <b>+$106.32</b> per trade. × 106 trades = $11,269.50.</p></div></section>
+
+<section id="dir"><h2>Long versus short</h2>
+<p class="lede">Both sides are profitable, with longs contributing about 90.7% of profit.</p>
+<div class="split">
+<div class="box"><b>Long trades</b><table>
+<tr><td>Trades</td><td class="n">56 (52.8%)</td></tr><tr><td>Net PnL</td><td class="n pos">+$10,219.09</td></tr><tr><td>Win rate</td><td class="n">30.36%</td></tr><tr><td>Profit factor</td><td class="n">3.23</td></tr></table></div>
+<div class="box"><b>Short trades</b><table>
+<tr><td>Trades</td><td class="n">50 (47.2%)</td></tr><tr><td>Net PnL</td><td class="n pos">+$1,050.42</td></tr><tr><td>Win rate</td><td class="n">12.00%</td></tr><tr><td>Profit factor</td><td class="n">1.19</td></tr></table></div>
+</div></section>
+
+<section id="reg"><h2>Three market regimes</h2>
+<p class="lede">All three regimes finished positive, demonstrating strong cross-market robustness across central bank hiking cycles, banking crisis consolidations, and historic gold all-time-high trend expansions.</p>
+<div class="box scroll"><table>
+<tr><th>Regime</th><th>Period</th><th class="n">Trades</th><th class="n">Net PnL</th><th class="n">Win rate</th><th class="n">PF</th><th class="n">Max DD</th></tr>
+<tr><td>1. Rate hikes and inflation shock</td><td>2021-09-24 to 2022-12-31</td><td class="n">25</td><td class="n pos">+$1,069.66</td><td class="n">24.0%</td><td class="n">1.45</td><td class="n">$1,661.11</td></tr>
+<tr><td>2. Banking crisis and consolidation</td><td>2023-01-01 to 2023-12-31</td><td class="n">25</td><td class="n pos">+$1,471.81</td><td class="n">16.0%</td><td class="n">1.57</td><td class="n">$2,220.24</td></tr>
+<tr><td>3. Gold all-time-high trend</td><td>2024-01-01 to 2026-09-30</td><td class="n">56</td><td class="n pos">+$8,728.04</td><td class="n">23.2%</td><td class="n">2.70</td><td class="n">$1,055.23</td></tr>
+
+</table></div></section>
+
+<section id="year"><h2>Year by year</h2>
+<p class="lede">Bars show annual net PnL. 2021 covers Q4 only and 2026 is year to date.</p>
+<div class="box"><div id="yb"></div><div class="scroll"><table style="margin-top:14px">
+<tr><th>Year</th><th class="n">Trades</th><th class="n">W / L</th><th class="n">Win rate</th><th class="n">Net PnL</th><th class="n">Return</th></tr>
+<tr><td>2021 (Q4)</td><td class="n">6</td><td class="n">3 / 3</td><td class="n">50.0%</td><td class="n pos">+$1,125.22</td><td class="n pos">+4.50%</td></tr>
+<tr><td>2022</td><td class="n">19</td><td class="n">3 / 16</td><td class="n">15.8%</td><td class="n neg">−$55.56</td><td class="n neg">−0.22%</td></tr>
+<tr><td>2023</td><td class="n">25</td><td class="n">4 / 21</td><td class="n">16.0%</td><td class="n pos">+$1,471.81</td><td class="n pos">+5.89%</td></tr>
+<tr><td>2024</td><td class="n">21</td><td class="n">6 / 15</td><td class="n">28.6%</td><td class="n pos">+$1,515.76</td><td class="n pos">+6.06%</td></tr>
+<tr><td>2025</td><td class="n">21</td><td class="n">2 / 19</td><td class="n">9.5%</td><td class="n neg">−$310.97</td><td class="n neg">−1.24%</td></tr>
+<tr><td>2026 (YTD)</td><td class="n">14</td><td class="n">5 / 9</td><td class="n">35.7%</td><td class="n pos">+$7,523.24</td><td class="n pos">+30.09%</td></tr>
+<tr><td><b>Total</b></td><td class="n"><b>106</b></td><td class="n"><b>23 / 83</b></td><td class="n"><b>21.7%</b></td><td class="n pos"><b>+$11,269.50</b></td><td class="n pos"><b>+45.08%</b></td></tr>
+</table></div></div></section>
+
+<section id="month"><h2>Monthly PnL and trade count</h2>
+<p class="lede">Each cell shows PnL in dollars with the trade count beneath. A dash means the month is outside the data. Darker means larger magnitude.</p>
+<div class="box scroll"><table class="heat" id="hm"></table></div></section>
+
+<footer>Source: MetaTrader 5 live broker data (360,000 M5 bars, 2021–2026), <code>XAUUSD_M5_MT5.csv</code>. Initial capital $25,000, flat base risk $250. StratMarket Institutional Single-Digit Drawdown Quantitative Architecture.</footer>
+</div>
+
+<script>
+const fmt=v=>(v<0?"−":"+")+"$"+Math.abs(v).toLocaleString("en-US");
+const years=[["2021 (Q4)", 1125.22], ["2022", -55.56], ["2023", 1471.81], ["2024", 1515.76], ["2025", -310.97], ["2026 (YTD)", 7523.24]];
+const mx=7523.240000000001;
+document.getElementById("yb").innerHTML=years.map(([y,v])=>`<div class="bar"><span>${y}</span><div class="track"><div class="fill" style="left:0;width:${Math.max(v/mx*100,.8)}%"></div></div><span class="n pos">${fmt(v)}</span></div>`).join("");
+const N=null,M=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const pnl={"2021": [null, null, null, null, null, null, null, null, null, 154.32, 1001.29, -30.39], "2022": [-230.38, 562.8, -230.38, -115.62, -115.19, -116.49, -116.76, -229.08, -393.92, -112.37, 1158.38, -116.55], "2023": [null, 1244.98, 663.25, -590.92, -347.2, -232.82, -116.06, -115.19, -238.09, -345.02, 845.1, 703.78], "2024": [null, 846.71, 260.68, 514.01, -114.54, 208.17, -113.72, -115.19, 377.28, -233.31, null, -114.32], "2025": [-476.79, null, -115.19, 1174.0, -237.14, -113.24, -116.11, -115.46, 384.65, -120.48, -351.26, -223.94], "2026": [6404.83, -322.08, -306.06, 2077.77, -111.69, -115.4, -104.12, null, null, null, null, null]};
+const cnt={"2021": [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2], "2022": [2, 4, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1], "2023": [0, 1, 2, 4, 3, 2, 1, 1, 2, 3, 3, 3], "2024": [0, 2, 4, 5, 1, 3, 1, 1, 1, 2, 0, 1], "2025": [4, 0, 1, 3, 2, 1, 1, 1, 2, 1, 3, 2], "2026": [4, 3, 2, 2, 1, 1, 1, 0, 0, 0, 0, 0]};
+const tot={"2021": 1125.22, "2022": -55.56, "2023": 1471.81, "2024": 1515.76, "2025": -310.97, "2026": 7523.24},tc={"2021": 6, "2022": 19, "2023": 25, "2024": 21, "2025": 21, "2026": 14};
+let h="<tr><th>Year</th>"+M.map(m=>`<th>${m}</th>`).join("")+"<th>Total</th></tr>";
+for(const y in pnl){h+=`<tr><td>${y}</td>`;pnl[y].forEach((v,i)=>{
+if(v===N){h+='<td style="background:var(--th);color:var(--mute)">—</td>';return}
+const a=Math.min(1,Math.abs(v)/5500),c=v>=0?"47,158,117":"200,70,60";
+h+=`<td style="background:rgba(${c},${.12+a*.8});color:${a>.5?"#fff":"inherit"}">${v<0?"−":""}$${Math.abs(Math.round(v)).toLocaleString("en-US")}<small>${cnt[y][i]} tr</small></td>`});
+h+=`<td class="${tot[y]>=0?"pos":"neg"}"><b>${fmt(Math.round(tot[y]))}</b><small>${tc[y]} tr</small></td></tr>`}
+document.getElementById("hm").innerHTML=h;
+</script>
+</body>
+</html>

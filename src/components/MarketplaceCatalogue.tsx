@@ -151,10 +151,13 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
       <div className="grid" id="grid">
         {filteredStrategies.length > 0 ? (
           filteredStrategies.map((s) => (
-            <button
+            <a
               key={s.id}
+              href={`/strategies/${s.slug}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="card"
-              onClick={() => setSelectedStrategy(s)}
+              style={{ textDecoration: "none", color: "inherit" }}
             >
               <div className="row">
                 <span className={`badge ${s.implementationType === "PYTHON" ? "py" : "pn"}`}>
@@ -178,8 +181,10 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
                   Profit factor*<b>{s.metrics.profitFactor}</b>
                 </div>
               </div>
-              <span className="note">View report</span>
-            </button>
+              <span className="note" style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "auto", color: "var(--tx)", fontWeight: 500 }}>
+                View Performance Report ↗
+              </span>
+            </a>
           ))
         ) : (
           <div className="empty">

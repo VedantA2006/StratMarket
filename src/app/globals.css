@@ -1290,3 +1290,219 @@ footer p {
   }
 }
 
+/* Strategy Report Page & Dedicated Action Zone */
+.strategy-report-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 24px 20px 100px;
+}
+
+.report-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 18px 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.report-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--mut);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.report-back-link:hover {
+  color: var(--tx);
+  transform: translateX(-3px);
+}
+
+.report-iframe-wrap {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #101716;
+  overflow: hidden;
+  box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.7);
+  margin-bottom: 40px;
+}
+
+.report-iframe {
+  width: 100%;
+  min-height: 4400px;
+  border: none;
+  display: block;
+  background: #101716;
+}
+
+/* Grand Action Zone directly below the report */
+.report-action-zone {
+  margin-top: 48px;
+  margin-bottom: 64px;
+  padding: 44px 36px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.8) 0%, rgba(10, 10, 10, 0.95) 100%);
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+.action-zone-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.action-zone-text h2 {
+  font-size: clamp(26px, 4vw, 36px);
+  margin-bottom: 12px;
+  color: var(--tx);
+}
+
+.action-zone-text p {
+  font-size: 15.5px;
+  color: var(--mut);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.action-zone-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  width: 100%;
+}
+
+.action-btn {
+  padding: 13px 30px;
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 99px;
+  min-width: 200px;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.action-btn-accent {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+  box-shadow: 0 4px 24px -4px rgba(255, 255, 255, 0.25);
+}
+
+.action-btn-accent:hover {
+  background: #f0f0f0;
+  box-shadow: 0 8px 32px -4px rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Floating Sticky Action Dock */
+.strategy-floating-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  width: min(92%, 840px);
+  background: rgba(12, 12, 12, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  border-radius: 99px;
+  padding: 10px 18px;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.9);
+  animation: slideUpDock 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpDock {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.dock-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.dock-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.dock-badge {
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.dock-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--tx);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dock-metric {
+  font-size: 13px;
+  color: var(--mut);
+}
+
+.dock-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .dock-metric {
+    display: none;
+  }
+  .strategy-floating-dock {
+    border-radius: 20px;
+    bottom: 12px;
+    padding: 10px 14px;
+  }
+  .dock-content {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dock-actions {
+    width: 100%;
+    justify-content: center;
+  }
+  .dock-actions .action-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+

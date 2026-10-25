@@ -29,8 +29,11 @@ describe("Marketplace Catalogue & Filtering", () => {
     expect(searchById.length).toBeGreaterThan(0);
     expect(searchById[0].id).toBe("PY-01");
 
-    const searchByName = await db.getStrategies({ query: "Python Strategy" });
+    const searchByName = await db.getStrategies({ query: "Engine" });
     expect(searchByName.length).toBe(10);
+
+    const pythonByType = await db.getStrategies({ type: "Python" });
+    expect(pythonByType.length).toBe(10);
   });
 
   it("sorts strategies by profit factor and max drawdown", async () => {
@@ -61,4 +64,18 @@ describe("Marketplace Catalogue & Filtering", () => {
     const restored = await db.getStrategies({ includeDrafts: false });
     expect(restored.find((s) => s.id === "PY-05")).toBeDefined();
   });
+
+  it("resolves all 10 MT5 single-digit drawdown ensemble strategies with report paths", async () => {
+    for (let i = 1; i <= 10; i++) {
+      const slug = `py-${String(i).padStart(2, "0")}`;
+      const strat = await db.getStrategyBySlug(slug);
+      expect(strat).toBeDefined();
+      expect(strat?.implementationType).toBe("PYTHON");
+      expect(strat?.ensembleFolder).toMatch(/^Ensemble_/);
+      expect(strat?.reportPath).toContain("Stratmarket_Performance_Report.html");
+      expect(strat?.metrics.maxDrawdown).toBeLessThan(10.0); // Strict single-digit DD
+      expect(strat?.supportedUsageModes).toEqual(["alert", "broker"]);
+    }
+  });
 });
+

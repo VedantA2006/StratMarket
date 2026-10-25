@@ -61,12 +61,15 @@ export function IndexPreview({ initialStrategies }: IndexPreviewProps) {
     <>
       <div id="ix">
         {previewList.map((s) => (
-          <button
+          <a
             key={s.id}
+            href={`/strategies/${s.slug}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="ir"
-            onClick={() => setSelectedStrategy(s)}
             onPointerOver={() => setHoveredStrategy(s)}
             onPointerLeave={() => setHoveredStrategy(null)}
+            style={{ textDecoration: "none", color: "inherit" }}
           >
             <span className="n">{s.id}</span>
             <span className="t">{s.name}</span>
@@ -74,7 +77,7 @@ export function IndexPreview({ initialStrategies }: IndexPreviewProps) {
               {s.instrument} · {s.timeframe}
             </span>
             <span className="a">↗</span>
-          </button>
+          </a>
         ))}
       </div>
 

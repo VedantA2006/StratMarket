@@ -1,0 +1,122 @@
+{
+  "rank": 8,
+  "profile": "High-Alpha Shield",
+  "engines": [
+    "E5_OFIRunner",
+    "E9_FlowCompress",
+    "E41_AsymmVol",
+    "E71_MicroGate",
+    "E24_CMFJerk"
+  ],
+  "correlation_matrix": {
+    "E5_OFIRunner": {
+      "E5_OFIRunner": 1.0,
+      "E9_FlowCompress": 0.408,
+      "E41_AsymmVol": 0.062,
+      "E71_MicroGate": 0.178,
+      "E24_CMFJerk": -0.057
+    },
+    "E9_FlowCompress": {
+      "E5_OFIRunner": 0.408,
+      "E9_FlowCompress": 1.0,
+      "E41_AsymmVol": 0.327,
+      "E71_MicroGate": -0.002,
+      "E24_CMFJerk": 0.008
+    },
+    "E41_AsymmVol": {
+      "E5_OFIRunner": 0.062,
+      "E9_FlowCompress": 0.327,
+      "E41_AsymmVol": 1.0,
+      "E71_MicroGate": 0.089,
+      "E24_CMFJerk": 0.212
+    },
+    "E71_MicroGate": {
+      "E5_OFIRunner": 0.178,
+      "E9_FlowCompress": -0.002,
+      "E41_AsymmVol": 0.089,
+      "E71_MicroGate": 1.0,
+      "E24_CMFJerk": -0.135
+    },
+    "E24_CMFJerk": {
+      "E5_OFIRunner": -0.057,
+      "E9_FlowCompress": 0.008,
+      "E41_AsymmVol": 0.212,
+      "E71_MicroGate": -0.135,
+      "E24_CMFJerk": 1.0
+    }
+  },
+  "concurrent_holding_overlaps": {
+    "E5_OFIRunner": {
+      "E5_OFIRunner": 79,
+      "E9_FlowCompress": 52,
+      "E41_AsymmVol": 20,
+      "E71_MicroGate": 20,
+      "E24_CMFJerk": 18
+    },
+    "E9_FlowCompress": {
+      "E5_OFIRunner": 52,
+      "E9_FlowCompress": 93,
+      "E41_AsymmVol": 18,
+      "E71_MicroGate": 14,
+      "E24_CMFJerk": 20
+    },
+    "E41_AsymmVol": {
+      "E5_OFIRunner": 20,
+      "E9_FlowCompress": 18,
+      "E41_AsymmVol": 62,
+      "E71_MicroGate": 23,
+      "E24_CMFJerk": 49
+    },
+    "E71_MicroGate": {
+      "E5_OFIRunner": 20,
+      "E9_FlowCompress": 14,
+      "E41_AsymmVol": 23,
+      "E71_MicroGate": 123,
+      "E24_CMFJerk": 30
+    },
+    "E24_CMFJerk": {
+      "E5_OFIRunner": 18,
+      "E9_FlowCompress": 20,
+      "E41_AsymmVol": 49,
+      "E71_MicroGate": 30,
+      "E24_CMFJerk": 106
+    }
+  },
+  "same_bar_entry_collisions": {
+    "E5_OFIRunner": {
+      "E5_OFIRunner": 79,
+      "E9_FlowCompress": 34,
+      "E41_AsymmVol": 11,
+      "E71_MicroGate": 8,
+      "E24_CMFJerk": 8
+    },
+    "E9_FlowCompress": {
+      "E5_OFIRunner": 34,
+      "E9_FlowCompress": 93,
+      "E41_AsymmVol": 12,
+      "E71_MicroGate": 7,
+      "E24_CMFJerk": 10
+    },
+    "E41_AsymmVol": {
+      "E5_OFIRunner": 11,
+      "E9_FlowCompress": 12,
+      "E41_AsymmVol": 62,
+      "E71_MicroGate": 16,
+      "E24_CMFJerk": 44
+    },
+    "E71_MicroGate": {
+      "E5_OFIRunner": 8,
+      "E9_FlowCompress": 7,
+      "E41_AsymmVol": 16,
+      "E71_MicroGate": 123,
+      "E24_CMFJerk": 14
+    },
+    "E24_CMFJerk": {
+      "E5_OFIRunner": 8,
+      "E9_FlowCompress": 10,
+      "E41_AsymmVol": 44,
+      "E71_MicroGate": 14,
+      "E24_CMFJerk": 106
+    }
+  }
+}

@@ -1,0 +1,6 @@
+,E5_OFIRunner,E9_FlowCompress,E41_AsymmVol,E71_MicroGate,E24_CMFJerk
+E5_OFIRunner,1.0,0.408,0.062,0.178,-0.057
+E9_FlowCompress,0.408,1.0,0.327,-0.002,0.008
+E41_AsymmVol,0.062,0.327,1.0,0.089,0.212
+E71_MicroGate,0.178,-0.002,0.089,1.0,-0.135
+E24_CMFJerk,-0.057,0.008,0.212,-0.135,1.0

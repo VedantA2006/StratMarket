@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { TopProgressBar } from "@/components/TopProgressBar";
@@ -33,7 +34,9 @@ export default function RootLayout({
       </head>
       <body>
         <SpotlightCursor />
-        <PageTransitionWipe />
+        <Suspense fallback={null}>
+          <PageTransitionWipe />
+        </Suspense>
         <div className="fx" aria-hidden="true">
           <i className="a1" />
         </div>
@@ -41,7 +44,9 @@ export default function RootLayout({
         <HeaderNav />
         <main>{children}</main>
         <Footer />
-        <DockNav />
+        <Suspense fallback={null}>
+          <DockNav />
+        </Suspense>
       </body>
     </html>
   );
