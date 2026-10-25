@@ -1,0 +1,4075 @@
+{
+  "py-01": {
+    "folder": "Ensemble_01_6Engine_Peak_Champion",
+    "num": 1,
+    "slug": "py-01",
+    "titleRaw": "6-Engine Peak Champion Rank #1 Single-Digit DD (9.41%)",
+    "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
+    "bigStats": [
+      {
+        "val": "+$125,840.22",
+        "label": "net profit, +503.36% on $25,000"
+      },
+      {
+        "val": "2.06",
+        "label": "profit factor"
+      },
+      {
+        "val": "9.41%",
+        "label": "max drawdown ($6,571.66)"
+      },
+      {
+        "val": "781",
+        "label": "trades, 22.41% win rate"
+      }
+    ],
+    "mechLede": "An institutional multi-engine quantitative portfolio combining 6 orthogonal alpha engines. Sized with conviction-weighted risk allocations ($100 to $312.50 per trade) and calibrated on 360,000 real MetaTrader 5 broker bars.",
+    "mechRows": [
+      {
+        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
+        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$34,126.16",
+        "soloPf": "2.93",
+        "soloDd": "7.7%",
+        "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
+      },
+      {
+        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
+        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$26,506.83",
+        "soloPf": "2.36",
+        "soloDd": "6.6%",
+        "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
+      },
+      {
+        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
+        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$15,983.55",
+        "soloPf": "2.31",
+        "soloDd": "5.5%",
+        "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
+      },
+      {
+        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
+        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$11,734.57",
+        "soloPf": "1.79",
+        "soloDd": "8.9%",
+        "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
+      },
+      {
+        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
+        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$27,078.79",
+        "soloPf": "1.71",
+        "soloDd": "14.6%",
+        "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
+      },
+      {
+        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
+        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$26,092.75",
+        "soloPf": "1.34",
+        "soloDd": "19.6%",
+        "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
+      },
+      {
+        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
+        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "&lt; 10%",
+        "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $150,840.22 final equity across 360,000 MetaTrader 5 M5 bars.",
+    "kpis": [
+      {
+        "val": "+$125,840.22",
+        "label": "Net profit (+503.36%)"
+      },
+      {
+        "val": "$150,840.22",
+        "label": "Final equity"
+      },
+      {
+        "val": "781",
+        "label": "Total trades (12.6 per month)"
+      },
+      {
+        "val": "22.41%",
+        "label": "Win rate (175 W / 606 L)"
+      },
+      {
+        "val": "2.06",
+        "label": "Profit factor ($244,503 / $118,663)"
+      },
+      {
+        "val": "1.69",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "4.21",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "53.51",
+        "label": "Calmar (total return / max DD)"
+      },
+      {
+        "val": "$6,571.66",
+        "label": "Max drawdown (9.41%)"
+      },
+      {
+        "val": "+$161.13",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "6 W / 28 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "232.3 bars",
+        "label": "Average hold (~19.4 h), max 5211 bars (~434.2 h)"
+      },
+      {
+        "val": "0",
+        "label": "Intentional weekend holds"
+      },
+      {
+        "val": "−$1,553.59 / +$9,347.00",
+        "label": "Worst / best day"
+      }
+    ],
+    "payText": "Average win +$1,397.16 , average loss −$195.81 , payoff ratio 7.14 : 1 . Breakeven win rate at that payoff is 12.29%, and the actual 22.41% is +10.11 points above it. Expectancy = 0.2241 × $1,397.16 − 0.7759 × $195.81 = $313.06 − 151.94 ≈ +$161.13 per trade. × 781 trades = $125,840.22.",
+    "longStats": {
+      "trades": "496 (63.5%)",
+      "pnl": "+$97,863.14",
+      "winRate": "24.40%",
+      "pf": "2.44"
+    },
+    "shortStats": {
+      "trades": "285 (36.5%)",
+      "pnl": "+$27,977.08",
+      "winRate": "18.95%",
+      "pf": "1.55"
+    },
+    "regimes": [
+      {
+        "name": "1. Rate hikes and inflation shock",
+        "period": "2021-09-24 to 2022-12-31",
+        "trades": "189",
+        "pnl": "+$34,000.92",
+        "winRate": "25.4%",
+        "pf": "2.31",
+        "dd": "$5,067.97"
+      },
+      {
+        "name": "2. Banking crisis and consolidation",
+        "period": "2023-01-01 to 2023-12-31",
+        "trades": "183",
+        "pnl": "+$27,299.58",
+        "winRate": "25.7%",
+        "pf": "2.04",
+        "dd": "$6,323.56"
+      },
+      {
+        "name": "3. Gold all-time-high trend",
+        "period": "2024-01-01 to 2026-09-30",
+        "trades": "409",
+        "pnl": "+$64,539.71",
+        "winRate": "19.6%",
+        "pf": "1.97",
+        "dd": "$6,571.66"
+      }
+    ],
+    "yearly": [],
+    "scriptData": {
+      "years": [
+        [
+          "2021 (Q4)",
+          7719.39
+        ],
+        [
+          "2022",
+          26281.53
+        ],
+        [
+          "2023",
+          27299.58
+        ],
+        [
+          "2024",
+          12086.36
+        ],
+        [
+          "2025",
+          23586.29
+        ],
+        [
+          "2026 (YTD)",
+          28867.06
+        ]
+      ],
+      "mx": 28867.0635,
+      "pnl": {
+        "2021": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          220.34,
+          2046.2,
+          6875.84,
+          -1422.99
+        ],
+        "2022": [
+          -205.19,
+          3538.55,
+          1150.42,
+          147.7,
+          755.19,
+          236.67,
+          5638.75,
+          664.8,
+          5849.27,
+          -1454.92,
+          11322.04,
+          -1361.74
+        ],
+        "2023": [
+          364.56,
+          8607.7,
+          8155.4,
+          -607.19,
+          -891.76,
+          -1109.81,
+          880.65,
+          -1444.11,
+          1235.58,
+          2239.89,
+          2429.85,
+          7438.82
+        ],
+        "2024": [
+          -1104.83,
+          3532.88,
+          4832.77,
+          -2718.08,
+          1702.57,
+          7895.67,
+          -2194.08,
+          -3533.1,
+          3332.15,
+          -460.13,
+          2098.62,
+          -1298.09
+        ],
+        "2025": [
+          -1077.15,
+          -323.53,
+          -2346.2,
+          2484.58,
+          7891.82,
+          -1488.45,
+          1298.5,
+          18679.52,
+          -1804.75,
+          1569.67,
+          1081.62,
+          -2379.33
+        ],
+        "2026": [
+          447.13,
+          2998.15,
+          5610.99,
+          -2409.02,
+          -358.01,
+          9799.61,
+          6045.64,
+          8144.22,
+          -1411.64,
+          null,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2021": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          15,
+          11,
+          8
+        ],
+        "2022": [
+          16,
+          22,
+          11,
+          4,
+          5,
+          9,
+          13,
+          9,
+          16,
+          12,
+          22,
+          14
+        ],
+        "2023": [
+          12,
+          10,
+          19,
+          21,
+          15,
+          11,
+          13,
+          13,
+          18,
+          16,
+          12,
+          23
+        ],
+        "2024": [
+          13,
+          26,
+          20,
+          11,
+          19,
+          17,
+          11,
+          17,
+          11,
+          17,
+          15,
+          12
+        ],
+        "2025": [
+          14,
+          9,
+          14,
+          18,
+          19,
+          8,
+          15,
+          17,
+          15,
+          9,
+          7,
+          10
+        ],
+        "2026": [
+          6,
+          10,
+          9,
+          9,
+          9,
+          4,
+          7,
+          4,
+          7,
+          0,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2021": 7719.39,
+        "2022": 26281.53,
+        "2023": 27299.58,
+        "2024": 12086.36,
+        "2025": 23586.29,
+        "2026": 28867.06
+      },
+      "tc": {
+        "2021": 36,
+        "2022": 153,
+        "2023": 183,
+        "2024": 189,
+        "2025": 155,
+        "2026": 65
+      }
+    }
+  },
+  "py-02": {
+    "folder": "Ensemble_02_7Engine_HighAlpha_Shield",
+    "num": 2,
+    "slug": "py-02",
+    "titleRaw": "7-Engine High-Alpha Shield Rank #2 Single-Digit DD (9.95%)",
+    "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
+    "bigStats": [
+      {
+        "val": "+$123,567.97",
+        "label": "net profit, +494.27% on $25,000"
+      },
+      {
+        "val": "1.98",
+        "label": "profit factor"
+      },
+      {
+        "val": "9.95%",
+        "label": "max drawdown ($8,164.73)"
+      },
+      {
+        "val": "959",
+        "label": "trades, 21.27% win rate"
+      }
+    ],
+    "mechLede": "High trade-frequency ensemble engineered for maximum market opportunity capture across 959 audited trades, combining momentum breakouts with high-conviction order flow imbalance filters.",
+    "mechRows": [
+      {
+        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
+        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$34,126.16",
+        "soloPf": "2.93",
+        "soloDd": "7.7%",
+        "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
+      },
+      {
+        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
+        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$26,506.83",
+        "soloPf": "2.36",
+        "soloDd": "6.6%",
+        "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
+      },
+      {
+        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
+        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$11,734.57",
+        "soloPf": "1.79",
+        "soloDd": "8.9%",
+        "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
+      },
+      {
+        "engine": "E24: Jerk & CMF Volume Surge (rank_024_+$18,539_strat_7531d775.py)",
+        "indicator": "Jerk(4) > 0.171 (3rd price derivative), CMF(25) > 0.084, Vol Sleep mult 0.775×, ER(12). Stop 1.358×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$28,173.76",
+        "soloPf": "2.12",
+        "soloDd": "12.8%",
+        "role": "Detects sudden acceleration shifts and institutional liquidity absorption before retail signals."
+      },
+      {
+        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
+        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$27,078.79",
+        "soloPf": "1.71",
+        "soloDd": "14.6%",
+        "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
+      },
+      {
+        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
+        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$26,092.75",
+        "soloPf": "1.34",
+        "soloDd": "19.6%",
+        "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
+      },
+      {
+        "engine": "E10: High-Participation OFI (rank_010_+$23,074_strat_aff5b599.py)",
+        "indicator": "Asia(108), Energy (1.14–5.04), Vol MA 40, ADX > 20.65, ER > 0.337, OFI > 0.165. Trail 4.552×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$16,094.22",
+        "soloPf": "1.53",
+        "soloDd": "15.0%",
+        "role": "Exploits high-participation institutional volume thrusts with low slippage sensitivity."
+      },
+      {
+        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
+        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "&lt; 10%",
+        "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $148,567.97 final equity across 360,000 MetaTrader 5 M5 bars.",
+    "kpis": [
+      {
+        "val": "+$123,567.97",
+        "label": "Net profit (+494.27%)"
+      },
+      {
+        "val": "$148,567.97",
+        "label": "Final equity"
+      },
+      {
+        "val": "959",
+        "label": "Total trades (15.5 per month)"
+      },
+      {
+        "val": "21.27%",
+        "label": "Win rate (204 W / 755 L)"
+      },
+      {
+        "val": "1.98",
+        "label": "Profit factor ($249,184 / $125,616)"
+      },
+      {
+        "val": "1.71",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "4.52",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "49.67",
+        "label": "Calmar (total return / max DD)"
+      },
+      {
+        "val": "$8,164.73",
+        "label": "Max drawdown (9.95%)"
+      },
+      {
+        "val": "+$128.85",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "7 W / 33 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "232.2 bars",
+        "label": "Average hold (~19.4 h), max 5211 bars (~434.2 h)"
+      },
+      {
+        "val": "0",
+        "label": "Intentional weekend holds"
+      },
+      {
+        "val": "−$1,421.68 / +$6,961.88",
+        "label": "Worst / best day"
+      }
+    ],
+    "payText": "Average win +$1,221.49 , average loss −$166.38 , payoff ratio 7.34 : 1 . Breakeven win rate at that payoff is 11.99%, and the actual 21.27% is +9.28 points above it. Expectancy = 0.2127 × $1,221.49 − 0.7873 × $166.38 = $259.84 − 130.99 ≈ +$128.85 per trade. × 959 trades = $123,567.97.",
+    "longStats": {
+      "trades": "578 (60.3%)",
+      "pnl": "+$103,010.41",
+      "winRate": "25.09%",
+      "pf": "2.48"
+    },
+    "shortStats": {
+      "trades": "381 (39.7%)",
+      "pnl": "+$20,557.56",
+      "winRate": "15.49%",
+      "pf": "1.37"
+    },
+    "regimes": [
+      {
+        "name": "1. Rate hikes and inflation shock",
+        "period": "2021-09-24 to 2022-12-31",
+        "trades": "225",
+        "pnl": "+$28,406.31",
+        "winRate": "23.1%",
+        "pf": "2.05",
+        "dd": "$4,378.51"
+      },
+      {
+        "name": "2. Banking crisis and consolidation",
+        "period": "2023-01-01 to 2023-12-31",
+        "trades": "219",
+        "pnl": "+$26,205.58",
+        "winRate": "24.2%",
+        "pf": "1.99",
+        "dd": "$7,340.08"
+      },
+      {
+        "name": "3. Gold all-time-high trend",
+        "period": "2024-01-01 to 2026-09-30",
+        "trades": "515",
+        "pnl": "+$68,956.08",
+        "winRate": "19.2%",
+        "pf": "1.95",
+        "dd": "$8,164.73"
+      }
+    ],
+    "yearly": [],
+    "scriptData": {
+      "years": [
+        [
+          "2021 (Q4)",
+          5600.52
+        ],
+        [
+          "2022",
+          22805.79
+        ],
+        [
+          "2023",
+          26205.58
+        ],
+        [
+          "2024",
+          7645.42
+        ],
+        [
+          "2025",
+          21550.26
+        ],
+        [
+          "2026 (YTD)",
+          39760.4
+        ]
+      ],
+      "mx": 39760.4,
+      "pnl": {
+        "2021": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          760.46,
+          2210.8,
+          3954.19,
+          -1324.93
+        ],
+        "2022": [
+          -1108.73,
+          3624.37,
+          1423.46,
+          -83.11,
+          524.16,
+          -239.25,
+          6058.31,
+          320.54,
+          4065.8,
+          -1334.64,
+          10668.96,
+          -1114.08
+        ],
+        "2023": [
+          316.36,
+          8633.79,
+          9815.77,
+          -1777.37,
+          -867.56,
+          -1121.78,
+          648.54,
+          -1791.68,
+          701.11,
+          3313.34,
+          1834.67,
+          6500.4
+        ],
+        "2024": [
+          -970.13,
+          386.31,
+          5258.82,
+          -1326.99,
+          -305.21,
+          7711.18,
+          -2183.88,
+          -3876.72,
+          3974.8,
+          -698.32,
+          965.08,
+          -1289.52
+        ],
+        "2025": [
+          -949.88,
+          -552.29,
+          -2447.89,
+          1026.38,
+          8750.33,
+          -1601.69,
+          2605.34,
+          15677.22,
+          -466.31,
+          1338.83,
+          773.49,
+          -2603.27
+        ],
+        "2026": [
+          7595.69,
+          3642.3,
+          4964.22,
+          889.63,
+          -336.65,
+          10760.09,
+          5727.69,
+          8037.25,
+          -1519.82,
+          null,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2021": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          19,
+          13,
+          11
+        ],
+        "2022": [
+          18,
+          23,
+          15,
+          6,
+          7,
+          13,
+          16,
+          12,
+          17,
+          13,
+          25,
+          14
+        ],
+        "2023": [
+          14,
+          13,
+          21,
+          23,
+          19,
+          16,
+          15,
+          16,
+          21,
+          20,
+          15,
+          26
+        ],
+        "2024": [
+          14,
+          30,
+          27,
+          15,
+          22,
+          22,
+          13,
+          20,
+          15,
+          21,
+          15,
+          14
+        ],
+        "2025": [
+          17,
+          11,
+          17,
+          22,
+          23,
+          9,
+          18,
+          20,
+          19,
+          11,
+          12,
+          12
+        ],
+        "2026": [
+          14,
+          15,
+          14,
+          13,
+          11,
+          6,
+          10,
+          5,
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2021": 5600.52,
+        "2022": 22805.79,
+        "2023": 26205.58,
+        "2024": 7645.42,
+        "2025": 21550.26,
+        "2026": 39760.4
+      },
+      "tc": {
+        "2021": 46,
+        "2022": 179,
+        "2023": 219,
+        "2024": 228,
+        "2025": 191,
+        "2026": 96
+      }
+    }
+  },
+  "py-03": {
+    "folder": "Ensemble_03_7Engine_Precision_Shield",
+    "num": 3,
+    "slug": "py-03",
+    "titleRaw": "7-Engine Precision Shield Rank #3 Single-Digit DD (9.35%)",
+    "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
+    "bigStats": [
+      {
+        "val": "+$122,421.44",
+        "label": "net profit, +489.69% on $25,000"
+      },
+      {
+        "val": "1.99",
+        "label": "profit factor"
+      },
+      {
+        "val": "9.35%",
+        "label": "max drawdown ($8,562.81)"
+      },
+      {
+        "val": "902",
+        "label": "trades, 21.95% win rate"
+      }
+    ],
+    "mechLede": "Diversified 7-engine fleet combining the highest Calmar ratio (10.48) with high-efficiency volume jerks and anti-consolidation filters for robust capital protection.",
+    "mechRows": [
+      {
+        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
+        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$34,126.16",
+        "soloPf": "2.93",
+        "soloDd": "7.7%",
+        "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
+      },
+      {
+        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
+        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$26,506.83",
+        "soloPf": "2.36",
+        "soloDd": "6.6%",
+        "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
+      },
+      {
+        "engine": "E27: Precision Jerk & Efficiency (rank_027_+$17,863_strat_b9a5598c.py)",
+        "indicator": "Jerk(8) > 0.130, CMF(24) > 0.050, ER(18), Vol Sleep mult 1.109×. Stop 1.468×ATR, Target 7.796×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$13,497.29",
+        "soloPf": "2.31",
+        "soloDd": "9.0%",
+        "role": "High-accuracy stabilizer (46.8% solo win rate) preserving portfolio equity across choppy regimes."
+      },
+      {
+        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
+        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$11,734.57",
+        "soloPf": "1.79",
+        "soloDd": "8.9%",
+        "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
+      },
+      {
+        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
+        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$27,078.79",
+        "soloPf": "1.71",
+        "soloDd": "14.6%",
+        "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
+      },
+      {
+        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
+        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$26,092.75",
+        "soloPf": "1.34",
+        "soloDd": "19.6%",
+        "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
+      },
+      {
+        "engine": "E10: High-Participation OFI (rank_010_+$23,074_strat_aff5b599.py)",
+        "indicator": "Asia(108), Energy (1.14–5.04), Vol MA 40, ADX > 20.65, ER > 0.337, OFI > 0.165. Trail 4.552×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$16,094.22",
+        "soloPf": "1.53",
+        "soloDd": "15.0%",
+        "role": "Exploits high-participation institutional volume thrusts with low slippage sensitivity."
+      },
+      {
+        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
+        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "&lt; 10%",
+        "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $147,421.44 final equity across 360,000 MetaTrader 5 M5 bars.",
+    "kpis": [
+      {
+        "val": "+$122,421.44",
+        "label": "Net profit (+489.69%)"
+      },
+      {
+        "val": "$147,421.44",
+        "label": "Final equity"
+      },
+      {
+        "val": "902",
+        "label": "Total trades (14.5 per month)"
+      },
+      {
+        "val": "21.95%",
+        "label": "Win rate (198 W / 704 L)"
+      },
+      {
+        "val": "1.99",
+        "label": "Profit factor ($245,707 / $123,285)"
+      },
+      {
+        "val": "1.65",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "4.40",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "52.38",
+        "label": "Calmar (total return / max DD)"
+      },
+      {
+        "val": "$8,562.81",
+        "label": "Max drawdown (9.35%)"
+      },
+      {
+        "val": "+$135.72",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "7 W / 32 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "219.8 bars",
+        "label": "Average hold (~18.3 h), max 5211 bars (~434.2 h)"
+      },
+      {
+        "val": "0",
+        "label": "Intentional weekend holds"
+      },
+      {
+        "val": "−$1,524.28 / +$8,219.55",
+        "label": "Worst / best day"
+      }
+    ],
+    "payText": "Average win +$1,240.94 , average loss −$175.12 , payoff ratio 7.09 : 1 . Breakeven win rate at that payoff is 12.37%, and the actual 21.95% is +9.58 points above it. Expectancy = 0.2195 × $1,240.94 − 0.7805 × $175.12 = $272.40 − 136.68 ≈ +$135.72 per trade. × 902 trades = $122,421.44.",
+    "longStats": {
+      "trades": "551 (61.1%)",
+      "pnl": "+$100,015.79",
+      "winRate": "25.23%",
+      "pf": "2.45"
+    },
+    "shortStats": {
+      "trades": "351 (38.9%)",
+      "pnl": "+$22,405.64",
+      "winRate": "16.81%",
+      "pf": "1.41"
+    },
+    "regimes": [
+      {
+        "name": "1. Rate hikes and inflation shock",
+        "period": "2021-09-24 to 2022-12-31",
+        "trades": "213",
+        "pnl": "+$29,490.29",
+        "winRate": "23.5%",
+        "pf": "2.10",
+        "dd": "$4,606.76"
+      },
+      {
+        "name": "2. Banking crisis and consolidation",
+        "period": "2023-01-01 to 2023-12-31",
+        "trades": "206",
+        "pnl": "+$26,791.70",
+        "winRate": "25.7%",
+        "pf": "2.04",
+        "dd": "$6,749.18"
+      },
+      {
+        "name": "3. Gold all-time-high trend",
+        "period": "2024-01-01 to 2026-09-30",
+        "trades": "483",
+        "pnl": "+$66,139.45",
+        "winRate": "19.7%",
+        "pf": "1.94",
+        "dd": "$8,562.81"
+      }
+    ],
+    "yearly": [],
+    "scriptData": {
+      "years": [
+        [
+          "2021 (Q4)",
+          4260.85
+        ],
+        [
+          "2022",
+          25229.45
+        ],
+        [
+          "2023",
+          26791.7
+        ],
+        [
+          "2024",
+          8860.53
+        ],
+        [
+          "2025",
+          24244.01
+        ],
+        [
+          "2026 (YTD)",
+          33034.9
+        ]
+      ],
+      "mx": 33034.905,
+      "pnl": {
+        "2021": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          760.46,
+          1842.02,
+          2952.9,
+          -1294.54
+        ],
+        "2022": [
+          -878.35,
+          3992.1,
+          2075.49,
+          -183.47,
+          639.35,
+          -122.76,
+          5956.14,
+          549.61,
+          5200.67,
+          -1222.27,
+          10660.06,
+          -1437.13
+        ],
+        "2023": [
+          316.36,
+          8656.23,
+          9152.52,
+          -1859.1,
+          -520.37,
+          -888.96,
+          764.59,
+          -1676.49,
+          985.06,
+          3005.94,
+          770.13,
+          8085.78
+        ],
+        "2024": [
+          -510.92,
+          1324.06,
+          4998.14,
+          -2218.51,
+          397.54,
+          8652.89,
+          -2283.39,
+          -3761.53,
+          3374.82,
+          -902.46,
+          965.08,
+          -1175.2
+        ],
+        "2025": [
+          -688.66,
+          -552.29,
+          -2548.68,
+          1018.92,
+          8772.29,
+          -1488.45,
+          2503.75,
+          17873.37,
+          -850.96,
+          1459.31,
+          1124.75,
+          -2379.33
+        ],
+        "2026": [
+          2398.5,
+          3964.38,
+          5270.28,
+          -1388.3,
+          -434.69,
+          10875.49,
+          5831.81,
+          8037.25,
+          -1519.82,
+          null,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2021": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          18,
+          11,
+          9
+        ],
+        "2022": [
+          16,
+          20,
+          16,
+          6,
+          6,
+          12,
+          16,
+          10,
+          17,
+          12,
+          26,
+          15
+        ],
+        "2023": [
+          14,
+          13,
+          19,
+          21,
+          16,
+          14,
+          14,
+          15,
+          21,
+          20,
+          13,
+          26
+        ],
+        "2024": [
+          15,
+          31,
+          23,
+          11,
+          24,
+          22,
+          13,
+          19,
+          15,
+          21,
+          15,
+          13
+        ],
+        "2025": [
+          14,
+          11,
+          17,
+          20,
+          22,
+          8,
+          18,
+          20,
+          17,
+          10,
+          9,
+          10
+        ],
+        "2026": [
+          11,
+          12,
+          12,
+          12,
+          11,
+          5,
+          9,
+          5,
+          8,
+          0,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2021": 4260.85,
+        "2022": 25229.45,
+        "2023": 26791.7,
+        "2024": 8860.53,
+        "2025": 24244.01,
+        "2026": 33034.9
+      },
+      "tc": {
+        "2021": 41,
+        "2022": 172,
+        "2023": 206,
+        "2024": 222,
+        "2025": 176,
+        "2026": 85
+      }
+    }
+  },
+  "py-04": {
+    "folder": "Ensemble_04_6Engine_InverseDD_Fleet",
+    "num": 4,
+    "slug": "py-04",
+    "titleRaw": "6-Engine Inverse-DD Fleet Rank #4 Single-Digit DD (9.77%)",
+    "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
+    "bigStats": [
+      {
+        "val": "+$121,692.77",
+        "label": "net profit, +486.77% on $25,000"
+      },
+      {
+        "val": "2.02",
+        "label": "profit factor"
+      },
+      {
+        "val": "9.77%",
+        "label": "max drawdown ($6,583.23)"
+      },
+      {
+        "val": "781",
+        "label": "trades, 22.41% win rate"
+      }
+    ],
+    "mechLede": "Portfolio weighted inversely to individual engine drawdowns, placing overweight exposure (1.50x) on low-variance flow compression and asymmetric volatility expansion engines.",
+    "mechRows": [
+      {
+        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
+        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "weight": "0.80× ($200.00)",
+        "soloPnl": "+$34,126.16",
+        "soloPf": "2.93",
+        "soloDd": "7.7%",
+        "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
+      },
+      {
+        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
+        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "weight": "1.50× ($375.00)",
+        "soloPnl": "+$26,506.83",
+        "soloPf": "2.36",
+        "soloDd": "6.6%",
+        "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
+      },
+      {
+        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
+        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "weight": "1.50× ($375.00)",
+        "soloPnl": "+$15,983.55",
+        "soloPf": "2.31",
+        "soloDd": "5.5%",
+        "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
+      },
+      {
+        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
+        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "weight": "0.80× ($200.00)",
+        "soloPnl": "+$11,734.57",
+        "soloPf": "1.79",
+        "soloDd": "8.9%",
+        "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
+      },
+      {
+        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
+        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$27,078.79",
+        "soloPf": "1.71",
+        "soloDd": "14.6%",
+        "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
+      },
+      {
+        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
+        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$26,092.75",
+        "soloPf": "1.34",
+        "soloDd": "19.6%",
+        "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
+      },
+      {
+        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
+        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "&lt; 10%",
+        "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $146,692.77 final equity across 360,000 MetaTrader 5 M5 bars.",
+    "kpis": [
+      {
+        "val": "+$121,692.77",
+        "label": "Net profit (+486.77%)"
+      },
+      {
+        "val": "$146,692.77",
+        "label": "Final equity"
+      },
+      {
+        "val": "781",
+        "label": "Total trades (12.6 per month)"
+      },
+      {
+        "val": "22.41%",
+        "label": "Win rate (175 W / 606 L)"
+      },
+      {
+        "val": "2.02",
+        "label": "Profit factor ($241,055 / $119,363)"
+      },
+      {
+        "val": "1.68",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "3.96",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "49.84",
+        "label": "Calmar (total return / max DD)"
+      },
+      {
+        "val": "$6,583.23",
+        "label": "Max drawdown (9.77%)"
+      },
+      {
+        "val": "+$155.82",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "6 W / 28 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "232.3 bars",
+        "label": "Average hold (~19.4 h), max 5211 bars (~434.2 h)"
+      },
+      {
+        "val": "0",
+        "label": "Intentional weekend holds"
+      },
+      {
+        "val": "−$1,584.61 / +$9,501.53",
+        "label": "Worst / best day"
+      }
+    ],
+    "payText": "Average win +$1,377.46 , average loss −$196.97 , payoff ratio 6.99 : 1 . Breakeven win rate at that payoff is 12.51%, and the actual 22.41% is +9.90 points above it. Expectancy = 0.2241 × $1,377.46 − 0.7759 × $196.97 = $308.65 − 152.83 ≈ +$155.82 per trade. × 781 trades = $121,692.77.",
+    "longStats": {
+      "trades": "496 (63.5%)",
+      "pnl": "+$91,867.27",
+      "winRate": "24.40%",
+      "pf": "2.37"
+    },
+    "shortStats": {
+      "trades": "285 (36.5%)",
+      "pnl": "+$29,825.50",
+      "winRate": "18.95%",
+      "pf": "1.57"
+    },
+    "regimes": [
+      {
+        "name": "1. Rate hikes and inflation shock",
+        "period": "2021-09-24 to 2022-12-31",
+        "trades": "189",
+        "pnl": "+$34,508.83",
+        "winRate": "25.4%",
+        "pf": "2.30",
+        "dd": "$5,391.72"
+      },
+      {
+        "name": "2. Banking crisis and consolidation",
+        "period": "2023-01-01 to 2023-12-31",
+        "trades": "183",
+        "pnl": "+$26,661.53",
+        "winRate": "25.7%",
+        "pf": "2.00",
+        "dd": "$6,185.97"
+      },
+      {
+        "name": "3. Gold all-time-high trend",
+        "period": "2024-01-01 to 2026-09-30",
+        "trades": "409",
+        "pnl": "+$60,522.41",
+        "winRate": "19.6%",
+        "pf": "1.91",
+        "dd": "$6,583.23"
+      }
+    ],
+    "yearly": [],
+    "scriptData": {
+      "years": [
+        [
+          "2021 (Q4)",
+          8220.52
+        ],
+        [
+          "2022",
+          26288.32
+        ],
+        [
+          "2023",
+          26661.53
+        ],
+        [
+          "2024",
+          12778.32
+        ],
+        [
+          "2025",
+          24567.62
+        ],
+        [
+          "2026 (YTD)",
+          23176.47
+        ]
+      ],
+      "mx": 26661.528000000006,
+      "pnl": {
+        "2021": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          220.34,
+          1023.45,
+          8340.59,
+          -1363.86
+        ],
+        "2022": [
+          84.62,
+          4537.73,
+          1764.94,
+          147.7,
+          740.65,
+          222.05,
+          4944.64,
+          592.67,
+          5455.26,
+          -1670.8,
+          11019.16,
+          -1550.28
+        ],
+        "2023": [
+          588.47,
+          8234.72,
+          7087.81,
+          -479,
+          -695.78,
+          -810.72,
+          101.13,
+          -1412.52,
+          1759.09,
+          855.62,
+          2861.18,
+          8571.52
+        ],
+        "2024": [
+          -918.5,
+          5002.15,
+          4638.9,
+          -2849.31,
+          2192.4,
+          6970,
+          -2237.91,
+          -3371.65,
+          2966.19,
+          -561.73,
+          2403.9,
+          -1456.12
+        ],
+        "2025": [
+          -1107.84,
+          -193.95,
+          -2374.48,
+          3032.75,
+          6474.99,
+          -1446.66,
+          1535.17,
+          18962.01,
+          -1842.45,
+          2365.22,
+          1512.67,
+          -2349.82
+        ],
+        "2026": [
+          656.07,
+          3786.25,
+          3780.51,
+          -2426.86,
+          -584.7,
+          8534.19,
+          4137.17,
+          6877.21,
+          -1583.35,
+          null,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2021": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          15,
+          11,
+          8
+        ],
+        "2022": [
+          16,
+          22,
+          11,
+          4,
+          5,
+          9,
+          13,
+          9,
+          16,
+          12,
+          22,
+          14
+        ],
+        "2023": [
+          12,
+          10,
+          19,
+          21,
+          15,
+          11,
+          13,
+          13,
+          18,
+          16,
+          12,
+          23
+        ],
+        "2024": [
+          13,
+          26,
+          20,
+          11,
+          19,
+          17,
+          11,
+          17,
+          11,
+          17,
+          15,
+          12
+        ],
+        "2025": [
+          14,
+          9,
+          14,
+          18,
+          19,
+          8,
+          15,
+          17,
+          15,
+          9,
+          7,
+          10
+        ],
+        "2026": [
+          6,
+          10,
+          9,
+          9,
+          9,
+          4,
+          7,
+          4,
+          7,
+          0,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2021": 8220.52,
+        "2022": 26288.32,
+        "2023": 26661.53,
+        "2024": 12778.32,
+        "2025": 24567.62,
+        "2026": 23176.47
+      },
+      "tc": {
+        "2021": 36,
+        "2022": 153,
+        "2023": 183,
+        "2024": 189,
+        "2025": 155,
+        "2026": 65
+      }
+    }
+  },
+  "py-05": {
+    "folder": "Ensemble_05_5Engine_Ultra_Shield",
+    "num": 5,
+    "slug": "py-05",
+    "titleRaw": "5-Engine Ultra-Shield Rank #5 Single-Digit DD (9.53%)",
+    "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
+    "bigStats": [
+      {
+        "val": "+$117,681.48",
+        "label": "net profit, +470.73% on $25,000"
+      },
+      {
+        "val": "2.28",
+        "label": "profit factor"
+      },
+      {
+        "val": "9.53%",
+        "label": "max drawdown ($8,673.50)"
+      },
+      {
+        "val": "435",
+        "label": "trades, 28.97% win rate"
+      }
+    ],
+    "mechLede": "Concentrated 5-engine defensive powerhouse with a 2.28 profit factor, incorporating the Hurst mean-reversion switch to suppress drawdowns during ranging markets.",
+    "mechRows": [
+      {
+        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
+        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$34,126.16",
+        "soloPf": "2.93",
+        "soloDd": "7.7%",
+        "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
+      },
+      {
+        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
+        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$26,506.83",
+        "soloPf": "2.36",
+        "soloDd": "6.6%",
+        "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
+      },
+      {
+        "engine": "E16: Ultra Low-DD Breakout (rank_016_+$20,076_strat_9975171d.py)",
+        "indicator": "Asia(88), Energy (0.90–3.35), Vol mult 1.352×, ADX > 22.86, ER > 0.351. Tight Stop 0.869×ATR, Target 9.742×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$17,854.74",
+        "soloPf": "2.09",
+        "soloDd": "6.5%",
+        "role": "Ultra-conservative entry gate yielding exceptionally low maximum drawdown (< 4.8%)."
+      },
+      {
+        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
+        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$15,983.55",
+        "soloPf": "2.31",
+        "soloDd": "5.5%",
+        "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
+      },
+      {
+        "engine": "E71: Hurst Anti-Persistent Switch (rank_071_+$9,169_strat_618b71e6.py)",
+        "indicator": "Hurst(49) < 0.488 (mean-reverting regime switch), Z-score > 1.458, CMF(26), VWRSI(13). Target 8.969×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$11,359.66",
+        "soloPf": "1.47",
+        "soloDd": "6.3%",
+        "role": "Counter-trend stabilizer providing positive returns when trend strategies encounter consolidation."
+      },
+      {
+        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
+        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "&lt; 10%",
+        "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $142,681.48 final equity across 360,000 MetaTrader 5 M5 bars.",
+    "kpis": [
+      {
+        "val": "+$117,681.48",
+        "label": "Net profit (+470.73%)"
+      },
+      {
+        "val": "$142,681.48",
+        "label": "Final equity"
+      },
+      {
+        "val": "435",
+        "label": "Total trades (7.1 per month)"
+      },
+      {
+        "val": "28.97%",
+        "label": "Win rate (126 W / 309 L)"
+      },
+      {
+        "val": "2.28",
+        "label": "Profit factor ($209,695 / $92,014)"
+      },
+      {
+        "val": "1.70",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "5.37",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "49.39",
+        "label": "Calmar (total return / max DD)"
+      },
+      {
+        "val": "$8,673.50",
+        "label": "Max drawdown (9.53%)"
+      },
+      {
+        "val": "+$270.53",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "5 W / 16 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "198.7 bars",
+        "label": "Average hold (~16.6 h), max 5210 bars (~434.2 h)"
+      },
+      {
+        "val": "0",
+        "label": "Intentional weekend holds"
+      },
+      {
+        "val": "−$1,532.30 / +$8,655.01",
+        "label": "Worst / best day"
+      }
+    ],
+    "payText": "Average win +$1,664.25 , average loss −$297.78 , payoff ratio 5.59 : 1 . Breakeven win rate at that payoff is 15.18%, and the actual 28.97% is +13.79 points above it. Expectancy = 0.2897 × $1,664.25 − 0.7103 × $297.78 = $482.06 − 211.53 ≈ +$270.53 per trade. × 435 trades = $117,681.48.",
+    "longStats": {
+      "trades": "264 (60.7%)",
+      "pnl": "+$86,318.74",
+      "winRate": "33.33%",
+      "pf": "2.72"
+    },
+    "shortStats": {
+      "trades": "171 (39.3%)",
+      "pnl": "+$31,362.73",
+      "winRate": "22.22%",
+      "pf": "1.75"
+    },
+    "regimes": [
+      {
+        "name": "1. Rate hikes and inflation shock",
+        "period": "2021-09-24 to 2022-12-31",
+        "trades": "98",
+        "pnl": "+$30,054.60",
+        "winRate": "32.7%",
+        "pf": "2.57",
+        "dd": "$4,887.21"
+      },
+      {
+        "name": "2. Banking crisis and consolidation",
+        "period": "2023-01-01 to 2023-12-31",
+        "trades": "99",
+        "pnl": "+$22,073.08",
+        "winRate": "31.3%",
+        "pf": "2.09",
+        "dd": "$5,525.98"
+      },
+      {
+        "name": "3. Gold all-time-high trend",
+        "period": "2024-01-01 to 2026-09-30",
+        "trades": "238",
+        "pnl": "+$65,553.79",
+        "winRate": "26.5%",
+        "pf": "2.25",
+        "dd": "$8,673.50"
+      }
+    ],
+    "yearly": [],
+    "scriptData": {
+      "years": [
+        [
+          "2021 (Q4)",
+          6828.36
+        ],
+        [
+          "2022",
+          23226.24
+        ],
+        [
+          "2023",
+          22073.08
+        ],
+        [
+          "2024",
+          11654.49
+        ],
+        [
+          "2025",
+          25825.26
+        ],
+        [
+          "2026 (YTD)",
+          28074.04
+        ]
+      ],
+      "mx": 28074.04,
+      "pnl": {
+        "2021": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1212.96,
+          7364.63,
+          -1749.23
+        ],
+        "2022": [
+          109.39,
+          3713.97,
+          2792.25,
+          365.51,
+          177.08,
+          -387.92,
+          5442.12,
+          141.09,
+          4573.06,
+          -1724.89,
+          8184.58,
+          -159.98
+        ],
+        "2023": [
+          -5.34,
+          8248.45,
+          7054.56,
+          -445.42,
+          -578.03,
+          -1596.66,
+          918.45,
+          42.58,
+          1862.79,
+          1199.55,
+          2112.35,
+          3259.81
+        ],
+        "2024": [
+          -489.58,
+          4053.15,
+          5756.93,
+          -1314.18,
+          -59.12,
+          7764.77,
+          -1495.25,
+          -2018.71,
+          2296.09,
+          -2105.58,
+          -409.97,
+          -324.06
+        ],
+        "2025": [
+          -1510.36,
+          -578.38,
+          -1245.7,
+          1499.28,
+          9710.71,
+          -1125.13,
+          1917.75,
+          16603.66,
+          -1871.83,
+          1103.55,
+          993.04,
+          328.69
+        ],
+        "2026": [
+          -1187.68,
+          1674.99,
+          5126.61,
+          -1652.51,
+          -1272.02,
+          11025.81,
+          4766.79,
+          10585.5,
+          -1326.99,
+          333.55,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2021": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          7,
+          9
+        ],
+        "2022": [
+          6,
+          10,
+          5,
+          1,
+          4,
+          5,
+          7,
+          4,
+          11,
+          6,
+          13,
+          4
+        ],
+        "2023": [
+          3,
+          5,
+          10,
+          12,
+          6,
+          6,
+          10,
+          6,
+          11,
+          13,
+          7,
+          10
+        ],
+        "2024": [
+          8,
+          14,
+          13,
+          6,
+          10,
+          12,
+          5,
+          9,
+          5,
+          7,
+          5,
+          4
+        ],
+        "2025": [
+          5,
+          2,
+          7,
+          9,
+          7,
+          4,
+          6,
+          12,
+          10,
+          9,
+          5,
+          6
+        ],
+        "2026": [
+          5,
+          6,
+          6,
+          6,
+          4,
+          6,
+          9,
+          8,
+          4,
+          4,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2021": 6828.36,
+        "2022": 23226.24,
+        "2023": 22073.08,
+        "2024": 11654.49,
+        "2025": 25825.26,
+        "2026": 28074.04
+      },
+      "tc": {
+        "2021": 22,
+        "2022": 76,
+        "2023": 99,
+        "2024": 98,
+        "2025": 82,
+        "2026": 58
+      }
+    }
+  },
+  "py-06": {
+    "folder": "Ensemble_06_5Engine_Trend_Shield",
+    "num": 6,
+    "slug": "py-06",
+    "titleRaw": "5-Engine Trend Shield Rank #6 Single-Digit DD (9.74%)",
+    "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
+    "bigStats": [
+      {
+        "val": "+$116,330.74",
+        "label": "net profit, +465.32% on $25,000"
+      },
+      {
+        "val": "2.16",
+        "label": "profit factor"
+      },
+      {
+        "val": "9.74%",
+        "label": "max drawdown ($6,952.67)"
+      },
+      {
+        "val": "604",
+        "label": "trades, 23.34% win rate"
+      }
+    ],
+    "mechLede": "A streamlined 5-engine trend-focused architecture balancing London open breakouts, New York volatility momentum, and precision volume jerk confirmation.",
+    "mechRows": [
+      {
+        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
+        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$34,126.16",
+        "soloPf": "2.93",
+        "soloDd": "7.7%",
+        "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
+      },
+      {
+        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
+        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$26,506.83",
+        "soloPf": "2.36",
+        "soloDd": "6.6%",
+        "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
+      },
+      {
+        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
+        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$15,983.55",
+        "soloPf": "2.31",
+        "soloDd": "5.5%",
+        "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
+      },
+      {
+        "engine": "E27: Precision Jerk & Efficiency (rank_027_+$17,863_strat_b9a5598c.py)",
+        "indicator": "Jerk(8) > 0.130, CMF(24) > 0.050, ER(18), Vol Sleep mult 1.109×. Stop 1.468×ATR, Target 7.796×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$13,497.29",
+        "soloPf": "2.31",
+        "soloDd": "9.0%",
+        "role": "High-accuracy stabilizer (46.8% solo win rate) preserving portfolio equity across choppy regimes."
+      },
+      {
+        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
+        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$26,092.75",
+        "soloPf": "1.34",
+        "soloDd": "19.6%",
+        "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
+      },
+      {
+        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
+        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "&lt; 10%",
+        "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $141,330.74 final equity across 360,000 MetaTrader 5 M5 bars.",
+    "kpis": [
+      {
+        "val": "+$116,330.74",
+        "label": "Net profit (+465.32%)"
+      },
+      {
+        "val": "$141,330.74",
+        "label": "Final equity"
+      },
+      {
+        "val": "604",
+        "label": "Total trades (9.7 per month)"
+      },
+      {
+        "val": "23.34%",
+        "label": "Win rate (141 W / 463 L)"
+      },
+      {
+        "val": "2.16",
+        "label": "Profit factor ($216,409 / $100,078)"
+      },
+      {
+        "val": "1.73",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "4.47",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "47.78",
+        "label": "Calmar (total return / max DD)"
+      },
+      {
+        "val": "$6,952.67",
+        "label": "Max drawdown (9.74%)"
+      },
+      {
+        "val": "+$192.60",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "6 W / 23 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "224.6 bars",
+        "label": "Average hold (~18.7 h), max 5211 bars (~434.2 h)"
+      },
+      {
+        "val": "0",
+        "label": "Intentional weekend holds"
+      },
+      {
+        "val": "−$1,436.34 / +$8,903.55",
+        "label": "Worst / best day"
+      }
+    ],
+    "payText": "Average win +$1,534.81 , average loss −$216.15 , payoff ratio 7.10 : 1 . Breakeven win rate at that payoff is 12.34%, and the actual 23.34% is +11.00 points above it. Expectancy = 0.2334 × $1,534.81 − 0.7666 × $216.15 = $358.29 − 165.69 ≈ +$192.60 per trade. × 604 trades = $116,330.74.",
+    "longStats": {
+      "trades": "415 (68.7%)",
+      "pnl": "+$86,640.22",
+      "winRate": "24.10%",
+      "pf": "2.45"
+    },
+    "shortStats": {
+      "trades": "189 (31.3%)",
+      "pnl": "+$29,690.52",
+      "winRate": "21.69%",
+      "pf": "1.74"
+    },
+    "regimes": [
+      {
+        "name": "1. Rate hikes and inflation shock",
+        "period": "2021-09-24 to 2022-12-31",
+        "trades": "153",
+        "pnl": "+$31,258.14",
+        "winRate": "26.1%",
+        "pf": "2.41",
+        "dd": "$4,842.91"
+      },
+      {
+        "name": "2. Banking crisis and consolidation",
+        "period": "2023-01-01 to 2023-12-31",
+        "trades": "144",
+        "pnl": "+$22,426.81",
+        "winRate": "23.6%",
+        "pf": "1.96",
+        "dd": "$6,952.67"
+      },
+      {
+        "name": "3. Gold all-time-high trend",
+        "period": "2024-01-01 to 2026-09-30",
+        "trades": "307",
+        "pnl": "+$62,645.79",
+        "winRate": "21.8%",
+        "pf": "2.15",
+        "dd": "$5,848.69"
+      }
+    ],
+    "yearly": [],
+    "scriptData": {
+      "years": [
+        [
+          "2021 (Q4)",
+          6204.9
+        ],
+        [
+          "2022",
+          25053.24
+        ],
+        [
+          "2023",
+          22426.81
+        ],
+        [
+          "2024",
+          16312.71
+        ],
+        [
+          "2025",
+          20033.33
+        ],
+        [
+          "2026 (YTD)",
+          26299.76
+        ]
+      ],
+      "mx": 26299.755499999996,
+      "pnl": {
+        "2021": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          220.34,
+          1728.63,
+          5563.94,
+          -1308.02
+        ],
+        "2022": [
+          88.4,
+          5251.05,
+          1686.38,
+          -68.28,
+          -231.74,
+          456.01,
+          3482.44,
+          895.62,
+          5620.79,
+          -1339.95,
+          10011.34,
+          -798.84
+        ],
+        "2023": [
+          253.15,
+          8033.58,
+          5524.15,
+          -1398.86,
+          -1000.4,
+          -1545.08,
+          1228.33,
+          -1777.68,
+          1785.89,
+          1382.65,
+          1520.8,
+          8420.26
+        ],
+        "2024": [
+          -976,
+          4459.04,
+          4442.07,
+          -2166.33,
+          1794.62,
+          8767.08,
+          -1859.33,
+          -2735.62,
+          3224.64,
+          -328.67,
+          2655.39,
+          -964.18
+        ],
+        "2025": [
+          -703.15,
+          -1167.42,
+          -2103.97,
+          2762.9,
+          5466.97,
+          -1167.53,
+          988.56,
+          16830.03,
+          -1462.99,
+          1892.76,
+          963.73,
+          -2266.58
+        ],
+        "2026": [
+          857.03,
+          1754.98,
+          4369.07,
+          -1600.47,
+          7.14,
+          8259.16,
+          5229.82,
+          8281.59,
+          -858.58,
+          null,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2021": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          11,
+          6,
+          7
+        ],
+        "2022": [
+          11,
+          18,
+          13,
+          5,
+          2,
+          8,
+          11,
+          7,
+          13,
+          11,
+          18,
+          10
+        ],
+        "2023": [
+          9,
+          9,
+          11,
+          17,
+          11,
+          9,
+          10,
+          9,
+          15,
+          15,
+          8,
+          21
+        ],
+        "2024": [
+          11,
+          18,
+          15,
+          8,
+          17,
+          14,
+          9,
+          11,
+          11,
+          15,
+          11,
+          10
+        ],
+        "2025": [
+          11,
+          8,
+          11,
+          14,
+          15,
+          6,
+          11,
+          12,
+          12,
+          6,
+          6,
+          9
+        ],
+        "2026": [
+          2,
+          7,
+          5,
+          7,
+          6,
+          3,
+          1,
+          3,
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2021": 6204.9,
+        "2022": 25053.24,
+        "2023": 22426.81,
+        "2024": 16312.71,
+        "2025": 20033.33,
+        "2026": 26299.76
+      },
+      "tc": {
+        "2021": 26,
+        "2022": 127,
+        "2023": 144,
+        "2024": 150,
+        "2025": 121,
+        "2026": 36
+      }
+    }
+  },
+  "py-07": {
+    "folder": "Ensemble_07_6Engine_Multi_Regime",
+    "num": 7,
+    "slug": "py-07",
+    "titleRaw": "6-Engine Multi-Regime Rank #7 Single-Digit DD (9.80%)",
+    "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
+    "bigStats": [
+      {
+        "val": "+$115,983.75",
+        "label": "net profit, +463.93% on $25,000"
+      },
+      {
+        "val": "2.04",
+        "label": "profit factor"
+      },
+      {
+        "val": "9.80%",
+        "label": "max drawdown ($7,047.38)"
+      },
+      {
+        "val": "768",
+        "label": "trades, 22.14% win rate"
+      }
+    ],
+    "mechLede": "Robust multi-regime portfolio engineered to perform consistently across all macro environments, including rate hiking shocks, banking turmoil, and secular gold all-time-high trends.",
+    "mechRows": [
+      {
+        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
+        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$34,126.16",
+        "soloPf": "2.93",
+        "soloDd": "7.7%",
+        "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
+      },
+      {
+        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
+        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$26,506.83",
+        "soloPf": "2.36",
+        "soloDd": "6.6%",
+        "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
+      },
+      {
+        "engine": "E27: Precision Jerk & Efficiency (rank_027_+$17,863_strat_b9a5598c.py)",
+        "indicator": "Jerk(8) > 0.130, CMF(24) > 0.050, ER(18), Vol Sleep mult 1.109×. Stop 1.468×ATR, Target 7.796×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$13,497.29",
+        "soloPf": "2.31",
+        "soloDd": "9.0%",
+        "role": "High-accuracy stabilizer (46.8% solo win rate) preserving portfolio equity across choppy regimes."
+      },
+      {
+        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
+        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$11,734.57",
+        "soloPf": "1.79",
+        "soloDd": "8.9%",
+        "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
+      },
+      {
+        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
+        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$27,078.79",
+        "soloPf": "1.71",
+        "soloDd": "14.6%",
+        "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
+      },
+      {
+        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
+        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$26,092.75",
+        "soloPf": "1.34",
+        "soloDd": "19.6%",
+        "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
+      },
+      {
+        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
+        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "&lt; 10%",
+        "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $140,983.75 final equity across 360,000 MetaTrader 5 M5 bars.",
+    "kpis": [
+      {
+        "val": "+$115,983.75",
+        "label": "Net profit (+463.93%)"
+      },
+      {
+        "val": "$140,983.75",
+        "label": "Final equity"
+      },
+      {
+        "val": "768",
+        "label": "Total trades (12.4 per month)"
+      },
+      {
+        "val": "22.14%",
+        "label": "Win rate (170 W / 598 L)"
+      },
+      {
+        "val": "2.04",
+        "label": "Profit factor ($227,111 / $111,127)"
+      },
+      {
+        "val": "1.64",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "4.31",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "47.32",
+        "label": "Calmar (total return / max DD)"
+      },
+      {
+        "val": "$7,047.38",
+        "label": "Max drawdown (9.80%)"
+      },
+      {
+        "val": "+$151.02",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "6 W / 28 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "230.4 bars",
+        "label": "Average hold (~19.2 h), max 5211 bars (~434.2 h)"
+      },
+      {
+        "val": "0",
+        "label": "Intentional weekend holds"
+      },
+      {
+        "val": "−$1,407.02 / +$8,219.55",
+        "label": "Worst / best day"
+      }
+    ],
+    "payText": "Average win +$1,335.95 , average loss −$185.83 , payoff ratio 7.19 : 1 . Breakeven win rate at that payoff is 12.21%, and the actual 22.14% is +9.92 points above it. Expectancy = 0.2214 × $1,335.95 − 0.7786 × $185.83 = $295.72 − 144.70 ≈ +$151.02 per trade. × 768 trades = $115,983.75.",
+    "longStats": {
+      "trades": "490 (63.8%)",
+      "pnl": "+$90,820.26",
+      "winRate": "24.08%",
+      "pf": "2.41"
+    },
+    "shortStats": {
+      "trades": "278 (36.2%)",
+      "pnl": "+$25,163.48",
+      "winRate": "18.71%",
+      "pf": "1.54"
+    },
+    "regimes": [
+      {
+        "name": "1. Rate hikes and inflation shock",
+        "period": "2021-09-24 to 2022-12-31",
+        "trades": "185",
+        "pnl": "+$29,253.36",
+        "winRate": "24.3%",
+        "pf": "2.21",
+        "dd": "$4,220.36"
+      },
+      {
+        "name": "2. Banking crisis and consolidation",
+        "period": "2023-01-01 to 2023-12-31",
+        "trades": "174",
+        "pnl": "+$24,739.66",
+        "winRate": "25.3%",
+        "pf": "2.07",
+        "dd": "$7,047.38"
+      },
+      {
+        "name": "3. Gold all-time-high trend",
+        "period": "2024-01-01 to 2026-09-30",
+        "trades": "409",
+        "pnl": "+$61,990.73",
+        "winRate": "19.8%",
+        "pf": "1.97",
+        "dd": "$6,735.09"
+      }
+    ],
+    "yearly": [],
+    "scriptData": {
+      "years": [
+        [
+          "2021 (Q4)",
+          3797.26
+        ],
+        [
+          "2022",
+          25456.1
+        ],
+        [
+          "2023",
+          24739.66
+        ],
+        [
+          "2024",
+          9618.19
+        ],
+        [
+          "2025",
+          21996.62
+        ],
+        [
+          "2026 (YTD)",
+          30375.92
+        ]
+      ],
+      "mx": 30375.921,
+      "pnl": {
+        "2021": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          220.34,
+          2189.17,
+          2450.78,
+          -1063.02
+        ],
+        "2022": [
+          -763.16,
+          4108.65,
+          1932.04,
+          -68.28,
+          755.19,
+          236.67,
+          5419.81,
+          664.8,
+          5436.09,
+          -1103.77,
+          10275.19,
+          -1437.13
+        ],
+        "2023": [
+          -351.41,
+          7497.31,
+          8888.06,
+          -1510.39,
+          -170.29,
+          -1109.81,
+          880.65,
+          -1444.11,
+          554.66,
+          2665.67,
+          521.58,
+          8317.73
+        ],
+        "2024": [
+          -281.4,
+          1904.51,
+          3574.82,
+          -2102.88,
+          741.33,
+          8647.52,
+          -2051.92,
+          -3533.1,
+          3109.46,
+          -529.14,
+          1079.83,
+          -940.84
+        ],
+        "2025": [
+          -573.47,
+          -323.53,
+          -2202.21,
+          1239.25,
+          8040.17,
+          -1488.45,
+          1443.64,
+          17032.02,
+          -1804.75,
+          1569.67,
+          1443.62,
+          -2379.33
+        ],
+        "2026": [
+          1654.77,
+          2998.15,
+          5610.99,
+          -2249.9,
+          -215.93,
+          9799.61,
+          6045.64,
+          8144.22,
+          -1411.64,
+          null,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2021": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          15,
+          9,
+          7
+        ],
+        "2022": [
+          15,
+          19,
+          13,
+          5,
+          5,
+          9,
+          14,
+          9,
+          15,
+          11,
+          22,
+          15
+        ],
+        "2023": [
+          11,
+          10,
+          17,
+          18,
+          13,
+          11,
+          13,
+          13,
+          17,
+          16,
+          11,
+          24
+        ],
+        "2024": [
+          13,
+          26,
+          19,
+          10,
+          21,
+          18,
+          11,
+          17,
+          12,
+          18,
+          14,
+          11
+        ],
+        "2025": [
+          13,
+          9,
+          14,
+          18,
+          19,
+          8,
+          15,
+          17,
+          15,
+          9,
+          6,
+          10
+        ],
+        "2026": [
+          7,
+          10,
+          9,
+          9,
+          9,
+          4,
+          7,
+          4,
+          7,
+          0,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2021": 3797.26,
+        "2022": 25456.1,
+        "2023": 24739.66,
+        "2024": 9618.19,
+        "2025": 21996.62,
+        "2026": 30375.92
+      },
+      "tc": {
+        "2021": 33,
+        "2022": 152,
+        "2023": 174,
+        "2024": 190,
+        "2025": 153,
+        "2026": 66
+      }
+    }
+  },
+  "py-08": {
+    "folder": "Ensemble_08_5Engine_HighSharpe_Fleet",
+    "num": 8,
+    "slug": "py-08",
+    "titleRaw": "5-Engine High-Sharpe Fleet Rank #8 Single-Digit DD (9.50%)",
+    "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
+    "bigStats": [
+      {
+        "val": "+$115,559.92",
+        "label": "net profit, +462.24% on $25,000"
+      },
+      {
+        "val": "2.29",
+        "label": "profit factor"
+      },
+      {
+        "val": "9.50%",
+        "label": "max drawdown ($8,068.94)"
+      },
+      {
+        "val": "463",
+        "label": "trades, 27.65% win rate"
+      }
+    ],
+    "mechLede": "The highest Sharpe ratio ensemble in the vault (1.89 annualized Sharpe), designed for prop-firm and institutional mandates requiring smooth, low-variance equity growth.",
+    "mechRows": [
+      {
+        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
+        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$34,126.16",
+        "soloPf": "2.93",
+        "soloDd": "7.7%",
+        "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
+      },
+      {
+        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
+        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$26,506.83",
+        "soloPf": "2.36",
+        "soloDd": "6.6%",
+        "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
+      },
+      {
+        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
+        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$15,983.55",
+        "soloPf": "2.31",
+        "soloDd": "5.5%",
+        "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
+      },
+      {
+        "engine": "E71: Hurst Anti-Persistent Switch (rank_071_+$9,169_strat_618b71e6.py)",
+        "indicator": "Hurst(49) < 0.488 (mean-reverting regime switch), Z-score > 1.458, CMF(26), VWRSI(13). Target 8.969×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$11,359.66",
+        "soloPf": "1.47",
+        "soloDd": "6.3%",
+        "role": "Counter-trend stabilizer providing positive returns when trend strategies encounter consolidation."
+      },
+      {
+        "engine": "E24: Jerk & CMF Volume Surge (rank_024_+$18,539_strat_7531d775.py)",
+        "indicator": "Jerk(4) > 0.171 (3rd price derivative), CMF(25) > 0.084, Vol Sleep mult 0.775×, ER(12). Stop 1.358×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$28,173.76",
+        "soloPf": "2.12",
+        "soloDd": "12.8%",
+        "role": "Detects sudden acceleration shifts and institutional liquidity absorption before retail signals."
+      },
+      {
+        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
+        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "&lt; 10%",
+        "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $140,559.92 final equity across 360,000 MetaTrader 5 M5 bars.",
+    "kpis": [
+      {
+        "val": "+$115,559.92",
+        "label": "Net profit (+462.24%)"
+      },
+      {
+        "val": "$140,559.92",
+        "label": "Final equity"
+      },
+      {
+        "val": "463",
+        "label": "Total trades (7.6 per month)"
+      },
+      {
+        "val": "27.65%",
+        "label": "Win rate (128 W / 335 L)"
+      },
+      {
+        "val": "2.29",
+        "label": "Profit factor ($205,285 / $89,725)"
+      },
+      {
+        "val": "1.89",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "5.75",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "48.67",
+        "label": "Calmar (total return / max DD)"
+      },
+      {
+        "val": "$8,068.94",
+        "label": "Max drawdown (9.50%)"
+      },
+      {
+        "val": "+$249.59",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "5 W / 16 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "235.2 bars",
+        "label": "Average hold (~19.6 h), max 5210 bars (~434.2 h)"
+      },
+      {
+        "val": "0",
+        "label": "Intentional weekend holds"
+      },
+      {
+        "val": "−$1,436.34 / +$7,532.95",
+        "label": "Worst / best day"
+      }
+    ],
+    "payText": "Average win +$1,603.79 , average loss −$267.84 , payoff ratio 5.99 : 1 . Breakeven win rate at that payoff is 14.31%, and the actual 27.65% is +13.34 points above it. Expectancy = 0.2765 × $1,603.79 − 0.7235 × $267.84 = $443.38 − 193.79 ≈ +$249.59 per trade. × 463 trades = $115,559.92.",
+    "longStats": {
+      "trades": "276 (59.6%)",
+      "pnl": "+$88,520.05",
+      "winRate": "32.97%",
+      "pf": "2.83"
+    },
+    "shortStats": {
+      "trades": "187 (40.4%)",
+      "pnl": "+$27,039.88",
+      "winRate": "19.79%",
+      "pf": "1.65"
+    },
+    "regimes": [
+      {
+        "name": "1. Rate hikes and inflation shock",
+        "period": "2021-09-24 to 2022-12-31",
+        "trades": "108",
+        "pnl": "+$30,873.70",
+        "winRate": "32.4%",
+        "pf": "2.64",
+        "dd": "$4,960.92"
+      },
+      {
+        "name": "2. Banking crisis and consolidation",
+        "period": "2023-01-01 to 2023-12-31",
+        "trades": "104",
+        "pnl": "+$21,618.11",
+        "winRate": "27.9%",
+        "pf": "2.09",
+        "dd": "$5,065.91"
+      },
+      {
+        "name": "3. Gold all-time-high trend",
+        "period": "2024-01-01 to 2026-09-30",
+        "trades": "251",
+        "pnl": "+$63,068.12",
+        "winRate": "25.5%",
+        "pf": "2.24",
+        "dd": "$8,068.94"
+      }
+    ],
+    "yearly": [],
+    "scriptData": {
+      "years": [
+        [
+          "2021 (Q4)",
+          7889.55
+        ],
+        [
+          "2022",
+          22984.15
+        ],
+        [
+          "2023",
+          21618.11
+        ],
+        [
+          "2024",
+          9703.55
+        ],
+        [
+          "2025",
+          19563.86
+        ],
+        [
+          "2026 (YTD)",
+          33800.72
+        ]
+      ],
+      "mx": 33800.715000000004,
+      "pnl": {
+        "2021": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1799.64,
+          7435.01,
+          -1345.11
+        ],
+        "2022": [
+          97.95,
+          4492.74,
+          2561.87,
+          249.89,
+          -539.54,
+          -289.65,
+          5543.78,
+          -87.99,
+          4612.73,
+          -1837.26,
+          8456.17,
+          -276.53
+        ],
+        "2023": [
+          -5.34,
+          8488.97,
+          5863.67,
+          -603.06,
+          -703.04,
+          -1394.57,
+          1682.7,
+          -769.58,
+          1843.64,
+          185.53,
+          2412.68,
+          4616.52
+        ],
+        "2024": [
+          -57.63,
+          4087.38,
+          4992.48,
+          -800.17,
+          44.56,
+          4817.43,
+          -1392.17,
+          -1915.79,
+          2893.62,
+          -2117.82,
+          -409.97,
+          -438.38
+        ],
+        "2025": [
+          -1771.17,
+          -359.96,
+          -1360.89,
+          3089.64,
+          7400.05,
+          -1020.76,
+          915.86,
+          13473.87,
+          -1056.74,
+          1396.66,
+          842.62,
+          -1985.3
+        ],
+        "2026": [
+          5652.36,
+          1556.1,
+          4820.56,
+          639.1,
+          -1175.44,
+          8815.63,
+          5278.66,
+          8721.65,
+          -1059.66,
+          551.76,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2021": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          8,
+          9
+        ],
+        "2022": [
+          7,
+          13,
+          7,
+          2,
+          3,
+          5,
+          7,
+          6,
+          11,
+          7,
+          12,
+          5
+        ],
+        "2023": [
+          3,
+          5,
+          10,
+          14,
+          8,
+          6,
+          7,
+          6,
+          12,
+          14,
+          9,
+          10
+        ],
+        "2024": [
+          6,
+          15,
+          14,
+          11,
+          10,
+          13,
+          5,
+          9,
+          5,
+          8,
+          5,
+          5
+        ],
+        "2025": [
+          8,
+          1,
+          8,
+          10,
+          8,
+          4,
+          6,
+          9,
+          10,
+          8,
+          7,
+          7
+        ],
+        "2026": [
+          7,
+          8,
+          8,
+          7,
+          4,
+          6,
+          7,
+          6,
+          3,
+          3,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2021": 7889.55,
+        "2022": 22984.15,
+        "2023": 21618.11,
+        "2024": 9703.55,
+        "2025": 19563.86,
+        "2026": 33800.72
+      },
+      "tc": {
+        "2021": 23,
+        "2022": 85,
+        "2023": 104,
+        "2024": 106,
+        "2025": 86,
+        "2026": 59
+      }
+    }
+  },
+  "py-09": {
+    "folder": "Ensemble_09_5Engine_Asian_Squeeze",
+    "num": 9,
+    "slug": "py-09",
+    "titleRaw": "5-Engine Asian Squeeze Rank #9 Single-Digit DD (9.96%)",
+    "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
+    "bigStats": [
+      {
+        "val": "+$115,121.94",
+        "label": "net profit, +460.49% on $25,000"
+      },
+      {
+        "val": "2.21",
+        "label": "profit factor"
+      },
+      {
+        "val": "9.96%",
+        "label": "max drawdown ($9,052.12)"
+      },
+      {
+        "val": "510",
+        "label": "trades, 25.88% win rate"
+      }
+    ],
+    "mechLede": "Session-specialized fleet focusing on liquidity build-up during Asian hours, executing aggressive entries on Tokyo/London handoffs with dynamic trailing profit anchors.",
+    "mechRows": [
+      {
+        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
+        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$34,126.16",
+        "soloPf": "2.93",
+        "soloDd": "7.7%",
+        "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
+      },
+      {
+        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
+        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$26,506.83",
+        "soloPf": "2.36",
+        "soloDd": "6.6%",
+        "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
+      },
+      {
+        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
+        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$15,983.55",
+        "soloPf": "2.31",
+        "soloDd": "5.5%",
+        "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
+      },
+      {
+        "engine": "E71: Hurst Anti-Persistent Switch (rank_071_+$9,169_strat_618b71e6.py)",
+        "indicator": "Hurst(49) < 0.488 (mean-reverting regime switch), Z-score > 1.458, CMF(26), VWRSI(13). Target 8.969×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$11,359.66",
+        "soloPf": "1.47",
+        "soloDd": "6.3%",
+        "role": "Counter-trend stabilizer providing positive returns when trend strategies encounter consolidation."
+      },
+      {
+        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
+        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$27,078.79",
+        "soloPf": "1.71",
+        "soloDd": "14.6%",
+        "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
+      },
+      {
+        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
+        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "&lt; 10%",
+        "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $140,121.94 final equity across 360,000 MetaTrader 5 M5 bars.",
+    "kpis": [
+      {
+        "val": "+$115,121.94",
+        "label": "Net profit (+460.49%)"
+      },
+      {
+        "val": "$140,121.94",
+        "label": "Final equity"
+      },
+      {
+        "val": "510",
+        "label": "Total trades (8.4 per month)"
+      },
+      {
+        "val": "25.88%",
+        "label": "Win rate (132 W / 378 L)"
+      },
+      {
+        "val": "2.21",
+        "label": "Profit factor ($209,970 / $94,848)"
+      },
+      {
+        "val": "1.68",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "4.73",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "46.21",
+        "label": "Calmar (total return / max DD)"
+      },
+      {
+        "val": "$9,052.12",
+        "label": "Max drawdown (9.96%)"
+      },
+      {
+        "val": "+$225.73",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "5 W / 18 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "240.8 bars",
+        "label": "Average hold (~20.1 h), max 5210 bars (~434.2 h)"
+      },
+      {
+        "val": "0",
+        "label": "Intentional weekend holds"
+      },
+      {
+        "val": "−$1,436.34 / +$8,461.79",
+        "label": "Worst / best day"
+      }
+    ],
+    "payText": "Average win +$1,590.68 , average loss −$250.92 , payoff ratio 6.34 : 1 . Breakeven win rate at that payoff is 13.63%, and the actual 25.88% is +12.26 points above it. Expectancy = 0.2588 × $1,590.68 − 0.7412 × $250.92 = $411.71 − 185.98 ≈ +$225.73 per trade. × 510 trades = $115,121.94.",
+    "longStats": {
+      "trades": "287 (56.3%)",
+      "pnl": "+$88,863.71",
+      "winRate": "31.36%",
+      "pf": "2.77"
+    },
+    "shortStats": {
+      "trades": "223 (43.7%)",
+      "pnl": "+$26,258.23",
+      "winRate": "18.83%",
+      "pf": "1.59"
+    },
+    "regimes": [
+      {
+        "name": "1. Rate hikes and inflation shock",
+        "period": "2021-09-24 to 2022-12-31",
+        "trades": "112",
+        "pnl": "+$32,488.35",
+        "winRate": "31.2%",
+        "pf": "2.69",
+        "dd": "$4,915.82"
+      },
+      {
+        "name": "2. Banking crisis and consolidation",
+        "period": "2023-01-01 to 2023-12-31",
+        "trades": "109",
+        "pnl": "+$21,545.49",
+        "winRate": "28.4%",
+        "pf": "2.07",
+        "dd": "$4,939.05"
+      },
+      {
+        "name": "3. Gold all-time-high trend",
+        "period": "2024-01-01 to 2026-09-30",
+        "trades": "289",
+        "pnl": "+$61,088.09",
+        "winRate": "22.8%",
+        "pf": "2.10",
+        "dd": "$9,052.12"
+      }
+    ],
+    "yearly": [],
+    "scriptData": {
+      "years": [
+        [
+          "2021 (Q4)",
+          6950.89
+        ],
+        [
+          "2022",
+          25537.46
+        ],
+        [
+          "2023",
+          21545.49
+        ],
+        [
+          "2024",
+          7016.41
+        ],
+        [
+          "2025",
+          24887.3
+        ],
+        [
+          "2026 (YTD)",
+          29184.38
+        ]
+      ],
+      "mx": 29184.382999999994,
+      "pnl": {
+        "2021": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          2178.87,
+          6201.72,
+          -1429.7
+        ],
+        "2022": [
+          345.5,
+          3581.66,
+          2677.93,
+          365.51,
+          780.69,
+          -173.16,
+          6587.28,
+          -89.73,
+          5820.3,
+          -1839.87,
+          7988.25,
+          -506.9
+        ],
+        "2023": [
+          -239.19,
+          8187.63,
+          7069.99,
+          -245.01,
+          -589.59,
+          -1275.85,
+          1451.07,
+          -1000.4,
+          1840.22,
+          950.74,
+          1715.96,
+          3679.92
+        ],
+        "2024": [
+          272.76,
+          2434.46,
+          5725.98,
+          -1429.8,
+          -301.08,
+          5103.41,
+          -1393.86,
+          -2376.6,
+          2401.15,
+          -2232.36,
+          -748.62,
+          -439.03
+        ],
+        "2025": [
+          -1637.5,
+          483.93,
+          -1703.91,
+          1591.11,
+          10268.1,
+          -1020.28,
+          1769.77,
+          16287.53,
+          -1783.15,
+          1194.04,
+          1311.78,
+          -1874.11
+        ],
+        "2026": [
+          -1195.46,
+          3308.76,
+          6368.53,
+          -2447.39,
+          -1429.54,
+          10471.48,
+          6584.68,
+          8584.27,
+          -1612.72,
+          551.76,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2021": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          7,
+          8,
+          8
+        ],
+        "2022": [
+          9,
+          12,
+          6,
+          1,
+          4,
+          4,
+          7,
+          6,
+          11,
+          7,
+          15,
+          7
+        ],
+        "2023": [
+          5,
+          5,
+          14,
+          12,
+          7,
+          5,
+          9,
+          8,
+          12,
+          14,
+          9,
+          9
+        ],
+        "2024": [
+          9,
+          20,
+          13,
+          7,
+          13,
+          15,
+          5,
+          13,
+          5,
+          9,
+          8,
+          5
+        ],
+        "2025": [
+          7,
+          2,
+          11,
+          10,
+          9,
+          4,
+          7,
+          13,
+          11,
+          10,
+          5,
+          6
+        ],
+        "2026": [
+          7,
+          7,
+          10,
+          8,
+          6,
+          6,
+          10,
+          7,
+          8,
+          3,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2021": 6950.89,
+        "2022": 25537.46,
+        "2023": 21545.49,
+        "2024": 7016.41,
+        "2025": 24887.3,
+        "2026": 29184.38
+      },
+      "tc": {
+        "2021": 23,
+        "2022": 89,
+        "2023": 109,
+        "2024": 122,
+        "2025": 95,
+        "2026": 72
+      }
+    }
+  },
+  "py-10": {
+    "folder": "Ensemble_10_5Engine_LowLoss_Fleet",
+    "num": 10,
+    "slug": "py-10",
+    "titleRaw": "5-Engine Low-Loss Fleet Rank #10 Single-Digit DD (9.43%)",
+    "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
+    "bigStats": [
+      {
+        "val": "+$115,008.70",
+        "label": "net profit, +460.03% on $25,000"
+      },
+      {
+        "val": "2.11",
+        "label": "profit factor"
+      },
+      {
+        "val": "9.43%",
+        "label": "max drawdown ($5,882.52)"
+      },
+      {
+        "val": "628",
+        "label": "trades, 23.57% win rate"
+      }
+    ],
+    "mechLede": "Peak capital preservation fleet exhibiting the lowest absolute dollar drawdown ($5,882) across 5 full years of institutional broker trading.",
+    "mechRows": [
+      {
+        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
+        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$34,126.16",
+        "soloPf": "2.93",
+        "soloDd": "7.7%",
+        "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
+      },
+      {
+        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
+        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$26,506.83",
+        "soloPf": "2.36",
+        "soloDd": "6.6%",
+        "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
+      },
+      {
+        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
+        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "weight": "1.25× ($312.50)",
+        "soloPnl": "+$15,983.55",
+        "soloPf": "2.31",
+        "soloDd": "5.5%",
+        "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
+      },
+      {
+        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
+        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "weight": "0.75× ($187.50)",
+        "soloPnl": "+$11,734.57",
+        "soloPf": "1.79",
+        "soloDd": "8.9%",
+        "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
+      },
+      {
+        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
+        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "weight": "0.40× ($100.00)",
+        "soloPnl": "+$26,092.75",
+        "soloPf": "1.34",
+        "soloDd": "19.6%",
+        "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
+      },
+      {
+        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
+        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "&lt; 10%",
+        "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $140,008.70 final equity across 360,000 MetaTrader 5 M5 bars.",
+    "kpis": [
+      {
+        "val": "+$115,008.70",
+        "label": "Net profit (+460.03%)"
+      },
+      {
+        "val": "$140,008.70",
+        "label": "Final equity"
+      },
+      {
+        "val": "628",
+        "label": "Total trades (10.1 per month)"
+      },
+      {
+        "val": "23.57%",
+        "label": "Win rate (148 W / 480 L)"
+      },
+      {
+        "val": "2.11",
+        "label": "Profit factor ($218,504 / $103,496)"
+      },
+      {
+        "val": "1.75",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "4.44",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "48.79",
+        "label": "Calmar (total return / max DD)"
+      },
+      {
+        "val": "$5,882.52",
+        "label": "Max drawdown (9.43%)"
+      },
+      {
+        "val": "+$183.13",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "6 W / 27 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "214.4 bars",
+        "label": "Average hold (~17.9 h), max 5211 bars (~434.2 h)"
+      },
+      {
+        "val": "0",
+        "label": "Intentional weekend holds"
+      },
+      {
+        "val": "−$1,436.34 / +$8,418.17",
+        "label": "Worst / best day"
+      }
+    ],
+    "payText": "Average win +$1,476.38 , average loss −$215.62 , payoff ratio 6.85 : 1 . Breakeven win rate at that payoff is 12.74%, and the actual 23.57% is +10.82 points above it. Expectancy = 0.2357 × $1,476.38 − 0.7643 × $215.62 = $347.94 − 164.80 ≈ +$183.13 per trade. × 628 trades = $115,008.70.",
+    "longStats": {
+      "trades": "429 (68.3%)",
+      "pnl": "+$87,300.39",
+      "winRate": "24.48%",
+      "pf": "2.42"
+    },
+    "shortStats": {
+      "trades": "199 (31.7%)",
+      "pnl": "+$27,708.31",
+      "winRate": "21.61%",
+      "pf": "1.66"
+    },
+    "regimes": [
+      {
+        "name": "1. Rate hikes and inflation shock",
+        "period": "2021-09-24 to 2022-12-31",
+        "trades": "160",
+        "pnl": "+$31,316.61",
+        "winRate": "26.2%",
+        "pf": "2.34",
+        "dd": "$4,837.81"
+      },
+      {
+        "name": "2. Banking crisis and consolidation",
+        "period": "2023-01-01 to 2023-12-31",
+        "trades": "153",
+        "pnl": "+$25,900.39",
+        "winRate": "26.8%",
+        "pf": "2.10",
+        "dd": "$4,503.70"
+      },
+      {
+        "name": "3. Gold all-time-high trend",
+        "period": "2024-01-01 to 2026-09-30",
+        "trades": "315",
+        "pnl": "+$57,791.70",
+        "winRate": "20.6%",
+        "pf": "2.02",
+        "dd": "$5,882.52"
+      }
+    ],
+    "yearly": [],
+    "scriptData": {
+      "years": [
+        [
+          "2021 (Q4)",
+          7532.83
+        ],
+        [
+          "2022",
+          23783.78
+        ],
+        [
+          "2023",
+          25900.39
+        ],
+        [
+          "2024",
+          13257.73
+        ],
+        [
+          "2025",
+          18573.82
+        ],
+        [
+          "2026 (YTD)",
+          25960.16
+        ]
+      ],
+      "mx": 25960.155499999997,
+      "pnl": {
+        "2021": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          220.34,
+          1512.65,
+          7107.85,
+          -1308.02
+        ],
+        "2022": [
+          -222.36,
+          3886.83,
+          1264.73,
+          147.7,
+          -449.85,
+          236.67,
+          4712,
+          895.62,
+          5035.62,
+          -1339.95,
+          10631.59,
+          -1014.82
+        ],
+        "2023": [
+          598.41,
+          7664.05,
+          6285.83,
+          -374.31,
+          -658.01,
+          -995.71,
+          1228.33,
+          -1098.1,
+          1477.09,
+          1819.7,
+          2281.47,
+          7671.64
+        ],
+        "2024": [
+          -1435.22,
+          4339.1,
+          3838.6,
+          -2602.46,
+          2162.75,
+          7401.52,
+          -2078.67,
+          -2957.1,
+          3447.34,
+          -112.28,
+          2437.27,
+          -1183.11
+        ],
+        "2025": [
+          -734.03,
+          -1167.42,
+          -1887.99,
+          2809.11,
+          5260.91,
+          -1375.7,
+          560.7,
+          15981.31,
+          -1462.99,
+          1892.76,
+          963.73,
+          -2266.58
+        ],
+        "2026": [
+          890.12,
+          1567.57,
+          4369.07,
+          -1400.31,
+          7.77,
+          8259.16,
+          4843.75,
+          8281.59,
+          -858.58,
+          null,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2021": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          12,
+          9,
+          7
+        ],
+        "2022": [
+          12,
+          19,
+          10,
+          4,
+          3,
+          9,
+          12,
+          7,
+          14,
+          11,
+          18,
+          11
+        ],
+        "2023": [
+          10,
+          9,
+          13,
+          19,
+          13,
+          10,
+          10,
+          10,
+          16,
+          13,
+          9,
+          21
+        ],
+        "2024": [
+          10,
+          19,
+          17,
+          10,
+          15,
+          12,
+          10,
+          12,
+          10,
+          14,
+          12,
+          11
+        ],
+        "2025": [
+          11,
+          8,
+          10,
+          15,
+          16,
+          7,
+          13,
+          12,
+          12,
+          6,
+          6,
+          9
+        ],
+        "2026": [
+          2,
+          8,
+          5,
+          6,
+          6,
+          3,
+          3,
+          3,
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2021": 7532.83,
+        "2022": 23783.78,
+        "2023": 25900.39,
+        "2024": 13257.73,
+        "2025": 18573.82,
+        "2026": 25960.16
+      },
+      "tc": {
+        "2021": 30,
+        "2022": 130,
+        "2023": 153,
+        "2024": 152,
+        "2025": 125,
+        "2026": 38
+      }
+    }
+  }
+}

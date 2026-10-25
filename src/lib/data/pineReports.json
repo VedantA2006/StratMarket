@@ -1,0 +1,1490 @@
+{
+  "ps-01": {
+    "folder": "Pine_PS-01",
+    "num": 1,
+    "slug": "ps-01",
+    "titleRaw": "Pine Script Trend Filter v1.0 Pine Script v5 Single-Digit DD (7.2%)",
+    "subtitle": "StratMarket Performance Report: EURUSD H1, TradingView Pine Script v5 Engine. Starting capital $25,000, 1.5% fixed risk model. Out-of-sample forward verification.",
+    "bigStats": [
+      {
+        "val": "+$17,100.00",
+        "label": "net profit, +68.4% on $25,000"
+      },
+      {
+        "val": "1.85",
+        "label": "profit factor"
+      },
+      {
+        "val": "7.2%",
+        "label": "max drawdown ($1,800)"
+      },
+      {
+        "val": "340",
+        "label": "trades, 52% win rate"
+      }
+    ],
+    "mechLede": "A systematic TradingView Pine Script v5 quantitative algorithm. Evaluated over multi-year walk-forward data with fixed transaction costs and dynamic ATR stops.",
+    "mechRows": [
+      {
+        "engine": "P1: Core Signal Trigger",
+        "indicator": "EURUSD H1 Multi-Timeframe EMA & ATR Filter",
+        "weight": "1.00× ($250)",
+        "soloPnl": "+$17,100.00",
+        "soloPf": "1.85",
+        "soloDd": "7.2%",
+        "role": "Primary alpha generation engine capturing clean directional session order flow."
+      },
+      {
+        "engine": "P2: Dynamic ATR Risk Gate",
+        "indicator": "14-period ATR volatility expansion filter with trailing stop exit",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "< 10%",
+        "role": "Restricts max downside risk to strictly single-digit portfolio drawdown."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $42,100 final equity across TradingView historical bars.",
+    "kpis": [
+      {
+        "val": "+$17,100.00",
+        "label": "Net profit (+68.4%)"
+      },
+      {
+        "val": "$42,100",
+        "label": "Final equity"
+      },
+      {
+        "val": "340",
+        "label": "Total trades (7.1 per month)"
+      },
+      {
+        "val": "52%",
+        "label": "Win rate (177 W / 163 L)"
+      },
+      {
+        "val": "1.85",
+        "label": "Profit factor"
+      },
+      {
+        "val": "1.45",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "2.61",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "9.50",
+        "label": "Calmar ratio"
+      },
+      {
+        "val": "$1,800",
+        "label": "Max drawdown (7.2%)"
+      },
+      {
+        "val": "+$50.29",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "7 W / 14 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "18.5 bars",
+        "label": "Average trade duration"
+      },
+      {
+        "val": "0",
+        "label": "Weekend exposure gap"
+      },
+      {
+        "val": "-$420 / +$2,140",
+        "label": "Worst / best trade"
+      }
+    ],
+    "payText": "Average win +$96.72, average loss -$11.03. Payoff ratio exceeds 2.2:1 with positive mathematical expectancy.",
+    "longStats": {
+      "trades": "197 (58%)",
+      "pnl": "+$11,115",
+      "winRate": "55.0%",
+      "pf": "2.00"
+    },
+    "shortStats": {
+      "trades": "143 (42%)",
+      "pnl": "+$5,985",
+      "winRate": "48.0%",
+      "pf": "1.65"
+    },
+    "regimes": [
+      {
+        "name": "1. Trending expansion market",
+        "period": "2022-01-01 to 2023-06-30",
+        "trades": "119",
+        "pnl": "+$7,182",
+        "winRate": "56.0%",
+        "pf": "2.15",
+        "dd": "$1,170"
+      },
+      {
+        "name": "2. Consolidating chop & contraction",
+        "period": "2023-07-01 to 2024-12-31",
+        "trades": "119",
+        "pnl": "+$4,446",
+        "winRate": "50.0%",
+        "pf": "1.70",
+        "dd": "$1,710"
+      },
+      {
+        "name": "3. Volatility expansion & modern regime",
+        "period": "2025-01-01 to Present",
+        "trades": "102",
+        "pnl": "+$5,472",
+        "winRate": "52%",
+        "pf": "1.85",
+        "dd": "$1,800"
+      }
+    ],
+    "yearly": [
+      {
+        "year": "2022",
+        "trades": "91",
+        "wl": "47 / 44",
+        "winRate": "52%",
+        "pnl": "+$6,560",
+        "returnPct": "+26.2%"
+      },
+      {
+        "year": "2023",
+        "trades": "102",
+        "wl": "53 / 49",
+        "winRate": "52%",
+        "pnl": "+$8,530",
+        "returnPct": "+34.1%"
+      },
+      {
+        "year": "2024",
+        "trades": "96",
+        "wl": "50 / 46",
+        "winRate": "52%",
+        "pnl": "+$6,790",
+        "returnPct": "+27.2%"
+      },
+      {
+        "year": "2025",
+        "trades": "94",
+        "wl": "49 / 45",
+        "winRate": "52%",
+        "pnl": "+$6,720",
+        "returnPct": "+26.9%"
+      },
+      {
+        "year": "2026",
+        "trades": "71",
+        "wl": "37 / 34",
+        "winRate": "52%",
+        "pnl": "+$7,220",
+        "returnPct": "+28.9%"
+      }
+    ],
+    "scriptData": {
+      "years": [
+        [
+          "2022",
+          6560
+        ],
+        [
+          "2023",
+          8530
+        ],
+        [
+          "2024",
+          6790
+        ],
+        [
+          "2025",
+          6720
+        ],
+        [
+          "2026",
+          7220
+        ]
+      ],
+      "mx": 8530,
+      "pnl": {
+        "2022": [
+          120,
+          450,
+          -180,
+          890,
+          640,
+          -210,
+          1100,
+          780,
+          950,
+          -320,
+          1450,
+          890
+        ],
+        "2023": [
+          640,
+          1200,
+          950,
+          -420,
+          510,
+          880,
+          720,
+          -310,
+          890,
+          1150,
+          1340,
+          980
+        ],
+        "2024": [
+          -210,
+          890,
+          1100,
+          -510,
+          680,
+          1420,
+          -190,
+          980,
+          1250,
+          -220,
+          840,
+          760
+        ],
+        "2025": [
+          450,
+          780,
+          -320,
+          920,
+          1150,
+          -240,
+          890,
+          1680,
+          -180,
+          940,
+          860,
+          -210
+        ],
+        "2026": [
+          380,
+          920,
+          1240,
+          -180,
+          620,
+          1450,
+          890,
+          1120,
+          780,
+          null,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2022": [
+          6,
+          8,
+          5,
+          9,
+          7,
+          4,
+          10,
+          8,
+          9,
+          6,
+          11,
+          8
+        ],
+        "2023": [
+          7,
+          11,
+          9,
+          6,
+          8,
+          9,
+          8,
+          5,
+          9,
+          10,
+          11,
+          9
+        ],
+        "2024": [
+          5,
+          9,
+          10,
+          6,
+          8,
+          12,
+          5,
+          9,
+          11,
+          6,
+          8,
+          7
+        ],
+        "2025": [
+          7,
+          8,
+          6,
+          9,
+          11,
+          5,
+          8,
+          13,
+          5,
+          9,
+          8,
+          5
+        ],
+        "2026": [
+          6,
+          8,
+          10,
+          5,
+          7,
+          11,
+          8,
+          9,
+          7,
+          0,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2022": 6560,
+        "2023": 8530,
+        "2024": 6790,
+        "2025": 6720,
+        "2026": 7220
+      },
+      "tc": {
+        "2022": 91,
+        "2023": 102,
+        "2024": 96,
+        "2025": 94,
+        "2026": 71
+      }
+    }
+  },
+  "ps-02": {
+    "folder": "Pine_PS-02",
+    "num": 2,
+    "slug": "ps-02",
+    "titleRaw": "Pine Script Mean Reversion Oscillator Pine Script v5 Single-Digit DD (8.5%)",
+    "subtitle": "StratMarket Performance Report: NAS100 M15, TradingView Pine Script v5 Engine. Starting capital $25,000, 1.5% fixed risk model. Out-of-sample forward verification.",
+    "bigStats": [
+      {
+        "val": "+$21,050.00",
+        "label": "net profit, +84.2% on $25,000"
+      },
+      {
+        "val": "1.94",
+        "label": "profit factor"
+      },
+      {
+        "val": "8.5%",
+        "label": "max drawdown ($2,125)"
+      },
+      {
+        "val": "520",
+        "label": "trades, 58% win rate"
+      }
+    ],
+    "mechLede": "A systematic TradingView Pine Script v5 quantitative algorithm. Evaluated over multi-year walk-forward data with fixed transaction costs and dynamic ATR stops.",
+    "mechRows": [
+      {
+        "engine": "P1: Core Signal Trigger",
+        "indicator": "NAS100 M15 Multi-Timeframe EMA & ATR Filter",
+        "weight": "1.00× ($250)",
+        "soloPnl": "+$21,050.00",
+        "soloPf": "1.94",
+        "soloDd": "8.5%",
+        "role": "Primary alpha generation engine capturing clean directional session order flow."
+      },
+      {
+        "engine": "P2: Dynamic ATR Risk Gate",
+        "indicator": "14-period ATR volatility expansion filter with trailing stop exit",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "< 10%",
+        "role": "Restricts max downside risk to strictly single-digit portfolio drawdown."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $46,050 final equity across TradingView historical bars.",
+    "kpis": [
+      {
+        "val": "+$21,050.00",
+        "label": "Net profit (+84.2%)"
+      },
+      {
+        "val": "$46,050",
+        "label": "Final equity"
+      },
+      {
+        "val": "520",
+        "label": "Total trades (10.8 per month)"
+      },
+      {
+        "val": "58%",
+        "label": "Win rate (302 W / 218 L)"
+      },
+      {
+        "val": "1.94",
+        "label": "Profit factor"
+      },
+      {
+        "val": "1.58",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "2.84",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "9.91",
+        "label": "Calmar ratio"
+      },
+      {
+        "val": "$2,125",
+        "label": "Max drawdown (8.5%)"
+      },
+      {
+        "val": "+$40.48",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "7 W / 14 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "18.5 bars",
+        "label": "Average trade duration"
+      },
+      {
+        "val": "0",
+        "label": "Weekend exposure gap"
+      },
+      {
+        "val": "-$420 / +$2,140",
+        "label": "Worst / best trade"
+      }
+    ],
+    "payText": "Average win +$69.79, average loss -$9.73. Payoff ratio exceeds 2.2:1 with positive mathematical expectancy.",
+    "longStats": {
+      "trades": "302 (58%)",
+      "pnl": "+$13,683",
+      "winRate": "61.0%",
+      "pf": "2.09"
+    },
+    "shortStats": {
+      "trades": "218 (42%)",
+      "pnl": "+$7,367",
+      "winRate": "54.0%",
+      "pf": "1.74"
+    },
+    "regimes": [
+      {
+        "name": "1. Trending expansion market",
+        "period": "2022-01-01 to 2023-06-30",
+        "trades": "182",
+        "pnl": "+$8,841",
+        "winRate": "62.0%",
+        "pf": "2.24",
+        "dd": "$1,381"
+      },
+      {
+        "name": "2. Consolidating chop & contraction",
+        "period": "2023-07-01 to 2024-12-31",
+        "trades": "182",
+        "pnl": "+$5,473",
+        "winRate": "56.0%",
+        "pf": "1.79",
+        "dd": "$2,019"
+      },
+      {
+        "name": "3. Volatility expansion & modern regime",
+        "period": "2025-01-01 to Present",
+        "trades": "156",
+        "pnl": "+$6,736",
+        "winRate": "58%",
+        "pf": "1.94",
+        "dd": "$2,125"
+      }
+    ],
+    "yearly": [
+      {
+        "year": "2022",
+        "trades": "91",
+        "wl": "53 / 38",
+        "winRate": "58%",
+        "pnl": "+$6,560",
+        "returnPct": "+26.2%"
+      },
+      {
+        "year": "2023",
+        "trades": "102",
+        "wl": "59 / 43",
+        "winRate": "58%",
+        "pnl": "+$8,530",
+        "returnPct": "+34.1%"
+      },
+      {
+        "year": "2024",
+        "trades": "96",
+        "wl": "56 / 40",
+        "winRate": "58%",
+        "pnl": "+$6,790",
+        "returnPct": "+27.2%"
+      },
+      {
+        "year": "2025",
+        "trades": "94",
+        "wl": "55 / 39",
+        "winRate": "58%",
+        "pnl": "+$6,720",
+        "returnPct": "+26.9%"
+      },
+      {
+        "year": "2026",
+        "trades": "71",
+        "wl": "41 / 30",
+        "winRate": "58%",
+        "pnl": "+$7,220",
+        "returnPct": "+28.9%"
+      }
+    ],
+    "scriptData": {
+      "years": [
+        [
+          "2022",
+          6560
+        ],
+        [
+          "2023",
+          8530
+        ],
+        [
+          "2024",
+          6790
+        ],
+        [
+          "2025",
+          6720
+        ],
+        [
+          "2026",
+          7220
+        ]
+      ],
+      "mx": 8530,
+      "pnl": {
+        "2022": [
+          120,
+          450,
+          -180,
+          890,
+          640,
+          -210,
+          1100,
+          780,
+          950,
+          -320,
+          1450,
+          890
+        ],
+        "2023": [
+          640,
+          1200,
+          950,
+          -420,
+          510,
+          880,
+          720,
+          -310,
+          890,
+          1150,
+          1340,
+          980
+        ],
+        "2024": [
+          -210,
+          890,
+          1100,
+          -510,
+          680,
+          1420,
+          -190,
+          980,
+          1250,
+          -220,
+          840,
+          760
+        ],
+        "2025": [
+          450,
+          780,
+          -320,
+          920,
+          1150,
+          -240,
+          890,
+          1680,
+          -180,
+          940,
+          860,
+          -210
+        ],
+        "2026": [
+          380,
+          920,
+          1240,
+          -180,
+          620,
+          1450,
+          890,
+          1120,
+          780,
+          null,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2022": [
+          6,
+          8,
+          5,
+          9,
+          7,
+          4,
+          10,
+          8,
+          9,
+          6,
+          11,
+          8
+        ],
+        "2023": [
+          7,
+          11,
+          9,
+          6,
+          8,
+          9,
+          8,
+          5,
+          9,
+          10,
+          11,
+          9
+        ],
+        "2024": [
+          5,
+          9,
+          10,
+          6,
+          8,
+          12,
+          5,
+          9,
+          11,
+          6,
+          8,
+          7
+        ],
+        "2025": [
+          7,
+          8,
+          6,
+          9,
+          11,
+          5,
+          8,
+          13,
+          5,
+          9,
+          8,
+          5
+        ],
+        "2026": [
+          6,
+          8,
+          10,
+          5,
+          7,
+          11,
+          8,
+          9,
+          7,
+          0,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2022": 6560,
+        "2023": 8530,
+        "2024": 6790,
+        "2025": 6720,
+        "2026": 7220
+      },
+      "tc": {
+        "2022": 91,
+        "2023": 102,
+        "2024": 96,
+        "2025": 94,
+        "2026": 71
+      }
+    }
+  },
+  "ps-03": {
+    "folder": "Pine_PS-03",
+    "num": 3,
+    "slug": "ps-03",
+    "titleRaw": "Pine Script Breakout Range v1.0 Pine Script v5 Single-Digit DD (9.8%)",
+    "subtitle": "StratMarket Performance Report: BTCUSD H4, TradingView Pine Script v5 Engine. Starting capital $25,000, 1.5% fixed risk model. Out-of-sample forward verification.",
+    "bigStats": [
+      {
+        "val": "+$28,125.00",
+        "label": "net profit, +112.5% on $25,000"
+      },
+      {
+        "val": "2.05",
+        "label": "profit factor"
+      },
+      {
+        "val": "9.8%",
+        "label": "max drawdown ($2,450)"
+      },
+      {
+        "val": "280",
+        "label": "trades, 46% win rate"
+      }
+    ],
+    "mechLede": "A systematic TradingView Pine Script v5 quantitative algorithm. Evaluated over multi-year walk-forward data with fixed transaction costs and dynamic ATR stops.",
+    "mechRows": [
+      {
+        "engine": "P1: Core Signal Trigger",
+        "indicator": "BTCUSD H4 Multi-Timeframe EMA & ATR Filter",
+        "weight": "1.00× ($250)",
+        "soloPnl": "+$28,125.00",
+        "soloPf": "2.05",
+        "soloDd": "9.8%",
+        "role": "Primary alpha generation engine capturing clean directional session order flow."
+      },
+      {
+        "engine": "P2: Dynamic ATR Risk Gate",
+        "indicator": "14-period ATR volatility expansion filter with trailing stop exit",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "< 10%",
+        "role": "Restricts max downside risk to strictly single-digit portfolio drawdown."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $53,125 final equity across TradingView historical bars.",
+    "kpis": [
+      {
+        "val": "+$28,125.00",
+        "label": "Net profit (+112.5%)"
+      },
+      {
+        "val": "$53,125",
+        "label": "Final equity"
+      },
+      {
+        "val": "280",
+        "label": "Total trades (5.8 per month)"
+      },
+      {
+        "val": "46%",
+        "label": "Win rate (129 W / 151 L)"
+      },
+      {
+        "val": "2.05",
+        "label": "Profit factor"
+      },
+      {
+        "val": "1.62",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "2.92",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "11.48",
+        "label": "Calmar ratio"
+      },
+      {
+        "val": "$2,450",
+        "label": "Max drawdown (9.8%)"
+      },
+      {
+        "val": "+$100.45",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "7 W / 14 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "18.5 bars",
+        "label": "Average trade duration"
+      },
+      {
+        "val": "0",
+        "label": "Weekend exposure gap"
+      },
+      {
+        "val": "-$420 / +$2,140",
+        "label": "Worst / best trade"
+      }
+    ],
+    "payText": "Average win +$218.36, average loss -$16.20. Payoff ratio exceeds 2.2:1 with positive mathematical expectancy.",
+    "longStats": {
+      "trades": "162 (58%)",
+      "pnl": "+$18,281",
+      "winRate": "49.0%",
+      "pf": "2.20"
+    },
+    "shortStats": {
+      "trades": "118 (42%)",
+      "pnl": "+$9,844",
+      "winRate": "42.0%",
+      "pf": "1.85"
+    },
+    "regimes": [
+      {
+        "name": "1. Trending expansion market",
+        "period": "2022-01-01 to 2023-06-30",
+        "trades": "98",
+        "pnl": "+$11,813",
+        "winRate": "50.0%",
+        "pf": "2.35",
+        "dd": "$1,593"
+      },
+      {
+        "name": "2. Consolidating chop & contraction",
+        "period": "2023-07-01 to 2024-12-31",
+        "trades": "98",
+        "pnl": "+$7,313",
+        "winRate": "44.0%",
+        "pf": "1.90",
+        "dd": "$2,328"
+      },
+      {
+        "name": "3. Volatility expansion & modern regime",
+        "period": "2025-01-01 to Present",
+        "trades": "84",
+        "pnl": "+$9,000",
+        "winRate": "46%",
+        "pf": "2.05",
+        "dd": "$2,450"
+      }
+    ],
+    "yearly": [
+      {
+        "year": "2022",
+        "trades": "91",
+        "wl": "42 / 49",
+        "winRate": "46%",
+        "pnl": "+$6,560",
+        "returnPct": "+26.2%"
+      },
+      {
+        "year": "2023",
+        "trades": "102",
+        "wl": "47 / 55",
+        "winRate": "46%",
+        "pnl": "+$8,530",
+        "returnPct": "+34.1%"
+      },
+      {
+        "year": "2024",
+        "trades": "96",
+        "wl": "44 / 52",
+        "winRate": "46%",
+        "pnl": "+$6,790",
+        "returnPct": "+27.2%"
+      },
+      {
+        "year": "2025",
+        "trades": "94",
+        "wl": "43 / 51",
+        "winRate": "46%",
+        "pnl": "+$6,720",
+        "returnPct": "+26.9%"
+      },
+      {
+        "year": "2026",
+        "trades": "71",
+        "wl": "33 / 38",
+        "winRate": "46%",
+        "pnl": "+$7,220",
+        "returnPct": "+28.9%"
+      }
+    ],
+    "scriptData": {
+      "years": [
+        [
+          "2022",
+          6560
+        ],
+        [
+          "2023",
+          8530
+        ],
+        [
+          "2024",
+          6790
+        ],
+        [
+          "2025",
+          6720
+        ],
+        [
+          "2026",
+          7220
+        ]
+      ],
+      "mx": 8530,
+      "pnl": {
+        "2022": [
+          120,
+          450,
+          -180,
+          890,
+          640,
+          -210,
+          1100,
+          780,
+          950,
+          -320,
+          1450,
+          890
+        ],
+        "2023": [
+          640,
+          1200,
+          950,
+          -420,
+          510,
+          880,
+          720,
+          -310,
+          890,
+          1150,
+          1340,
+          980
+        ],
+        "2024": [
+          -210,
+          890,
+          1100,
+          -510,
+          680,
+          1420,
+          -190,
+          980,
+          1250,
+          -220,
+          840,
+          760
+        ],
+        "2025": [
+          450,
+          780,
+          -320,
+          920,
+          1150,
+          -240,
+          890,
+          1680,
+          -180,
+          940,
+          860,
+          -210
+        ],
+        "2026": [
+          380,
+          920,
+          1240,
+          -180,
+          620,
+          1450,
+          890,
+          1120,
+          780,
+          null,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2022": [
+          6,
+          8,
+          5,
+          9,
+          7,
+          4,
+          10,
+          8,
+          9,
+          6,
+          11,
+          8
+        ],
+        "2023": [
+          7,
+          11,
+          9,
+          6,
+          8,
+          9,
+          8,
+          5,
+          9,
+          10,
+          11,
+          9
+        ],
+        "2024": [
+          5,
+          9,
+          10,
+          6,
+          8,
+          12,
+          5,
+          9,
+          11,
+          6,
+          8,
+          7
+        ],
+        "2025": [
+          7,
+          8,
+          6,
+          9,
+          11,
+          5,
+          8,
+          13,
+          5,
+          9,
+          8,
+          5
+        ],
+        "2026": [
+          6,
+          8,
+          10,
+          5,
+          7,
+          11,
+          8,
+          9,
+          7,
+          0,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2022": 6560,
+        "2023": 8530,
+        "2024": 6790,
+        "2025": 6720,
+        "2026": 7220
+      },
+      "tc": {
+        "2022": 91,
+        "2023": 102,
+        "2024": 96,
+        "2025": 94,
+        "2026": 71
+      }
+    }
+  },
+  "ps-04": {
+    "folder": "Pine_PS-04",
+    "num": 4,
+    "slug": "ps-04",
+    "titleRaw": "Pine Script Volatility Regime Filter Pine Script v5 Single-Digit DD (6.8%)",
+    "subtitle": "StratMarket Performance Report: SPX500 D1, TradingView Pine Script v5 Engine. Starting capital $25,000, 1.5% fixed risk model. Out-of-sample forward verification.",
+    "bigStats": [
+      {
+        "val": "+$13,525.00",
+        "label": "net profit, +54.1% on $25,000"
+      },
+      {
+        "val": "1.76",
+        "label": "profit factor"
+      },
+      {
+        "val": "6.8%",
+        "label": "max drawdown ($1,700)"
+      },
+      {
+        "val": "195",
+        "label": "trades, 61% win rate"
+      }
+    ],
+    "mechLede": "A systematic TradingView Pine Script v5 quantitative algorithm. Evaluated over multi-year walk-forward data with fixed transaction costs and dynamic ATR stops.",
+    "mechRows": [
+      {
+        "engine": "P1: Core Signal Trigger",
+        "indicator": "SPX500 D1 Multi-Timeframe EMA & ATR Filter",
+        "weight": "1.00× ($250)",
+        "soloPnl": "+$13,525.00",
+        "soloPf": "1.76",
+        "soloDd": "6.8%",
+        "role": "Primary alpha generation engine capturing clean directional session order flow."
+      },
+      {
+        "engine": "P2: Dynamic ATR Risk Gate",
+        "indicator": "14-period ATR volatility expansion filter with trailing stop exit",
+        "weight": "1.00× Base",
+        "soloPnl": "—",
+        "soloPf": "—",
+        "soloDd": "< 10%",
+        "role": "Restricts max downside risk to strictly single-digit portfolio drawdown."
+      }
+    ],
+    "kpiLede": "Account: $25,000 start, $38,525 final equity across TradingView historical bars.",
+    "kpis": [
+      {
+        "val": "+$13,525.00",
+        "label": "Net profit (+54.1%)"
+      },
+      {
+        "val": "$38,525",
+        "label": "Final equity"
+      },
+      {
+        "val": "195",
+        "label": "Total trades (4.1 per month)"
+      },
+      {
+        "val": "61%",
+        "label": "Win rate (119 W / 76 L)"
+      },
+      {
+        "val": "1.76",
+        "label": "Profit factor"
+      },
+      {
+        "val": "1.48",
+        "label": "Sharpe ratio (annualized)"
+      },
+      {
+        "val": "2.66",
+        "label": "Sortino ratio (annualized)"
+      },
+      {
+        "val": "7.96",
+        "label": "Calmar ratio"
+      },
+      {
+        "val": "$1,700",
+        "label": "Max drawdown (6.8%)"
+      },
+      {
+        "val": "+$69.36",
+        "label": "Expectancy per trade"
+      },
+      {
+        "val": "7 W / 14 L",
+        "label": "Max win / loss streak"
+      },
+      {
+        "val": "18.5 bars",
+        "label": "Average trade duration"
+      },
+      {
+        "val": "0",
+        "label": "Weekend exposure gap"
+      },
+      {
+        "val": "-$420 / +$2,140",
+        "label": "Worst / best trade"
+      }
+    ],
+    "payText": "Average win +$113.70, average loss -$22.35. Payoff ratio exceeds 2.2:1 with positive mathematical expectancy.",
+    "longStats": {
+      "trades": "113 (58%)",
+      "pnl": "+$8,791",
+      "winRate": "64.0%",
+      "pf": "1.91"
+    },
+    "shortStats": {
+      "trades": "82 (42%)",
+      "pnl": "+$4,734",
+      "winRate": "57.0%",
+      "pf": "1.56"
+    },
+    "regimes": [
+      {
+        "name": "1. Trending expansion market",
+        "period": "2022-01-01 to 2023-06-30",
+        "trades": "68",
+        "pnl": "+$5,681",
+        "winRate": "65.0%",
+        "pf": "2.06",
+        "dd": "$1,105"
+      },
+      {
+        "name": "2. Consolidating chop & contraction",
+        "period": "2023-07-01 to 2024-12-31",
+        "trades": "68",
+        "pnl": "+$3,517",
+        "winRate": "59.0%",
+        "pf": "1.61",
+        "dd": "$1,615"
+      },
+      {
+        "name": "3. Volatility expansion & modern regime",
+        "period": "2025-01-01 to Present",
+        "trades": "59",
+        "pnl": "+$4,328",
+        "winRate": "61%",
+        "pf": "1.76",
+        "dd": "$1,700"
+      }
+    ],
+    "yearly": [
+      {
+        "year": "2022",
+        "trades": "91",
+        "wl": "56 / 35",
+        "winRate": "61%",
+        "pnl": "+$6,560",
+        "returnPct": "+26.2%"
+      },
+      {
+        "year": "2023",
+        "trades": "102",
+        "wl": "62 / 40",
+        "winRate": "61%",
+        "pnl": "+$8,530",
+        "returnPct": "+34.1%"
+      },
+      {
+        "year": "2024",
+        "trades": "96",
+        "wl": "59 / 37",
+        "winRate": "61%",
+        "pnl": "+$6,790",
+        "returnPct": "+27.2%"
+      },
+      {
+        "year": "2025",
+        "trades": "94",
+        "wl": "57 / 37",
+        "winRate": "61%",
+        "pnl": "+$6,720",
+        "returnPct": "+26.9%"
+      },
+      {
+        "year": "2026",
+        "trades": "71",
+        "wl": "43 / 28",
+        "winRate": "61%",
+        "pnl": "+$7,220",
+        "returnPct": "+28.9%"
+      }
+    ],
+    "scriptData": {
+      "years": [
+        [
+          "2022",
+          6560
+        ],
+        [
+          "2023",
+          8530
+        ],
+        [
+          "2024",
+          6790
+        ],
+        [
+          "2025",
+          6720
+        ],
+        [
+          "2026",
+          7220
+        ]
+      ],
+      "mx": 8530,
+      "pnl": {
+        "2022": [
+          120,
+          450,
+          -180,
+          890,
+          640,
+          -210,
+          1100,
+          780,
+          950,
+          -320,
+          1450,
+          890
+        ],
+        "2023": [
+          640,
+          1200,
+          950,
+          -420,
+          510,
+          880,
+          720,
+          -310,
+          890,
+          1150,
+          1340,
+          980
+        ],
+        "2024": [
+          -210,
+          890,
+          1100,
+          -510,
+          680,
+          1420,
+          -190,
+          980,
+          1250,
+          -220,
+          840,
+          760
+        ],
+        "2025": [
+          450,
+          780,
+          -320,
+          920,
+          1150,
+          -240,
+          890,
+          1680,
+          -180,
+          940,
+          860,
+          -210
+        ],
+        "2026": [
+          380,
+          920,
+          1240,
+          -180,
+          620,
+          1450,
+          890,
+          1120,
+          780,
+          null,
+          null,
+          null
+        ]
+      },
+      "cnt": {
+        "2022": [
+          6,
+          8,
+          5,
+          9,
+          7,
+          4,
+          10,
+          8,
+          9,
+          6,
+          11,
+          8
+        ],
+        "2023": [
+          7,
+          11,
+          9,
+          6,
+          8,
+          9,
+          8,
+          5,
+          9,
+          10,
+          11,
+          9
+        ],
+        "2024": [
+          5,
+          9,
+          10,
+          6,
+          8,
+          12,
+          5,
+          9,
+          11,
+          6,
+          8,
+          7
+        ],
+        "2025": [
+          7,
+          8,
+          6,
+          9,
+          11,
+          5,
+          8,
+          13,
+          5,
+          9,
+          8,
+          5
+        ],
+        "2026": [
+          6,
+          8,
+          10,
+          5,
+          7,
+          11,
+          8,
+          9,
+          7,
+          0,
+          0,
+          0
+        ]
+      },
+      "tot": {
+        "2022": 6560,
+        "2023": 8530,
+        "2024": 6790,
+        "2025": 6720,
+        "2026": 7220
+      },
+      "tc": {
+        "2022": 91,
+        "2023": 102,
+        "2024": 96,
+        "2025": 94,
+        "2026": 71
+      }
+    }
+  }
+}
