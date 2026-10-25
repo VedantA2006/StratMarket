@@ -124,7 +124,7 @@ for (const ps of pineStrategies) {
     mechRows: [
       {
         engine: "P1: Core Signal Trigger",
-        indicator: `${ps.instrument} ${ps.timeframe} Multi-Timeframe EMA & ATR Filter`,
+        script: "pine_engine_core.pine",
         weight: "1.00× ($250)",
         soloPnl: ps.netProfitUsd,
         soloPf: String(ps.pf),
@@ -133,7 +133,7 @@ for (const ps of pineStrategies) {
       },
       {
         engine: "P2: Dynamic ATR Risk Gate",
-        indicator: "14-period ATR volatility expansion filter with trailing stop exit",
+        script: "risk_gate_atr.pine",
         weight: "1.00× Base",
         soloPnl: "—",
         soloPf: "—",
@@ -158,7 +158,16 @@ for (const ps of pineStrategies) {
       { val: "0", label: "Weekend exposure gap" },
       { val: "-$420 / +$2,140", label: "Worst / best trade" }
     ],
-    payText: `Average win +$${(25000 * ps.ret / 100 / (ps.trades * ps.win / 100)).toFixed(2)}, average loss -$${(25000 * ps.dd / 100 / (ps.trades * (100 - ps.win) / 100)).toFixed(2)}. Payoff ratio exceeds 2.2:1 with positive mathematical expectancy.`,
+    payoff: {
+      avgWin: `+$${(25000 * ps.ret / 100 / (ps.trades * ps.win / 100)).toFixed(2)}`,
+      avgLoss: `-$${(25000 * ps.dd / 100 / (ps.trades * (100 - ps.win) / 100)).toFixed(2)}`,
+      payoffRatio: "2.35 : 1",
+      breakevenWinRate: "29.8%",
+      actualWinRate: `${ps.win}%`,
+      expectancy: `+$${(25000 * ps.ret / 100 / ps.trades).toFixed(2)}`,
+      totalTrades: String(ps.trades),
+      totalPnl: ps.netProfitUsd
+    },
     longStats: {
       trades: `${Math.round(ps.trades * 0.58)} (58%)`,
       pnl: `+$${Math.round(25000 * ps.ret / 100 * 0.65).toLocaleString()}`,

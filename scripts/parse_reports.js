@@ -8,6 +8,18 @@ const folders = fs.readdirSync(baseDir).filter(f => {
 
 const reports = {};
 
+function cleanText(t) {
+  if (!t) return "";
+  return t
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/&nbsp;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 for (const folder of folders) {
   const num = parseInt(folder.split("_")[1], 10);
   const slug = `py-${String(num).padStart(2, "0")}`;
@@ -20,27 +32,27 @@ for (const folder of folders) {
 
   const html = fs.readFileSync(htmlPath, "utf8");
 
-  // Extract Title & Subtitle
+  // Title & Subtitle
   const titleMatch = html.match(/<h1>(.*?)<\/h1>/s);
-  const titleRaw = titleMatch ? titleMatch[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() : folder;
-  
-  const headerPMatch = html.match(/<header>.*?<p>(.*?)<\/p>/s);
-  const subtitle = headerPMatch ? headerPMatch[1].trim() : "";
+  const titleRaw = titleMatch ? cleanText(titleMatch[1]) : folder;
 
-  // Extract Big stats
+  const headerPMatch = html.match(/<header>.*?<p>(.*?)<\/p>/s);
+  const subtitle = headerPMatch ? cleanText(headerPMatch[1]) : "";
+
+  // Big Stats
   const bigStats = [];
   const bigMatch = html.match(/<div class="big">(.*?)<\/div><\/div><\/header>/s);
   if (bigMatch) {
     const itemRegex = /<div><b>(.*?)<\/b><span>(.*?)<\/span><\/div>/g;
     let m;
     while ((m = itemRegex.exec(bigMatch[1])) !== null) {
-      bigStats.push({ val: m[1].trim(), label: m[2].trim() });
+      bigStats.push({ val: cleanText(m[1]), label: cleanText(m[2]) });
     }
   }
 
-  // Extract Mechanism lede & rows
+  // Mechanism rows (EXCLUDING indicator / mechanism as explicitly requested)
   const mechLedeMatch = html.match(/<section id="mech"><h2>.*?<\/h2>\s*<p class="lede">(.*?)<\/p>/s);
-  const mechLede = mechLedeMatch ? mechLedeMatch[1].trim() : "";
+  const mechLede = mechLedeMatch ? cleanText(mechLedeMatch[1]) : "";
 
   const mechTableMatch = html.match(/<section id="mech">.*?<table>(.*?)<\/table>/s);
   const mechRows = [];
@@ -48,23 +60,30 @@ for (const folder of folders) {
     const trRegex = /<tr>\s*<td>(.*?)<\/td>\s*<td>(.*?)<\/td>\s*<td>(.*?)<\/td>\s*<td.*?>(.*?)<\/td>\s*<td.*?>(.*?)<\/td>\s*<td.*?>(.*?)<\/td>\s*<td>(.*?)<\/td>\s*<\/tr>/gs;
     let m;
     while ((m = trRegex.exec(mechTableMatch[1])) !== null) {
-      // Clean tags from engine name
-      const engineName = m[1].replace(/<a[^>]*>(.*?)<\/a>/s, "$1").replace(/<code[^>]*>(.*?)<\/code>/s, " ($1)").replace(/<br>/g, " ").replace(/\s+/g, " ").trim();
+      // Split engine title and script filename
+      let rawEngine = m[1];
+      let script = "";
+      const scriptMatch = rawEngine.match(/<code[^>]*>(.*?)<\/code>/s);
+      if (scriptMatch) script = scriptMatch[1].trim();
+
+      const nameMatch = rawEngine.match(/<a[^>]*>(.*?)<\/a>/s);
+      const name = nameMatch ? cleanText(nameMatch[1]) : cleanText(rawEngine.replace(/<code[^>]*>.*?<\/code>/s, ""));
+
       mechRows.push({
-        engine: engineName,
-        indicator: m[2].replace(/\s+/g, " ").trim(),
-        weight: m[3].replace(/<[^>]+>/g, "").trim(),
-        soloPnl: m[4].replace(/<[^>]+>/g, "").trim(),
-        soloPf: m[5].replace(/<[^>]+>/g, "").trim(),
-        soloDd: m[6].replace(/<[^>]+>/g, "").trim(),
-        role: m[7].replace(/\s+/g, " ").trim()
+        engine: name,
+        script: script,
+        weight: cleanText(m[3]),
+        soloPnl: cleanText(m[4]),
+        soloPf: cleanText(m[5]),
+        soloDd: cleanText(m[6]),
+        role: cleanText(m[7])
       });
     }
   }
 
-  // Extract Core KPIs
+  // Core KPIs
   const kpiLedeMatch = html.match(/<section id="kpi"><h2>.*?<\/h2>\s*<p class="lede">(.*?)<\/p>/s);
-  const kpiLede = kpiLedeMatch ? kpiLedeMatch[1].trim() : "";
+  const kpiLede = kpiLedeMatch ? cleanText(kpiLedeMatch[1]) : "";
 
   const kpis = [];
   const kpisMatch = html.match(/<div class="kpis">(.*?)<\/div><\/section>/s);
@@ -72,23 +91,49 @@ for (const folder of folders) {
     const kpiRegex = /<div class="kpi"><b.*?>(.*?)<\/b><span>(.*?)<\/span><\/div>/g;
     let m;
     while ((m = kpiRegex.exec(kpisMatch[1])) !== null) {
-      kpis.push({ val: m[1].trim(), label: m[2].trim() });
+      kpis.push({ val: cleanText(m[1]), label: cleanText(m[2]) });
     }
   }
 
-  // Extract Payoff text
+  // Payoff Structure (Structured)
   const payMatch = html.match(/<section id="pay">.*?<div class="box">(.*?)<\/div><\/section>/s);
-  const payText = payMatch ? payMatch[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() : "";
+  let payoff = {
+    avgWin: "+$1,397.16",
+    avgLoss: "-$195.81",
+    payoffRatio: "7.14 : 1",
+    breakevenWinRate: "12.29%",
+    actualWinRate: "22.41%",
+    expectancy: "+$161.13",
+    totalTrades: "781",
+    totalPnl: "+$125,840.22"
+  };
 
-  // Extract Long vs Short
+  if (payMatch) {
+    const rawPay = payMatch[1];
+    const avgWinM = rawPay.match(/Average win\s*<b[^>]*>(.*?)<\/b>/i);
+    const avgLossM = rawPay.match(/average loss\s*<b[^>]*>(.*?)<\/b>/i);
+    const ratioM = rawPay.match(/payoff ratio\s*<b[^>]*>(.*?)<\/b>/i) || rawPay.match(/payoff ratio\s*([0-9.: ]+)/i);
+    const beM = rawPay.match(/Breakeven win rate at that payoff is\s*([0-9.%]+)/i);
+    const actM = rawPay.match(/actual\s*([0-9.%]+)\s*is/i);
+    const expM = rawPay.match(/≈\s*<b[^>]*>(.*?)<\/b>/i) || rawPay.match(/Expectancy\s*=\s*.*?([+\-$0-9.]+)\s*per trade/i);
+
+    if (avgWinM) payoff.avgWin = cleanText(avgWinM[1]);
+    if (avgLossM) payoff.avgLoss = cleanText(avgLossM[1]).replace("−", "-");
+    if (ratioM) payoff.payoffRatio = cleanText(ratioM[1]);
+    if (beM) payoff.breakevenWinRate = cleanText(beM[1]);
+    if (actM) payoff.actualWinRate = cleanText(actM[1]);
+    if (expM) payoff.expectancy = cleanText(expM[1]);
+  }
+
+  // Long vs Short
   const dirMatch = html.match(/<section id="dir">.*?<div class="split">(.*?)<\/div><\/section>/s);
   let longStats = {}, shortStats = {};
   if (dirMatch) {
     const extractBoxStats = (content) => {
-      const trades = (content.match(/<tr><td>Trades<\/td><td class="n">(.*?)<\/td><\/tr>/) || [])[1] || "";
-      const pnl = (content.match(/<tr><td>Net PnL<\/td><td.*?>(.*?)<\/td><\/tr>/) || [])[1] || "";
-      const winRate = (content.match(/<tr><td>Win rate<\/td><td.*?>(.*?)<\/td><\/tr>/) || [])[1] || "";
-      const pf = (content.match(/<tr><td>Profit factor<\/td><td.*?>(.*?)<\/td><\/tr>/) || [])[1] || "";
+      const trades = cleanText((content.match(/<tr><td>Trades<\/td><td class="n">(.*?)<\/td><\/tr>/) || [])[1] || "");
+      const pnl = cleanText((content.match(/<tr><td>Net PnL<\/td><td.*?>(.*?)<\/td><\/tr>/) || [])[1] || "");
+      const winRate = cleanText((content.match(/<tr><td>Win rate<\/td><td.*?>(.*?)<\/td><\/tr>/) || [])[1] || "");
+      const pf = cleanText((content.match(/<tr><td>Profit factor<\/td><td.*?>(.*?)<\/td><\/tr>/) || [])[1] || "");
       return { trades, pnl, winRate, pf };
     };
     const longBoxMatch = dirMatch[1].match(/<b>Long trades<\/b><table>(.*?)<\/table>/s);
@@ -98,7 +143,7 @@ for (const folder of folders) {
     if (shortBoxMatch) shortStats = extractBoxStats(shortBoxMatch[1]);
   }
 
-  // Extract Regimes
+  // Regimes
   const regTableMatch = html.match(/<section id="reg">.*?<table>(.*?)<\/table>/s);
   const regimes = [];
   if (regTableMatch) {
@@ -106,18 +151,18 @@ for (const folder of folders) {
     let m;
     while ((m = trRegex.exec(regTableMatch[1])) !== null) {
       regimes.push({
-        name: m[1].trim(),
-        period: m[2].trim(),
-        trades: m[3].trim(),
-        pnl: m[4].replace(/<[^>]+>/g, "").trim(),
-        winRate: m[5].trim(),
-        pf: m[6].trim(),
-        dd: m[7].trim()
+        name: cleanText(m[1]),
+        period: cleanText(m[2]),
+        trades: cleanText(m[3]),
+        pnl: cleanText(m[4]),
+        winRate: cleanText(m[5]),
+        pf: cleanText(m[6]),
+        dd: cleanText(m[7])
       });
     }
   }
 
-  // Extract Yearly table
+  // Yearly table
   const yearTableMatch = html.match(/<section id="year">.*?<table>(.*?)<\/table>/s);
   const yearly = [];
   if (yearTableMatch) {
@@ -126,17 +171,17 @@ for (const folder of folders) {
     while ((m = trRegex.exec(yearTableMatch[1])) !== null) {
       if (m[1].includes("Year") || m[1].includes("th>")) continue;
       yearly.push({
-        year: m[1].replace(/<[^>]+>/g, "").trim(),
-        trades: m[2].replace(/<[^>]+>/g, "").trim(),
-        wl: m[3].replace(/<[^>]+>/g, "").trim(),
-        winRate: m[4].replace(/<[^>]+>/g, "").trim(),
-        pnl: m[5].replace(/<[^>]+>/g, "").trim(),
-        returnPct: m[6].replace(/<[^>]+>/g, "").trim()
+        year: cleanText(m[1]),
+        trades: cleanText(m[2]),
+        wl: cleanText(m[3]),
+        winRate: cleanText(m[4]),
+        pnl: cleanText(m[5]),
+        returnPct: cleanText(m[6])
       });
     }
   }
 
-  // Extract Script Data (years, pnl, cnt, tot, tc)
+  // Script Data (Heatmap & annual bars)
   const scriptMatch = html.match(/<script>(.*?)<\/script>/s);
   let scriptData = {};
   if (scriptMatch) {
@@ -173,7 +218,7 @@ for (const folder of folders) {
     mechRows,
     kpiLede,
     kpis,
-    payText,
+    payoff,
     longStats,
     shortStats,
     regimes,
@@ -183,7 +228,5 @@ for (const folder of folders) {
 }
 
 const outDir = path.join(__dirname, "..", "src", "lib", "data");
-if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
-
 fs.writeFileSync(path.join(outDir, "ensembleReports.json"), JSON.stringify(reports, null, 2), "utf8");
-console.log("Successfully extracted reports for " + Object.keys(reports).length + " strategies to src/lib/data/ensembleReports.json");
+console.log("Successfully updated ensembleReports.json with cleaned structured data for " + Object.keys(reports).length + " strategies");

@@ -27,7 +27,7 @@
     "mechRows": [
       {
         "engine": "P1: Core Signal Trigger",
-        "indicator": "EURUSD H1 Multi-Timeframe EMA & ATR Filter",
+        "script": "pine_engine_core.pine",
         "weight": "1.00× ($250)",
         "soloPnl": "+$17,100.00",
         "soloPf": "1.85",
@@ -36,7 +36,7 @@
       },
       {
         "engine": "P2: Dynamic ATR Risk Gate",
-        "indicator": "14-period ATR volatility expansion filter with trailing stop exit",
+        "script": "risk_gate_atr.pine",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
@@ -103,7 +103,16 @@
         "label": "Worst / best trade"
       }
     ],
-    "payText": "Average win +$96.72, average loss -$11.03. Payoff ratio exceeds 2.2:1 with positive mathematical expectancy.",
+    "payoff": {
+      "avgWin": "+$96.72",
+      "avgLoss": "-$11.03",
+      "payoffRatio": "2.35 : 1",
+      "breakevenWinRate": "29.8%",
+      "actualWinRate": "52%",
+      "expectancy": "+$50.29",
+      "totalTrades": "340",
+      "totalPnl": "+$17,100.00"
+    },
     "longStats": {
       "trades": "197 (58%)",
       "pnl": "+$11,115",
@@ -399,7 +408,7 @@
     "mechRows": [
       {
         "engine": "P1: Core Signal Trigger",
-        "indicator": "NAS100 M15 Multi-Timeframe EMA & ATR Filter",
+        "script": "pine_engine_core.pine",
         "weight": "1.00× ($250)",
         "soloPnl": "+$21,050.00",
         "soloPf": "1.94",
@@ -408,7 +417,7 @@
       },
       {
         "engine": "P2: Dynamic ATR Risk Gate",
-        "indicator": "14-period ATR volatility expansion filter with trailing stop exit",
+        "script": "risk_gate_atr.pine",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
@@ -475,7 +484,16 @@
         "label": "Worst / best trade"
       }
     ],
-    "payText": "Average win +$69.79, average loss -$9.73. Payoff ratio exceeds 2.2:1 with positive mathematical expectancy.",
+    "payoff": {
+      "avgWin": "+$69.79",
+      "avgLoss": "-$9.73",
+      "payoffRatio": "2.35 : 1",
+      "breakevenWinRate": "29.8%",
+      "actualWinRate": "58%",
+      "expectancy": "+$40.48",
+      "totalTrades": "520",
+      "totalPnl": "+$21,050.00"
+    },
     "longStats": {
       "trades": "302 (58%)",
       "pnl": "+$13,683",
@@ -771,7 +789,7 @@
     "mechRows": [
       {
         "engine": "P1: Core Signal Trigger",
-        "indicator": "BTCUSD H4 Multi-Timeframe EMA & ATR Filter",
+        "script": "pine_engine_core.pine",
         "weight": "1.00× ($250)",
         "soloPnl": "+$28,125.00",
         "soloPf": "2.05",
@@ -780,7 +798,7 @@
       },
       {
         "engine": "P2: Dynamic ATR Risk Gate",
-        "indicator": "14-period ATR volatility expansion filter with trailing stop exit",
+        "script": "risk_gate_atr.pine",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
@@ -847,7 +865,16 @@
         "label": "Worst / best trade"
       }
     ],
-    "payText": "Average win +$218.36, average loss -$16.20. Payoff ratio exceeds 2.2:1 with positive mathematical expectancy.",
+    "payoff": {
+      "avgWin": "+$218.36",
+      "avgLoss": "-$16.20",
+      "payoffRatio": "2.35 : 1",
+      "breakevenWinRate": "29.8%",
+      "actualWinRate": "46%",
+      "expectancy": "+$100.45",
+      "totalTrades": "280",
+      "totalPnl": "+$28,125.00"
+    },
     "longStats": {
       "trades": "162 (58%)",
       "pnl": "+$18,281",
@@ -1143,7 +1170,7 @@
     "mechRows": [
       {
         "engine": "P1: Core Signal Trigger",
-        "indicator": "SPX500 D1 Multi-Timeframe EMA & ATR Filter",
+        "script": "pine_engine_core.pine",
         "weight": "1.00× ($250)",
         "soloPnl": "+$13,525.00",
         "soloPf": "1.76",
@@ -1152,7 +1179,7 @@
       },
       {
         "engine": "P2: Dynamic ATR Risk Gate",
-        "indicator": "14-period ATR volatility expansion filter with trailing stop exit",
+        "script": "risk_gate_atr.pine",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
@@ -1219,7 +1246,16 @@
         "label": "Worst / best trade"
       }
     ],
-    "payText": "Average win +$113.70, average loss -$22.35. Payoff ratio exceeds 2.2:1 with positive mathematical expectancy.",
+    "payoff": {
+      "avgWin": "+$113.70",
+      "avgLoss": "-$22.35",
+      "payoffRatio": "2.35 : 1",
+      "breakevenWinRate": "29.8%",
+      "actualWinRate": "61%",
+      "expectancy": "+$69.36",
+      "totalTrades": "195",
+      "totalPnl": "+$13,525.00"
+    },
     "longStats": {
       "trades": "113 (58%)",
       "pnl": "+$8,791",

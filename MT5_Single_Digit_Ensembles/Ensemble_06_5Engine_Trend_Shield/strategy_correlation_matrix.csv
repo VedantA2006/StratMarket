@@ -1,0 +1,6 @@
+,E5_OFIRunner,E9_FlowCompress,E41_AsymmVol,E27_KeltnerCMF,E2_CorwinATR
+E5_OFIRunner,1.0,0.408,0.062,0.108,0.078
+E9_FlowCompress,0.408,1.0,0.327,0.475,-0.012
+E41_AsymmVol,0.062,0.327,1.0,0.642,0.178
+E27_KeltnerCMF,0.108,0.475,0.642,1.0,0.246
+E2_CorwinATR,0.078,-0.012,0.178,0.246,1.0

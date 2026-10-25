@@ -1,0 +1,7 @@
+,E5_OFIRunner,E9_FlowCompress,E41_AsymmVol,E35_FlowState,E3_AsiaBreakout,E2_CorwinATR
+E5_OFIRunner,1.0,0.408,0.062,0.035,0.715,0.078
+E9_FlowCompress,0.408,1.0,0.327,0.225,0.491,-0.012
+E41_AsymmVol,0.062,0.327,1.0,0.7,0.092,0.178
+E35_FlowState,0.035,0.225,0.7,1.0,-0.004,0.118
+E3_AsiaBreakout,0.715,0.491,0.092,-0.004,1.0,-0.04
+E2_CorwinATR,0.078,-0.012,0.178,0.118,-0.04,1.0

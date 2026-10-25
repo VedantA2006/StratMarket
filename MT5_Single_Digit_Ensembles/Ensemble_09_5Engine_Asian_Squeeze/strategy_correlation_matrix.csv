@@ -1,0 +1,6 @@
+,E5_OFIRunner,E9_FlowCompress,E41_AsymmVol,E71_MicroGate,E3_AsiaBreakout
+E5_OFIRunner,1.0,0.408,0.062,0.178,0.715
+E9_FlowCompress,0.408,1.0,0.327,-0.002,0.491
+E41_AsymmVol,0.062,0.327,1.0,0.089,0.092
+E71_MicroGate,0.178,-0.002,0.089,1.0,0.19
+E3_AsiaBreakout,0.715,0.491,0.092,0.19,1.0

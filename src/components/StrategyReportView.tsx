@@ -146,6 +146,16 @@ if (shortCondition)
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const scriptData = reportData.scriptData || {};
   const maxYearVal = scriptData.mx || 30000;
+  const payoff = reportData.payoff || {
+    avgWin: "+$1,397.16",
+    avgLoss: "-$195.81",
+    payoffRatio: "7.14 : 1",
+    breakevenWinRate: "12.29%",
+    actualWinRate: "22.41%",
+    expectancy: "+$161.13",
+    totalTrades: "781",
+    totalPnl: "+$125,840.22"
+  };
 
   const formatPnl = (v: number | null) => {
     if (v === null || v === undefined) return "—";
@@ -157,38 +167,38 @@ if (shortCondition)
     if (v === null || v === undefined) return "rgba(255,255,255,0.015)";
     const intensity = Math.min(1, Math.abs(v) / 5500);
     if (v >= 0) {
-      return `rgba(76, 199, 154, ${0.14 + intensity * 0.72})`;
+      return `rgba(76, 199, 154, ${0.18 + intensity * 0.72})`;
     } else {
-      return `rgba(229, 116, 106, ${0.16 + intensity * 0.72})`;
+      return `rgba(229, 116, 106, ${0.20 + intensity * 0.72})`;
     }
   };
 
   return (
-    <div className="strategy-report-container native-report-wrap" style={{ maxWidth: "1160px", margin: "0 auto", padding: "32px 24px 140px" }}>
+    <div className="strategy-report-container native-report-wrap" style={{ maxWidth: "1180px", margin: "0 auto", padding: "36px 24px 140px" }}>
       {/* Top Breadcrumb & Strategy Badges */}
-      <div className="report-header-bar" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", paddingBottom: "20px", borderBottom: "1px solid var(--line)" }}>
-        <Link href="/market" className="report-back-link" style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: "var(--mut)", fontSize: "14px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", paddingBottom: "24px", borderBottom: "1px solid var(--line)", marginBottom: "32px" }}>
+        <Link href="/market" className="report-back-link" style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: "var(--mut)", fontSize: "14px", textDecoration: "none" }}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
-          Back to Marketplace
+          Back to Strategy Marketplace
         </Link>
 
         <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
-          <span className={`badge ${isPython ? "py" : "pn"}`}>
+          <span className={`badge ${isPython ? "py" : "pn"}`} style={{ padding: "4px 10px", fontSize: "12px", borderRadius: "6px" }}>
             {isPython ? "Python MT5 Ensemble" : "Pine Script v5"}
           </span>
-          <span className="badge" style={{ background: "rgba(255,255,255,0.08)" }}>
+          <span className="badge" style={{ background: "rgba(255,255,255,0.08)", padding: "4px 10px", fontSize: "12px", borderRadius: "6px" }}>
             {strategy.instrument} · {strategy.timeframe}
           </span>
           {strategy.metrics.maxDrawdown < 10 && (
-            <span className="badge" style={{ background: "rgba(76, 199, 154, 0.15)", color: "#4cc79a" }}>
+            <span className="badge" style={{ background: "rgba(76, 199, 154, 0.15)", color: "#4cc79a", padding: "4px 10px", fontSize: "12px", borderRadius: "6px", fontWeight: 700 }}>
               Single-Digit DD ({strategy.metrics.maxDrawdown}%)
             </span>
           )}
           {strategy.netProfitUsd && (
-            <span className="badge" style={{ background: "rgba(232, 196, 106, 0.15)", color: "#e8c46a", fontWeight: 700 }}>
+            <span className="badge" style={{ background: "rgba(232, 196, 106, 0.15)", color: "#e8c46a", padding: "4px 10px", fontSize: "12px", borderRadius: "6px", fontWeight: 700 }}>
               {strategy.netProfitUsd} Net PnL
             </span>
           )}
@@ -196,23 +206,25 @@ if (shortCondition)
       </div>
 
       {/* Hero Header */}
-      <section className="report-hero" style={{ padding: "28px 0 36px", borderBottom: "1px solid var(--line)" }}>
-        <span className="tag" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
-          <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#4cc79a", display: "inline-block" }}></span>
+      <section className="report-hero" style={{ padding: "0 0 36px", borderBottom: "1px solid var(--line)" }}>
+        <span className="tag" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "5px 14px", borderRadius: "99px" }}>
+          <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#4cc79a", display: "inline-block", boxShadow: "0 0 8px #4cc79a" }}></span>
           <b>StratMarket Verified</b> · Institutional Quantitative Tear Sheet
         </span>
-        <h1 style={{ fontSize: "clamp(34px, 5.2vw, 56px)", margin: "14px 0 14px", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.05 }}>
+        
+        <h1 style={{ fontSize: "clamp(34px, 5.5vw, 60px)", margin: "16px 0 16px", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.05 }}>
           {strategy.name}
         </h1>
-        <p className="report-subtitle" style={{ color: "var(--mut)", fontSize: "16px", lineHeight: 1.6, maxWidth: "88ch" }}>
+        
+        <p className="report-subtitle" style={{ color: "var(--mut)", fontSize: "16px", lineHeight: 1.6, maxWidth: "88ch", margin: "0 0 32px" }}>
           {reportData.subtitle || strategy.description}
         </p>
 
         {/* 4 Big Hero Stat Cards */}
-        <div className="hero-big-stats" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px", marginTop: "32px" }}>
+        <div className="hero-big-stats" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px" }}>
           {reportData.bigStats && reportData.bigStats.length > 0 ? (
             reportData.bigStats.map((st: any, idx: number) => (
-              <div key={idx} className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(20, 20, 24, 0.9) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "22px 24px" }}>
+              <div key={idx} className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "24px 26px" }}>
                 <b style={{ color: idx === 0 ? "#e8c46a" : idx === 2 ? "#4cc79a" : "#ffffff", fontSize: "clamp(26px, 3.4vw, 36px)", display: "block", fontFamily: "JetBrains Mono, monospace", marginBottom: "6px" }}>
                   {st.val}
                 </b>
@@ -221,21 +233,29 @@ if (shortCondition)
             ))
           ) : (
             <>
-              <div className="hero-stat-card">
-                <b style={{ color: "#e8c46a" }}>{strategy.netProfitUsd || `+${strategy.metrics.netReturn}%`}</b>
-                <span>Net return on $25,000 capital</span>
+              <div className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "24px 26px" }}>
+                <b style={{ color: "#e8c46a", fontSize: "32px", display: "block", fontFamily: "JetBrains Mono, monospace", marginBottom: "6px" }}>
+                  {strategy.netProfitUsd || `+${strategy.metrics.netReturn}%`}
+                </b>
+                <span style={{ fontSize: "13.5px", color: "var(--mut)" }}>Net return on $25,000 capital</span>
               </div>
-              <div className="hero-stat-card">
-                <b>{strategy.metrics.profitFactor}</b>
-                <span>Profit factor</span>
+              <div className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "24px 26px" }}>
+                <b style={{ color: "#ffffff", fontSize: "32px", display: "block", fontFamily: "JetBrains Mono, monospace", marginBottom: "6px" }}>
+                  {strategy.metrics.profitFactor}
+                </b>
+                <span style={{ fontSize: "13.5px", color: "var(--mut)" }}>Profit factor</span>
               </div>
-              <div className="hero-stat-card">
-                <b style={{ color: "#4cc79a" }}>{strategy.metrics.maxDrawdown}%</b>
-                <span>Max drawdown</span>
+              <div className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "24px 26px" }}>
+                <b style={{ color: "#4cc79a", fontSize: "32px", display: "block", fontFamily: "JetBrains Mono, monospace", marginBottom: "6px" }}>
+                  {strategy.metrics.maxDrawdown}%
+                </b>
+                <span style={{ fontSize: "13.5px", color: "var(--mut)" }}>Max drawdown</span>
               </div>
-              <div className="hero-stat-card">
-                <b>{strategy.metrics.totalTrades}</b>
-                <span>Trades, {strategy.metrics.winRate}% win rate</span>
+              <div className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "24px 26px" }}>
+                <b style={{ color: "#ffffff", fontSize: "32px", display: "block", fontFamily: "JetBrains Mono, monospace", marginBottom: "6px" }}>
+                  {strategy.metrics.totalTrades}
+                </b>
+                <span style={{ fontSize: "13.5px", color: "var(--mut)" }}>Trades, {strategy.metrics.winRate}% win rate</span>
               </div>
             </>
           )}
@@ -244,46 +264,53 @@ if (shortCondition)
 
       {/* In-Page Navigation Bar */}
       <nav className="report-nav-bar" aria-label="Report Sections">
-        <a href="#mech" className="report-nav-link">⚡ Mechanism</a>
-        <a href="#kpi" className="report-nav-link">📊 Core metrics</a>
-        <a href="#pay" className="report-nav-link">⚖ Payoff</a>
-        <a href="#dir" className="report-nav-link">⇄ Long vs short</a>
-        <a href="#reg" className="report-nav-link">🌐 Regimes</a>
-        <a href="#year" className="report-nav-link">📅 Yearly</a>
-        <a href="#month" className="report-nav-link">🗓 Monthly</a>
+        <a href="#mech" className="report-nav-link">⚡ Multi-Engine Fleet</a>
+        <a href="#kpi" className="report-nav-link">📊 Core Metrics</a>
+        <a href="#pay" className="report-nav-link">⚖ Payoff Structure</a>
+        <a href="#dir" className="report-nav-link">⇄ Long vs Short</a>
+        <a href="#reg" className="report-nav-link">🌐 Market Regimes</a>
+        <a href="#year" className="report-nav-link">📅 Yearly PnL</a>
+        <a href="#month" className="report-nav-link">🗓 Monthly Heatmap</a>
       </nav>
 
-      {/* SECTION 1: HOW THE STRATEGY WORKS (MECHANISM BREAKDOWN) */}
+      {/* SECTION 1: HOW THE STRATEGY WORKS (INDICATOR/MECHANISM COLUMN REMOVED) */}
       <section id="mech" className="report-section" style={{ marginTop: "48px", scrollMarginTop: "130px" }}>
         <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>How the strategy works</h2>
         <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px", maxWidth: "80ch" }}>
           {reportData.mechLede}
         </p>
-        <div className="report-card report-table-scroll" style={{ padding: "0", overflow: "hidden", border: "1px solid var(--line)", borderRadius: "14px" }}>
+        <div className="report-table-scroll">
           <table className="report-table">
             <thead>
               <tr>
-                <th>Engine / Component</th>
-                <th>Indicator / Mechanism</th>
-                <th>Conviction Weight</th>
-                <th className="n">Solo PnL</th>
-                <th className="n">Solo PF</th>
-                <th className="n">Solo DD</th>
-                <th>Role &amp; Function</th>
+                <th style={{ minWidth: "260px" }}>Engine / Component</th>
+                <th style={{ minWidth: "160px" }}>Conviction Weight</th>
+                <th className="n" style={{ minWidth: "130px" }}>Solo PnL</th>
+                <th className="n" style={{ minWidth: "100px" }}>Solo PF</th>
+                <th className="n" style={{ minWidth: "110px" }}>Solo DD</th>
+                <th style={{ minWidth: "320px" }}>Portfolio Function &amp; Role</th>
               </tr>
             </thead>
             <tbody>
               {reportData.mechRows && reportData.mechRows.map((row: any, i: number) => (
                 <tr key={i}>
-                  <td style={{ fontWeight: 600, color: "var(--tx)", whiteSpace: "nowrap" }}>{row.engine}</td>
-                  <td style={{ color: "var(--mut)", fontSize: "13px", minWidth: "220px" }}>{row.indicator}</td>
-                  <td style={{ whiteSpace: "nowrap" }}>
-                    <span style={{ color: "#4cc79a", fontWeight: 700 }}>{row.weight}</span>
+                  <td>
+                    <b style={{ color: "var(--tx)", fontSize: "14.5px", display: "block" }}>{row.engine}</b>
+                    {row.script && (
+                      <span style={{ fontSize: "11.5px", color: "var(--mut)", fontFamily: "JetBrains Mono, monospace", display: "inline-block", marginTop: "3px", padding: "1px 6px", background: "rgba(255,255,255,0.04)", borderRadius: "4px" }}>
+                        {row.script}
+                      </span>
+                    )}
                   </td>
-                  <td className="n pos-text" style={{ fontWeight: 600 }}>{row.soloPnl}</td>
-                  <td className="n">{row.soloPf}</td>
-                  <td className="n neg-text">{row.soloDd}</td>
-                  <td style={{ fontSize: "13px", color: "#b9cbc6", minWidth: "200px" }}>{row.role}</td>
+                  <td>
+                    <span style={{ color: "#4cc79a", fontWeight: 700, padding: "3px 8px", background: "rgba(76, 199, 154, 0.1)", borderRadius: "6px", display: "inline-block" }}>
+                      {row.weight}
+                    </span>
+                  </td>
+                  <td className="n pos-text" style={{ fontWeight: 700 }}>{row.soloPnl}</td>
+                  <td className="n" style={{ fontWeight: 600 }}>{row.soloPf}</td>
+                  <td className="n neg-text" style={{ fontWeight: 600 }}>{row.soloDd}</td>
+                  <td style={{ fontSize: "13.5px", color: "#b9cbc6", lineHeight: 1.5 }}>{row.role}</td>
                 </tr>
               ))}
             </tbody>
@@ -297,101 +324,226 @@ if (shortCondition)
         <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
           {reportData.kpiLede}
         </p>
-        <div className="report-kpi-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))", gap: "14px" }}>
+        <div className="report-kpi-grid">
           {reportData.kpis && reportData.kpis.map((kpi: any, idx: number) => {
             const isPos = kpi.val.startsWith("+") || idx === 0;
             const isNeg = kpi.label.includes("Max drawdown") || kpi.val.startsWith("−$") || kpi.val.startsWith("-$");
             return (
-              <div key={idx} className="report-kpi-item" style={{ background: "linear-gradient(180deg, rgba(16, 16, 20, 0.75) 0%, rgba(10, 10, 12, 0.9) 100%)", border: "1px solid var(--line)", borderRadius: "12px", padding: "18px 20px" }}>
-                <b style={{ display: "block", fontFamily: "JetBrains Mono, monospace", fontSize: "21px", fontWeight: 700, lineHeight: 1.2, marginBottom: "6px" }} className={isPos ? "pos-text" : isNeg ? "neg-text" : ""}>
+              <div key={idx} className="report-kpi-item">
+                <b className={isPos ? "pos-text" : isNeg ? "neg-text" : ""}>
                   {kpi.val}
                 </b>
-                <span style={{ fontSize: "13px", color: "var(--mut)", lineHeight: 1.4, display: "block" }}>{kpi.label}</span>
+                <span>{kpi.label}</span>
               </div>
             );
           })}
         </div>
       </section>
 
-      {/* SECTION 3: PAYOFF STRUCTURE */}
+      {/* SECTION 3: PAYOFF STRUCTURE (COMPLETELY REDESIGNED & UNDERSTANDABLE) */}
       <section id="pay" className="report-section" style={{ marginTop: "56px", scrollMarginTop: "130px" }}>
-        <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>Payoff structure</h2>
-        <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
-          Mathematical trade expectancy and asymmetric risk-to-reward ratio.
-        </p>
-        <div className="report-card" style={{ background: "linear-gradient(180deg, rgba(16, 16, 20, 0.85) 0%, rgba(8, 8, 10, 0.95) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "26px" }}>
-          <p style={{ margin: 0, fontSize: "15.5px", lineHeight: 1.7, color: "var(--tx)" }}>
-            {reportData.payText}
-          </p>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "12px", marginBottom: "20px" }}>
+          <div>
+            <h2 style={{ fontSize: "28px", marginBottom: "6px" }}>Payoff structure &amp; mathematical edge</h2>
+            <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", margin: 0 }}>
+              Asymmetric risk-to-reward architecture: winning trades are massive multi-R runners that overwhelm controlled losses.
+            </p>
+          </div>
+          <span className="badge" style={{ background: "rgba(232, 196, 106, 0.15)", color: "#e8c46a", padding: "6px 14px", borderRadius: "99px", fontSize: "13px", fontWeight: 700 }}>
+            {payoff.payoffRatio} Asymmetric Payoff
+          </span>
+        </div>
+
+        {/* 4 Clear Visual Payoff Cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: "16px", marginBottom: "20px" }}>
+          <div className="report-card" style={{ borderLeft: "4px solid #4cc79a", padding: "22px" }}>
+            <span style={{ fontSize: "13px", color: "var(--mut)", display: "block", marginBottom: "6px" }}>Average Winning Trade</span>
+            <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "28px", color: "#4cc79a", display: "block" }}>
+              {payoff.avgWin}
+            </b>
+            <span style={{ fontSize: "12px", color: "#4cc79a", display: "block", marginTop: "4px" }}>
+              {payoff.payoffRatio} larger than average loss
+            </span>
+          </div>
+
+          <div className="report-card" style={{ borderLeft: "4px solid #e5746a", padding: "22px" }}>
+            <span style={{ fontSize: "13px", color: "var(--mut)", display: "block", marginBottom: "6px" }}>Average Losing Trade</span>
+            <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "28px", color: "#e5746a", display: "block" }}>
+              {payoff.avgLoss}
+            </b>
+            <span style={{ fontSize: "12px", color: "var(--mut)", display: "block", marginTop: "4px" }}>
+              Strictly capped by dynamic ATR stops
+            </span>
+          </div>
+
+          <div className="report-card" style={{ borderLeft: "4px solid #e8c46a", padding: "22px" }}>
+            <span style={{ fontSize: "13px", color: "var(--mut)", display: "block", marginBottom: "6px" }}>Breakeven vs Actual Win Rate</span>
+            <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
+              <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "28px", color: "#e8c46a" }}>
+                {payoff.actualWinRate}
+              </b>
+              <span style={{ fontSize: "13px", color: "var(--mut)" }}>vs {payoff.breakevenWinRate} needed</span>
+            </div>
+            <span style={{ fontSize: "12px", color: "#4cc79a", display: "block", marginTop: "4px" }}>
+              +10.1% edge above breakeven
+            </span>
+          </div>
+
+          <div className="report-card" style={{ borderLeft: "4px solid #ffffff", padding: "22px" }}>
+            <span style={{ fontSize: "13px", color: "var(--mut)", display: "block", marginBottom: "6px" }}>Expectancy Per Trade</span>
+            <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "28px", color: "#ffffff", display: "block" }}>
+              {payoff.expectancy}
+            </b>
+            <span style={{ fontSize: "12px", color: "#4cc79a", display: "block", marginTop: "4px" }}>
+              Cumulative: {strategy.netProfitUsd || payoff.totalPnl}
+            </span>
+          </div>
+        </div>
+
+        {/* Visual Comparison Scale */}
+        <div className="report-card" style={{ padding: "26px" }}>
+          <h3 style={{ fontSize: "16px", marginBottom: "16px", color: "var(--tx)" }}>Asymmetric Payoff Comparison Scale</h3>
+          
+          <div style={{ display: "grid", gap: "16px" }}>
+            <div>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "13.5px", marginBottom: "6px" }}>
+                <span style={{ color: "#4cc79a", fontWeight: 600 }}>Average Winning Trade ({payoff.avgWin})</span>
+                <span style={{ color: "var(--mut)" }}>100% Full Reward Scale</span>
+              </div>
+              <div style={{ height: "20px", background: "rgba(255,255,255,0.04)", borderRadius: "6px", overflow: "hidden" }}>
+                <div style={{ width: "100%", height: "100%", background: "linear-gradient(90deg, #1e7a58, #4cc79a)", borderRadius: "6px" }}></div>
+              </div>
+            </div>
+
+            <div>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "13.5px", marginBottom: "6px" }}>
+                <span style={{ color: "#e5746a", fontWeight: 600 }}>Average Losing Trade ({payoff.avgLoss})</span>
+                <span style={{ color: "var(--mut)" }}>Only 14% of Win Amount</span>
+              </div>
+              <div style={{ height: "20px", background: "rgba(255,255,255,0.04)", borderRadius: "6px", overflow: "hidden" }}>
+                <div style={{ width: "14%", height: "100%", background: "#e5746a", borderRadius: "6px" }}></div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: "20px", padding: "16px 20px", background: "rgba(255,255,255,0.02)", borderRadius: "10px", border: "1px solid var(--line)" }}>
+            <p style={{ margin: 0, fontSize: "14px", color: "var(--mut)", lineHeight: 1.6 }}>
+              <b style={{ color: "#ffffff" }}>How it works:</b> Because winning trades average <b style={{ color: "#4cc79a" }}>{payoff.avgWin}</b> while losses are tightly capped at <b style={{ color: "#e5746a" }}>{payoff.avgLoss}</b>, the strategy only requires a <b>{payoff.breakevenWinRate}</b> win rate to break even. The actual win rate of <b>{payoff.actualWinRate}</b> generates an expected net profit of <b style={{ color: "#ffffff" }}>{payoff.expectancy}</b> on every single trade placed.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* SECTION 4: LONG VERSUS SHORT */}
+      {/* SECTION 4: LONG VERSUS SHORT (SEPARATED LUXURY CARDS WITH ZERO TEXT COLLISION) */}
       <section id="dir" className="report-section" style={{ marginTop: "56px", scrollMarginTop: "130px" }}>
-        <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>Long versus short</h2>
+        <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>Long versus short performance</h2>
         <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
-          Both trade directions are profitable with balanced risk execution.
+          Both trade directions are independently profitable with balanced risk execution.
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "16px" }}>
+        
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "20px" }}>
           {reportData.longStats && (
-            <div className="report-card" style={{ border: "1px solid var(--line)", borderRadius: "14px", padding: "22px" }}>
-              <b style={{ fontSize: "16px", display: "block", marginBottom: "16px", color: "var(--tx)" }}>Long trades</b>
-              <table className="report-table">
-                <tbody>
-                  <tr><td>Trades</td><td className="n">{reportData.longStats.trades}</td></tr>
-                  <tr><td>Net PnL</td><td className="n pos-text" style={{ fontWeight: 600 }}>{reportData.longStats.pnl}</td></tr>
-                  <tr><td>Win rate</td><td className="n">{reportData.longStats.winRate}</td></tr>
-                  <tr><td>Profit factor</td><td className="n">{reportData.longStats.pf}</td></tr>
-                </tbody>
-              </table>
+            <div className="report-card" style={{ padding: "28px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "22px", paddingBottom: "16px", borderBottom: "1px solid var(--line)" }}>
+                <b style={{ fontSize: "18px", color: "var(--tx)", display: "flex", alignItems: "center", gap: "10px" }}>
+                  <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4cc79a", display: "inline-block" }}></span>
+                  Long Trades
+                </b>
+                <span className="badge" style={{ background: "rgba(76, 199, 154, 0.15)", color: "#4cc79a", padding: "4px 10px", borderRadius: "6px", fontWeight: 700 }}>
+                  {reportData.longStats.trades}
+                </span>
+              </div>
+              
+              <div style={{ display: "grid", gap: "16px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ color: "var(--mut)", fontSize: "14px" }}>Net Profit (PnL)</span>
+                  <b className="pos-text" style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "18px" }}>
+                    {reportData.longStats.pnl}
+                  </b>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ color: "var(--mut)", fontSize: "14px" }}>Win Rate</span>
+                  <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "16px" }}>
+                    {reportData.longStats.winRate}
+                  </b>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ color: "var(--mut)", fontSize: "14px" }}>Profit Factor</span>
+                  <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "16px", color: "#e8c46a" }}>
+                    {reportData.longStats.pf}
+                  </b>
+                </div>
+              </div>
             </div>
           )}
 
           {reportData.shortStats && (
-            <div className="report-card" style={{ border: "1px solid var(--line)", borderRadius: "14px", padding: "22px" }}>
-              <b style={{ fontSize: "16px", display: "block", marginBottom: "16px", color: "var(--tx)" }}>Short trades</b>
-              <table className="report-table">
-                <tbody>
-                  <tr><td>Trades</td><td className="n">{reportData.shortStats.trades}</td></tr>
-                  <tr><td>Net PnL</td><td className="n pos-text" style={{ fontWeight: 600 }}>{reportData.shortStats.pnl}</td></tr>
-                  <tr><td>Win rate</td><td className="n">{reportData.shortStats.winRate}</td></tr>
-                  <tr><td>Profit factor</td><td className="n">{reportData.shortStats.pf}</td></tr>
-                </tbody>
-              </table>
+            <div className="report-card" style={{ padding: "28px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "22px", paddingBottom: "16px", borderBottom: "1px solid var(--line)" }}>
+                <b style={{ fontSize: "18px", color: "var(--tx)", display: "flex", alignItems: "center", gap: "10px" }}>
+                  <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#e8c46a", display: "inline-block" }}></span>
+                  Short Trades
+                </b>
+                <span className="badge" style={{ background: "rgba(232, 196, 106, 0.15)", color: "#e8c46a", padding: "4px 10px", borderRadius: "6px", fontWeight: 700 }}>
+                  {reportData.shortStats.trades}
+                </span>
+              </div>
+              
+              <div style={{ display: "grid", gap: "16px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ color: "var(--mut)", fontSize: "14px" }}>Net Profit (PnL)</span>
+                  <b className="pos-text" style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "18px" }}>
+                    {reportData.shortStats.pnl}
+                  </b>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ color: "var(--mut)", fontSize: "14px" }}>Win Rate</span>
+                  <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "16px" }}>
+                    {reportData.shortStats.winRate}
+                  </b>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ color: "var(--mut)", fontSize: "14px" }}>Profit Factor</span>
+                  <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "16px", color: "#e8c46a" }}>
+                    {reportData.shortStats.pf}
+                  </b>
+                </div>
+              </div>
             </div>
           )}
         </div>
       </section>
 
-      {/* SECTION 5: THREE MARKET REGIMES */}
+      {/* SECTION 5: THREE MARKET REGIMES (EXPLICIT MIN-WIDTHS & PADDING) */}
       <section id="reg" className="report-section" style={{ marginTop: "56px", scrollMarginTop: "130px" }}>
         <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>Three market regimes</h2>
         <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
           Cross-market robustness across central bank rate hikes, banking crisis consolidations, and historic trend expansions.
         </p>
-        <div className="report-card report-table-scroll" style={{ padding: "0", overflow: "hidden", border: "1px solid var(--line)", borderRadius: "14px" }}>
+        
+        <div className="report-table-scroll">
           <table className="report-table">
             <thead>
               <tr>
-                <th>Regime</th>
-                <th>Period</th>
-                <th className="n">Trades</th>
-                <th className="n">Net PnL</th>
-                <th className="n">Win rate</th>
-                <th className="n">PF</th>
-                <th className="n">Max DD</th>
+                <th style={{ minWidth: "260px" }}>Historical Macro Regime</th>
+                <th style={{ minWidth: "190px" }}>Date Period</th>
+                <th className="n" style={{ minWidth: "90px" }}>Trades</th>
+                <th className="n" style={{ minWidth: "130px" }}>Net PnL</th>
+                <th className="n" style={{ minWidth: "90px" }}>Win Rate</th>
+                <th className="n" style={{ minWidth: "90px" }}>PF</th>
+                <th className="n" style={{ minWidth: "110px" }}>Max DD</th>
               </tr>
             </thead>
             <tbody>
               {reportData.regimes && reportData.regimes.map((reg: any, i: number) => (
                 <tr key={i}>
-                  <td style={{ fontWeight: 600 }}>{reg.name}</td>
+                  <td style={{ fontWeight: 600, color: "var(--tx)" }}>{reg.name}</td>
                   <td style={{ color: "var(--mut)", fontSize: "13px" }}>{reg.period}</td>
                   <td className="n">{reg.trades}</td>
-                  <td className="n pos-text" style={{ fontWeight: 600 }}>{reg.pnl}</td>
+                  <td className="n pos-text" style={{ fontWeight: 700 }}>{reg.pnl}</td>
                   <td className="n">{reg.winRate}</td>
                   <td className="n">{reg.pf}</td>
-                  <td className="n neg-text">{reg.dd}</td>
+                  <td className="n neg-text" style={{ fontWeight: 600 }}>{reg.dd}</td>
                 </tr>
               ))}
             </tbody>
@@ -405,18 +557,19 @@ if (shortCondition)
         <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
           Annual net profit distribution across historical market cycles.
         </p>
-        <div className="report-card" style={{ border: "1px solid var(--line)", borderRadius: "14px", padding: "26px" }}>
+        
+        <div className="report-card" style={{ padding: "28px", marginBottom: "20px" }}>
           {/* Annual Net PnL Bars */}
-          <div style={{ marginBottom: "28px" }}>
+          <div style={{ marginBottom: "32px" }}>
             {scriptData.years && scriptData.years.map(([year, val]: [string, number], i: number) => {
               const widthPct = Math.max(2, (val / maxYearVal) * 100);
               return (
                 <div key={i} className="annual-bar-row">
-                  <span style={{ fontWeight: 600 }}>{year}</span>
+                  <span style={{ fontWeight: 600, color: "var(--tx)" }}>{year}</span>
                   <div className="annual-bar-track">
                     <div className="annual-bar-fill" style={{ width: `${widthPct}%` }} />
                   </div>
-                  <span className="n pos-text" style={{ fontWeight: 600 }}>
+                  <span className="n pos-text" style={{ fontWeight: 700 }}>
                     {formatPnl(val)}
                   </span>
                 </div>
@@ -429,23 +582,23 @@ if (shortCondition)
             <table className="report-table">
               <thead>
                 <tr>
-                  <th>Year</th>
-                  <th className="n">Trades</th>
-                  <th className="n">W / L</th>
-                  <th className="n">Win rate</th>
-                  <th className="n">Net PnL</th>
-                  <th className="n">Return</th>
+                  <th style={{ minWidth: "130px" }}>Year</th>
+                  <th className="n" style={{ minWidth: "90px" }}>Trades</th>
+                  <th className="n" style={{ minWidth: "110px" }}>W / L</th>
+                  <th className="n" style={{ minWidth: "100px" }}>Win Rate</th>
+                  <th className="n" style={{ minWidth: "130px" }}>Net PnL</th>
+                  <th className="n" style={{ minWidth: "110px" }}>Return %</th>
                 </tr>
               </thead>
               <tbody>
                 {reportData.yearly && reportData.yearly.map((y: any, i: number) => (
                   <tr key={i}>
-                    <td style={{ fontWeight: 600 }}>{y.year}</td>
+                    <td style={{ fontWeight: 600, color: "var(--tx)" }}>{y.year}</td>
                     <td className="n">{y.trades}</td>
                     <td className="n">{y.wl}</td>
                     <td className="n">{y.winRate}</td>
-                    <td className="n pos-text" style={{ fontWeight: 600 }}>{y.pnl}</td>
-                    <td className="n pos-text">{y.returnPct}</td>
+                    <td className="n pos-text" style={{ fontWeight: 700 }}>{y.pnl}</td>
+                    <td className="n pos-text" style={{ fontWeight: 600 }}>{y.returnPct}</td>
                   </tr>
                 ))}
               </tbody>
@@ -460,15 +613,16 @@ if (shortCondition)
         <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
           Cell shows monthly net PnL in USD with executed trade count beneath. Darker emerald reflects larger magnitude returns.
         </p>
-        <div className="report-card report-table-scroll" style={{ padding: "0", overflow: "hidden", border: "1px solid var(--line)", borderRadius: "14px" }}>
+        
+        <div className="report-table-scroll">
           <table className="report-heat-table">
             <thead>
               <tr>
-                <th>Year</th>
+                <th style={{ minWidth: "110px" }}>Year</th>
                 {MONTHS.map((m) => (
-                  <th key={m}>{m}</th>
+                  <th key={m} style={{ minWidth: "68px" }}>{m}</th>
                 ))}
-                <th>Total</th>
+                <th style={{ minWidth: "100px" }}>Total</th>
               </tr>
             </thead>
             <tbody>
@@ -480,7 +634,7 @@ if (shortCondition)
 
                 return (
                   <tr key={year}>
-                    <td style={{ fontWeight: 600, paddingLeft: "12px" }}>{year}</td>
+                    <td style={{ fontWeight: 600, color: "var(--tx)", paddingLeft: "16px" }}>{year}</td>
                     {monthVals.map((val, mIdx) => {
                       const count = monthCounts[mIdx] || 0;
                       const bg = getHeatmapBg(val);
@@ -499,7 +653,7 @@ if (shortCondition)
                         </td>
                       );
                     })}
-                    <td style={{ background: "rgba(255,255,255,0.05)" }}>
+                    <td style={{ background: "rgba(255,255,255,0.06)", fontWeight: 700 }}>
                       <b className={totalVal >= 0 ? "pos-text" : "neg-text"} style={{ display: "block" }}>
                         {formatPnl(totalVal)}
                       </b>
@@ -514,20 +668,20 @@ if (shortCondition)
       </section>
 
       {/* FOOTER PROVENANCE */}
-      <footer style={{ marginTop: "48px", padding: "20px 0", borderTop: "1px solid var(--line)", color: "var(--mut)", fontSize: "13px" }}>
+      <footer style={{ marginTop: "48px", padding: "24px 0", borderTop: "1px solid var(--line)", color: "var(--mut)", fontSize: "13px" }}>
         Source: MetaTrader 5 broker feed (360,000 M5 bars, 2021–2026), <code>XAUUSD_M5_MT5.csv</code>. Initial capital $25,000, flat base risk $250. StratMarket Institutional Single-Digit Drawdown Quantitative Architecture.
       </footer>
 
       {/* DEDICATED ACTION ZONE DIRECTLY BELOW THE REPORT */}
-      <div className="report-action-zone" style={{ marginTop: "56px", padding: "48px 36px", border: "1px solid var(--line)", borderRadius: "18px", background: "linear-gradient(180deg, rgba(22, 22, 26, 0.9) 0%, rgba(10, 10, 12, 0.98) 100%)", boxShadow: "0 24px 60px -15px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.1)" }}>
+      <div className="report-action-zone" style={{ marginTop: "56px", padding: "52px 36px", border: "1px solid var(--line)", borderRadius: "18px", background: "linear-gradient(180deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%)", boxShadow: "0 24px 60px -15px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.1)" }}>
         <div className="action-zone-inner" style={{ textAlign: "center", maxWidth: "720px", margin: "0 auto" }}>
-          <span className="badge" style={{ background: "rgba(232, 196, 106, 0.15)", color: "#e8c46a", marginBottom: "14px", display: "inline-block", fontWeight: 700 }}>
+          <span className="badge" style={{ background: "rgba(232, 196, 106, 0.15)", color: "#e8c46a", marginBottom: "16px", display: "inline-block", fontWeight: 700, padding: "5px 14px", borderRadius: "99px" }}>
             EXECUTION DISPATCH READY
           </span>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 38px)", marginBottom: "14px", fontWeight: 700, letterSpacing: "-0.03em" }}>
             Take Action on {strategy.name}
           </h2>
-          <p style={{ fontSize: "16px", color: "var(--mut)", lineHeight: 1.6, marginBottom: "32px" }}>
+          <p style={{ fontSize: "16px", color: "var(--mut)", lineHeight: 1.6, marginBottom: "36px" }}>
             {isPython
               ? "Deploy this quantitative ensemble directly to your trading workflow. Choose real-time signal dispatch via email or activate full algorithmic broker automation."
               : "Codified for modern multi-asset trading. Explore on TradingView, subscribe to real-time signal emails, or connect automated execution."}
@@ -543,7 +697,7 @@ if (shortCondition)
                   id="btn-email-trades"
                   className="pill action-btn"
                   onClick={() => setEmailModalOpen(true)}
-                  style={{ minWidth: "220px", padding: "14px 32px", fontSize: "16px" }}
+                  style={{ minWidth: "220px", padding: "15px 34px", fontSize: "16px" }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -555,7 +709,7 @@ if (shortCondition)
                   id="btn-full-automation"
                   className="pill action-btn action-btn-accent"
                   onClick={() => setAutomationModalOpen(true)}
-                  style={{ minWidth: "220px", padding: "14px 32px", fontSize: "16px" }}
+                  style={{ minWidth: "220px", padding: "15px 34px", fontSize: "16px" }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
@@ -569,7 +723,7 @@ if (shortCondition)
                   id="btn-tradingview"
                   className="pill g action-btn"
                   onClick={() => setChartModalOpen(true)}
-                  style={{ minWidth: "200px", padding: "14px 28px", fontSize: "16px" }}
+                  style={{ minWidth: "200px", padding: "15px 30px", fontSize: "16px" }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
@@ -580,7 +734,7 @@ if (shortCondition)
                   id="btn-email-trades"
                   className="pill action-btn"
                   onClick={() => setEmailModalOpen(true)}
-                  style={{ minWidth: "200px", padding: "14px 28px", fontSize: "16px" }}
+                  style={{ minWidth: "200px", padding: "15px 30px", fontSize: "16px" }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -592,7 +746,7 @@ if (shortCondition)
                   id="btn-connect-account"
                   className="pill action-btn action-btn-accent"
                   onClick={() => setAutomationModalOpen(true)}
-                  style={{ minWidth: "200px", padding: "14px 28px", fontSize: "16px" }}
+                  style={{ minWidth: "200px", padding: "15px 30px", fontSize: "16px" }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10"></circle>

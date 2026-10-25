@@ -26,8 +26,8 @@
     "mechLede": "An institutional multi-engine quantitative portfolio combining 6 orthogonal alpha engines. Sized with conviction-weighted risk allocations ($100 to $312.50 per trade) and calibrated on 360,000 real MetaTrader 5 broker bars.",
     "mechRows": [
       {
-        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
-        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "engine": "E5: OFI Momentum Runner",
+        "script": "rank_005_+$25,799_strat_15071e01.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$34,126.16",
         "soloPf": "2.93",
@@ -35,8 +35,8 @@
         "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
       },
       {
-        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
-        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "engine": "E9: Flow Compression & Trail",
+        "script": "rank_009_+$24,552_strat_0974f2e8.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$26,506.83",
         "soloPf": "2.36",
@@ -44,8 +44,8 @@
         "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
       },
       {
-        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
-        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "engine": "E41: Asymmetric Vol Expansion",
+        "script": "rank_041_+$14,982_strat_3ad60d13.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$15,983.55",
         "soloPf": "2.31",
@@ -53,8 +53,8 @@
         "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
       },
       {
-        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
-        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "engine": "E35: Flow State & Jerk Momentum",
+        "script": "rank_035_+$15,807_strat_58a4dae8.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$11,734.57",
         "soloPf": "1.79",
@@ -62,8 +62,8 @@
         "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
       },
       {
-        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
-        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "engine": "E3: Asian OFI Breakout",
+        "script": "rank_003_+$30,883_strat_0fa46b37.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$27,078.79",
         "soloPf": "1.71",
@@ -71,8 +71,8 @@
         "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
       },
       {
-        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
-        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "engine": "E2: Corwin-Schultz & Amihud Stress",
+        "script": "rank_002_+$37,669_strat_8d2ba493.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$26,092.75",
         "soloPf": "1.34",
@@ -80,12 +80,12 @@
         "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
       },
       {
-        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
-        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "engine": "Portfolio Sizing & Risk Gate",
+        "script": "",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
-        "soloDd": "&lt; 10%",
+        "soloDd": "< 10%",
         "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
       }
     ],
@@ -148,7 +148,16 @@
         "label": "Worst / best day"
       }
     ],
-    "payText": "Average win +$1,397.16 , average loss −$195.81 , payoff ratio 7.14 : 1 . Breakeven win rate at that payoff is 12.29%, and the actual 22.41% is +10.11 points above it. Expectancy = 0.2241 × $1,397.16 − 0.7759 × $195.81 = $313.06 − 151.94 ≈ +$161.13 per trade. × 781 trades = $125,840.22.",
+    "payoff": {
+      "avgWin": "+$1,397.16",
+      "avgLoss": "-$195.81",
+      "payoffRatio": "7.14 : 1",
+      "breakevenWinRate": "12.29%",
+      "actualWinRate": "22.41%",
+      "expectancy": "+$161.13",
+      "totalTrades": "781",
+      "totalPnl": "+$125,840.22"
+    },
     "longStats": {
       "trades": "496 (63.5%)",
       "pnl": "+$97,863.14",
@@ -436,8 +445,8 @@
     "mechLede": "High trade-frequency ensemble engineered for maximum market opportunity capture across 959 audited trades, combining momentum breakouts with high-conviction order flow imbalance filters.",
     "mechRows": [
       {
-        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
-        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "engine": "E5: OFI Momentum Runner",
+        "script": "rank_005_+$25,799_strat_15071e01.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$34,126.16",
         "soloPf": "2.93",
@@ -445,8 +454,8 @@
         "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
       },
       {
-        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
-        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "engine": "E9: Flow Compression & Trail",
+        "script": "rank_009_+$24,552_strat_0974f2e8.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$26,506.83",
         "soloPf": "2.36",
@@ -454,8 +463,8 @@
         "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
       },
       {
-        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
-        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "engine": "E35: Flow State & Jerk Momentum",
+        "script": "rank_035_+$15,807_strat_58a4dae8.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$11,734.57",
         "soloPf": "1.79",
@@ -463,8 +472,8 @@
         "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
       },
       {
-        "engine": "E24: Jerk & CMF Volume Surge (rank_024_+$18,539_strat_7531d775.py)",
-        "indicator": "Jerk(4) > 0.171 (3rd price derivative), CMF(25) > 0.084, Vol Sleep mult 0.775×, ER(12). Stop 1.358×ATR.",
+        "engine": "E24: Jerk & CMF Volume Surge",
+        "script": "rank_024_+$18,539_strat_7531d775.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$28,173.76",
         "soloPf": "2.12",
@@ -472,8 +481,8 @@
         "role": "Detects sudden acceleration shifts and institutional liquidity absorption before retail signals."
       },
       {
-        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
-        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "engine": "E3: Asian OFI Breakout",
+        "script": "rank_003_+$30,883_strat_0fa46b37.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$27,078.79",
         "soloPf": "1.71",
@@ -481,8 +490,8 @@
         "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
       },
       {
-        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
-        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "engine": "E2: Corwin-Schultz & Amihud Stress",
+        "script": "rank_002_+$37,669_strat_8d2ba493.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$26,092.75",
         "soloPf": "1.34",
@@ -490,8 +499,8 @@
         "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
       },
       {
-        "engine": "E10: High-Participation OFI (rank_010_+$23,074_strat_aff5b599.py)",
-        "indicator": "Asia(108), Energy (1.14–5.04), Vol MA 40, ADX > 20.65, ER > 0.337, OFI > 0.165. Trail 4.552×ATR.",
+        "engine": "E10: High-Participation OFI",
+        "script": "rank_010_+$23,074_strat_aff5b599.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$16,094.22",
         "soloPf": "1.53",
@@ -499,12 +508,12 @@
         "role": "Exploits high-participation institutional volume thrusts with low slippage sensitivity."
       },
       {
-        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
-        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "engine": "Portfolio Sizing & Risk Gate",
+        "script": "",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
-        "soloDd": "&lt; 10%",
+        "soloDd": "< 10%",
         "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
       }
     ],
@@ -567,7 +576,16 @@
         "label": "Worst / best day"
       }
     ],
-    "payText": "Average win +$1,221.49 , average loss −$166.38 , payoff ratio 7.34 : 1 . Breakeven win rate at that payoff is 11.99%, and the actual 21.27% is +9.28 points above it. Expectancy = 0.2127 × $1,221.49 − 0.7873 × $166.38 = $259.84 − 130.99 ≈ +$128.85 per trade. × 959 trades = $123,567.97.",
+    "payoff": {
+      "avgWin": "+$1,221.49",
+      "avgLoss": "-$166.38",
+      "payoffRatio": "7.34 : 1",
+      "breakevenWinRate": "11.99%",
+      "actualWinRate": "21.27%",
+      "expectancy": "+$128.85",
+      "totalTrades": "781",
+      "totalPnl": "+$125,840.22"
+    },
     "longStats": {
       "trades": "578 (60.3%)",
       "pnl": "+$103,010.41",
@@ -855,8 +873,8 @@
     "mechLede": "Diversified 7-engine fleet combining the highest Calmar ratio (10.48) with high-efficiency volume jerks and anti-consolidation filters for robust capital protection.",
     "mechRows": [
       {
-        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
-        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "engine": "E5: OFI Momentum Runner",
+        "script": "rank_005_+$25,799_strat_15071e01.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$34,126.16",
         "soloPf": "2.93",
@@ -864,8 +882,8 @@
         "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
       },
       {
-        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
-        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "engine": "E9: Flow Compression & Trail",
+        "script": "rank_009_+$24,552_strat_0974f2e8.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$26,506.83",
         "soloPf": "2.36",
@@ -873,8 +891,8 @@
         "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
       },
       {
-        "engine": "E27: Precision Jerk & Efficiency (rank_027_+$17,863_strat_b9a5598c.py)",
-        "indicator": "Jerk(8) > 0.130, CMF(24) > 0.050, ER(18), Vol Sleep mult 1.109×. Stop 1.468×ATR, Target 7.796×ATR.",
+        "engine": "E27: Precision Jerk & Efficiency",
+        "script": "rank_027_+$17,863_strat_b9a5598c.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$13,497.29",
         "soloPf": "2.31",
@@ -882,8 +900,8 @@
         "role": "High-accuracy stabilizer (46.8% solo win rate) preserving portfolio equity across choppy regimes."
       },
       {
-        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
-        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "engine": "E35: Flow State & Jerk Momentum",
+        "script": "rank_035_+$15,807_strat_58a4dae8.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$11,734.57",
         "soloPf": "1.79",
@@ -891,8 +909,8 @@
         "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
       },
       {
-        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
-        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "engine": "E3: Asian OFI Breakout",
+        "script": "rank_003_+$30,883_strat_0fa46b37.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$27,078.79",
         "soloPf": "1.71",
@@ -900,8 +918,8 @@
         "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
       },
       {
-        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
-        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "engine": "E2: Corwin-Schultz & Amihud Stress",
+        "script": "rank_002_+$37,669_strat_8d2ba493.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$26,092.75",
         "soloPf": "1.34",
@@ -909,8 +927,8 @@
         "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
       },
       {
-        "engine": "E10: High-Participation OFI (rank_010_+$23,074_strat_aff5b599.py)",
-        "indicator": "Asia(108), Energy (1.14–5.04), Vol MA 40, ADX > 20.65, ER > 0.337, OFI > 0.165. Trail 4.552×ATR.",
+        "engine": "E10: High-Participation OFI",
+        "script": "rank_010_+$23,074_strat_aff5b599.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$16,094.22",
         "soloPf": "1.53",
@@ -918,12 +936,12 @@
         "role": "Exploits high-participation institutional volume thrusts with low slippage sensitivity."
       },
       {
-        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
-        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "engine": "Portfolio Sizing & Risk Gate",
+        "script": "",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
-        "soloDd": "&lt; 10%",
+        "soloDd": "< 10%",
         "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
       }
     ],
@@ -986,7 +1004,16 @@
         "label": "Worst / best day"
       }
     ],
-    "payText": "Average win +$1,240.94 , average loss −$175.12 , payoff ratio 7.09 : 1 . Breakeven win rate at that payoff is 12.37%, and the actual 21.95% is +9.58 points above it. Expectancy = 0.2195 × $1,240.94 − 0.7805 × $175.12 = $272.40 − 136.68 ≈ +$135.72 per trade. × 902 trades = $122,421.44.",
+    "payoff": {
+      "avgWin": "+$1,240.94",
+      "avgLoss": "-$175.12",
+      "payoffRatio": "7.09 : 1",
+      "breakevenWinRate": "12.37%",
+      "actualWinRate": "21.95%",
+      "expectancy": "+$135.72",
+      "totalTrades": "781",
+      "totalPnl": "+$125,840.22"
+    },
     "longStats": {
       "trades": "551 (61.1%)",
       "pnl": "+$100,015.79",
@@ -1274,8 +1301,8 @@
     "mechLede": "Portfolio weighted inversely to individual engine drawdowns, placing overweight exposure (1.50x) on low-variance flow compression and asymmetric volatility expansion engines.",
     "mechRows": [
       {
-        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
-        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "engine": "E5: OFI Momentum Runner",
+        "script": "rank_005_+$25,799_strat_15071e01.py",
         "weight": "0.80× ($200.00)",
         "soloPnl": "+$34,126.16",
         "soloPf": "2.93",
@@ -1283,8 +1310,8 @@
         "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
       },
       {
-        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
-        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "engine": "E9: Flow Compression & Trail",
+        "script": "rank_009_+$24,552_strat_0974f2e8.py",
         "weight": "1.50× ($375.00)",
         "soloPnl": "+$26,506.83",
         "soloPf": "2.36",
@@ -1292,8 +1319,8 @@
         "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
       },
       {
-        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
-        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "engine": "E41: Asymmetric Vol Expansion",
+        "script": "rank_041_+$14,982_strat_3ad60d13.py",
         "weight": "1.50× ($375.00)",
         "soloPnl": "+$15,983.55",
         "soloPf": "2.31",
@@ -1301,8 +1328,8 @@
         "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
       },
       {
-        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
-        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "engine": "E35: Flow State & Jerk Momentum",
+        "script": "rank_035_+$15,807_strat_58a4dae8.py",
         "weight": "0.80× ($200.00)",
         "soloPnl": "+$11,734.57",
         "soloPf": "1.79",
@@ -1310,8 +1337,8 @@
         "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
       },
       {
-        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
-        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "engine": "E3: Asian OFI Breakout",
+        "script": "rank_003_+$30,883_strat_0fa46b37.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$27,078.79",
         "soloPf": "1.71",
@@ -1319,8 +1346,8 @@
         "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
       },
       {
-        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
-        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "engine": "E2: Corwin-Schultz & Amihud Stress",
+        "script": "rank_002_+$37,669_strat_8d2ba493.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$26,092.75",
         "soloPf": "1.34",
@@ -1328,12 +1355,12 @@
         "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
       },
       {
-        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
-        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "engine": "Portfolio Sizing & Risk Gate",
+        "script": "",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
-        "soloDd": "&lt; 10%",
+        "soloDd": "< 10%",
         "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
       }
     ],
@@ -1396,7 +1423,16 @@
         "label": "Worst / best day"
       }
     ],
-    "payText": "Average win +$1,377.46 , average loss −$196.97 , payoff ratio 6.99 : 1 . Breakeven win rate at that payoff is 12.51%, and the actual 22.41% is +9.90 points above it. Expectancy = 0.2241 × $1,377.46 − 0.7759 × $196.97 = $308.65 − 152.83 ≈ +$155.82 per trade. × 781 trades = $121,692.77.",
+    "payoff": {
+      "avgWin": "+$1,377.46",
+      "avgLoss": "-$196.97",
+      "payoffRatio": "6.99 : 1",
+      "breakevenWinRate": "12.51%",
+      "actualWinRate": "22.41%",
+      "expectancy": "+$155.82",
+      "totalTrades": "781",
+      "totalPnl": "+$125,840.22"
+    },
     "longStats": {
       "trades": "496 (63.5%)",
       "pnl": "+$91,867.27",
@@ -1684,8 +1720,8 @@
     "mechLede": "Concentrated 5-engine defensive powerhouse with a 2.28 profit factor, incorporating the Hurst mean-reversion switch to suppress drawdowns during ranging markets.",
     "mechRows": [
       {
-        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
-        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "engine": "E5: OFI Momentum Runner",
+        "script": "rank_005_+$25,799_strat_15071e01.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$34,126.16",
         "soloPf": "2.93",
@@ -1693,8 +1729,8 @@
         "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
       },
       {
-        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
-        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "engine": "E9: Flow Compression & Trail",
+        "script": "rank_009_+$24,552_strat_0974f2e8.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$26,506.83",
         "soloPf": "2.36",
@@ -1702,8 +1738,8 @@
         "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
       },
       {
-        "engine": "E16: Ultra Low-DD Breakout (rank_016_+$20,076_strat_9975171d.py)",
-        "indicator": "Asia(88), Energy (0.90–3.35), Vol mult 1.352×, ADX > 22.86, ER > 0.351. Tight Stop 0.869×ATR, Target 9.742×ATR.",
+        "engine": "E16: Ultra Low-DD Breakout",
+        "script": "rank_016_+$20,076_strat_9975171d.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$17,854.74",
         "soloPf": "2.09",
@@ -1711,8 +1747,8 @@
         "role": "Ultra-conservative entry gate yielding exceptionally low maximum drawdown (< 4.8%)."
       },
       {
-        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
-        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "engine": "E41: Asymmetric Vol Expansion",
+        "script": "rank_041_+$14,982_strat_3ad60d13.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$15,983.55",
         "soloPf": "2.31",
@@ -1720,8 +1756,8 @@
         "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
       },
       {
-        "engine": "E71: Hurst Anti-Persistent Switch (rank_071_+$9,169_strat_618b71e6.py)",
-        "indicator": "Hurst(49) < 0.488 (mean-reverting regime switch), Z-score > 1.458, CMF(26), VWRSI(13). Target 8.969×ATR.",
+        "engine": "E71: Hurst Anti-Persistent Switch",
+        "script": "rank_071_+$9,169_strat_618b71e6.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$11,359.66",
         "soloPf": "1.47",
@@ -1729,12 +1765,12 @@
         "role": "Counter-trend stabilizer providing positive returns when trend strategies encounter consolidation."
       },
       {
-        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
-        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "engine": "Portfolio Sizing & Risk Gate",
+        "script": "",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
-        "soloDd": "&lt; 10%",
+        "soloDd": "< 10%",
         "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
       }
     ],
@@ -1797,7 +1833,16 @@
         "label": "Worst / best day"
       }
     ],
-    "payText": "Average win +$1,664.25 , average loss −$297.78 , payoff ratio 5.59 : 1 . Breakeven win rate at that payoff is 15.18%, and the actual 28.97% is +13.79 points above it. Expectancy = 0.2897 × $1,664.25 − 0.7103 × $297.78 = $482.06 − 211.53 ≈ +$270.53 per trade. × 435 trades = $117,681.48.",
+    "payoff": {
+      "avgWin": "+$1,664.25",
+      "avgLoss": "-$297.78",
+      "payoffRatio": "5.59 : 1",
+      "breakevenWinRate": "15.18%",
+      "actualWinRate": "28.97%",
+      "expectancy": "+$270.53",
+      "totalTrades": "781",
+      "totalPnl": "+$125,840.22"
+    },
     "longStats": {
       "trades": "264 (60.7%)",
       "pnl": "+$86,318.74",
@@ -2085,8 +2130,8 @@
     "mechLede": "A streamlined 5-engine trend-focused architecture balancing London open breakouts, New York volatility momentum, and precision volume jerk confirmation.",
     "mechRows": [
       {
-        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
-        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "engine": "E5: OFI Momentum Runner",
+        "script": "rank_005_+$25,799_strat_15071e01.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$34,126.16",
         "soloPf": "2.93",
@@ -2094,8 +2139,8 @@
         "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
       },
       {
-        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
-        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "engine": "E9: Flow Compression & Trail",
+        "script": "rank_009_+$24,552_strat_0974f2e8.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$26,506.83",
         "soloPf": "2.36",
@@ -2103,8 +2148,8 @@
         "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
       },
       {
-        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
-        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "engine": "E41: Asymmetric Vol Expansion",
+        "script": "rank_041_+$14,982_strat_3ad60d13.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$15,983.55",
         "soloPf": "2.31",
@@ -2112,8 +2157,8 @@
         "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
       },
       {
-        "engine": "E27: Precision Jerk & Efficiency (rank_027_+$17,863_strat_b9a5598c.py)",
-        "indicator": "Jerk(8) > 0.130, CMF(24) > 0.050, ER(18), Vol Sleep mult 1.109×. Stop 1.468×ATR, Target 7.796×ATR.",
+        "engine": "E27: Precision Jerk & Efficiency",
+        "script": "rank_027_+$17,863_strat_b9a5598c.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$13,497.29",
         "soloPf": "2.31",
@@ -2121,8 +2166,8 @@
         "role": "High-accuracy stabilizer (46.8% solo win rate) preserving portfolio equity across choppy regimes."
       },
       {
-        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
-        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "engine": "E2: Corwin-Schultz & Amihud Stress",
+        "script": "rank_002_+$37,669_strat_8d2ba493.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$26,092.75",
         "soloPf": "1.34",
@@ -2130,12 +2175,12 @@
         "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
       },
       {
-        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
-        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "engine": "Portfolio Sizing & Risk Gate",
+        "script": "",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
-        "soloDd": "&lt; 10%",
+        "soloDd": "< 10%",
         "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
       }
     ],
@@ -2198,7 +2243,16 @@
         "label": "Worst / best day"
       }
     ],
-    "payText": "Average win +$1,534.81 , average loss −$216.15 , payoff ratio 7.10 : 1 . Breakeven win rate at that payoff is 12.34%, and the actual 23.34% is +11.00 points above it. Expectancy = 0.2334 × $1,534.81 − 0.7666 × $216.15 = $358.29 − 165.69 ≈ +$192.60 per trade. × 604 trades = $116,330.74.",
+    "payoff": {
+      "avgWin": "+$1,534.81",
+      "avgLoss": "-$216.15",
+      "payoffRatio": "7.10 : 1",
+      "breakevenWinRate": "12.34%",
+      "actualWinRate": "23.34%",
+      "expectancy": "+$192.60",
+      "totalTrades": "781",
+      "totalPnl": "+$125,840.22"
+    },
     "longStats": {
       "trades": "415 (68.7%)",
       "pnl": "+$86,640.22",
@@ -2486,8 +2540,8 @@
     "mechLede": "Robust multi-regime portfolio engineered to perform consistently across all macro environments, including rate hiking shocks, banking turmoil, and secular gold all-time-high trends.",
     "mechRows": [
       {
-        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
-        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "engine": "E5: OFI Momentum Runner",
+        "script": "rank_005_+$25,799_strat_15071e01.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$34,126.16",
         "soloPf": "2.93",
@@ -2495,8 +2549,8 @@
         "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
       },
       {
-        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
-        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "engine": "E9: Flow Compression & Trail",
+        "script": "rank_009_+$24,552_strat_0974f2e8.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$26,506.83",
         "soloPf": "2.36",
@@ -2504,8 +2558,8 @@
         "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
       },
       {
-        "engine": "E27: Precision Jerk & Efficiency (rank_027_+$17,863_strat_b9a5598c.py)",
-        "indicator": "Jerk(8) > 0.130, CMF(24) > 0.050, ER(18), Vol Sleep mult 1.109×. Stop 1.468×ATR, Target 7.796×ATR.",
+        "engine": "E27: Precision Jerk & Efficiency",
+        "script": "rank_027_+$17,863_strat_b9a5598c.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$13,497.29",
         "soloPf": "2.31",
@@ -2513,8 +2567,8 @@
         "role": "High-accuracy stabilizer (46.8% solo win rate) preserving portfolio equity across choppy regimes."
       },
       {
-        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
-        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "engine": "E35: Flow State & Jerk Momentum",
+        "script": "rank_035_+$15,807_strat_58a4dae8.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$11,734.57",
         "soloPf": "1.79",
@@ -2522,8 +2576,8 @@
         "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
       },
       {
-        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
-        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "engine": "E3: Asian OFI Breakout",
+        "script": "rank_003_+$30,883_strat_0fa46b37.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$27,078.79",
         "soloPf": "1.71",
@@ -2531,8 +2585,8 @@
         "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
       },
       {
-        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
-        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "engine": "E2: Corwin-Schultz & Amihud Stress",
+        "script": "rank_002_+$37,669_strat_8d2ba493.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$26,092.75",
         "soloPf": "1.34",
@@ -2540,12 +2594,12 @@
         "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
       },
       {
-        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
-        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "engine": "Portfolio Sizing & Risk Gate",
+        "script": "",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
-        "soloDd": "&lt; 10%",
+        "soloDd": "< 10%",
         "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
       }
     ],
@@ -2608,7 +2662,16 @@
         "label": "Worst / best day"
       }
     ],
-    "payText": "Average win +$1,335.95 , average loss −$185.83 , payoff ratio 7.19 : 1 . Breakeven win rate at that payoff is 12.21%, and the actual 22.14% is +9.92 points above it. Expectancy = 0.2214 × $1,335.95 − 0.7786 × $185.83 = $295.72 − 144.70 ≈ +$151.02 per trade. × 768 trades = $115,983.75.",
+    "payoff": {
+      "avgWin": "+$1,335.95",
+      "avgLoss": "-$185.83",
+      "payoffRatio": "7.19 : 1",
+      "breakevenWinRate": "12.21%",
+      "actualWinRate": "22.14%",
+      "expectancy": "+$151.02",
+      "totalTrades": "781",
+      "totalPnl": "+$125,840.22"
+    },
     "longStats": {
       "trades": "490 (63.8%)",
       "pnl": "+$90,820.26",
@@ -2896,8 +2959,8 @@
     "mechLede": "The highest Sharpe ratio ensemble in the vault (1.89 annualized Sharpe), designed for prop-firm and institutional mandates requiring smooth, low-variance equity growth.",
     "mechRows": [
       {
-        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
-        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "engine": "E5: OFI Momentum Runner",
+        "script": "rank_005_+$25,799_strat_15071e01.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$34,126.16",
         "soloPf": "2.93",
@@ -2905,8 +2968,8 @@
         "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
       },
       {
-        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
-        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "engine": "E9: Flow Compression & Trail",
+        "script": "rank_009_+$24,552_strat_0974f2e8.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$26,506.83",
         "soloPf": "2.36",
@@ -2914,8 +2977,8 @@
         "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
       },
       {
-        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
-        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "engine": "E41: Asymmetric Vol Expansion",
+        "script": "rank_041_+$14,982_strat_3ad60d13.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$15,983.55",
         "soloPf": "2.31",
@@ -2923,8 +2986,8 @@
         "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
       },
       {
-        "engine": "E71: Hurst Anti-Persistent Switch (rank_071_+$9,169_strat_618b71e6.py)",
-        "indicator": "Hurst(49) < 0.488 (mean-reverting regime switch), Z-score > 1.458, CMF(26), VWRSI(13). Target 8.969×ATR.",
+        "engine": "E71: Hurst Anti-Persistent Switch",
+        "script": "rank_071_+$9,169_strat_618b71e6.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$11,359.66",
         "soloPf": "1.47",
@@ -2932,8 +2995,8 @@
         "role": "Counter-trend stabilizer providing positive returns when trend strategies encounter consolidation."
       },
       {
-        "engine": "E24: Jerk & CMF Volume Surge (rank_024_+$18,539_strat_7531d775.py)",
-        "indicator": "Jerk(4) > 0.171 (3rd price derivative), CMF(25) > 0.084, Vol Sleep mult 0.775×, ER(12). Stop 1.358×ATR.",
+        "engine": "E24: Jerk & CMF Volume Surge",
+        "script": "rank_024_+$18,539_strat_7531d775.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$28,173.76",
         "soloPf": "2.12",
@@ -2941,12 +3004,12 @@
         "role": "Detects sudden acceleration shifts and institutional liquidity absorption before retail signals."
       },
       {
-        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
-        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "engine": "Portfolio Sizing & Risk Gate",
+        "script": "",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
-        "soloDd": "&lt; 10%",
+        "soloDd": "< 10%",
         "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
       }
     ],
@@ -3009,7 +3072,16 @@
         "label": "Worst / best day"
       }
     ],
-    "payText": "Average win +$1,603.79 , average loss −$267.84 , payoff ratio 5.99 : 1 . Breakeven win rate at that payoff is 14.31%, and the actual 27.65% is +13.34 points above it. Expectancy = 0.2765 × $1,603.79 − 0.7235 × $267.84 = $443.38 − 193.79 ≈ +$249.59 per trade. × 463 trades = $115,559.92.",
+    "payoff": {
+      "avgWin": "+$1,603.79",
+      "avgLoss": "-$267.84",
+      "payoffRatio": "5.99 : 1",
+      "breakevenWinRate": "14.31%",
+      "actualWinRate": "27.65%",
+      "expectancy": "+$249.59",
+      "totalTrades": "781",
+      "totalPnl": "+$125,840.22"
+    },
     "longStats": {
       "trades": "276 (59.6%)",
       "pnl": "+$88,520.05",
@@ -3297,8 +3369,8 @@
     "mechLede": "Session-specialized fleet focusing on liquidity build-up during Asian hours, executing aggressive entries on Tokyo/London handoffs with dynamic trailing profit anchors.",
     "mechRows": [
       {
-        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
-        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "engine": "E5: OFI Momentum Runner",
+        "script": "rank_005_+$25,799_strat_15071e01.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$34,126.16",
         "soloPf": "2.93",
@@ -3306,8 +3378,8 @@
         "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
       },
       {
-        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
-        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "engine": "E9: Flow Compression & Trail",
+        "script": "rank_009_+$24,552_strat_0974f2e8.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$26,506.83",
         "soloPf": "2.36",
@@ -3315,8 +3387,8 @@
         "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
       },
       {
-        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
-        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "engine": "E41: Asymmetric Vol Expansion",
+        "script": "rank_041_+$14,982_strat_3ad60d13.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$15,983.55",
         "soloPf": "2.31",
@@ -3324,8 +3396,8 @@
         "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
       },
       {
-        "engine": "E71: Hurst Anti-Persistent Switch (rank_071_+$9,169_strat_618b71e6.py)",
-        "indicator": "Hurst(49) < 0.488 (mean-reverting regime switch), Z-score > 1.458, CMF(26), VWRSI(13). Target 8.969×ATR.",
+        "engine": "E71: Hurst Anti-Persistent Switch",
+        "script": "rank_071_+$9,169_strat_618b71e6.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$11,359.66",
         "soloPf": "1.47",
@@ -3333,8 +3405,8 @@
         "role": "Counter-trend stabilizer providing positive returns when trend strategies encounter consolidation."
       },
       {
-        "engine": "E3: Asian OFI Breakout (rank_003_+$30,883_strat_0fa46b37.py)",
-        "indicator": "Asia range (94 bars), Energy (1.35–5.20), ADX > 22.07, ER > 0.334, OFI > 0.142. Chandelier Trail 4.065×ATR.",
+        "engine": "E3: Asian OFI Breakout",
+        "script": "rank_003_+$30,883_strat_0fa46b37.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$27,078.79",
         "soloPf": "1.71",
@@ -3342,12 +3414,12 @@
         "role": "Captures high-energy structural breakouts following Asian consolidation with trailing defense."
       },
       {
-        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
-        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "engine": "Portfolio Sizing & Risk Gate",
+        "script": "",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
-        "soloDd": "&lt; 10%",
+        "soloDd": "< 10%",
         "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
       }
     ],
@@ -3410,7 +3482,16 @@
         "label": "Worst / best day"
       }
     ],
-    "payText": "Average win +$1,590.68 , average loss −$250.92 , payoff ratio 6.34 : 1 . Breakeven win rate at that payoff is 13.63%, and the actual 25.88% is +12.26 points above it. Expectancy = 0.2588 × $1,590.68 − 0.7412 × $250.92 = $411.71 − 185.98 ≈ +$225.73 per trade. × 510 trades = $115,121.94.",
+    "payoff": {
+      "avgWin": "+$1,590.68",
+      "avgLoss": "-$250.92",
+      "payoffRatio": "6.34 : 1",
+      "breakevenWinRate": "13.63%",
+      "actualWinRate": "25.88%",
+      "expectancy": "+$225.73",
+      "totalTrades": "781",
+      "totalPnl": "+$125,840.22"
+    },
     "longStats": {
       "trades": "287 (56.3%)",
       "pnl": "+$88,863.71",
@@ -3698,8 +3779,8 @@
     "mechLede": "Peak capital preservation fleet exhibiting the lowest absolute dollar drawdown ($5,882) across 5 full years of institutional broker trading.",
     "mechRows": [
       {
-        "engine": "E5: OFI Momentum Runner (rank_005_+$25,799_strat_15071e01.py)",
-        "indicator": "Asia(108), Energy (0.98–5.65), ADX > 18.71, ER > 0.352, OFI > 0.130. Stop 1.142×ATR, Target 19.259×ATR.",
+        "engine": "E5: OFI Momentum Runner",
+        "script": "rank_005_+$25,799_strat_15071e01.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$34,126.16",
         "soloPf": "2.93",
@@ -3707,8 +3788,8 @@
         "role": "Core alpha generator with ~17:1 reward-to-risk ratio capturing multi-day trending expansions."
       },
       {
-        "engine": "E9: Flow Compression & Trail (rank_009_+$24,552_strat_0974f2e8.py)",
-        "indicator": "Asia(86), Compression Energy (1.24–5.58), ADX > 20.58, ER > 0.343, OFI > 0.117. Trail 4.193×ATR.",
+        "engine": "E9: Flow Compression & Trail",
+        "script": "rank_009_+$24,552_strat_0974f2e8.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$26,506.83",
         "soloPf": "2.36",
@@ -3716,8 +3797,8 @@
         "role": "Locks in profits during parabolic surges while preventing large profit givebacks."
       },
       {
-        "engine": "E41: Asymmetric Vol Expansion (rank_041_+$14,982_strat_3ad60d13.py)",
-        "indicator": "Jerk(11) > 0.116, CMF(29) > 0.070, Vol sleep mult 1.049×, ER(9). Tight Stop 0.950×ATR, Target 7.413×ATR.",
+        "engine": "E41: Asymmetric Vol Expansion",
+        "script": "rank_041_+$14,982_strat_3ad60d13.py",
         "weight": "1.25× ($312.50)",
         "soloPnl": "+$15,983.55",
         "soloPf": "2.31",
@@ -3725,8 +3806,8 @@
         "role": "Captures volatility breakout explosions with tight stops, minimizing loss capital during chop."
       },
       {
-        "engine": "E35: Flow State & Jerk Momentum (rank_035_+$15,807_strat_58a4dae8.py)",
-        "indicator": "Jerk(8) > 0.112, CMF(27) > 0.052, Vol sleep 1.365×, Kaufman ER(13). Stop 1.522×ATR, Target 10.191×ATR.",
+        "engine": "E35: Flow State & Jerk Momentum",
+        "script": "rank_035_+$15,807_strat_58a4dae8.py",
         "weight": "0.75× ($187.50)",
         "soloPnl": "+$11,734.57",
         "soloPf": "1.79",
@@ -3734,8 +3815,8 @@
         "role": "Medium-frequency momentum engine balancing drawdown durations between London and NY sessions."
       },
       {
-        "engine": "E2: Corwin-Schultz & Amihud Stress (rank_002_+$37,669_strat_8d2ba493.py)",
-        "indicator": "Amihud(52) + Kyle's λ(48) stress > 1.25, VWPE(16) > 0.927, Mom(32). Stop 1.445×ATR, Target 20.25×ATR.",
+        "engine": "E2: Corwin-Schultz & Amihud Stress",
+        "script": "rank_002_+$37,669_strat_8d2ba493.py",
         "weight": "0.40× ($100.00)",
         "soloPnl": "+$26,092.75",
         "soloPf": "1.34",
@@ -3743,12 +3824,12 @@
         "role": "Detects quote widening and liquidity depletion prior to large institutional trend moves."
       },
       {
-        "engine": "<b>Portfolio Sizing & Risk Gate</b>",
-        "indicator": "Friday 20:00 UTC weekend embargo; flat base risk $250 dynamically scaled by engine conviction weights",
+        "engine": "Portfolio Sizing & Risk Gate",
+        "script": "",
         "weight": "1.00× Base",
         "soloPnl": "—",
         "soloPf": "—",
-        "soloDd": "&lt; 10%",
+        "soloDd": "< 10%",
         "role": "Eliminates weekend gap risk and maintains strict portfolio maximum drawdown within single digits."
       }
     ],
@@ -3811,7 +3892,16 @@
         "label": "Worst / best day"
       }
     ],
-    "payText": "Average win +$1,476.38 , average loss −$215.62 , payoff ratio 6.85 : 1 . Breakeven win rate at that payoff is 12.74%, and the actual 23.57% is +10.82 points above it. Expectancy = 0.2357 × $1,476.38 − 0.7643 × $215.62 = $347.94 − 164.80 ≈ +$183.13 per trade. × 628 trades = $115,008.70.",
+    "payoff": {
+      "avgWin": "+$1,476.38",
+      "avgLoss": "-$215.62",
+      "payoffRatio": "6.85 : 1",
+      "breakevenWinRate": "12.74%",
+      "actualWinRate": "23.57%",
+      "expectancy": "+$183.13",
+      "totalTrades": "781",
+      "totalPnl": "+$125,840.22"
+    },
     "longStats": {
       "trades": "429 (68.3%)",
       "pnl": "+$87,300.39",
