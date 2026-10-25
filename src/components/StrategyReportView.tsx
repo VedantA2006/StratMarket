@@ -123,23 +123,30 @@ export function StrategyReportView({ strategy }: Props) {
   };
 
   const pineScriptSample = `//@version=5
-strategy("${strategy.name}", overlay=true, initial_capital=25000, default_qty_type=strategy.percent_of_equity, default_qty_value=1.5)
+strategy("${strategy.name}", overlay=true, initial_capital=100000, default_qty_type=strategy.fixed, default_qty_value=1)
 
-// Elvaris Capital Risk & Signal Model
-atrPeriod = input.int(14, "ATR Period")
-fastMa = ta.ema(close, 21)
-slowMa = ta.ema(close, 55)
-atrVal = ta.atr(atrPeriod)
+// StratMarket Champion M15 Mean-Reversion Architecture
+// Instrument: ${strategy.instrument} | Timeframe: ${strategy.timeframe}
+bandPeriod = input.int(20, "Bollinger Envelope Length")
+bandDev    = input.float(2.5, "Standard Deviation Multiplier")
+emaGate    = ta.ema(close, 200)
+rsiVal     = ta.rsi(close, 14)
 
-longCondition = ta.crossover(fastMa, slowMa)
-if (longCondition)
-    strategy.entry("Long Entry", strategy.long)
-    strategy.exit("Exit Long", "Long Entry", stop=close - (atrVal * 1.5), limit=close + (atrVal * 4.0))
+[basis, upper, lower] = ta.bb(close, bandPeriod, bandDev)
+lowerWick = math.min(open, close) - low
+bodySize  = math.abs(close - open)
 
-shortCondition = ta.crossunder(fastMa, slowMa)
-if (shortCondition)
-    strategy.entry("Short Entry", strategy.short)
-    strategy.exit("Exit Short", "Short Entry", stop=close + (atrVal * 1.5), limit=close - (atrVal * 4.0))
+// Macro Trend Gate & Rejection Wick Entry
+longFilter  = close > (emaGate + 4.0) and rsiVal < 54 and (lowerWick >= 0.15 * bodySize)
+shortFilter = close < emaGate and rsiVal > 46
+
+if (ta.crossunder(close, lower) and longFilter)
+    strategy.entry("Long Reversal", strategy.long)
+    strategy.exit("Bracket Long", "Long Reversal", stop=close - 14.0, limit=close + 18.0)
+
+if (ta.crossover(close, upper) and shortFilter)
+    strategy.entry("Short Reversal", strategy.short)
+    strategy.exit("Bracket Short", "Short Reversal", stop=close + 14.0, limit=close - 18.0)
 `;
 
   // Heatmap months & helper

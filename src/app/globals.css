@@ -1104,16 +1104,21 @@ section h2 {
 .kp div {
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 10px;
+  padding: 10px 12px;
   font-size: 11px;
   color: var(--mut);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .kp b {
   display: block;
-  font-size: 20px;
+  font-size: clamp(16px, 1.8vw, 19px);
   color: var(--tx);
   letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ch {

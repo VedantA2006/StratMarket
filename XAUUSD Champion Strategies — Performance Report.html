@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>XAUUSD Champion Strategies — Performance Report</title>
+<style>
+:root{--bg:#f2f4f3;--panel:#fff;--ink:#16221f;--mute:#5d6b67;--line:#d9dfdc;--win:#1e7a58;--loss:#b2382d;--deep:#0f3b36;--gold:#a97b12;--warn:#fbf6e8;--warnr:#fbeeec;--th:#f8faf9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101716;--panel:#18211f;--ink:#e6eeec;--mute:#9db0aa;--line:#2b3835;--win:#4cc79a;--loss:#e5746a;--deep:#0b2a27;--warn:#2a2514;--warnr:#2c1a18;--th:#1d2826}}
+:root[data-theme="dark"]{--bg:#101716;--panel:#18211f;--ink:#e6eeec;--mute:#9db0aa;--line:#2b3835;--win:#4cc79a;--loss:#e5746a;--deep:#0b2a27;--warn:#2a2514;--warnr:#2c1a18;--th:#1d2826}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 50px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans","Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px 64px}
+header{background:var(--deep);color:#eef3f1;padding:48px 0 40px}header .wrap{padding-bottom:0}
+h1{font:600 clamp(24px,4.2vw,42px)/1.15 Georgia,serif;margin:0 0 10px;word-break:break-word}
+header p{margin:0;color:#b9cbc6;max-width:64ch}
+.big{display:flex;flex-wrap:wrap;gap:24px 44px;margin-top:28px;align-items:baseline}
+.big b{display:block;font:600 clamp(26px,4.5vw,40px)/1.1 Georgia,serif;color:#fff}.big div:first-child b{font-size:clamp(38px,7vw,68px);color:#e8c46a}
+.big span{font-size:14px;color:#b9cbc6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:11}
+nav .wrap{display:flex;gap:18px;overflow-x:auto;padding:10px 20px;white-space:nowrap;font-size:14px}
+nav a{color:var(--mute);text-decoration:none}nav a:hover{color:var(--ink);text-decoration:underline}
+section{margin-top:44px}h2{font:600 25px/1.25 Georgia,serif;margin:0 0 6px}h3{font:600 17px/1.3 Georgia,serif;margin:22px 0 8px}
+.lede{color:var(--mute);margin:0 0 16px;max-width:72ch}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px}.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--mute);font-size:13px;background:var(--th)}tr:last-child td{border-bottom:0}
+.n{text-align:right;font-variant-numeric:tabular-nums}.pos{color:var(--win)}.neg{color:var(--loss)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 15px}
+.kpi b{display:block;font:600 22px/1.2 Georgia,serif;font-variant-numeric:tabular-nums}.kpi span{font-size:13px;color:var(--mute)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:720px){.split{grid-template-columns:1fr}}
+.bar{display:grid;grid-template-columns:80px 1fr 80px;gap:10px;align-items:center;font-size:14px;margin-bottom:8px}
+.track{position:relative;height:22px;background:var(--th);border-radius:3px}.fill{position:absolute;top:0;bottom:0;border-radius:3px;background:var(--win)}
+.flag{border-left:4px solid var(--gold);background:var(--warn);padding:12px 16px;border-radius:0 6px 6px 0;margin-bottom:12px}
+.flag.r{border-color:var(--loss);background:var(--warnr)}.flag b{display:block;margin-bottom:2px}
+code{background:var(--th);padding:1px 5px;border-radius:3px;font-size:.9em}
+.sd{border-top:2px solid var(--deep);padding-top:6px}
+footer{margin-top:52px;font-size:13px;color:var(--mute);border-top:1px solid var(--line);padding-top:16px}
+@media print{nav{display:none}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>XAUUSD Champion Strategies — Performance Report</h1>
+<p>Backtest dossier for five Pine Script strategies on gold: four on M15 (2 Aug to 16 Oct 2026, 5,050 bars) and one on H1 (31 Dec 2024 to 16 Oct 2026, 10,612 bars). Starting account $100,000. Spread $0.20/oz, slippage $0.05/oz, risk 1.0% per trade.</p>
+<div class="big">
+<div><b>88.46%</b><span>highest win rate (Apex)</span></div>
+<div><b>9.31</b><span>highest profit factor (Apex)</span></div>
+<div><b>+$854</b><span>top net profit (1H Sovereign)</span></div>
+<div><b>5</b><span>strategies, 188 trades combined</span></div>
+</div></div></header>
+
+<nav><div class="wrap"><a href="#cmp">Comparison</a><a href="#s1">Grandmaster</a><a href="#s2">Apex</a><a href="#s3">1:2 R:R</a><a href="#s4">Elite</a><a href="#s5">1H Sovereign</a><a href="#read">Reading the results</a></div></nav>
+
+<div class="wrap">
+<section id="cmp"><h2>Side-by-side comparison</h2>
+<p class="lede">All five finished profitable with a win rate above 74%. Every figure is reproduced from the engine output.</p>
+<div class="box scroll"><table id="ct"></table></div></section>
+<div id="dos"></div>
+
+<section id="read"><h2>Reading the results</h2>
+<p class="lede">What the numbers support, and what to treat with caution. Added commentary, not part of the engine output.</p>
+<div class="flag r"><b>The test windows are very short.</b>The four M15 strategies cover about 11 weeks and 26 to 46 trades each. Eight or fewer losing trades per strategy cannot separate skill from a favourable stretch of gold. The 1H strategy has 58 trades over about 21 months, which is better but still thin.</div>
+<div class="flag r"><b>Several figures are internally inconsistent.</b>Profit factor is identical in every regime, month and long/short split of a given strategy (for example 6.11 everywhere for Grandmaster), which real trade lists almost never produce. The 1H Sovereign shows a max loss streak of 1 and $14 losers, yet a $149.19 max drawdown, which a closed-trade history cannot generate. It also reports 1 weekend hold while describing itself as flat over weekends. Check these against the raw trade list before trusting any metric.</div>
+<div class="flag r"><b>Robustness tests look too clean.</b>A 1-bar execution delay changes nothing in any strategy, spread sensitivity moves profit in perfectly straight lines, and every Monte Carlo run is profitable. Sharpe ratios of 5.8 to 10.7 are far above what live strategies deliver. These are signs the tests are not stressing the strategy, not signs of safety.</div>
+<div class="flag"><b>Results appear selected, not discovered.</b>Each is labelled "filtered from 40 candidates", and the names advertise win-rate targets (88.5%, 80%+, 74-75%). Strategy 3 even notes that October was "boosted" to +10R. Parameters like 2.35, 2.5 and offsets of $3, $4, $5 above EMA200 look tuned to this window. Selection from many candidates inflates the winner's result, and the claim of "zero overfitting" rests on an unspecified walk-forward split.</div>
+<div class="flag"><b>Position sizing does not match the stated 1% risk.</b>Net profit is only 0.33% to 0.85% on $100,000, and every winner or loser is exactly $14 to $20. That looks like 1 oz per trade rather than 1% risk. At true 1% risk Grandmaster's +40.9R would be roughly +41%, with larger drawdowns. Confirm the sizing before comparing returns.</div>
+<div class="flag"><b>Before relying on any of them.</b>Test on data the optimiser never saw (a different year of gold), re-run with realistic broker costs and commissions, confirm the trade list reconciles, and check how each parameter behaves when nudged. Win rates near 80% with a payoff near 1.2 mean a few extra losses change results quickly: breakeven is 41% to 45%, but a drop from 88% to 70% erases most of the edge.</div>
+</section>
+
+<footer>Source: Pine strategies in <code>pine_scripts/</code> (<code>Champion_15M_Grandmaster_Dual10R_Oct8R_STRATEGY.pine</code>, <code>Champion_15M_Apex_88WR_STRATEGY.pine</code>, <code>Champion_15M_1to2RR_75WR_STRATEGY.pine</code>, <code>Champion_15M_80WR_Elite_STRATEGY.pine</code>, <code>Champion_1H_Pure_Sovereign_STRATEGY.pine</code>). Figures are reproduced from the engine output; the final section is added commentary. Backtested results do not guarantee future performance.</footer>
+</div>
+
+<script>
+const $=v=>"$"+Math.abs(v).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+const sg=v=>(v<0?"−":"+")+$(v), cl=v=>v<0?"neg":"pos", E=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+// m: np,np%,eq,trades,/mo,W,L,wr,gp,gl,pf,sharpe,sortino,calmar,dd$,dd%,exp,winStreak,lossStreak,holdBars,holdH,maxBars,maxH,wkHolds,worstDay,bestDay
+const S=[
+{k:"s1",n:"15M Grandmaster Dual-10R Oct-8R",f:"Champion_15M_Grandmaster_Dual10R_Oct8R_STRATEGY.pine",tf:"M15",
+intro:"A mean-reversion strategy that fades 2.5-sigma band excursions in the direction of the 200 EMA, with a rejection-wick and RSI filter, and a fixed $14 stop against an $18 target.",
+mech:[["Extreme volatility envelope","basis=SMA(C,20), dev=2.5·stdev(C,20), upper=basis+dev, lower=basis−dev","Detects 2.5-sigma price exhaustion."],["Macro trend gate","ema50=EMA(C,50), ema200=EMA(C,200); long: C > ema200 + 4.0; short: C < ema200 and ema50 < ema200","Keeps trades aligned with the macro regime."],["RSI pullback filter","RSI(C,14): long < 54, short > 46","Enters on dips, not extended moves."],["Rejection wick","wick ≥ 0.15 × body (lower for long, upper for short)","Confirms a liquidity-rejection pin bar."],["Session guard","UTC hour 1 to 19, excluding hour 12","Skips rollover and the London lunch dead-zone."],["Bracket","Entry at next open; SL = C − 14.0, TP = C + 18.0 (short mirrored)","1 : 1.29 reward-to-risk."]],
+m:[572,.57,100572,46,15.33,38,8,82.61,684,112,6.11,7.02,13.44,17.45,32.77,.03,12.43,13,2,11,2.75,42,10.5,0,-14,54],
+pay:[18,14,1.29,43.75,38.86,"0.8261 × $18.00 − 0.1739 × $14.00 = $12.43"],
+ls:[[36,78.26,472,83.33,6.11],[10,21.74,100,80,6.11]],
+reg:[["August 2026 Gold Trend Expansion","2026-08-02","2026-08-31",18,228,83.33,6.11,32.77],["September 2026 Consolidation & Rate Volatility","2026-09-01","2026-09-30",18,228,83.33,6.11,32.77],["October 2026 Geopolitical Gold Surge","2026-10-01","2026-10-23",10,116,80,6.11,32.77]],
+yr:[["2026",46,38,8,82.61,572,.57]],
+mo:[["2026-08",228,.23,14,18],["2026-09",228,.23,28,18],["2026-10",116,.12,14,10]],
+rb:{mc:[50,10,50,549.12,469.04,.03],dl:[572,6.11,17.45,.03],sp:[[583.44,6.23],[572,6.11],[560.56,5.99],[549.12,5.87],[537.68,5.74]],wf:"Walk-forward OOS/IS efficiency 0.88 (IS 87.5% WR, OOS 77.3% WR)."}},
+{k:"s2",n:"15M Sovereign Apex 88.5%",f:"Champion_15M_Apex_88WR_STRATEGY.pine",tf:"M15",
+intro:"A stricter version of the same idea: longer band, deeper $5 trend clearance and a 20% wick requirement. It trades least often and has the best win rate and profit factor.",
+mech:[["Volatility envelope","basis=SMA(C,22), dev=2.5·stdev(C,22)","Finds statistically rare excursions."],["Macro clearance","long: C > EMA(C,200) + 5.0","Demands deep trend clearance."],["Rejection wick","wick ≥ 0.20 × body","Requires strong rejection tails."],["Timing filter","UTC hour 1 to 19, excluding hour 12; RSI filter 52","Filters inactive hours."]],
+m:[349,.35,100349,26,8.67,23,3,88.46,391,42,9.31,10.71,20.48,17.85,19.55,.02,13.42,11,1,9.8,2.45,36,9,0,-14,34],
+pay:[17,14,1.21,45.24,43.22,"0.8846 × $17.00 − 0.1154 × $14.00 = $13.42"],
+ls:[[22,84.62,308,90.91,9.31],[4,15.38,41,75,9.31]],
+reg:[["August 2026 Gold Trend Expansion","2026-08-02","2026-08-31",10,139,90,9.31,19.55],["September 2026 Consolidation & Rate Volatility","2026-09-01","2026-09-30",11,159,90.91,9.31,19.55],["October 2026 Geopolitical Gold Surge","2026-10-01","2026-10-23",5,51,80,9.31,19.55]],
+yr:[["2026",26,23,3,88.46,349,.35]],
+mo:[["2026-08",139,.14,14,10],["2026-09",159,.16,14,11],["2026-10",51,.05,14,5]],
+rb:{mc:[50,10,50,335.04,286.18,.02],dl:[349,9.31,17.85,.02],sp:[[355.98,9.5],[349,9.31],[342.02,9.12],[335.04,8.94],[328.06,8.75]],wf:"Walk-forward OOS/IS efficiency 0.91."}},
+{k:"s3",n:"15M Strict 1:2.0 R:R (74-75% Win Rate)",f:"Champion_15M_1to2RR_75WR_STRATEGY.pine",tf:"M15",
+intro:"A looser reversal envelope with a true 2:1 payoff ($10 stop, $20 target) and no EMA offset. It trades the full 01:00 to 19:00 UTC window and has the lowest win rate and breakeven bar (33.33%) of the M15 set.",
+mech:[["Risk:reward engine","SL = $10.00, TP = $20.00","Exact 1 : 2.0 payoff on every winner."],["Reversal envelope","basis=SMA(C,26), dev=2.35·stdev(C,26)","Tuned for activity in all months (October boosted to +10.0R)."],["RSI pullback gate","RSI(C,14): long < 52, short > 48","Momentum has cooled before entry."],["Rejection wick","lower_wick ≥ 0.10 × body; EMA offset 0.0; no hour-12 exclusion","Confirms an absorption tail."]],
+m:[330,.33,100330,27,9,20,7,74.07,400,70,5.71,6.57,12.56,12.16,27.15,.03,12.22,5,1,12.4,3.1,48,12,0,-10,40],
+pay:[20,10,2,33.33,40.74,"0.7407 × $20.00 − 0.2593 × $10.00 = $12.22"],
+ls:[[18,66.67,220,72.22,5.71],[9,33.33,110,77.78,5.71]],
+reg:[["August 2026 Gold Trend Expansion","2026-08-02","2026-08-31",8,100,75,5.71,27.15],["September 2026 Consolidation & Rate Volatility","2026-09-01","2026-09-30",11,130,72.73,5.71,27.15],["October 2026 Geopolitical Gold Surge","2026-10-01","2026-10-23",8,100,75,5.71,27.15]],
+yr:[["2026",27,20,7,74.07,330,.33]],
+mo:[["2026-08",100,.1,10,8],["2026-09",130,.13,20,11],["2026-10",100,.1,10,8]],
+rb:{mc:[50,10,50,316.8,270.6,.03],dl:[330,5.71,12.16,.03],sp:[[336.6,5.82],[330,5.71],[323.4,5.6],[316.8,5.48],[310.2,5.37]],wf:"Walk-forward OOS/IS efficiency 0.89."}},
+{k:"s4",n:"15M Sovereign Elite 80%+",f:"Champion_15M_80WR_Elite_STRATEGY.pine",tf:"M15",
+intro:"A middle setting between Grandmaster and Apex: 2.4-sigma bands and a $3 offset above the 200 EMA. Its mechanism is reported only in outline.",
+mech:[["Volatility envelope","basis=SMA(C,20), dev=2.4·stdev(C,20)","Captures reversal swings."],["Macro trend alignment","C > EMA(C,200) + 3.0; RSI filter 52; wick ≥ 0.15 × body; UTC 1 to 19 excl. hour 12","Filters choppy regimes."]],
+m:[341,.34,100341,31,10.33,25,6,80.65,425,84,5.06,5.82,11.13,14.52,23.48,.02,11,8,2,10.5,2.63,38,9.5,0,-14,34],
+pay:[17,14,1.21,45.24,35.41,"0.8065 × $17.00 − 0.1935 × $14.00 = $11.00"],
+ls:[[25,80.65,285,80,5.06],[6,19.35,56,83.33,5.06]],
+reg:[["August 2026 Gold Trend Expansion","2026-08-02","2026-08-31",13,145,76.92,5.06,23.48],["September 2026 Consolidation & Rate Volatility","2026-09-01","2026-09-30",12,128,83.33,5.06,23.48],["October 2026 Geopolitical Gold Surge","2026-10-01","2026-10-23",6,68,83.33,5.06,23.48]],
+yr:[["2026",31,25,6,80.65,341,.34]],
+mo:[["2026-08",145,.15,14,13],["2026-09",128,.13,28,12],["2026-10",68,.07,14,6]],
+rb:{mc:[50,10,50,327.36,279.62,.02],dl:[341,5.06,14.52,.02],sp:[[347.82,5.16],[341,5.06],[334.18,4.96],[327.36,4.86],[320.54,4.76]],wf:"Walk-forward OOS/IS efficiency 0.88."}},
+{k:"s5",n:"1H Pure Sovereign Smooth Growth",f:"Champion_1H_Pure_Sovereign_STRATEGY.pine",tf:"H1",
+intro:"A slower trend-pullback strategy on H1 with a $14 stop and $20 target. It has the longest history (about 21 months), the largest profit and the fewest trades.",
+mech:[["Macro trend flow engine","ema200=EMA(C,200), pullbacks to dynamic support; ATR(14) volatility filter","Rides multi-day gold trends."],["Risk architecture","SL = $14.00 (140 pips), TP = $20.00 (200 pips)","1 : 1.43 reward-to-risk. Trades 24 h, Monday to Friday."]],
+m:[854,.85,100854,58,2.64,49,9,84.48,980,126,7.78,8.95,17.12,5.72,149.19,.15,14.72,14,1,16.4,16.4,68,68,1,-14,40],
+pay:[20,14,1.43,41.18,43.3,"0.8448 × $20.00 − 0.1552 × $14.00 = $14.72"],
+ls:[[44,75.86,680,86.36,7.78],[14,24.14,174,78.57,7.78]],
+reg:[["2025 Macro Trend Inflation Expansion","2025-01-01","2025-12-31",30,442,83.33,7.78,149.19],["2026 All-Time-High Gold Rally","2026-01-01","2026-10-23",28,412,85.71,7.78,149.19]],
+yr:[["2025",30,25,5,83.33,442,.44],["2026",28,24,4,85.71,412,.41]],
+mo:[["2026-08",120,.12,14,7],["2026-09",180,.18,14,10],["2026-10",80,.08,14,5]],
+rb:{mc:[50,10,50,819.84,700.28,.17],dl:[854,7.78,5.72,.15],sp:[[871.08,7.94],[854,7.78],[836.92,7.62],[819.84,7.47],[802.76,7.31]],wf:"Walk-forward OOS/IS efficiency 0.94. Monthly table lists Aug to Oct 2026 only; the report cites 20 of 21 green months."}}
+];
+const tb=(h,rows)=>"<table><tr>"+h.map((x,i)=>`<th${i?' class="n"':""}>${x}</th>`).join("")+"</tr>"+rows.map(r=>"<tr>"+r.map((x,i)=>`<td${i?' class="n"':""}>${x}</td>`).join("")+"</tr>").join("")+"</table>";
+document.getElementById("ct").innerHTML=tb(["Strategy","TF","Trades","Win rate","Net profit","PF","Max DD","Calmar","Expectancy","Payoff"],S.map(s=>{const m=s.m;return [`<a href="#${s.k}" style="color:inherit">${s.n}</a>`,s.tf,m[3],m[7]+"%",`<span class="pos">+${$(m[0])}</span>`,m[10],$(m[14])+" ("+m[15]+"%)",m[13],"+"+$(m[16]),s.pay[2]+" : 1"]}));
+document.getElementById("ct").querySelectorAll("th:first-child,td:first-child").forEach(e=>e.classList.remove("n"));
+document.getElementById("dos").innerHTML=S.map(s=>{const m=s.m,p=s.pay,r=s.rb,mx=Math.max(...s.yr.map(y=>y[5]));
+const K=[["pos","+"+$(m[0]),`Net profit (+${m[1]}%)`],["",$(m[2]),"Final equity"],["",m[3],`Total trades (${m[4]} per month)`],["",m[7]+"%",`Win rate (${m[5]} W / ${m[6]} L)`],["",m[10],`Profit factor ($${m[8]} / $${m[9]})`],["",m[11],"Sharpe ratio"],["",m[12],"Sortino ratio"],["",m[13],"Calmar (net profit / max DD)"],["neg",$(m[14]),`Max drawdown (${m[15]}%)`],["","+"+$(m[16]),"Expectancy per trade"],["",m[17]+" W / "+m[18]+" L","Max win / loss streak"],["",m[19]+" bars","Average hold ("+m[20]+" h), max "+m[21]+" bars ("+m[22]+" h)"],["",m[23],"Weekend holds"],["",sg(m[24])+" / "+sg(m[25]),"Worst / best day"]];
+const L=["Long","Short"];
+return `<section id="${s.k}" class="sd"><h2>${s.n}</h2><p class="lede"><code>${s.f}</code> · XAUUSD ${s.tf}. ${s.intro}</p>
+<h3>How it works</h3><div class="box scroll"><table><tr><th>Component</th><th>Indicator / formula</th><th>Role</th></tr>${s.mech.map(x=>`<tr><td>${x[0]}</td><td>${E(x[1])}</td><td>${E(x[2])}</td></tr>`).join("")}</table></div>
+<h3>Core metrics</h3><div class="kpis">${K.map(k=>`<div class="kpi"><b class="${k[0]}">${k[1]}</b><span>${k[2]}</span></div>`).join("")}</div>
+<h3>Payoff structure</h3><div class="box"><p style="margin:0">Average win <b class="pos">+${$(p[0])}</b>, average loss <b class="neg">−${$(p[1])}</b>, payoff ratio <b>${p[2]} : 1</b>. Breakeven win rate is ${p[3]}%, and the actual ${m[7]}% is ${p[4]} points above it.</p><p style="margin:10px 0 0">Expectancy = ${p[5]} per trade.</p></div>
+<h3>Long versus short</h3><div class="split">${s.ls.map((x,i)=>`<div class="box"><b>${L[i]} trades</b><table><tr><td>Trades</td><td class="n">${x[0]} (${x[1]}%)</td></tr><tr><td>Net PnL</td><td class="n pos">+${$(x[2])}</td></tr><tr><td>Win rate</td><td class="n">${x[3]}%</td></tr><tr><td>Profit factor</td><td class="n">${x[4]}</td></tr></table></div>`).join("")}</div>
+<h3>Market regimes</h3><div class="box scroll">${tb(["Regime","Period","Trades","Net PnL","Win rate","PF","Max DD"],s.reg.map(x=>[x[0],x[1]+" to "+x[2],x[3],`<span class="pos">+${$(x[4])}</span>`,x[5]+"%",x[6],$(x[7])])).replace(/<th class="n">Regime|<th>Regime/,"<th>Regime").replace(/<td class="n">([^<]*?)<\/td><td class="n">(\d)/,'<td>$1</td><td class="n">$2')}</div>
+<h3>Performance by period</h3><div class="box"><div>${s.yr.map(y=>`<div class="bar"><span>${y[0]}</span><div class="track"><div class="fill" style="left:0;width:${Math.max(y[5]/mx*100,.8)}%"></div></div><span class="n pos">+${$(y[5])}</span></div>`).join("")}</div><div class="scroll">${tb(["Year","Trades","W / L","Win rate","Net PnL","Return"],s.yr.map(y=>[y[0],y[1],y[2]+" / "+y[3],y[4]+"%",`<span class="pos">+${$(y[5])}</span>`,`<span class="pos">+${y[6]}%</span>`]))}</div>
+<div class="scroll" style="margin-top:14px">${tb(["Month","Trades","Net PnL","Return","Month max DD"],s.mo.map(x=>[x[0],x[4],`<span class="pos">+${$(x[1])}</span>`,`<span class="pos">+${x[2]}%</span>`,$(x[3])+" ("+(x[3]/1000).toFixed(2)+"%)"]))}</div></div>
+<h3>Robustness</h3><div class="split"><div class="box"><b>Monte Carlo and delay</b><table><tr><td>Runs (±${r.mc[1]}% jitter)</td><td class="n">${r.mc[0]}, ${r.mc[2]} profitable</td></tr><tr><td>Mean / worst net profit</td><td class="n">${$(r.mc[3])} / ${$(r.mc[4])}</td></tr><tr><td>Mean max DD</td><td class="n">${r.mc[5]}%</td></tr><tr><td>1-bar delay</td><td class="n">${$(r.dl[0])}, PF ${r.dl[1]}</td></tr></table></div>
+<div class="box"><b>Spread sensitivity</b>${tb(["Spread","Net profit","PF"],r.sp.map((x,i)=>[`$${(i+1)/10}`.replace(/(\.\d)$/,"$10"),$(x[0]),x[1]]))}</div></div>
+<p class="lede" style="margin-top:12px">${r.wf}</p></section>`}).join("");
+</script>
+</body>
+</html>

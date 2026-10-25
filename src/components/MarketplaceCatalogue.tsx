@@ -8,8 +8,8 @@ interface Props {
   initialStrategies: StrategySeedItem[];
 }
 
-const INSTRUMENTS = ["All instruments", "XAUUSD", "EURUSD", "NAS100", "BTCUSD", "SPX500"];
-const TIMEFRAMES = ["All timeframes", "M15", "H1", "H4", "D1"];
+const INSTRUMENTS = ["All instruments", "XAUUSD"];
+const TIMEFRAMES = ["All timeframes", "M5", "M15"];
 const CATEGORIES = ["All categories", "Trend", "Mean reversion", "Breakout", "Momentum", "Volatility"];
 
 export function MarketplaceCatalogue({ initialStrategies }: Props) {

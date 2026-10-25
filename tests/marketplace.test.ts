@@ -17,8 +17,9 @@ describe("Marketplace Catalogue & Filtering", () => {
     const gold = await db.getStrategies({ instrument: "XAUUSD" });
     expect(gold.every((s) => s.instrument === "XAUUSD")).toBe(true);
 
-    const h1 = await db.getStrategies({ timeframe: "H1" });
-    expect(h1.every((s) => s.timeframe === "H1")).toBe(true);
+    const m15 = await db.getStrategies({ timeframe: "M15" });
+    expect(m15.length).toBe(4);
+    expect(m15.every((s) => s.timeframe === "M15")).toBe(true);
 
     const trend = await db.getStrategies({ category: "Trend" });
     expect(trend.every((s) => s.category === "Trend")).toBe(true);
