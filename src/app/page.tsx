@@ -4,6 +4,8 @@ import { TerrainCanvas } from "@/components/TerrainCanvas";
 import { AnimatedStats } from "@/components/AnimatedStats";
 import { IndexPreview } from "@/components/IndexPreview";
 import { ThreeWaysSection } from "@/components/ThreeWaysSection";
+import { MarketTicker } from "@/components/MarketTicker";
+import { LiveExecutionStage } from "@/components/LiveExecutionStage";
 
 export default async function HomePage() {
   const strategies = await db.getStrategies({ includeDrafts: false });
@@ -34,9 +36,17 @@ export default async function HomePage() {
         <div className="tband">
           <TerrainCanvas />
         </div>
-        <p className="note" style={{ textAlign: "center", margin: "8px 0 48px" }}>
+        <p className="note" style={{ textAlign: "center", margin: "8px 0 24px" }}>
           Simulated price terrain · illustrative
         </p>
+
+        {/* Live Market Ticker Tape */}
+        <MarketTicker />
+      </div>
+
+      {/* Live Algorithmic Execution Terminal */}
+      <div className="wrap" style={{ marginTop: "40px" }}>
+        <LiveExecutionStage />
       </div>
 
       {/* Stats Counter */}
