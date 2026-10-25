@@ -1,0 +1,366 @@
+// Prisma schema for StratMarket
+// Database: PostgreSQL with relational models for strategies, trials, subscriptions, signals, and security.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+enum AccountStatus {
+  ACTIVE
+  SUSPENDED
+  PENDING_VERIFICATION
+}
+
+enum ImplementationType {
+  PYTHON
+  PINE_SCRIPT
+}
+
+enum VisibilityStatus {
+  PUBLIC
+  PRIVATE
+  DRAFT
+  ARCHIVED
+}
+
+enum ValidationType {
+  BACKTESTED
+  SIMULATED
+  PAPER_TRADED
+  FORWARD_TESTED
+  LIVE
+}
+
+enum EntitlementSource {
+  TRIAL
+  SUBSCRIPTION
+  ADMIN_GRANT
+}
+
+enum EntitlementStatus {
+  ACTIVE
+  EXPIRED
+  REVOKED
+}
+
+enum EntitlementType {
+  TRIAL
+  PAID
+}
+
+enum TrialStatus {
+  ACTIVE
+  EXPIRED
+  CANCELLED
+}
+
+enum BillingStatus {
+  ACTIVE
+  CANCELLED
+  PAST_DUE
+  TRIALING
+  INCOMPLETE
+}
+
+enum SignalType {
+  ENTRY
+  EXIT
+  STOP_LOSS
+  TAKE_PROFIT
+}
+
+enum SignalDirection {
+  LONG
+  SHORT
+}
+
+enum DeliveryStatus {
+  PENDING
+  SENT
+  FAILED
+  RETRYING
+}
+
+enum ConnectionStatus {
+  DISCONNECTED
+  PENDING_AUTH
+  CONNECTED
+  ERROR
+  REVOKED
+}
+
+model User {
+  id               String          @id @default(cuid())
+  name             String
+  email            String          @unique
+  passwordHash     String
+  role             Role            @default(CUSTOMER)
+  accountStatus    AccountStatus   @default(ACTIVE)
+  emailVerified    Boolean         @default(false)
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  trials           Trial[]
+  entitlements     StrategyEntitlement[]
+  subscriptions    Subscription[]
+  alertPreferences EmailAlertPreference[]
+  emailDeliveries  EmailDelivery[]
+  connections      TradingConnection[]
+  auditEvents      AuditEvent[]
+
+  @@index([email])
+  @@index([role])
+}
+
+model Strategy {
+  id                 String             @id
+  slug               String             @unique
+  name               String
+  description        String
+  implementationType ImplementationType
+  instrument         String
+  timeframe          String
+  category           String
+  currentVersion     String             @default("1.0.0")
+  visibilityStatus   VisibilityStatus   @default(PUBLIC)
+  trialEligibility   Boolean            @default(true)
+  supportedUsageModes String[]          // ["chart", "alert", "broker"]
+  vpsStrategyRef     String?            // Identifier on Python VPS if Python strategy
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  versions           StrategyVersion[]
+  entitlements       StrategyEntitlement[]
+  trials             Trial[]
+  signals            StrategySignal[]
+  alertPreferences   EmailAlertPreference[]
+
+  @@index([slug])
+  @@index([visibilityStatus])
+  @@index([implementationType])
+  @@index([instrument])
+  @@index([category])
+}
+
+model StrategyVersion {
+  id                    String            @id @default(cuid())
+  strategyId            String
+  versionIdentifier     String
+  versionMetadata       String?           // JSON encoded metadata
+  researchReportReference String?
+  backtestPeriod        String?           // e.g. "2022-01 to 2026-06"
+  dataProvenance        String            // Data source & cleaning pipeline
+  publicationStatus     VisibilityStatus  @default(PUBLIC)
+  publishedAt           DateTime          @default(now())
+
+  strategy              Strategy          @relation(fields: [strategyId], references: [id], onDelete: Cascade)
+  metrics               StrategyMetrics?
+  signals               StrategySignal[]
+
+  @@unique([strategyId, versionIdentifier])
+  @@index([strategyId])
+}
+
+model StrategyMetrics {
+  id                  String          @id @default(cuid())
+  strategyVersionId   String          @unique
+  netReturn           Float           // Percentage
+  maxDrawdown         Float           // Percentage
+  profitFactor        Float
+  winRate             Float           // Percentage
+  totalTrades         Int
+  averageTrade        Float?
+  sharpeRatio         Float?
+  backtestPeriod      String?
+  transactionCosts    String?         // e.g. "0.02% per trade"
+  slippageAssumptions String?         // e.g. "1 pip on entry/exit"
+  dataSource          String          // e.g. "TickData Historical M1"
+  validationType      ValidationType  @default(BACKTESTED)
+  isDemo              Boolean         @default(true)
+  reportingTimestamp  DateTime        @default(now())
+
+  version             StrategyVersion @relation(fields: [strategyVersionId], references: [id], onDelete: Cascade)
+}
+
+model StrategyEntitlement {
+  id                String            @id @default(cuid())
+  userId            String
+  strategyId        String?           // Nullable if user holds All-Access plan
+  planId            String?
+  entitlementSource EntitlementSource @default(TRIAL)
+  startTime         DateTime          @default(now())
+  expiryTime        DateTime
+  status            EntitlementStatus @default(ACTIVE)
+  entitlementType   EntitlementType   @default(TRIAL)
+  createdAt         DateTime          @default(now())
+
+  user              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  strategy          Strategy?         @relation(fields: [strategyId], references: [id], onDelete: Cascade)
+  trial             Trial?
+
+  @@index([userId, status])
+  @@index([strategyId, status])
+  @@index([expiryTime])
+}
+
+model Trial {
+  id                   String            @id @default(cuid())
+  userId               String
+  strategyId           String
+  startTime            DateTime          @default(now())
+  expiryTime           DateTime          // Strictly 7 days after startTime
+  status               TrialStatus       @default(ACTIVE)
+  eligibilityResult    String?           // Audit reason / check details
+  associatedEntitlementId String         @unique
+
+  user                 User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  strategy             Strategy          @relation(fields: [strategyId], references: [id], onDelete: Cascade)
+  entitlement          StrategyEntitlement @relation(fields: [associatedEntitlementId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, strategyId]) // Strictly one trial per user per strategy
+  @@index([userId])
+  @@index([strategyId])
+}
+
+model Plan {
+  id            String         @id @default(cuid())
+  slug          String         @unique
+  name          String
+  description   String
+  priceMonthly  Int            // In cents/paise or 0 if unannounced
+  currency      String         @default("USD")
+  priceDisplay  String         @default("To be announced")
+  features      String[]       // List of features
+  isHot         Boolean        @default(false)
+  active        Boolean        @default(true)
+
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id                  String        @id @default(cuid())
+  userId              String
+  planId              String
+  strategyScope       String        @default("ALL_ACCESS") // "ALL_ACCESS" or specific strategyId
+  provider            String        @default("STRIPE")      // "STRIPE" | "RAZORPAY"
+  providerRef         String?       // Customer/Subscription ID
+  billingStatus       BillingStatus @default(INCOMPLETE)
+  currentPeriodStart  DateTime      @default(now())
+  currentPeriodEnd    DateTime
+  cancelAtPeriodEnd   Boolean       @default(false)
+  cancellationReason  String?
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  user                User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan                Plan          @relation(fields: [planId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+  @@index([providerRef])
+}
+
+model StrategySignal {
+  id                 String          @id @default(cuid())
+  strategyId         String
+  strategyVersionId  String?
+  instrument         String
+  timeframe          String
+  signalType         SignalType
+  direction          SignalDirection
+  timestamp          DateTime        @default(now())
+  entryPrice         Float?
+  stopLoss           Float?
+  targetPrice        Float?
+  signalProvenance   String          @default("ELVARIS_VPS_RESEARCH_ENGINE")
+  sourceEventId      String          @unique // Idempotency constraint from VPS
+  deliveryMetadata   String?         // JSON
+  status             String          @default("PROCESSED") // "PENDING", "PROCESSED", "REJECTED"
+
+  strategy           Strategy        @relation(fields: [strategyId], references: [id], onDelete: Cascade)
+  strategyVersion    StrategyVersion? @relation(fields: [strategyVersionId], references: [id], onDelete: SetNull)
+  emailDeliveries    EmailDelivery[]
+
+  @@index([strategyId, timestamp])
+  @@index([sourceEventId])
+}
+
+model EmailAlertPreference {
+  id                  String   @id @default(cuid())
+  userId              String
+  strategyId          String
+  enabled             Boolean  @default(true)
+  alertTypes          String[] // ["ENTRY", "EXIT"]
+  verifiedDestination String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  strategy            Strategy @relation(fields: [strategyId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, strategyId])
+  @@index([userId])
+  @@index([strategyId])
+}
+
+model EmailDelivery {
+  id                 String         @id @default(cuid())
+  signalId           String
+  userId             String
+  deliveryStatus     DeliveryStatus @default(PENDING)
+  attemptCount       Int            @default(0)
+  providerMessageRef String?
+  sentAt             DateTime?
+  failureReason      String?
+
+  signal             StrategySignal @relation(fields: [signalId], references: [id], onDelete: Cascade)
+  user               User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([signalId])
+  @@index([userId])
+  @@index([deliveryStatus])
+}
+
+model TradingConnection {
+  id                     String           @id @default(cuid())
+  userId                 String
+  brokerIdentifier       String           // "ALPACA", "BINANCE", "INTERACTIVE_BROKERS", "PAPER_SIMULATOR"
+  connectionStatus       ConnectionStatus @default(DISCONNECTED)
+  encryptedCredentialRef String?          // Encrypted reference or vault ID, never plaintext API key
+  grantedScopes          String[]         // ["READ_ONLY", "TRADE_EXECUTION"]
+  isLive                 Boolean          @default(false)
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+
+  user                   User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([brokerIdentifier])
+}
+
+model AuditEvent {
+  id         String   @id @default(cuid())
+  userId     String?
+  action     String   // "AUTH_LOGIN", "TRIAL_ACTIVATED", "SUBSCRIPTION_CREATED", "VPS_SIGNAL_RECEIVED", etc.
+  entityType String   // "USER", "STRATEGY", "TRIAL", "SIGNAL", "CONNECTION"
+  entityId   String?
+  details    String?  // JSON string
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+}
