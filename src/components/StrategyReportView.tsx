@@ -222,41 +222,41 @@ if (shortCondition)
         </p>
 
         {/* 4 Big Hero Stat Cards */}
-        <div className="hero-big-stats" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px" }}>
+        <div className="hero-big-stats">
           {reportData.bigStats && reportData.bigStats.length > 0 ? (
             reportData.bigStats.map((st: any, idx: number) => (
-              <div key={idx} className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "24px 26px" }}>
-                <b style={{ color: idx === 0 ? "#e8c46a" : idx === 2 ? "#4cc79a" : "#ffffff", fontSize: "clamp(26px, 3.4vw, 36px)", display: "block", fontFamily: "JetBrains Mono, monospace", marginBottom: "6px" }}>
+              <div key={idx} className="hero-stat-card">
+                <b style={{ color: idx === 0 ? "#e8c46a" : idx === 2 ? "#4cc79a" : "#ffffff" }}>
                   {st.val}
                 </b>
-                <span style={{ fontSize: "13.5px", color: "var(--mut)", display: "block" }}>{st.label}</span>
+                <span>{st.label}</span>
               </div>
             ))
           ) : (
             <>
-              <div className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "24px 26px" }}>
-                <b style={{ color: "#e8c46a", fontSize: "32px", display: "block", fontFamily: "JetBrains Mono, monospace", marginBottom: "6px" }}>
+              <div className="hero-stat-card">
+                <b style={{ color: "#e8c46a" }}>
                   {strategy.netProfitUsd || `+${strategy.metrics.netReturn}%`}
                 </b>
-                <span style={{ fontSize: "13.5px", color: "var(--mut)" }}>Net return on $25,000 capital</span>
+                <span>Net return on $25,000 capital</span>
               </div>
-              <div className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "24px 26px" }}>
-                <b style={{ color: "#ffffff", fontSize: "32px", display: "block", fontFamily: "JetBrains Mono, monospace", marginBottom: "6px" }}>
+              <div className="hero-stat-card">
+                <b style={{ color: "#ffffff" }}>
                   {strategy.metrics.profitFactor}
                 </b>
-                <span style={{ fontSize: "13.5px", color: "var(--mut)" }}>Profit factor</span>
+                <span>Profit factor</span>
               </div>
-              <div className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "24px 26px" }}>
-                <b style={{ color: "#4cc79a", fontSize: "32px", display: "block", fontFamily: "JetBrains Mono, monospace", marginBottom: "6px" }}>
+              <div className="hero-stat-card">
+                <b style={{ color: "#4cc79a" }}>
                   {strategy.metrics.maxDrawdown}%
                 </b>
-                <span style={{ fontSize: "13.5px", color: "var(--mut)" }}>Max drawdown</span>
+                <span>Max drawdown</span>
               </div>
-              <div className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(22, 22, 26, 0.95) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "24px 26px" }}>
-                <b style={{ color: "#ffffff", fontSize: "32px", display: "block", fontFamily: "JetBrains Mono, monospace", marginBottom: "6px" }}>
+              <div className="hero-stat-card">
+                <b style={{ color: "#ffffff" }}>
                   {strategy.metrics.totalTrades}
                 </b>
-                <span style={{ fontSize: "13.5px", color: "var(--mut)" }}>Trades, {strategy.metrics.winRate}% win rate</span>
+                <span>Trades, {strategy.metrics.winRate}% win rate</span>
               </div>
             </>
           )}
@@ -356,10 +356,10 @@ if (shortCondition)
         </div>
 
         {/* 4 Clear Visual Payoff Cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: "16px", marginBottom: "20px" }}>
-          <div className="report-card" style={{ borderLeft: "4px solid #4cc79a", padding: "22px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))", gap: "16px", marginBottom: "20px" }}>
+          <div className="report-card" style={{ borderLeft: "4px solid #4cc79a", padding: "18px 18px", overflow: "hidden", minWidth: 0 }}>
             <span style={{ fontSize: "13px", color: "var(--mut)", display: "block", marginBottom: "6px" }}>Average Winning Trade</span>
-            <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "28px", color: "#4cc79a", display: "block" }}>
+            <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "clamp(19px, 2.1vw, 24px)", color: "#4cc79a", display: "block", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {payoff.avgWin}
             </b>
             <span style={{ fontSize: "12px", color: "#4cc79a", display: "block", marginTop: "4px" }}>
@@ -367,9 +367,9 @@ if (shortCondition)
             </span>
           </div>
 
-          <div className="report-card" style={{ borderLeft: "4px solid #e5746a", padding: "22px" }}>
+          <div className="report-card" style={{ borderLeft: "4px solid #e5746a", padding: "18px 18px", overflow: "hidden", minWidth: 0 }}>
             <span style={{ fontSize: "13px", color: "var(--mut)", display: "block", marginBottom: "6px" }}>Average Losing Trade</span>
-            <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "28px", color: "#e5746a", display: "block" }}>
+            <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "clamp(19px, 2.1vw, 24px)", color: "#e5746a", display: "block", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {payoff.avgLoss}
             </b>
             <span style={{ fontSize: "12px", color: "var(--mut)", display: "block", marginTop: "4px" }}>
@@ -377,10 +377,10 @@ if (shortCondition)
             </span>
           </div>
 
-          <div className="report-card" style={{ borderLeft: "4px solid #e8c46a", padding: "22px" }}>
+          <div className="report-card" style={{ borderLeft: "4px solid #e8c46a", padding: "18px 18px", overflow: "hidden", minWidth: 0 }}>
             <span style={{ fontSize: "13px", color: "var(--mut)", display: "block", marginBottom: "6px" }}>Breakeven vs Actual Win Rate</span>
-            <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
-              <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "28px", color: "#e8c46a" }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: "8px", flexWrap: "wrap" }}>
+              <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "clamp(19px, 2.1vw, 24px)", color: "#e8c46a", whiteSpace: "nowrap" }}>
                 {payoff.actualWinRate}
               </b>
               <span style={{ fontSize: "13px", color: "var(--mut)" }}>vs {payoff.breakevenWinRate} needed</span>
@@ -390,9 +390,9 @@ if (shortCondition)
             </span>
           </div>
 
-          <div className="report-card" style={{ borderLeft: "4px solid #ffffff", padding: "22px" }}>
+          <div className="report-card" style={{ borderLeft: "4px solid #ffffff", padding: "18px 18px", overflow: "hidden", minWidth: 0 }}>
             <span style={{ fontSize: "13px", color: "var(--mut)", display: "block", marginBottom: "6px" }}>Expectancy Per Trade</span>
-            <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "28px", color: "#ffffff", display: "block" }}>
+            <b style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "clamp(19px, 2.1vw, 24px)", color: "#ffffff", display: "block", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {payoff.expectancy}
             </b>
             <span style={{ fontSize: "12px", color: "#4cc79a", display: "block", marginTop: "4px" }}>

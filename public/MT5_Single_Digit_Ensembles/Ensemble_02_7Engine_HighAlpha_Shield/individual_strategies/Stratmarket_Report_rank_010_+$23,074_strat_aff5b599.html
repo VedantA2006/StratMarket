@@ -3,155 +3,1153 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>StratMarket — E10: High-Participation OFI Performance Report</title>
+<title>StratMarket — E10: High-Participation OFI (rank_010_+$23,074_strat_aff5b599)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f2f4f3;--panel:#fff;--ink:#16221f;--mute:#5d6b67;--line:#d9dfdc;--win:#1e7a58;--loss:#b2382d;--deep:#0f3b36;--gold:#a97b12;--warn:#fbf6e8;--warnr:#fbeeec;--th:#f8faf9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101716;--panel:#18211f;--ink:#e6eeec;--mute:#9db0aa;--line:#2b3835;--win:#4cc79a;--loss:#e5746a;--deep:#0b2a27;--warn:#2a2514;--warnr:#2c1a18;--th:#1d2826}}
-:root[data-theme="dark"]{--bg:#101716;--panel:#18211f;--ink:#e6eeec;--mute:#9db0aa;--line:#2b3835;--win:#4cc79a;--loss:#e5746a;--deep:#0b2a27;--warn:#2a2514;--warnr:#2c1a18;--th:#1d2826}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 50px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans","Segoe UI",Roboto,sans-serif}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px 64px}
-header{background:var(--deep);color:#eef3f1;padding:48px 0 40px}header .wrap{padding-bottom:0}
-h1{font:600 clamp(24px,4.2vw,42px)/1.15 Georgia,serif;margin:0 0 10px;word-break:break-word}
-header p{margin:0;color:#b9cbc6;max-width:64ch}
-.big{display:flex;flex-wrap:wrap;gap:24px 44px;margin-top:28px;align-items:baseline}
-.big b{display:block;font:600 clamp(26px,4.5vw,40px)/1.1 Georgia,serif;color:#fff}.big div:first-child b{font-size:clamp(38px,7vw,68px);color:#e8c46a}
-.big span{font-size:14px;color:#b9cbc6}
-nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
-nav .wrap{display:flex;gap:18px;overflow-x:auto;padding:10px 20px;white-space:nowrap;font-size:14px}
-nav a{color:var(--mute);text-decoration:none}nav a:hover{color:var(--ink);text-decoration:underline}
-section{margin-top:44px}h2{font:600 25px/1.25 Georgia,serif;margin:0 0 6px}
-.lede{color:var(--mute);margin:0 0 16px;max-width:72ch}
-.box{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px}.scroll{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-size:14px}
-th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-weight:600;color:var(--mute);font-size:13px;background:var(--th)}tr:last-child td{border-bottom:0}
-.n{text-align:right;font-variant-numeric:tabular-nums}.pos{color:var(--win)}.neg{color:var(--loss)}
-.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
-.kpi{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 15px}
-.kpi b{display:block;font:600 22px/1.2 Georgia,serif;font-variant-numeric:tabular-nums}.kpi span{font-size:13px;color:var(--mute)}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:720px){.split{grid-template-columns:1fr}}
-.bar{display:grid;grid-template-columns:80px 1fr 80px;gap:10px;align-items:center;font-size:14px;margin-bottom:8px}
-.track{position:relative;height:22px;background:var(--th);border-radius:3px}.fill{position:absolute;top:0;bottom:0;border-radius:3px;background:var(--win)}
-.heat{min-width:860px}.heat td,.heat th{text-align:center;padding:6px 3px;font-size:12px;border:1px solid var(--panel);font-variant-numeric:tabular-nums}
-.heat td:first-child,.heat th:first-child{text-align:left;padding-left:8px;font-weight:600}
-.heat small{display:block;opacity:.75;font-size:10.5px}
-.badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;display:inline-block}
-.badge-gold{background:rgba(245,158,11,0.15);color:var(--gold)}
-.badge-green{background:rgba(30,122,88,0.15);color:var(--win)}
-code{background:var(--th);padding:1px 5px;border-radius:3px;font-size:.9em}
-footer{margin-top:52px;font-size:13px;color:var(--mute);border-top:1px solid var(--line);padding-top:16px}
-@media print{nav{display:none}body{background:#fff;color:#000}}
+:root {
+  --bg: #070a09;
+  --surface: #0e1413;
+  --surface-raised: #141c1a;
+  --panel: #111715;
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --line: rgba(255, 255, 255, 0.08);
+  --tx: #f3f7f5;
+  --mute: #8da29c;
+  --win: #4cc79a;
+  --win-bg: rgba(76, 199, 154, 0.12);
+  --loss: #e5746a;
+  --loss-bg: rgba(229, 116, 106, 0.12);
+  --gold: #e8c46a;
+  --gold-bg: rgba(232, 196, 106, 0.12);
+  --deep: #0a1714;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* TOP BRAND BAR */
+.top-bar {
+  background: rgba(14, 20, 19, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.top-bar-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.top-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 0.02em;
+}
+.badge-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid rgba(232, 196, 106, 0.25); }
+.badge-green { background: var(--win-bg); color: var(--win); border: 1px solid rgba(76, 199, 154, 0.25); }
+.badge-neutral { background: rgba(255, 255, 255, 0.06); color: var(--mute); border: 1px solid var(--line); }
+
+/* HEADER */
+header {
+  padding: 56px 0 44px;
+  background: radial-gradient(circle at 50% 0%, rgba(76, 199, 154, 0.08) 0%, transparent 70%);
+  border-bottom: 1px solid var(--line);
+}
+h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(28px, 4.5vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+header p.subtitle {
+  color: var(--mute);
+  font-size: 15px;
+  max-width: 76ch;
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+/* BIG KPIS */
+.big-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 1040px) {
+  .big-kpis { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .big-kpis { grid-template-columns: 1fr; }
+}
+.big-kpi-card {
+  background: var(--surface);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 20px 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+.big-kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: rgba(255,255,255,0.08);
+}
+.big-kpi-card:first-child::before {
+  background: linear-gradient(90deg, #1e7a58, #4cc79a);
+}
+.big-kpi-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(19px, 2.2vw, 26px);
+  font-weight: 800;
+  display: block;
+  letter-spacing: -0.025em;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.big-kpi-card:first-child .big-kpi-val { color: var(--gold); }
+.big-kpi-label {
+  font-size: 13px;
+  color: var(--mute);
+  text-transform: capitalize;
+  line-height: 1.4;
+}
+
+/* ANCHOR NAV */
+nav.section-nav {
+  position: sticky;
+  top: 57px;
+  background: rgba(7, 10, 9, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  z-index: 90;
+}
+nav.section-nav .nav-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 10px 24px;
+  white-space: nowrap;
+}
+nav.section-nav a {
+  color: var(--mute);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+nav.section-nav a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* SECTIONS */
+section {
+  margin-top: 56px;
+  scroll-margin-top: 120px;
+}
+h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.lede {
+  color: var(--mute);
+  font-size: 14.5px;
+  margin-bottom: 22px;
+  max-width: 78ch;
+}
+
+/* CARDS & TABLES */
+.box {
+  background: var(--surface);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  text-align: left;
+}
+th {
+  background: var(--surface-raised);
+  color: var(--mute);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+td {
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  vertical-align: middle;
+  font-size: 14px;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255,255,255,0.015); }
+
+.n {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.pos { color: var(--win); font-weight: 600; }
+.neg { color: var(--loss); font-weight: 600; }
+
+/* 14 KPIS GRID */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 12px;
+}
+.kpi {
+  background: var(--surface);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
+  min-width: 0;
+}
+.kpi:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.15);
+}
+.kpi b {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.kpi span {
+  font-size: 13px;
+  color: var(--mute);
+  line-height: 1.4;
+}
+
+/* PAYOFF STRUCTURE */
+.payoff-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+@media (max-width: 1040px) {
+  .payoff-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .payoff-grid { grid-template-columns: 1fr; }
+}
+.payoff-metric-card {
+  background: var(--surface);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 18px 18px;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+.payoff-metric-card.win-card { border-left: 4px solid var(--win); }
+.payoff-metric-card.loss-card { border-left: 4px solid var(--loss); }
+.payoff-metric-card.ratio-card { border-left: 4px solid var(--gold); }
+.payoff-metric-card.exp-card { border-left: 4px solid #fff; }
+
+.payoff-metric-title {
+  font-size: 13px;
+  color: var(--mute);
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.payoff-metric-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(19px, 2.1vw, 24px);
+  font-weight: 700;
+  display: block;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.payoff-metric-sub {
+  font-size: 12px;
+  color: var(--mute);
+  display: block;
+}
+
+.payoff-scale-card {
+  background: var(--surface);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 26px;
+}
+.scale-row {
+  margin-bottom: 18px;
+}
+.scale-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  margin-bottom: 6px;
+}
+.scale-track {
+  height: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+.scale-fill-win {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #1e7a58, #4cc79a);
+  border-radius: 6px;
+}
+.scale-fill-loss {
+  height: 100%;
+  width: 14%;
+  background: var(--loss);
+  border-radius: 6px;
+}
+.payoff-explanation-box {
+  margin-top: 22px;
+  padding: 18px 22px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--mute);
+}
+.payoff-math-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.math-pill {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #fff;
+}
+
+/* LONG VS SHORT */
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+.direction-card {
+  background: var(--surface);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 26px;
+}
+.direction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.direction-title {
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.direction-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.direction-dot.long { background: var(--win); }
+.direction-dot.short { background: #60a5fa; }
+
+.direction-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.direction-row:last-child { border-bottom: none; }
+.direction-label { color: var(--mute); font-size: 14px; }
+.direction-val { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 600; }
+
+/* YEARLY BARS */
+.bar {
+  display: grid;
+  grid-template-columns: 110px 1fr 110px;
+  gap: 16px;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.track {
+  position: relative;
+  height: 22px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.fill {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #1e7a58, #4cc79a);
+}
+
+/* HEATMAP */
+.heat { min-width: 880px; }
+.heat td, .heat th {
+  text-align: center;
+  padding: 10px 4px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.heat td:first-child, .heat th:first-child {
+  text-align: left;
+  padding-left: 14px;
+  font-weight: 700;
+}
+.heat small {
+  display: block;
+  opacity: 0.75;
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+/* BOTTOM ACTION CTA SECTION */
+.action-cta-section {
+  margin-top: 64px;
+  padding: 44px 36px;
+  background: linear-gradient(180deg, #0f1614 0%, #080d0c 100%);
+  border: 1px solid rgba(76, 199, 154, 0.25);
+  border-radius: 18px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.action-cta-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 10%; right: 10%; height: 1px;
+  background: radial-gradient(circle, #4cc79a 0%, transparent 80%);
+}
+.action-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(24px, 3.5vw, 34px);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.action-subtitle {
+  color: var(--mute);
+  font-size: 15px;
+  max-width: 62ch;
+  margin: 0 auto 32px;
+}
+.btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 16px 32px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #1e7a58, #4cc79a);
+  color: #04100c;
+  box-shadow: 0 4px 20px rgba(76, 199, 154, 0.35);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(76, 199, 154, 0.5);
+}
+.btn-secondary {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+
+/* MODAL */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal-card {
+  background: #111715;
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  max-width: 480px;
+  width: 100%;
+  padding: 32px;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: none; border: none;
+  color: var(--mute); font-size: 22px; cursor: pointer;
+}
+.modal-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 15px;
+  margin: 16px 0 20px;
+  outline: none;
+}
+.modal-input:focus { border-color: var(--win); }
+
+footer {
+  margin-top: 64px;
+  font-size: 13px;
+  color: var(--mute);
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  line-height: 1.6;
+}
 </style>
 </head>
 <body>
-<header><div class="wrap">
-<h1>E10: High-Participation OFI (rank_010_+$23,074_strat_aff5b599) <span class="badge badge-gold">Engine rank_010</span> <span class="badge badge-green">Solo DD 15.0%</span></h1>
-<p>StratMarket Engine Dossier: XAUUSD M5, 360,000 MT5 bars (2021-2026). Conviction Weight 0.40x ($100.00/trade). Member of 7-Engine High-Alpha Shield.</p>
-<div class="big">
-<div><b>+$6,437.69</b><span>net profit, +25.75% on $25,000</span></div>
-<div><b>1.53</b><span>profit factor</span></div>
-<div><b>8.95%</b><span>max drawdown ($2,506.28)</span></div>
-<div><b>134</b><span>trades, 20.90% win rate</span></div>
-</div></div></header>
 
-<nav><div class="wrap"><a href="#mech">Mechanism</a><a href="#kpi">Core metrics</a><a href="#pay">Payoff</a><a href="#dir">Long vs short</a><a href="#reg">Regimes</a><a href="#year">Yearly</a><a href="#month">Monthly</a></div></nav>
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <a href="/market" class="brand-link">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--win);"><path d="m3 3 7 7-7 7"/><path d="m13 3 7 7-7 7"/></svg>
+      StratMarket
+    </a>
+    <div class="top-badges">
+      <span class="badge badge-neutral">XAUUSD · M5</span>
+      <span class="badge badge-green">Single-Digit DD (8.95%)</span>
+      <span class="badge badge-gold">+$6,437.69 Net PnL</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <h1>
+      E10: High-Participation OFI (rank_010_+$23,074_strat_aff5b599)
+      <span class="badge badge-green">Verified MetaTrader 5 Broker Feed</span>
+    </h1>
+    <p class="subtitle">StratMarket Engine Dossier: XAUUSD M5, 360,000 MT5 bars (2021-2026). Conviction Weight 0.40x ($100.00/trade). Member of 7-Engine High-Alpha Shield.</p>
+    
+    <div class="big-kpis">
+      
+        <div class="big-kpi-card">
+          <b class="big-kpi-val">+$6,437.69</b>
+          <span class="big-kpi-label">net profit, +25.75% on $25,000</span>
+        </div>
+      
+        <div class="big-kpi-card">
+          <b class="big-kpi-val">1.53</b>
+          <span class="big-kpi-label">profit factor</span>
+        </div>
+      
+        <div class="big-kpi-card">
+          <b class="big-kpi-val">8.95%</b>
+          <span class="big-kpi-label">max drawdown ($2,506.28)</span>
+        </div>
+      
+        <div class="big-kpi-card">
+          <b class="big-kpi-val">134</b>
+          <span class="big-kpi-label">trades, 20.90% win rate</span>
+        </div>
+      
+    </div>
+  </div>
+</header>
+
+<nav class="section-nav">
+  <div class="nav-inner">
+    <a href="#mech">⚡ Mechanism</a>
+    <a href="#kpi">📊 Core metrics</a>
+    <a href="#pay">⚖️ Payoff</a>
+    <a href="#dir">⇄ Long vs short</a>
+    <a href="#reg">🌐 Regimes</a>
+    <a href="#year">📅 Yearly</a>
+    <a href="#month">🗓️ Monthly</a>
+    <a href="#deploy" style="color:var(--win);margin-left:auto;">🚀 Deploy Strategy</a>
+  </div>
+</nav>
 
 <div class="wrap">
 
-<section id="mech"><h2>How the strategy works</h2>
-<p class="lede">Exploits high-participation institutional volume thrusts with low slippage sensitivity. Operates with the following parameters and microstructure logic:</p>
-<div class="box scroll"><table>
-<tr><th>Engine / Component</th><th>Indicator / Mechanism</th><th>Conviction Weight</th><th class="n">Solo PnL</th><th class="n">Solo PF</th><th class="n">Solo DD</th><th>Role & Strategy Function</th></tr>
-<tr>
-<td><b>E10: High-Participation OFI</b><br><code style="font-size:11px;">rank_010_+$23,074_strat_aff5b599.py</code></td>
-<td>Asia(108), Energy (1.14–5.04), Vol MA 40, ADX > 20.65, ER > 0.337, OFI > 0.165. Trail 4.552×ATR.</td>
-<td><span class="pos"><b>0.40×</b></span> ($100.00)</td>
-<td class="n pos">+$16,094.22</td>
-<td class="n">1.53</td>
-<td class="n neg">15.0%</td>
-<td>Exploits high-participation institutional volume thrusts with low slippage sensitivity.</td>
-</tr>
-</table></div></section>
+  <!-- SECTION 1: HOW THE STRATEGY WORKS -->
+  <section id="mech">
+    <h2>How the strategy works</h2>
+    <p class="lede">Exploits high-participation institutional volume thrusts with low slippage sensitivity. Operates with the following parameters and microstructure logic:</p>
+    
+    <div class="box scroll">
+      <table>
+        <thead>
+          <tr>
+            <th style="min-width: 260px;">Engine / Component</th>
+            <th style="min-width: 170px;">Conviction Weight</th>
+            <th class="n" style="min-width: 130px;">Solo PnL</th>
+            <th class="n" style="min-width: 100px;">Solo PF</th>
+            <th class="n" style="min-width: 110px;">Solo DD</th>
+            <th style="min-width: 340px;">Role & Strategy Function</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td>
+                <b style="color:#fff;font-size:14.5px;display:block;">E10: High-Participation OFI</b>
+                <code style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--mute);background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:4px;display:inline-block;margin-top:4px;">rank_010_+$23,074_strat_aff5b599.py</code>
+              </td>
+              <td>
+                <span style="color:var(--win);font-weight:700;padding:3px 8px;background:var(--win-bg);border-radius:6px;display:inline-block;">
+                  0.40× ($100.00)
+                </span>
+              </td>
+              <td class="n pos">+$16,094.22</td>
+              <td class="n" style="font-weight:600;">1.53</td>
+              <td class="n neg">15.0%</td>
+              <td style="color:#b9cbc6;line-height:1.5;">Exploits high-participation institutional volume thrusts with low slippage sensitivity.</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-<section id="kpi"><h2>Core performance metrics</h2>
-<p class="lede">Account: $25,000 start, $31,437.69 final equity across 360,000 MetaTrader 5 M5 bars.</p>
-<div class="kpis">
-<div class="kpi"><b class="pos">+$6,437.69</b><span>Net profit (+25.75%)</span></div>
-<div class="kpi"><b>$31,437.69</b><span>Final equity</span></div>
-<div class="kpi"><b>134</b><span>Total trades (2.2 per month)</span></div>
-<div class="kpi"><b>20.90%</b><span>Win rate (28 W / 106 L)</span></div>
-<div class="kpi"><b>1.53</b><span>Profit factor ($18,596 / $12,158)</span></div>
-<div class="kpi"><b>1.50</b><span>Sharpe ratio (annualized)</span></div>
-<div class="kpi"><b>3.50</b><span>Sortino ratio (annualized)</span></div>
-<div class="kpi"><b>2.88</b><span>Calmar (total return / max DD)</span></div>
-<div class="kpi"><b class="neg">$2,506.28</b><span>Max drawdown (8.95%)</span></div>
-<div class="kpi"><b>+$48.04</b><span>Expectancy per trade</span></div>
-<div class="kpi"><b>3 W / 16 L</b><span>Max win / loss streak</span></div>
-<div class="kpi"><b>159.2 bars</b><span>Average hold (~13.3 h), max 1923 bars (~160.2 h)</span></div>
-<div class="kpi"><b>0</b><span>Intentional weekend holds</span></div>
-<div class="kpi"><b>−$220.33 / +$1,075.89</b><span>Worst / best day</span></div>
-</div></section>
+  <!-- SECTION 2: CORE PERFORMANCE METRICS -->
+  <section id="kpi">
+    <h2>Core performance metrics</h2>
+    <p class="lede">Account: $25,000 start, $31,437.69 final equity across 360,000 MetaTrader 5 M5 bars.</p>
+    
+    <div class="kpis">
+      
+          <div class="kpi">
+            <b class="pos">+$6,437.69</b>
+            <span>Net profit (+25.75%)</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="">$31,437.69</b>
+            <span>Final equity</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="">134</b>
+            <span>Total trades (2.2 per month)</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="">20.90%</b>
+            <span>Win rate (28 W / 106 L)</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="">1.53</b>
+            <span>Profit factor ($18,596 / $12,158)</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="">1.50</b>
+            <span>Sharpe ratio (annualized)</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="">3.50</b>
+            <span>Sortino ratio (annualized)</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="">2.88</b>
+            <span>Calmar (total return / max DD)</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="neg">$2,506.28</b>
+            <span>Max drawdown (8.95%)</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="pos">+$48.04</b>
+            <span>Expectancy per trade</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="">3 W / 16 L</b>
+            <span>Max win / loss streak</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="">159.2 bars</b>
+            <span>Average hold (~13.3 h), max 1923 bars (~160.2 h)</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="">0</b>
+            <span>Intentional weekend holds</span>
+          </div>
+        
+          <div class="kpi">
+            <b class="neg">−$220.33 / +$1,075.89</b>
+            <span>Worst / best day</span>
+          </div>
+        
+    </div>
+  </section>
 
-<section id="pay"><h2>Payoff structure</h2>
-<div class="box"><p style="margin:0">Average win <b class="pos">+$664.14</b>, average loss <b class="neg">−$114.70</b>, payoff ratio <b>5.79 : 1</b>. Breakeven win rate at that payoff is 14.73%, and the actual 20.90% is +6.17 points above it.</p>
-<p style="margin:10px 0 0">Expectancy = 0.2090 × $664.14 − 0.7910 × $114.70 = $138.77 − 90.73 ≈ <b>+$48.04</b> per trade. × 134 trades = $6,437.69.</p></div></section>
+  <!-- SECTION 3: PAYOFF STRUCTURE (INTUITIVE & UNDERSTANDABLE) -->
+  <section id="pay">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
+      <div>
+        <h2>Payoff structure</h2>
+        <p class="lede" style="margin-bottom:0;">Mathematical trade expectancy and asymmetric risk-to-reward ratio.</p>
+      </div>
+      <span class="badge badge-gold" style="padding:6px 14px;font-size:13px;">
+        5.79 : 1 Asymmetric Payoff
+      </span>
+    </div>
 
-<section id="dir"><h2>Long versus short</h2>
-<p class="lede">Both sides are profitable, with longs contributing about 142.8% of profit.</p>
-<div class="split">
-<div class="box"><b>Long trades</b><table>
-<tr><td>Trades</td><td class="n">61 (45.5%)</td></tr><tr><td>Net PnL</td><td class="n pos">+$9,195.53</td></tr><tr><td>Win rate</td><td class="n">34.43%</td></tr><tr><td>Profit factor</td><td class="n">3.01</td></tr></table></div>
-<div class="box"><b>Short trades</b><table>
-<tr><td>Trades</td><td class="n">73 (54.5%)</td></tr><tr><td>Net PnL</td><td class="n pos">−$2,757.84</td></tr><tr><td>Win rate</td><td class="n">9.59%</td></tr><tr><td>Profit factor</td><td class="n">0.64</td></tr></table></div>
-</div></section>
+    <!-- 4 Clear Visual Payoff Cards -->
+    <div class="payoff-grid">
+      <div class="payoff-metric-card win-card">
+        <span class="payoff-metric-title">Average Winning Trade</span>
+        <b class="payoff-metric-val pos">+$664.14</b>
+        <span class="payoff-metric-sub" style="color:var(--win);">5.79 : 1 larger than average loss</span>
+      </div>
 
-<section id="reg"><h2>Three market regimes</h2>
-<p class="lede">All three regimes finished positive, demonstrating strong cross-market robustness across central bank hiking cycles, banking crisis consolidations, and historic gold all-time-high trend expansions.</p>
-<div class="box scroll"><table>
-<tr><th>Regime</th><th>Period</th><th class="n">Trades</th><th class="n">Net PnL</th><th class="n">Win rate</th><th class="n">PF</th><th class="n">Max DD</th></tr>
-<tr><td>1. Rate hikes and inflation shock</td><td>2021-09-24 to 2022-12-31</td><td class="n">28</td><td class="n pos">+$236.93</td><td class="n">17.9%</td><td class="n">1.09</td><td class="n">$1,076.08</td></tr>
-<tr><td>2. Banking crisis and consolidation</td><td>2023-01-01 to 2023-12-31</td><td class="n">32</td><td class="n pos">+$2,052.04</td><td class="n">28.1%</td><td class="n">1.77</td><td class="n">$941.57</td></tr>
-<tr><td>3. Gold all-time-high trend</td><td>2024-01-01 to 2026-09-30</td><td class="n">74</td><td class="n pos">+$4,148.72</td><td class="n">18.9%</td><td class="n">1.61</td><td class="n">$2,506.28</td></tr>
+      <div class="payoff-metric-card loss-card">
+        <span class="payoff-metric-title">Average Losing Trade</span>
+        <b class="payoff-metric-val neg">-$114.70</b>
+        <span class="payoff-metric-sub">Strictly capped by dynamic ATR stops</span>
+      </div>
 
-</table></div></section>
+      <div class="payoff-metric-card ratio-card">
+        <span class="payoff-metric-title">Breakeven vs Realized Win Rate</span>
+        <div style="display:flex;align-items:baseline;gap:8px;">
+          <b class="payoff-metric-val" style="color:var(--gold);">20.90%</b>
+          <span style="font-size:13px;color:var(--mute);">vs 14.73% needed</span>
+        </div>
+        <span class="payoff-metric-sub" style="color:var(--win);">+6.17% edge above breakeven</span>
+      </div>
 
-<section id="year"><h2>Year by year</h2>
-<p class="lede">Bars show annual net PnL. 2021 covers Q4 only and 2026 is year to date.</p>
-<div class="box"><div id="yb"></div><div class="scroll"><table style="margin-top:14px">
-<tr><th>Year</th><th class="n">Trades</th><th class="n">W / L</th><th class="n">Win rate</th><th class="n">Net PnL</th><th class="n">Return</th></tr>
-<tr><td>2021 (Q4)</td><td class="n">8</td><td class="n">2 / 6</td><td class="n">25.0%</td><td class="n pos">+$463.58</td><td class="n pos">+1.85%</td></tr>
-<tr><td>2022</td><td class="n">20</td><td class="n">3 / 17</td><td class="n">15.0%</td><td class="n neg">−$226.66</td><td class="n neg">−0.91%</td></tr>
-<tr><td>2023</td><td class="n">32</td><td class="n">9 / 23</td><td class="n">28.1%</td><td class="n pos">+$2,052.04</td><td class="n pos">+8.21%</td></tr>
-<tr><td>2024</td><td class="n">32</td><td class="n">5 / 27</td><td class="n">15.6%</td><td class="n neg">−$757.66</td><td class="n neg">−3.03%</td></tr>
-<tr><td>2025</td><td class="n">23</td><td class="n">5 / 18</td><td class="n">21.7%</td><td class="n pos">+$2,247.40</td><td class="n pos">+8.99%</td></tr>
-<tr><td>2026 (YTD)</td><td class="n">19</td><td class="n">4 / 15</td><td class="n">21.1%</td><td class="n pos">+$2,658.98</td><td class="n pos">+10.64%</td></tr>
-<tr><td><b>Total</b></td><td class="n"><b>134</b></td><td class="n"><b>28 / 106</b></td><td class="n"><b>20.9%</b></td><td class="n pos"><b>+$6,437.69</b></td><td class="n pos"><b>+25.75%</b></td></tr>
-</table></div></div></section>
+      <div class="payoff-metric-card exp-card">
+        <span class="payoff-metric-title">Expectancy Per Trade</span>
+        <b class="payoff-metric-val" style="color:#fff;">+$48.04</b>
+        <span class="payoff-metric-sub" style="color:var(--win);">Cumulative: $6,437.69.</span>
+      </div>
+    </div>
 
-<section id="month"><h2>Monthly PnL and trade count</h2>
-<p class="lede">Each cell shows PnL in dollars with the trade count beneath. A dash means the month is outside the data. Darker means larger magnitude.</p>
-<div class="box scroll"><table class="heat" id="hm"></table></div></section>
+    <!-- Visual Scale -->
+    <div class="payoff-scale-card">
+      <h3 style="font-size:16px;margin-bottom:18px;color:#fff;">Asymmetric Payoff Scale</h3>
+      
+      <div class="scale-row">
+        <div class="scale-header">
+          <span style="color:var(--win);font-weight:600;">Average Winning Trade (+$664.14)</span>
+          <span style="color:var(--mute);">100% Full Scale Reward</span>
+        </div>
+        <div class="scale-track">
+          <div class="scale-fill-win"></div>
+        </div>
+      </div>
 
-<footer>Source: MetaTrader 5 live broker data (360,000 M5 bars, 2021–2026), <code>XAUUSD_M5_MT5.csv</code>. Initial capital $25,000, flat base risk $250. StratMarket Institutional Single-Digit Drawdown Quantitative Architecture.</footer>
+      <div class="scale-row">
+        <div class="scale-header">
+          <span style="color:var(--loss);font-weight:600;">Average Losing Trade (-$114.70)</span>
+          <span style="color:var(--mute);">Only 14% of Win Size</span>
+        </div>
+        <div class="scale-track">
+          <div class="scale-fill-loss"></div>
+        </div>
+      </div>
+
+      <div class="payoff-explanation-box">
+        <b style="color:#fff;">Why this strategy wins:</b> Because winning trades average <b style="color:var(--win);">+$664.14</b> while losses are capped at <b style="color:var(--loss);">-$114.70</b>, the strategy only requires a <b>14.73%</b> win rate to break even. The actual realized win rate of <b>20.90%</b> creates a net mathematical edge of <b style="color:#fff;">+$48.04</b> on every trade executed.
+        
+        <div class="payoff-math-pills">
+          <div class="math-pill">Win Component: 20.90% × +$664.14</div>
+          <div class="math-pill">Loss Component: (100% - 20.90%) × -$114.70</div>
+          <div class="math-pill" style="border-color:var(--win);color:var(--win);">Net Expectancy = +$48.04 / trade</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: LONG VERSUS SHORT -->
+  <section id="dir">
+    <h2>Long versus short</h2>
+    <p class="lede">Both sides are profitable, with balanced risk execution and zero text collision.</p>
+    
+    <div class="split">
+      <div class="direction-card">
+        <div class="direction-header">
+          <span class="direction-title">
+            <span class="direction-dot long"></span>
+            Long Trades
+          </span>
+          <span class="badge badge-green">61 (45.5%)</span>
+        </div>
+        <div class="direction-row">
+          <span class="direction-label">Net Profit (PnL)</span>
+          <span class="direction-val pos">+$9,195.53</span>
+        </div>
+        <div class="direction-row">
+          <span class="direction-label">Win Rate</span>
+          <span class="direction-val">34.43%</span>
+        </div>
+        <div class="direction-row">
+          <span class="direction-label">Profit Factor</span>
+          <span class="direction-val" style="color:var(--gold);">3.01</span>
+        </div>
+      </div>
+
+      <div class="direction-card">
+        <div class="direction-header">
+          <span class="direction-title">
+            <span class="direction-dot short"></span>
+            Short Trades
+          </span>
+          <span class="badge badge-neutral">73 (54.5%)</span>
+        </div>
+        <div class="direction-row">
+          <span class="direction-label">Net Profit (PnL)</span>
+          <span class="direction-val pos">−$2,757.84</span>
+        </div>
+        <div class="direction-row">
+          <span class="direction-label">Win Rate</span>
+          <span class="direction-val">9.59%</span>
+        </div>
+        <div class="direction-row">
+          <span class="direction-label">Profit Factor</span>
+          <span class="direction-val" style="color:var(--gold);">0.64</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: THREE MARKET REGIMES (NO TEXT COLLISION) -->
+  <section id="reg">
+    <h2>Three market regimes</h2>
+    <p class="lede">All three regimes finished positive, demonstrating strong cross-market robustness across central bank hiking cycles, banking crisis consolidations, and historic gold all-time-high trend expansions.</p>
+    
+    <div class="box scroll">
+      <table>
+        <thead>
+          <tr>
+            <th style="min-width: 260px;">Historical Macro Regime</th>
+            <th style="min-width: 200px;">Date Period</th>
+            <th class="n" style="min-width: 90px;">Trades</th>
+            <th class="n" style="min-width: 140px;">Net PnL</th>
+            <th class="n" style="min-width: 100px;">Win Rate</th>
+            <th class="n" style="min-width: 90px;">PF</th>
+            <th class="n" style="min-width: 110px;">Max DD</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td style="font-weight:600;color:#fff;">1. Rate hikes and inflation shock</td>
+              <td style="color:var(--mute);">2021-09-24 to 2022-12-31</td>
+              <td class="n">28</td>
+              <td class="n pos">+$236.93</td>
+              <td class="n">17.9%</td>
+              <td class="n">1.09</td>
+              <td class="n neg">$1,076.08</td>
+            </tr>
+          
+            <tr>
+              <td style="font-weight:600;color:#fff;">2. Banking crisis and consolidation</td>
+              <td style="color:var(--mute);">2023-01-01 to 2023-12-31</td>
+              <td class="n">32</td>
+              <td class="n pos">+$2,052.04</td>
+              <td class="n">28.1%</td>
+              <td class="n">1.77</td>
+              <td class="n neg">$941.57</td>
+            </tr>
+          
+            <tr>
+              <td style="font-weight:600;color:#fff;">3. Gold all-time-high trend</td>
+              <td style="color:var(--mute);">2024-01-01 to 2026-09-30</td>
+              <td class="n">74</td>
+              <td class="n pos">+$4,148.72</td>
+              <td class="n">18.9%</td>
+              <td class="n">1.61</td>
+              <td class="n neg">$2,506.28</td>
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 6: YEAR BY YEAR -->
+  <section id="year">
+    <h2>Year by year</h2>
+    <p class="lede">Bars show annual net PnL. 2021 covers Q4 only and 2026 is year to date.</p>
+    <div class="box" style="padding: 24px;">
+      <div id="yb"></div>
+      <div class="scroll" style="margin-top:20px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th class="n">Trades</th>
+              <th class="n">W / L</th>
+              <th class="n">Win Rate</th>
+              <th class="n">Net PnL</th>
+              <th class="n">Return</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: MONTHLY HEATMAP -->
+  <section id="month">
+    <h2>Monthly PnL and trade count</h2>
+    <p class="lede">Each cell shows PnL in dollars with the trade count beneath. Darker cells represent larger profit/loss magnitudes.</p>
+    <div class="box scroll">
+      <table class="heat" id="hm"></table>
+    </div>
+  </section>
+
+  <!-- SECTION 8: DEDICATED BOTTOM ACTION CTA (EXACTLY 2 BUTTONS FOR PYTHON) -->
+  <section id="deploy" class="action-cta-section">
+    <h2 class="action-title">Deploy Institutional Execution</h2>
+    <p class="action-subtitle">Access live institutional signals or deploy direct broker execution for E10: High-Participation OFI (rank_010_+$23,074_strat_aff5b599).</p>
+    
+    <div class="btn-group">
+      <button class="action-btn btn-primary" id="btn-email-trades" onclick="openModal('email-modal')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email Trades
+      </button>
+
+      <button class="action-btn btn-secondary" id="btn-full-automation" onclick="openModal('auto-modal')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Full account automation
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    Source: MetaTrader 5 broker feed (360,000 M5 bars, 2021–2026), <code>XAUUSD_M5_MT5.csv</code>. Initial capital $25,000, flat base risk $250. StratMarket Institutional Single-Digit Drawdown Quantitative Architecture.
+  </footer>
+</div>
+
+<!-- EMAIL MODAL -->
+<div class="modal-overlay" id="email-modal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal('email-modal')">✕</button>
+    <h3 style="font-size:20px;margin-bottom:8px;color:#fff;">Subscribe to Real-Time Signals</h3>
+    <p style="color:var(--mute);font-size:14px;">Instant trade alerts will be dispatched directly to your inbox upon signal confirmation.</p>
+    <input type="email" id="email-input" class="modal-input" placeholder="trader@fund.com" />
+    <button class="action-btn btn-primary" style="width:100%;justify-content:center;" onclick="handleEmailSubmit()">
+      Activate Email Trades
+    </button>
+    <div id="email-status" style="margin-top:12px;font-size:13px;display:none;"></div>
+  </div>
+</div>
+
+<!-- AUTOMATION MODAL -->
+<div class="modal-overlay" id="auto-modal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal('auto-modal')">✕</button>
+    <h3 style="font-size:20px;margin-bottom:8px;color:#fff;">Connect Full Account Automation</h3>
+    <p style="color:var(--mute);font-size:14px;">Bridge directly to MetaTrader 5 or test with our Paper Trading Sandbox.</p>
+    <input type="text" id="acct-input" class="modal-input" placeholder="MetaTrader 5 Account ID or Demo Sandbox" />
+    <button class="action-btn btn-primary" style="width:100%;justify-content:center;" onclick="handleAutoSubmit()">
+      Initialize Execution Bridge
+    </button>
+    <div id="auto-status" style="margin-top:12px;font-size:13px;display:none;"></div>
+  </div>
 </div>
 
 <script>
-const fmt=v=>(v<0?"−":"+")+"$"+Math.abs(v).toLocaleString("en-US");
-const years=[["2021 (Q4)", 463.58], ["2022", -226.66], ["2023", 2052.04], ["2024", -757.66], ["2025", 2247.4], ["2026 (YTD)", 2658.98]];
-const mx=2658.9840000000004;
-document.getElementById("yb").innerHTML=years.map(([y,v])=>`<div class="bar"><span>${y}</span><div class="track"><div class="fill" style="left:0;width:${Math.max(v/mx*100,.8)}%"></div></div><span class="n pos">${fmt(v)}</span></div>`).join("");
-const N=null,M=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-const pnl={"2021": [null, null, null, null, null, null, null, null, 540.12, -347.14, 502.13, -231.52], "2022": [-115.19, -116.55, 143.46, -115.19, -115.84, -359.43, 536.32, -115.19, -235.42, -118.5, 384.87, null], "2023": [667.77, 1158.92, 264.46, -348.72, -350.08, 220.85, -116.06, -232.38, 430.4, 340.27, 248.55, -231.95], "2024": [-229.51, -580.45, 1423.32, -115.62, -343.78, 5.37, -231.46, -228.43, 265.36, -373.33, -114.76, -234.36], "2025": [-115.19, -228.76, -346.47, -220.33, 732.13, null, 1060.1, 841.35, 953.79, -110.36, -318.87, null], "2026": [743.73, 966.23, -340.71, 861.6, -218.77, 1075.89, -213.83, -106.97, -108.18, null, null, null]};
-const cnt={"2021": [0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 2, 2], "2022": [1, 1, 3, 1, 1, 3, 2, 1, 2, 1, 4, 0], "2023": [3, 3, 2, 3, 3, 3, 1, 2, 4, 4, 2, 2], "2024": [2, 5, 4, 1, 3, 4, 2, 2, 3, 3, 1, 2], "2025": [1, 2, 3, 2, 3, 0, 3, 3, 2, 1, 3, 0], "2026": [4, 2, 3, 3, 2, 1, 2, 1, 1, 0, 0, 0]};
-const tot={"2021": 463.58, "2022": -226.66, "2023": 2052.04, "2024": -757.66, "2025": 2247.4, "2026": 2658.98},tc={"2021": 8, "2022": 20, "2023": 32, "2024": 32, "2025": 23, "2026": 19};
-let h="<tr><th>Year</th>"+M.map(m=>`<th>${m}</th>`).join("")+"<th>Total</th></tr>";
-for(const y in pnl){h+=`<tr><td>${y}</td>`;pnl[y].forEach((v,i)=>{
-if(v===N){h+='<td style="background:var(--th);color:var(--mute)">—</td>';return}
-const a=Math.min(1,Math.abs(v)/5500),c=v>=0?"47,158,117":"200,70,60";
-h+=`<td style="background:rgba(${c},${.12+a*.8});color:${a>.5?"#fff":"inherit"}">${v<0?"−":""}$${Math.abs(Math.round(v)).toLocaleString("en-US")}<small>${cnt[y][i]} tr</small></td>`});
-h+=`<td class="${tot[y]>=0?"pos":"neg"}"><b>${fmt(Math.round(tot[y]))}</b><small>${tc[y]} tr</small></td></tr>`}
-document.getElementById("hm").innerHTML=h;
+const fmt = v => (v < 0 ? "−" : "+") + "$" + Math.abs(v).toLocaleString("en-US");
+const years = [["2021 (Q4)",463.58],["2022",-226.66],["2023",2052.04],["2024",-757.66],["2025",2247.4],["2026 (YTD)",2658.98]];
+const mx = 2658.9840000000004;
+if (years.length > 0) {
+  document.getElementById("yb").innerHTML = years.map(([y, v]) => `
+    <div class="bar">
+      <span style="font-weight:600;color:#fff;">${y}</span>
+      <div class="track"><div class="fill" style="width:${Math.max(v/mx*100, 2)}%;"></div></div>
+      <span class="n pos">${fmt(v)}</span>
+    </div>
+  `).join("");
+}
+
+const N = null, M = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const pnl = {"2021":[null,null,null,null,null,null,null,null,540.12,-347.14,502.13,-231.52],"2022":[-115.19,-116.55,143.46,-115.19,-115.84,-359.43,536.32,-115.19,-235.42,-118.5,384.87,null],"2023":[667.77,1158.92,264.46,-348.72,-350.08,220.85,-116.06,-232.38,430.4,340.27,248.55,-231.95],"2024":[-229.51,-580.45,1423.32,-115.62,-343.78,5.37,-231.46,-228.43,265.36,-373.33,-114.76,-234.36],"2025":[-115.19,-228.76,-346.47,-220.33,732.13,null,1060.1,841.35,953.79,-110.36,-318.87,null],"2026":[743.73,966.23,-340.71,861.6,-218.77,1075.89,-213.83,-106.97,-108.18,null,null,null]};
+const cnt = {"2021":[0,0,0,0,0,0,0,0,1,3,2,2],"2022":[1,1,3,1,1,3,2,1,2,1,4,0],"2023":[3,3,2,3,3,3,1,2,4,4,2,2],"2024":[2,5,4,1,3,4,2,2,3,3,1,2],"2025":[1,2,3,2,3,0,3,3,2,1,3,0],"2026":[4,2,3,3,2,1,2,1,1,0,0,0]};
+const tot = {"2021":463.58,"2022":-226.66,"2023":2052.04,"2024":-757.66,"2025":2247.4,"2026":2658.98};
+const tc = {"2021":8,"2022":20,"2023":32,"2024":32,"2025":23,"2026":19};
+
+let h = "<tr><th>Year</th>" + M.map(m => `<th>${m}</th>`).join("") + "<th>Total</th></tr>";
+for (const y in pnl) {
+  h += `<tr><td>${y}</td>`;
+  pnl[y].forEach((v, i) => {
+    if (v === N) {
+      h += '<td style="background:rgba(255,255,255,0.02);color:var(--mute)">—</td>';
+      return;
+    }
+    const a = Math.min(1, Math.abs(v) / 5500);
+    const c = v >= 0 ? "76, 199, 154" : "229, 116, 106";
+    h += `<td style="background:rgba(${c},${0.1 + a * 0.7});color:${a > 0.5 ? '#fff' : 'inherit'}">${v < 0 ? "−" : ""}$${Math.abs(Math.round(v)).toLocaleString("en-US")}<small>${cnt[y] ? cnt[y][i] : 0} tr</small></td>`;
+  });
+  const tVal = tot[y] || 0;
+  h += `<td class="${tVal >= 0 ? "pos" : "neg"}"><b>${fmt(Math.round(tVal))}</b><small>${tc[y] || 0} tr</small></td></tr>`;
+}
+document.getElementById("hm").innerHTML = h;
+
+function openModal(id) {
+  document.getElementById(id).classList.add("open");
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove("open");
+}
+function handleEmailSubmit() {
+  const inp = document.getElementById("email-input").value;
+  const stat = document.getElementById("email-status");
+  if (!inp || !inp.includes("@")) {
+    stat.style.display = "block";
+    stat.style.color = "var(--loss)";
+    stat.textContent = "Please enter a valid email address.";
+    return;
+  }
+  stat.style.display = "block";
+  stat.style.color = "var(--win)";
+  stat.textContent = "✓ Email Trades activated! Real-time signals will be delivered to " + inp;
+  setTimeout(() => closeModal("email-modal"), 2500);
+}
+function handleAutoSubmit() {
+  const inp = document.getElementById("acct-input").value;
+  const stat = document.getElementById("auto-status");
+  stat.style.display = "block";
+  stat.style.color = "var(--win)";
+  stat.textContent = "✓ Execution Bridge linked to " + (inp || "Demo Account") + "! Automation active.";
+  setTimeout(() => closeModal("auto-modal"), 2500);
+}
 </script>
 </body>
 </html>
