@@ -70,16 +70,16 @@ export function StrategyReportView({ strategy }: Props) {
 
       if (res.ok) {
         setEmailSuccess(
-          `✓ Email Trades active! Strategy signals for ${strategy.id} (${strategy.name}) are mapped to ${email.trim()}.`
+          `✓ Email Trades active! Real-time signals for ${strategy.id} (${strategy.name}) are routed to ${email.trim()}.`
         );
       } else {
         setEmailSuccess(
-          `✓ Email Trades active! Strategy signals for ${strategy.id} are mapped to ${email.trim()}.`
+          `✓ Email Trades active! Real-time signals for ${strategy.id} are routed to ${email.trim()}.`
         );
       }
     } catch {
       setEmailSuccess(
-        `✓ Email Trades active! Strategy signals for ${strategy.id} are mapped to ${email.trim()}.`
+        `✓ Email Trades active! Real-time signals for ${strategy.id} are routed to ${email.trim()}.`
       );
     } finally {
       setEmailLoading(false);
@@ -105,7 +105,7 @@ export function StrategyReportView({ strategy }: Props) {
       if (res.ok) {
         setAutomationSuccess(
           isPaperSimulator
-            ? `✓ Virtual Paper Trading Simulator deployed for ${strategy.id}! Simulated tick execution is now active in real time.`
+            ? `✓ Virtual Paper Trading Simulator deployed for ${strategy.id}! Real-time simulated execution active.`
             : `✓ Full Account Automation established with ${brokerPlatform}! Orders for ${strategy.id} will execute automatically.`
         );
       } else {
@@ -154,20 +154,20 @@ if (shortCondition)
   };
 
   const getHeatmapBg = (v: number | null) => {
-    if (v === null || v === undefined) return "rgba(255,255,255,0.02)";
+    if (v === null || v === undefined) return "rgba(255,255,255,0.015)";
     const intensity = Math.min(1, Math.abs(v) / 5500);
     if (v >= 0) {
-      return `rgba(76, 199, 154, ${0.12 + intensity * 0.75})`;
+      return `rgba(76, 199, 154, ${0.14 + intensity * 0.72})`;
     } else {
-      return `rgba(229, 116, 106, ${0.14 + intensity * 0.75})`;
+      return `rgba(229, 116, 106, ${0.16 + intensity * 0.72})`;
     }
   };
 
   return (
-    <div className="strategy-report-container native-report-wrap">
+    <div className="strategy-report-container native-report-wrap" style={{ maxWidth: "1160px", margin: "0 auto", padding: "32px 24px 140px" }}>
       {/* Top Breadcrumb & Strategy Badges */}
-      <div className="report-header-bar">
-        <Link href="/market" className="report-back-link">
+      <div className="report-header-bar" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", paddingBottom: "20px", borderBottom: "1px solid var(--line)" }}>
+        <Link href="/market" className="report-back-link" style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: "var(--mut)", fontSize: "14px" }}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
@@ -195,25 +195,28 @@ if (shortCondition)
         </div>
       </div>
 
-      {/* Hero Header matching Website Luxury Theme */}
-      <section className="report-hero">
-        <span className="tag">
+      {/* Hero Header */}
+      <section className="report-hero" style={{ padding: "28px 0 36px", borderBottom: "1px solid var(--line)" }}>
+        <span className="tag" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+          <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#4cc79a", display: "inline-block" }}></span>
           <b>StratMarket Verified</b> · Institutional Quantitative Tear Sheet
         </span>
-        <h1>{strategy.name}</h1>
-        <p className="report-subtitle">
+        <h1 style={{ fontSize: "clamp(34px, 5.2vw, 56px)", margin: "14px 0 14px", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.05 }}>
+          {strategy.name}
+        </h1>
+        <p className="report-subtitle" style={{ color: "var(--mut)", fontSize: "16px", lineHeight: 1.6, maxWidth: "88ch" }}>
           {reportData.subtitle || strategy.description}
         </p>
 
         {/* 4 Big Hero Stat Cards */}
-        <div className="hero-big-stats">
+        <div className="hero-big-stats" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px", marginTop: "32px" }}>
           {reportData.bigStats && reportData.bigStats.length > 0 ? (
             reportData.bigStats.map((st: any, idx: number) => (
-              <div key={idx} className="hero-stat-card">
-                <b style={{ color: idx === 0 ? "#e8c46a" : idx === 2 ? "#4cc79a" : "#ffffff" }}>
+              <div key={idx} className="hero-stat-card" style={{ background: "linear-gradient(180deg, rgba(20, 20, 24, 0.9) 0%, rgba(10, 10, 12, 0.98) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "22px 24px" }}>
+                <b style={{ color: idx === 0 ? "#e8c46a" : idx === 2 ? "#4cc79a" : "#ffffff", fontSize: "clamp(26px, 3.4vw, 36px)", display: "block", fontFamily: "JetBrains Mono, monospace", marginBottom: "6px" }}>
                   {st.val}
                 </b>
-                <span>{st.label}</span>
+                <span style={{ fontSize: "13.5px", color: "var(--mut)", display: "block" }}>{st.label}</span>
               </div>
             ))
           ) : (
@@ -241,20 +244,22 @@ if (shortCondition)
 
       {/* In-Page Navigation Bar */}
       <nav className="report-nav-bar" aria-label="Report Sections">
-        <a href="#mech" className="report-nav-link">Mechanism</a>
-        <a href="#kpi" className="report-nav-link">Core metrics</a>
-        <a href="#pay" className="report-nav-link">Payoff</a>
-        <a href="#dir" className="report-nav-link">Long vs short</a>
-        <a href="#reg" className="report-nav-link">Regimes</a>
-        <a href="#year" className="report-nav-link">Yearly</a>
-        <a href="#month" className="report-nav-link">Monthly</a>
+        <a href="#mech" className="report-nav-link">⚡ Mechanism</a>
+        <a href="#kpi" className="report-nav-link">📊 Core metrics</a>
+        <a href="#pay" className="report-nav-link">⚖ Payoff</a>
+        <a href="#dir" className="report-nav-link">⇄ Long vs short</a>
+        <a href="#reg" className="report-nav-link">🌐 Regimes</a>
+        <a href="#year" className="report-nav-link">📅 Yearly</a>
+        <a href="#month" className="report-nav-link">🗓 Monthly</a>
       </nav>
 
       {/* SECTION 1: HOW THE STRATEGY WORKS (MECHANISM BREAKDOWN) */}
-      <section id="mech" className="report-section">
-        <h2>How the strategy works</h2>
-        <p className="lede">{reportData.mechLede}</p>
-        <div className="report-card report-table-scroll">
+      <section id="mech" className="report-section" style={{ marginTop: "48px", scrollMarginTop: "130px" }}>
+        <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>How the strategy works</h2>
+        <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px", maxWidth: "80ch" }}>
+          {reportData.mechLede}
+        </p>
+        <div className="report-card report-table-scroll" style={{ padding: "0", overflow: "hidden", border: "1px solid var(--line)", borderRadius: "14px" }}>
           <table className="report-table">
             <thead>
               <tr>
@@ -270,15 +275,15 @@ if (shortCondition)
             <tbody>
               {reportData.mechRows && reportData.mechRows.map((row: any, i: number) => (
                 <tr key={i}>
-                  <td style={{ fontWeight: 600 }}>{row.engine}</td>
-                  <td style={{ color: "var(--mut)", fontSize: "13px" }}>{row.indicator}</td>
-                  <td>
+                  <td style={{ fontWeight: 600, color: "var(--tx)", whiteSpace: "nowrap" }}>{row.engine}</td>
+                  <td style={{ color: "var(--mut)", fontSize: "13px", minWidth: "220px" }}>{row.indicator}</td>
+                  <td style={{ whiteSpace: "nowrap" }}>
                     <span style={{ color: "#4cc79a", fontWeight: 700 }}>{row.weight}</span>
                   </td>
                   <td className="n pos-text" style={{ fontWeight: 600 }}>{row.soloPnl}</td>
                   <td className="n">{row.soloPf}</td>
                   <td className="n neg-text">{row.soloDd}</td>
-                  <td style={{ fontSize: "13px", color: "#b9cbc6" }}>{row.role}</td>
+                  <td style={{ fontSize: "13px", color: "#b9cbc6", minWidth: "200px" }}>{row.role}</td>
                 </tr>
               ))}
             </tbody>
@@ -287,17 +292,21 @@ if (shortCondition)
       </section>
 
       {/* SECTION 2: CORE PERFORMANCE METRICS (14 KPIS) */}
-      <section id="kpi" className="report-section">
-        <h2>Core performance metrics</h2>
-        <p className="lede">{reportData.kpiLede}</p>
-        <div className="report-kpi-grid">
+      <section id="kpi" className="report-section" style={{ marginTop: "56px", scrollMarginTop: "130px" }}>
+        <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>Core performance metrics</h2>
+        <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
+          {reportData.kpiLede}
+        </p>
+        <div className="report-kpi-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))", gap: "14px" }}>
           {reportData.kpis && reportData.kpis.map((kpi: any, idx: number) => {
             const isPos = kpi.val.startsWith("+") || idx === 0;
-            const isNeg = kpi.val.includes("Max drawdown") || kpi.val.startsWith("−$") || kpi.val.startsWith("-$");
+            const isNeg = kpi.label.includes("Max drawdown") || kpi.val.startsWith("−$") || kpi.val.startsWith("-$");
             return (
-              <div key={idx} className="report-kpi-item">
-                <b className={isPos ? "pos-text" : isNeg ? "neg-text" : ""}>{kpi.val}</b>
-                <span>{kpi.label}</span>
+              <div key={idx} className="report-kpi-item" style={{ background: "linear-gradient(180deg, rgba(16, 16, 20, 0.75) 0%, rgba(10, 10, 12, 0.9) 100%)", border: "1px solid var(--line)", borderRadius: "12px", padding: "18px 20px" }}>
+                <b style={{ display: "block", fontFamily: "JetBrains Mono, monospace", fontSize: "21px", fontWeight: 700, lineHeight: 1.2, marginBottom: "6px" }} className={isPos ? "pos-text" : isNeg ? "neg-text" : ""}>
+                  {kpi.val}
+                </b>
+                <span style={{ fontSize: "13px", color: "var(--mut)", lineHeight: 1.4, display: "block" }}>{kpi.label}</span>
               </div>
             );
           })}
@@ -305,21 +314,28 @@ if (shortCondition)
       </section>
 
       {/* SECTION 3: PAYOFF STRUCTURE */}
-      <section id="pay" className="report-section">
-        <h2>Payoff structure</h2>
-        <div className="report-card">
-          <p style={{ margin: 0, fontSize: "15px", lineHeight: 1.6 }}>{reportData.payText}</p>
+      <section id="pay" className="report-section" style={{ marginTop: "56px", scrollMarginTop: "130px" }}>
+        <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>Payoff structure</h2>
+        <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
+          Mathematical trade expectancy and asymmetric risk-to-reward ratio.
+        </p>
+        <div className="report-card" style={{ background: "linear-gradient(180deg, rgba(16, 16, 20, 0.85) 0%, rgba(8, 8, 10, 0.95) 100%)", border: "1px solid var(--line)", borderRadius: "14px", padding: "26px" }}>
+          <p style={{ margin: 0, fontSize: "15.5px", lineHeight: 1.7, color: "var(--tx)" }}>
+            {reportData.payText}
+          </p>
         </div>
       </section>
 
       {/* SECTION 4: LONG VERSUS SHORT */}
-      <section id="dir" className="report-section">
-        <h2>Long versus short</h2>
-        <p className="lede">Both trade directions are profitable with balanced risk execution.</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "16px" }}>
+      <section id="dir" className="report-section" style={{ marginTop: "56px", scrollMarginTop: "130px" }}>
+        <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>Long versus short</h2>
+        <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
+          Both trade directions are profitable with balanced risk execution.
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "16px" }}>
           {reportData.longStats && (
-            <div className="report-card">
-              <b style={{ fontSize: "16px", display: "block", marginBottom: "14px" }}>Long trades</b>
+            <div className="report-card" style={{ border: "1px solid var(--line)", borderRadius: "14px", padding: "22px" }}>
+              <b style={{ fontSize: "16px", display: "block", marginBottom: "16px", color: "var(--tx)" }}>Long trades</b>
               <table className="report-table">
                 <tbody>
                   <tr><td>Trades</td><td className="n">{reportData.longStats.trades}</td></tr>
@@ -332,8 +348,8 @@ if (shortCondition)
           )}
 
           {reportData.shortStats && (
-            <div className="report-card">
-              <b style={{ fontSize: "16px", display: "block", marginBottom: "14px" }}>Short trades</b>
+            <div className="report-card" style={{ border: "1px solid var(--line)", borderRadius: "14px", padding: "22px" }}>
+              <b style={{ fontSize: "16px", display: "block", marginBottom: "16px", color: "var(--tx)" }}>Short trades</b>
               <table className="report-table">
                 <tbody>
                   <tr><td>Trades</td><td className="n">{reportData.shortStats.trades}</td></tr>
@@ -348,10 +364,12 @@ if (shortCondition)
       </section>
 
       {/* SECTION 5: THREE MARKET REGIMES */}
-      <section id="reg" className="report-section">
-        <h2>Three market regimes</h2>
-        <p className="lede">Cross-market verification across central bank rate hikes, banking crisis consolidations, and historic trend expansions.</p>
-        <div className="report-card report-table-scroll">
+      <section id="reg" className="report-section" style={{ marginTop: "56px", scrollMarginTop: "130px" }}>
+        <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>Three market regimes</h2>
+        <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
+          Cross-market robustness across central bank rate hikes, banking crisis consolidations, and historic trend expansions.
+        </p>
+        <div className="report-card report-table-scroll" style={{ padding: "0", overflow: "hidden", border: "1px solid var(--line)", borderRadius: "14px" }}>
           <table className="report-table">
             <thead>
               <tr>
@@ -382,12 +400,14 @@ if (shortCondition)
       </section>
 
       {/* SECTION 6: YEAR BY YEAR */}
-      <section id="year" className="report-section">
-        <h2>Year by year</h2>
-        <p className="lede">Annual net profit distribution across historical market cycles.</p>
-        <div className="report-card">
+      <section id="year" className="report-section" style={{ marginTop: "56px", scrollMarginTop: "130px" }}>
+        <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>Year by year</h2>
+        <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
+          Annual net profit distribution across historical market cycles.
+        </p>
+        <div className="report-card" style={{ border: "1px solid var(--line)", borderRadius: "14px", padding: "26px" }}>
           {/* Annual Net PnL Bars */}
-          <div style={{ marginBottom: "24px" }}>
+          <div style={{ marginBottom: "28px" }}>
             {scriptData.years && scriptData.years.map(([year, val]: [string, number], i: number) => {
               const widthPct = Math.max(2, (val / maxYearVal) * 100);
               return (
@@ -435,10 +455,12 @@ if (shortCondition)
       </section>
 
       {/* SECTION 7: MONTHLY PNL & TRADE COUNT HEATMAP */}
-      <section id="month" className="report-section">
-        <h2>Monthly PnL and trade count</h2>
-        <p className="lede">Cell shows monthly net PnL in USD with executed trade count beneath. Darker emerald reflects larger magnitude returns.</p>
-        <div className="report-card report-table-scroll">
+      <section id="month" className="report-section" style={{ marginTop: "56px", scrollMarginTop: "130px" }}>
+        <h2 style={{ fontSize: "28px", marginBottom: "8px" }}>Monthly PnL and trade count</h2>
+        <p className="lede" style={{ color: "var(--mut)", fontSize: "15px", marginBottom: "20px" }}>
+          Cell shows monthly net PnL in USD with executed trade count beneath. Darker emerald reflects larger magnitude returns.
+        </p>
+        <div className="report-card report-table-scroll" style={{ padding: "0", overflow: "hidden", border: "1px solid var(--line)", borderRadius: "14px" }}>
           <table className="report-heat-table">
             <thead>
               <tr>
@@ -458,7 +480,7 @@ if (shortCondition)
 
                 return (
                   <tr key={year}>
-                    <td>{year}</td>
+                    <td style={{ fontWeight: 600, paddingLeft: "12px" }}>{year}</td>
                     {monthVals.map((val, mIdx) => {
                       const count = monthCounts[mIdx] || 0;
                       const bg = getHeatmapBg(val);
@@ -466,10 +488,10 @@ if (shortCondition)
                         <td key={mIdx} style={{ background: bg }}>
                           {val !== null ? (
                             <>
-                              <span style={{ color: val >= 0 ? "#ffffff" : "#ffffff", fontWeight: 600 }}>
+                              <span style={{ color: "#ffffff", fontWeight: 600, display: "block" }}>
                                 {formatPnl(val)}
                               </span>
-                              <small>{count} tr</small>
+                              <small style={{ color: "rgba(255,255,255,0.7)" }}>{count} tr</small>
                             </>
                           ) : (
                             <span style={{ color: "var(--mut)" }}>—</span>
@@ -477,11 +499,11 @@ if (shortCondition)
                         </td>
                       );
                     })}
-                    <td style={{ background: "rgba(255,255,255,0.04)" }}>
-                      <b className={totalVal >= 0 ? "pos-text" : "neg-text"}>
+                    <td style={{ background: "rgba(255,255,255,0.05)" }}>
+                      <b className={totalVal >= 0 ? "pos-text" : "neg-text"} style={{ display: "block" }}>
                         {formatPnl(totalVal)}
                       </b>
-                      <small>{totalCount} tr</small>
+                      <small style={{ color: "rgba(255,255,255,0.7)" }}>{totalCount} tr</small>
                     </td>
                   </tr>
                 );
@@ -492,35 +514,36 @@ if (shortCondition)
       </section>
 
       {/* FOOTER PROVENANCE */}
-      <footer style={{ marginTop: "44px", padding: "18px 0", borderTop: "1px solid var(--line)", color: "var(--mut)", fontSize: "13px" }}>
+      <footer style={{ marginTop: "48px", padding: "20px 0", borderTop: "1px solid var(--line)", color: "var(--mut)", fontSize: "13px" }}>
         Source: MetaTrader 5 broker feed (360,000 M5 bars, 2021–2026), <code>XAUUSD_M5_MT5.csv</code>. Initial capital $25,000, flat base risk $250. StratMarket Institutional Single-Digit Drawdown Quantitative Architecture.
       </footer>
 
       {/* DEDICATED ACTION ZONE DIRECTLY BELOW THE REPORT */}
-      <div className="report-action-zone">
-        <div className="action-zone-inner">
-          <div className="action-zone-text">
-            <span className="badge" style={{ background: "rgba(255, 255, 255, 0.1)", marginBottom: "12px", display: "inline-block" }}>
-              EXECUTION DISPATCH
-            </span>
-            <h2>Take Action on {strategy.name}</h2>
-            <p>
-              {isPython
-                ? "Deploy this quantitative ensemble directly to your trading workflow. Choose real-time signal dispatch via email or activate full algorithmic broker automation."
-                : "Codified for modern multi-asset trading. Explore on TradingView, subscribe to real-time signal emails, or connect automated execution."}
-            </p>
-          </div>
+      <div className="report-action-zone" style={{ marginTop: "56px", padding: "48px 36px", border: "1px solid var(--line)", borderRadius: "18px", background: "linear-gradient(180deg, rgba(22, 22, 26, 0.9) 0%, rgba(10, 10, 12, 0.98) 100%)", boxShadow: "0 24px 60px -15px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.1)" }}>
+        <div className="action-zone-inner" style={{ textAlign: "center", maxWidth: "720px", margin: "0 auto" }}>
+          <span className="badge" style={{ background: "rgba(232, 196, 106, 0.15)", color: "#e8c46a", marginBottom: "14px", display: "inline-block", fontWeight: 700 }}>
+            EXECUTION DISPATCH READY
+          </span>
+          <h2 style={{ fontSize: "clamp(28px, 4vw, 38px)", marginBottom: "14px", fontWeight: 700, letterSpacing: "-0.03em" }}>
+            Take Action on {strategy.name}
+          </h2>
+          <p style={{ fontSize: "16px", color: "var(--mut)", lineHeight: 1.6, marginBottom: "32px" }}>
+            {isPython
+              ? "Deploy this quantitative ensemble directly to your trading workflow. Choose real-time signal dispatch via email or activate full algorithmic broker automation."
+              : "Codified for modern multi-asset trading. Explore on TradingView, subscribe to real-time signal emails, or connect automated execution."}
+          </p>
 
           {/* EXACT BUTTON SPECIFICATIONS:
               Python: Exactly 2 buttons: "Email Trades" and "Full account automation"
               Pine Script: Exactly 3 buttons: "View on TradingView", "Email Trades", and "Connect Account" */}
-          <div className="action-zone-buttons">
+          <div className="action-zone-buttons" style={{ display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "center" }}>
             {isPython ? (
               <>
                 <button
                   id="btn-email-trades"
                   className="pill action-btn"
                   onClick={() => setEmailModalOpen(true)}
+                  style={{ minWidth: "220px", padding: "14px 32px", fontSize: "16px" }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -532,6 +555,7 @@ if (shortCondition)
                   id="btn-full-automation"
                   className="pill action-btn action-btn-accent"
                   onClick={() => setAutomationModalOpen(true)}
+                  style={{ minWidth: "220px", padding: "14px 32px", fontSize: "16px" }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
@@ -545,6 +569,7 @@ if (shortCondition)
                   id="btn-tradingview"
                   className="pill g action-btn"
                   onClick={() => setChartModalOpen(true)}
+                  style={{ minWidth: "200px", padding: "14px 28px", fontSize: "16px" }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
@@ -555,6 +580,7 @@ if (shortCondition)
                   id="btn-email-trades"
                   className="pill action-btn"
                   onClick={() => setEmailModalOpen(true)}
+                  style={{ minWidth: "200px", padding: "14px 28px", fontSize: "16px" }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -566,69 +592,13 @@ if (shortCondition)
                   id="btn-connect-account"
                   className="pill action-btn action-btn-accent"
                   onClick={() => setAutomationModalOpen(true)}
+                  style={{ minWidth: "200px", padding: "14px 28px", fontSize: "16px" }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="8" x2="12" y2="12"></line>
                     <line x1="12" y1="16" x2="12.01" y2="16"></line>
                   </svg>
-                  Connect Account
-                </button>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Floating Sticky Action Dock (Always accessible while scrolling) */}
-      <div className="strategy-floating-dock">
-        <div className="dock-content">
-          <div className="dock-meta">
-            <span className="dock-badge">{strategy.id}</span>
-            <span className="dock-title">{strategy.name}</span>
-            <span className="dock-metric">
-              PF {strategy.metrics.profitFactor} · Max DD {strategy.metrics.maxDrawdown}%
-            </span>
-          </div>
-          <div className="dock-actions">
-            {isPython ? (
-              <>
-                <button
-                  id="dock-email-trades"
-                  className="pill sm action-btn"
-                  onClick={() => setEmailModalOpen(true)}
-                >
-                  Email Trades
-                </button>
-                <button
-                  id="dock-full-automation"
-                  className="pill sm action-btn action-btn-accent"
-                  onClick={() => setAutomationModalOpen(true)}
-                >
-                  Full account automation
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  id="dock-tradingview"
-                  className="pill g sm action-btn"
-                  onClick={() => setChartModalOpen(true)}
-                >
-                  View on TradingView
-                </button>
-                <button
-                  id="dock-email-trades"
-                  className="pill sm action-btn"
-                  onClick={() => setEmailModalOpen(true)}
-                >
-                  Email Trades
-                </button>
-                <button
-                  id="dock-connect-account"
-                  className="pill sm action-btn action-btn-accent"
-                  onClick={() => setAutomationModalOpen(true)}
-                >
                   Connect Account
                 </button>
               </>

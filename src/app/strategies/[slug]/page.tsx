@@ -7,6 +7,8 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const instant = false;
+
 export async function generateStaticParams() {
   const strategies = await db.getStrategies({ includeDrafts: true });
   return strategies.map((s) => ({
