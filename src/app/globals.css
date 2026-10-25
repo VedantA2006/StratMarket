@@ -856,7 +856,7 @@ section h2 {
   color: var(--mut);
 }
 
-/* Strategy Badges & Differentiation */
+/* Strategy Badges & Differentiation matching website theme */
 .badge {
   border: 1px solid var(--line);
   border-radius: 99px;
@@ -868,11 +868,11 @@ section h2 {
   gap: 5px;
 }
 
-/* PYTHON HIGHLIGHTS (EMERALD JADE) */
+/* PYTHON STRATEGIES: CHAMPAGNE GOLD (Signature Elvaris Capital Accent) */
 .card-python {
-  border: 1px solid rgba(76, 199, 154, 0.22) !important;
-  background: linear-gradient(180deg, rgba(14, 24, 20, 0.85) 0%, rgba(7, 13, 11, 0.96) 100%) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(76, 199, 154, 0.15) !important;
+  border: 1px solid rgba(232, 196, 106, 0.2) !important;
+  background: linear-gradient(180deg, rgba(16, 16, 18, 0.9) 0%, rgba(8, 8, 10, 0.98) 100%) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(232, 196, 106, 0.1) !important;
 }
 
 .card-python .card-top-accent {
@@ -880,31 +880,85 @@ section h2 {
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #10b981, #4cc79a, #38bdf8);
+  height: 2px;
+  background: linear-gradient(90deg, rgba(232, 196, 106, 0.8), rgba(232, 196, 106, 0.2), transparent);
   opacity: 0.85;
   transition: opacity 0.3s ease;
 }
 
 .card-python:hover {
-  border-color: rgba(76, 199, 154, 0.6) !important;
+  border-color: rgba(232, 196, 106, 0.45) !important;
   transform: translateY(-4px);
-  box-shadow: 0 24px 48px -12px rgba(76, 199, 154, 0.28), inset 0 1px 0 rgba(76, 199, 154, 0.35) !important;
+  box-shadow: 0 20px 40px -15px rgba(232, 196, 106, 0.12), inset 0 1px 0 rgba(232, 196, 106, 0.25) !important;
 }
 
 .card-python:hover .card-top-accent {
   opacity: 1;
-  box-shadow: 0 0 14px rgba(76, 199, 154, 0.9);
+  box-shadow: 0 0 10px rgba(232, 196, 106, 0.6);
 }
 
 .badge-python {
-  background: rgba(76, 199, 154, 0.12) !important;
-  color: #4cc79a !important;
-  border: 1px solid rgba(76, 199, 154, 0.35) !important;
+  background: rgba(232, 196, 106, 0.08) !important;
+  color: #e8c46a !important;
+  border: 1px solid rgba(232, 196, 106, 0.28) !important;
   font-weight: 700 !important;
 }
 
 .badge-dot-py {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e8c46a;
+  box-shadow: 0 0 6px #e8c46a;
+  display: inline-block;
+}
+
+.note-tag-py {
+  color: #e8c46a;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* PINE SCRIPT STRATEGIES: PINE EMERALD (Website Verified Accent) */
+.card-pine {
+  border: 1px solid rgba(76, 199, 154, 0.2) !important;
+  background: linear-gradient(180deg, rgba(16, 16, 18, 0.9) 0%, rgba(8, 8, 10, 0.98) 100%) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(76, 199, 154, 0.1) !important;
+}
+
+.card-pine .card-top-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(76, 199, 154, 0.8), rgba(76, 199, 154, 0.2), transparent);
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.card-pine:hover {
+  border-color: rgba(76, 199, 154, 0.45) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(76, 199, 154, 0.12), inset 0 1px 0 rgba(76, 199, 154, 0.25) !important;
+}
+
+.card-pine:hover .card-top-accent {
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(76, 199, 154, 0.6);
+}
+
+.badge-pine {
+  background: rgba(76, 199, 154, 0.08) !important;
+  color: #4cc79a !important;
+  border: 1px solid rgba(76, 199, 154, 0.28) !important;
+  font-weight: 700 !important;
+}
+
+.badge-dot-pn {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -913,62 +967,8 @@ section h2 {
   display: inline-block;
 }
 
-.note-tag-py {
-  color: #4cc79a;
-  font-size: 12px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-/* PINE SCRIPT HIGHLIGHTS (TRADINGVIEW ROYAL BLUE) */
-.card-pine {
-  border: 1px solid rgba(59, 130, 246, 0.25) !important;
-  background: linear-gradient(180deg, rgba(14, 20, 36, 0.85) 0%, rgba(7, 10, 20, 0.96) 100%) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.15) !important;
-}
-
-.card-pine .card-top-accent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #1d4ed8, #3b82f6, #818cf8);
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
-}
-
-.card-pine:hover {
-  border-color: rgba(96, 165, 250, 0.6) !important;
-  transform: translateY(-4px);
-  box-shadow: 0 24px 48px -12px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(96, 165, 250, 0.35) !important;
-}
-
-.card-pine:hover .card-top-accent {
-  opacity: 1;
-  box-shadow: 0 0 14px rgba(59, 130, 246, 0.9);
-}
-
-.badge-pine {
-  background: rgba(59, 130, 246, 0.14) !important;
-  color: #60a5fa !important;
-  border: 1px solid rgba(96, 165, 250, 0.35) !important;
-  font-weight: 700 !important;
-}
-
-.badge-dot-pn {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #60a5fa;
-  box-shadow: 0 0 6px #60a5fa;
-  display: inline-block;
-}
-
 .note-tag-pn {
-  color: #60a5fa;
+  color: #4cc79a;
   font-size: 12px;
   font-weight: 600;
   display: inline-flex;
@@ -978,17 +978,17 @@ section h2 {
 
 /* FILTER CHIPS */
 .chip.chip-py.on {
-  background: rgba(76, 199, 154, 0.18) !important;
-  color: #4cc79a !important;
-  border-color: #4cc79a !important;
-  box-shadow: 0 0 16px rgba(76, 199, 154, 0.25);
+  background: rgba(232, 196, 106, 0.14) !important;
+  color: #e8c46a !important;
+  border-color: rgba(232, 196, 106, 0.4) !important;
+  box-shadow: 0 0 14px rgba(232, 196, 106, 0.2);
 }
 
 .chip.chip-pn.on {
-  background: rgba(59, 130, 246, 0.18) !important;
-  color: #60a5fa !important;
-  border-color: #60a5fa !important;
-  box-shadow: 0 0 16px rgba(59, 130, 246, 0.25);
+  background: rgba(76, 199, 154, 0.14) !important;
+  color: #4cc79a !important;
+  border-color: rgba(76, 199, 154, 0.4) !important;
+  box-shadow: 0 0 14px rgba(76, 199, 154, 0.2);
 }
 
 /* HOMEPAGE INDEX LIST MINI BADGES */
@@ -997,9 +997,9 @@ section h2 {
   font-weight: 700;
   padding: 1px 7px;
   border-radius: 4px;
-  background: rgba(76, 199, 154, 0.15);
-  color: #4cc79a;
-  border: 1px solid rgba(76, 199, 154, 0.3);
+  background: rgba(232, 196, 106, 0.1);
+  color: #e8c46a;
+  border: 1px solid rgba(232, 196, 106, 0.25);
   margin-right: 8px;
   display: inline-block;
 }
@@ -1009,9 +1009,9 @@ section h2 {
   font-weight: 700;
   padding: 1px 7px;
   border-radius: 4px;
-  background: rgba(59, 130, 246, 0.15);
-  color: #60a5fa;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: rgba(76, 199, 154, 0.1);
+  color: #4cc79a;
+  border: 1px solid rgba(76, 199, 154, 0.25);
   margin-right: 8px;
   display: inline-block;
 }

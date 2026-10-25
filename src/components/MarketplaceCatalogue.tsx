@@ -176,14 +176,14 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
                 <h3>{s.name}</h3>
                 <div className="row" style={{ fontSize: "12.5px" }}>
                   <span>{s.instrument} · {s.timeframe} · {s.category}</span>
-                  <span style={{ color: isPython ? "#4cc79a" : "#60a5fa", fontWeight: 600 }}>
+                  <span style={{ color: isPython ? "#e8c46a" : "#4cc79a", fontWeight: 600 }}>
                     {isPython ? "MetaTrader 5" : "TradingView"}
                   </span>
                 </div>
                 <p>{s.description}</p>
                 <div className="mm">
                   <div>
-                    Net return*<b style={{ color: isPython ? "#e8c46a" : "#60a5fa" }}>+{s.metrics.netReturn}%</b>
+                    Net return*<b style={{ color: isPython ? "#e8c46a" : "#4cc79a" }}>+{s.metrics.netReturn}%</b>
                   </div>
                   <div>
                     Max DD*<b style={{ color: "#4cc79a" }}>{s.metrics.maxDrawdown}%</b>

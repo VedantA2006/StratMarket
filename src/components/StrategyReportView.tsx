@@ -208,8 +208,8 @@ if (shortCondition)
 
       {/* Hero Header */}
       <section className="report-hero" style={{ padding: "0 0 36px", borderBottom: "1px solid var(--line)" }}>
-        <span className="tag" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "5px 14px", borderRadius: "99px", border: isPython ? "1px solid rgba(76, 199, 154, 0.3)" : "1px solid rgba(59, 130, 246, 0.3)" }}>
-          <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: isPython ? "#4cc79a" : "#60a5fa", display: "inline-block", boxShadow: isPython ? "0 0 8px #4cc79a" : "0 0 8px #60a5fa" }}></span>
+        <span className="tag" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "5px 14px", borderRadius: "99px", border: isPython ? "1px solid rgba(232, 196, 106, 0.3)" : "1px solid rgba(76, 199, 154, 0.3)" }}>
+          <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: isPython ? "#e8c46a" : "#4cc79a", display: "inline-block", boxShadow: isPython ? "0 0 8px #e8c46a" : "0 0 8px #4cc79a" }}></span>
           <b>StratMarket Verified</b> · {isPython ? "MetaTrader 5 Quantitative Tear Sheet" : "TradingView Pine Script v5 Tear Sheet"}
         </span>
         
