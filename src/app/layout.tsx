@@ -4,6 +4,7 @@ import { TopProgressBar } from "@/components/TopProgressBar";
 import { HeaderNav } from "@/components/HeaderNav";
 import { DockNav } from "@/components/DockNav";
 import { Footer } from "@/components/Footer";
+import { PageTransitionWipe } from "@/components/PageTransitionWipe";
 
 export const metadata: Metadata = {
   title: "StratMarket by Elvaris Capital — The Marketplace for AI-Researched Trading Strategies",
@@ -30,6 +31,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <PageTransitionWipe />
         <div className="fx" aria-hidden="true">
           <i className="a1" />
         </div>
