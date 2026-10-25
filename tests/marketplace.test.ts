@@ -29,8 +29,9 @@ describe("Marketplace Catalogue & Filtering", () => {
     expect(searchById.length).toBeGreaterThan(0);
     expect(searchById[0].id).toBe("PY-01");
 
-    const searchByName = await db.getStrategies({ query: "Engine" });
-    expect(searchByName.length).toBe(10);
+    const searchByName = await db.getStrategies({ query: "Peak" });
+    expect(searchByName.length).toBe(1);
+    expect(searchByName[0].name).toBe("Peak Champion");
 
     const pythonByType = await db.getStrategies({ type: "Python" });
     expect(pythonByType.length).toBe(10);

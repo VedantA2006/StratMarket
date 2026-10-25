@@ -75,7 +75,7 @@ const MT5_PYTHON_ENSEMBLES = [
   {
     num: 1,
     folder: "Ensemble_01_6Engine_Peak_Champion",
-    name: "6-Engine Peak Champion",
+    name: "Peak Champion",
     category: "Trend",
     netProfitUsd: "+$125,840.22",
     ret: 503.4,
@@ -84,13 +84,13 @@ const MT5_PYTHON_ENSEMBLES = [
     win: 22.41,
     trades: 781,
     sharpe: 1.71,
-    desc: "Rank #1 Peak Champion with highest net cash profit & Calmar ratio. Multi-engine quantitative ensemble combining 6 orthogonal alpha engines.",
+    desc: "Rank #1 Peak Champion with highest net cash profit & Calmar ratio. Quantitative ensemble combining orthogonal alpha engines.",
     hypothesis: "Gold (XAUUSD) order-flow imbalance (OFI) during London/NY overlap yields asymmetric risk-to-reward expansions exceeding 7:1 payoff ratio.",
   },
   {
     num: 2,
     folder: "Ensemble_02_7Engine_HighAlpha_Shield",
-    name: "7-Engine High-Alpha Shield",
+    name: "High-Alpha Shield",
     category: "Momentum",
     netProfitUsd: "+$123,568.00",
     ret: 494.3,
@@ -105,7 +105,7 @@ const MT5_PYTHON_ENSEMBLES = [
   {
     num: 3,
     folder: "Ensemble_03_7Engine_Precision_Shield",
-    name: "7-Engine Precision Shield",
+    name: "Precision Shield",
     category: "Volatility",
     netProfitUsd: "+$122,421.00",
     ret: 489.7,
@@ -115,12 +115,12 @@ const MT5_PYTHON_ENSEMBLES = [
     trades: 902,
     sharpe: 1.66,
     desc: "Rank #3 ensemble with high diversification, trend-regime shield, and exceptional 10.48 Calmar ratio.",
-    hypothesis: "Seven-engine orthogonal diversification dampens portfolio variance while maintaining full exposure to sustained gold breakouts.",
+    hypothesis: "Orthogonal diversification dampens portfolio variance while maintaining full exposure to sustained gold breakouts.",
   },
   {
     num: 4,
     folder: "Ensemble_04_6Engine_InverseDD_Fleet",
-    name: "6-Engine Inverse-DD Fleet",
+    name: "Inverse-DD Fleet",
     category: "Trend",
     netProfitUsd: "+$121,693.00",
     ret: 486.8,
@@ -135,7 +135,7 @@ const MT5_PYTHON_ENSEMBLES = [
   {
     num: 5,
     folder: "Ensemble_05_5Engine_Ultra_Shield",
-    name: "5-Engine Ultra-Shield",
+    name: "Ultra-Shield",
     category: "Breakout",
     netProfitUsd: "+$117,681.00",
     ret: 470.7,
@@ -150,7 +150,7 @@ const MT5_PYTHON_ENSEMBLES = [
   {
     num: 6,
     folder: "Ensemble_06_5Engine_Trend_Shield",
-    name: "5-Engine Trend Shield",
+    name: "Trend Shield",
     category: "Trend",
     netProfitUsd: "+$116,331.00",
     ret: 465.3,
@@ -165,7 +165,7 @@ const MT5_PYTHON_ENSEMBLES = [
   {
     num: 7,
     folder: "Ensemble_07_6Engine_Multi_Regime",
-    name: "6-Engine Multi-Regime",
+    name: "Multi-Regime",
     category: "Mean reversion",
     netProfitUsd: "+$115,984.00",
     ret: 463.9,
@@ -180,7 +180,7 @@ const MT5_PYTHON_ENSEMBLES = [
   {
     num: 8,
     folder: "Ensemble_08_5Engine_HighSharpe_Fleet",
-    name: "5-Engine High-Sharpe Fleet",
+    name: "High-Sharpe Fleet",
     category: "Momentum",
     netProfitUsd: "+$115,560.00",
     ret: 462.2,
@@ -195,7 +195,7 @@ const MT5_PYTHON_ENSEMBLES = [
   {
     num: 9,
     folder: "Ensemble_09_5Engine_Asian_Squeeze",
-    name: "5-Engine Asian Squeeze",
+    name: "Asian Squeeze",
     category: "Volatility",
     netProfitUsd: "+$115,122.00",
     ret: 460.5,
@@ -210,7 +210,7 @@ const MT5_PYTHON_ENSEMBLES = [
   {
     num: 10,
     folder: "Ensemble_10_5Engine_LowLoss_Fleet",
-    name: "5-Engine Low-Loss Fleet",
+    name: "Low-Loss Fleet",
     category: "Trend",
     netProfitUsd: "+$115,009.00",
     ret: 460.0,

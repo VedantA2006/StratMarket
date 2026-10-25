@@ -13,10 +13,38 @@ function cleanText(t) {
     .trim();
 }
 
-function parseReportHtml(html, fallbackTitle) {
+const CANONICAL_NAMES = {
+  "Ensemble_01_6Engine_Peak_Champion": "Peak Champion",
+  "Ensemble_02_7Engine_HighAlpha_Shield": "High-Alpha Shield",
+  "Ensemble_03_7Engine_Precision_Shield": "Precision Shield",
+  "Ensemble_04_6Engine_InverseDD_Fleet": "Inverse-DD Fleet",
+  "Ensemble_05_5Engine_Ultra_Shield": "Ultra-Shield",
+  "Ensemble_06_5Engine_Trend_Shield": "Trend Shield",
+  "Ensemble_07_6Engine_Multi_Regime": "Multi-Regime",
+  "Ensemble_08_5Engine_HighSharpe_Fleet": "High-Sharpe Fleet",
+  "Ensemble_09_5Engine_Asian_Squeeze": "Asian Squeeze",
+  "Ensemble_10_5Engine_LowLoss_Fleet": "Low-Loss Fleet",
+};
+
+function parseReportHtml(html, fallbackTitle, folderName, isIndividual) {
   // Title & Subtitle
-  const titleMatch = html.match(/<h1>(.*?)<\/h1>/s);
-  const titleRaw = titleMatch ? cleanText(titleMatch[1]) : fallbackTitle;
+  let titleRaw = "";
+  if (!isIndividual && folderName && CANONICAL_NAMES[folderName]) {
+    titleRaw = CANONICAL_NAMES[folderName];
+  } else {
+    const titleMatch = html.match(/<h1>(.*?)<\/h1>/s);
+    if (titleMatch) {
+      titleRaw = cleanText(titleMatch[1].replace(/<span[^>]*>.*?<\/span>/gs, ""));
+      titleRaw = titleRaw
+        .replace(/Verified MetaTrader 5 Broker Feed/gi, "")
+        .replace(/Single-Digit DD.*$/gi, "")
+        .replace(/Rank #\d+/gi, "")
+        .replace(/\b\d+\s*[-–—]?\s*Engine\s*/gi, "")
+        .trim();
+    } else {
+      titleRaw = fallbackTitle.replace(/\b\d+\s*[-–—]?\s*Engine\s*/gi, "").trim();
+    }
+  }
 
   const headerPMatch = html.match(/<header>.*?<p>(.*?)<\/p>/s);
   const subtitle = headerPMatch ? cleanText(headerPMatch[1]) : "";
@@ -1306,7 +1334,8 @@ for (const baseDir of baseDirs) {
         } else if (stat.isFile() && entry.endsWith(".html") && entry !== "institutional_tear_sheet.html") {
           try {
             const rawHtml = fs.readFileSync(fullPath, "utf8");
-            const parsed = parseReportHtml(rawHtml, entry.replace(".html", ""));
+            const isIndividual = dir.includes("individual_strategies");
+            const parsed = parseReportHtml(rawHtml, entry.replace(".html", ""), folder, isIndividual);
             const upgradedHtml = generateReportHtml(parsed);
             fs.writeFileSync(fullPath, upgradedHtml, "utf8");
             totalUpdated++;

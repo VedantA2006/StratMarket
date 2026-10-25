@@ -3,7 +3,7 @@
     "folder": "Ensemble_01_6Engine_Peak_Champion",
     "num": 1,
     "slug": "py-01",
-    "titleRaw": "6-Engine Peak Champion Rank #1 Single-Digit DD (9.41%)",
+    "titleRaw": "Peak Champion Rank #1 Single-Digit DD (9.41%)",
     "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
     "bigStats": [
       {
@@ -422,7 +422,7 @@
     "folder": "Ensemble_02_7Engine_HighAlpha_Shield",
     "num": 2,
     "slug": "py-02",
-    "titleRaw": "7-Engine High-Alpha Shield Rank #2 Single-Digit DD (9.95%)",
+    "titleRaw": "High-Alpha Shield Rank #2 Single-Digit DD (9.95%)",
     "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
     "bigStats": [
       {
@@ -850,7 +850,7 @@
     "folder": "Ensemble_03_7Engine_Precision_Shield",
     "num": 3,
     "slug": "py-03",
-    "titleRaw": "7-Engine Precision Shield Rank #3 Single-Digit DD (9.35%)",
+    "titleRaw": "Precision Shield Rank #3 Single-Digit DD (9.35%)",
     "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
     "bigStats": [
       {
@@ -1278,7 +1278,7 @@
     "folder": "Ensemble_04_6Engine_InverseDD_Fleet",
     "num": 4,
     "slug": "py-04",
-    "titleRaw": "6-Engine Inverse-DD Fleet Rank #4 Single-Digit DD (9.77%)",
+    "titleRaw": "Inverse-DD Fleet Rank #4 Single-Digit DD (9.77%)",
     "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
     "bigStats": [
       {
@@ -1697,7 +1697,7 @@
     "folder": "Ensemble_05_5Engine_Ultra_Shield",
     "num": 5,
     "slug": "py-05",
-    "titleRaw": "5-Engine Ultra-Shield Rank #5 Single-Digit DD (9.53%)",
+    "titleRaw": "Ultra-Shield Rank #5 Single-Digit DD (9.53%)",
     "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
     "bigStats": [
       {
@@ -2107,7 +2107,7 @@
     "folder": "Ensemble_06_5Engine_Trend_Shield",
     "num": 6,
     "slug": "py-06",
-    "titleRaw": "5-Engine Trend Shield Rank #6 Single-Digit DD (9.74%)",
+    "titleRaw": "Trend Shield Rank #6 Single-Digit DD (9.74%)",
     "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
     "bigStats": [
       {
@@ -2517,7 +2517,7 @@
     "folder": "Ensemble_07_6Engine_Multi_Regime",
     "num": 7,
     "slug": "py-07",
-    "titleRaw": "6-Engine Multi-Regime Rank #7 Single-Digit DD (9.80%)",
+    "titleRaw": "Multi-Regime Rank #7 Single-Digit DD (9.80%)",
     "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
     "bigStats": [
       {
@@ -2936,7 +2936,7 @@
     "folder": "Ensemble_08_5Engine_HighSharpe_Fleet",
     "num": 8,
     "slug": "py-08",
-    "titleRaw": "5-Engine High-Sharpe Fleet Rank #8 Single-Digit DD (9.50%)",
+    "titleRaw": "High-Sharpe Fleet Rank #8 Single-Digit DD (9.50%)",
     "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
     "bigStats": [
       {
@@ -3346,7 +3346,7 @@
     "folder": "Ensemble_09_5Engine_Asian_Squeeze",
     "num": 9,
     "slug": "py-09",
-    "titleRaw": "5-Engine Asian Squeeze Rank #9 Single-Digit DD (9.96%)",
+    "titleRaw": "Asian Squeeze Rank #9 Single-Digit DD (9.96%)",
     "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
     "bigStats": [
       {
@@ -3756,7 +3756,7 @@
     "folder": "Ensemble_10_5Engine_LowLoss_Fleet",
     "num": 10,
     "slug": "py-10",
-    "titleRaw": "5-Engine Low-Loss Fleet Rank #10 Single-Digit DD (9.43%)",
+    "titleRaw": "Low-Loss Fleet Rank #10 Single-Digit DD (9.43%)",
     "subtitle": "StratMarket Performance Report: XAUUSD M5, 360,000 bars (24 Sep 2021 to 30 Sep 2026), MetaTrader 5 broker feed. Starting capital $25,000, flat base risk $250. Multi-engine quantitative ensemble architecture designed for strict institutional capital protection.",
     "bigStats": [
       {
