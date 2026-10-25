@@ -157,13 +157,11 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
           filteredStrategies.map((s) => {
             const isPython = s.implementationType === "PYTHON";
             return (
-              <a
+              <div
                 key={s.id}
-                href={`/strategies/${s.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
                 className={`card ${isPython ? "card-python" : "card-pine"}`}
-                style={{ textDecoration: "none", color: "inherit" }}
+                style={{ cursor: "pointer" }}
+                onClick={() => window.open(`/strategies/${s.slug}`, "_blank", "noopener,noreferrer")}
               >
                 <div className="card-top-accent" />
                 <div className="row" style={{ alignItems: "center" }}>
@@ -194,15 +192,33 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
                     Profit factor*<b>{s.metrics.profitFactor}</b>
                   </div>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto", paddingTop: "8px" }}>
-                  <span className={isPython ? "note-tag-py" : "note-tag-pn"}>
-                    {isPython ? "⚡ Full Automation" : "📊 Chart Strategy"}
-                  </span>
-                  <span className="note" style={{ display: "inline-flex", alignItems: "center", gap: "5px", color: "var(--tx)", fontWeight: 600, fontSize: "12px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto", paddingTop: "12px", gap: "8px", flexWrap: "wrap" }}>
+                  {!isPython ? (
+                    <a
+                      href={`/chart/${s.id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="card-chart-link"
+                      onClick={(e) => e.stopPropagation()}
+                      title={`Open ${s.name} on LuxAlgo Vela live chart`}
+                    >
+                      📈 View Strategy on Chart ↗
+                    </a>
+                  ) : (
+                    <span className="note-tag-py">⚡ Full Automation</span>
+                  )}
+                  <a
+                    href={`/strategies/${s.slug}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="note"
+                    style={{ display: "inline-flex", alignItems: "center", gap: "5px", color: "var(--tx)", fontWeight: 600, fontSize: "12px" }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     View Report ↗
-                  </span>
+                  </a>
                 </div>
-              </a>
+              </div>
             );
           })
         ) : (

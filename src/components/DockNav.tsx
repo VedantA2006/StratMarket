@@ -8,6 +8,10 @@ export function DockNav() {
   const pathname = usePathname();
   const dockRef = useRef<HTMLElement>(null);
 
+  if (pathname?.startsWith("/chart")) {
+    return null;
+  }
+
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!dockRef.current) return;
     const links = dockRef.current.querySelectorAll<HTMLAnchorElement>("a.l");
