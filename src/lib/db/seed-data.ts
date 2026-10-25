@@ -229,7 +229,7 @@ const MT5_PYTHON_ENSEMBLES = [
 const PINE_SCRIPT_STRATEGIES = [
   {
     num: 1,
-    name: "15M Grandmaster Dual-10R Oct-8R",
+    name: "Grandmaster",
     fileName: "Champion_15M_Grandmaster_Dual10R_Oct8R_STRATEGY.pine",
     instrument: "XAUUSD",
     timeframe: "M15",
@@ -248,7 +248,7 @@ const PINE_SCRIPT_STRATEGIES = [
   },
   {
     num: 2,
-    name: "15M Sovereign Apex 88.5%",
+    name: "Apex",
     fileName: "Champion_15M_Apex_88WR_STRATEGY.pine",
     instrument: "XAUUSD",
     timeframe: "M15",
@@ -267,7 +267,7 @@ const PINE_SCRIPT_STRATEGIES = [
   },
   {
     num: 3,
-    name: "15M Strict 1:2.0 R:R (74-75% WR)",
+    name: "Strict 1:2 R:R",
     fileName: "Champion_15M_1to2RR_75WR_STRATEGY.pine",
     instrument: "XAUUSD",
     timeframe: "M15",
@@ -286,7 +286,7 @@ const PINE_SCRIPT_STRATEGIES = [
   },
   {
     num: 4,
-    name: "15M Sovereign Elite 80%+",
+    name: "Elite",
     fileName: "Champion_15M_80WR_Elite_STRATEGY.pine",
     instrument: "XAUUSD",
     timeframe: "M15",
