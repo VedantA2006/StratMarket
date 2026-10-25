@@ -6,16 +6,14 @@ import { useRouter, usePathname } from "next/navigation";
 
 export function HeaderNav() {
   const pathname = usePathname();
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState<{ id: string; name: string; role: string; email: string } | null>(null);
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
-
-  if (pathname?.startsWith("/chart")) {
-    return null;
-  }
 
   useEffect(() => {
+    if (pathname?.startsWith("/chart")) return;
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -33,7 +31,11 @@ export function HeaderNav() {
       .finally(() => setLoading(false));
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
+
+  if (pathname?.startsWith("/chart")) {
+    return null;
+  }
 
   const handleLogout = async () => {
     await fetch("/api/auth/logout", { method: "POST" });

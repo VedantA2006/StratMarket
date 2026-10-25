@@ -161,7 +161,13 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
                 key={s.id}
                 className={`card ${isPython ? "card-python" : "card-pine"}`}
                 style={{ cursor: "pointer" }}
-                onClick={() => window.open(`/strategies/${s.slug}`, "_blank", "noopener,noreferrer")}
+                onClick={() =>
+                  window.open(
+                    isPython ? `/strategies/${s.slug}` : `/chart/${s.id}`,
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
               >
                 <div className="card-top-accent" />
                 <div className="row" style={{ alignItems: "center" }}>

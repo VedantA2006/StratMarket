@@ -24,7 +24,7 @@ export class TradingViewDataAdapter implements MarketDataProvider {
     switch (sym) {
       case "XAUUSD":
       case "GOLD":
-        return "OANDA:XAUUSD";
+        return "FOREXCOM:XAUUSD";
       case "BTCUSDT":
         return "BINANCE:BTCUSDT";
       case "ETHUSDT":
@@ -34,7 +34,7 @@ export class TradingViewDataAdapter implements MarketDataProvider {
       case "GBPUSD":
         return "FX:GBPUSD";
       default:
-        return `OANDA:${sym}`;
+        return `FOREXCOM:${sym}`;
     }
   }
 
@@ -62,11 +62,12 @@ export class TradingViewDataAdapter implements MarketDataProvider {
   public async getHistoricalBars(
     symbol: string,
     timeframe: string,
-    count: number = 300
+    count: number = 2000
   ): Promise<MarketCandle[]> {
     const tvSymbol = this.mapSymbol(symbol);
     const tvTimeframe = this.mapTimeframe(timeframe);
-    const cacheKey = `${tvSymbol}:${tvTimeframe}:${count}`;
+    const effectiveCount = Math.min(Math.max(count, 10), 5500);
+    const cacheKey = `${tvSymbol}:${tvTimeframe}:${effectiveCount}`;
 
     // Check cache
     const cached = this.cache.get(cacheKey);
@@ -78,16 +79,16 @@ export class TradingViewDataAdapter implements MarketDataProvider {
       const rawCandles = await getCandles({
         symbol: tvSymbol,
         timeframe: tvTimeframe,
-        count: Math.min(count, 1000),
+        count: effectiveCount,
       });
 
       if (!rawCandles || rawCandles.length === 0) {
-        // Try fallback to FOREXCOM if OANDA returned empty
-        if (tvSymbol === "OANDA:XAUUSD") {
+        // Try fallback to OANDA if FOREXCOM returned empty
+        if (tvSymbol === "FOREXCOM:XAUUSD") {
           const fallbackCandles = await getCandles({
-            symbol: "FOREXCOM:XAUUSD",
+            symbol: "OANDA:XAUUSD",
             timeframe: tvTimeframe,
-            count: Math.min(count, 1000),
+            count: effectiveCount,
           });
           if (fallbackCandles && fallbackCandles.length > 0) {
             return this.transformAndCache(cacheKey, fallbackCandles);

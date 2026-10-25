@@ -2141,6 +2141,29 @@ body:has(.chart-page-fullscreen) main {
   letter-spacing: -0.01em;
 }
 
+.chart-strategy-select {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid #27272a;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chart-strategy-select:hover {
+  border-color: #4cc79a;
+  background: rgba(76, 199, 154, 0.08);
+}
+
+.chart-strategy-select option {
+  background: #18181b;
+  color: #ffffff;
+}
+
 .chart-symbol-badge {
   display: flex;
   align-items: center;
@@ -2167,6 +2190,7 @@ body:has(.chart-page-fullscreen) main {
 .chart-toolbar-center {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
 .chart-tf-group {
@@ -2202,6 +2226,50 @@ body:has(.chart-page-fullscreen) main {
   color: #4cc79a;
   font-weight: 700;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.chart-depth-group {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #27272a;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.chart-depth-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #71717a;
+  padding: 0 6px;
+  font-family: "JetBrains Mono", monospace;
+  text-transform: uppercase;
+}
+
+.chart-depth-btn {
+  background: transparent;
+  border: none;
+  color: #a1a1aa;
+  font-size: 11.5px;
+  font-weight: 600;
+  font-family: "JetBrains Mono", monospace;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chart-depth-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.chart-depth-btn.active {
+  background: rgba(76, 199, 154, 0.15);
+  color: #4cc79a;
+  font-weight: 700;
+  border: 1px solid rgba(76, 199, 154, 0.3);
 }
 
 /* Toolbar Right */
@@ -2616,6 +2684,74 @@ body:has(.chart-page-fullscreen) main {
   border-color: #3f3f46;
 }
 
+/* Engine Signal & HUD Card */
+.latest-signal-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid #1f1f23;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.signal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signal-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.signal-badge.buy {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.signal-badge.sell {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.signal-badge.neutral {
+  background: rgba(148, 163, 184, 0.15);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.signal-price {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.signal-desc {
+  font-size: 11.5px;
+  color: #a1a1aa;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.hud-metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid #1f1f23;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
 /* Marketplace Card Action Button for Pine Script */
 .card-chart-link {
   display: inline-flex;
@@ -2638,5 +2774,200 @@ body:has(.chart-page-fullscreen) main {
   box-shadow: 0 0 10px rgba(76, 199, 154, 0.3);
   transform: translateY(-1px);
 }
+
+/* Toolbar Bars Badge & Toggle Pills */
+.chart-bars-badge {
+  display: flex;
+  align-items: center;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #38bdf8;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.chart-toggle-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #27272a;
+  color: #a1a1aa;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chart-toggle-pill:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.chart-toggle-pill.active {
+  background: rgba(76, 199, 154, 0.12);
+  border-color: rgba(76, 199, 154, 0.35);
+  color: #4cc79a;
+  font-weight: 700;
+}
+
+.chart-toggle-pill .pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #71717a;
+  transition: all 0.2s ease;
+}
+
+.chart-toggle-pill.active .pill-dot {
+  background: #4cc79a;
+  box-shadow: 0 0 6px #4cc79a;
+}
+
+/* Floating On-Chart HUD Tables (TradingView Engine Sync) */
+.chart-hud-overlay-root {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.tv-hud-top-right {
+  position: absolute;
+  top: 14px;
+  right: 75px;
+  z-index: 10;
+}
+
+.tv-hud-bottom-right {
+  position: absolute;
+  bottom: 42px;
+  right: 75px;
+  z-index: 10;
+}
+
+.tv-hud-table {
+  width: 295px;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(8px);
+  border: 1px solid #334155;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.tv-hud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e293b;
+  padding: 6px 10px;
+  border-bottom: 1px solid #334155;
+}
+
+.tv-hud-header-title {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 0.04em;
+}
+
+.tv-hud-header-sub {
+  font-size: 10px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.guards-header {
+  background: #1e293b;
+}
+
+.guards-title {
+  color: #fbbf24 !important;
+}
+
+.tv-hud-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.tv-hud-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+  font-size: 11px;
+}
+
+.tv-hud-row:last-child {
+  border-bottom: none;
+}
+
+.tv-hud-label {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.tv-hud-value {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  font-size: 10.5px;
+}
+
+/* Complete Removal of Vela Watermark & Logo */
+a.vela-attribution,
+.vela-attribution,
+.vela-attribution-custom,
+.vela-attr-symbol,
+.vela-attr-wordmark,
+a[href*="velacharts"],
+[class*="vela-attr"],
+[data-action="attribution"],
+.vela-watermark {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  left: -99999px !important;
+  top: -99999px !important;
+  overflow: hidden !important;
+  z-index: -9999 !important;
+  transform: scale(0) !important;
+}
+
+/* Complete Removal of In-Chart Indicators, Internal Topbar & Indicator Picker */
+.vela-topbar,
+[data-vela-topbar],
+.vela-statusline,
+[data-action="indicators"],
+[data-vela-action="indicators"],
+button[title*="indicator" i],
+button[aria-label*="indicator" i],
+button[title*="indicators" i],
+button[aria-label*="indicators" i],
+.vela-topbar-indicators,
+.indicator-picker-dialog,
+.vela-legend-row,
+.vela-legend-indicator-row,
+[data-dialog="indicator-picker"] {
+  display: none !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+
 
 

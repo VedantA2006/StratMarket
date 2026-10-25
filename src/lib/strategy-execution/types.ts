@@ -31,6 +31,38 @@ export interface StrategyPriceLevel {
   style: "solid" | "dashed" | "dotted";
 }
 
+export interface StrategyHudMetric {
+  label: string;
+  value: string;
+  color?: string;
+}
+
+export interface StrategyNativeIndicatorConfig {
+  type: string;
+  inputs: Record<string, any>;
+}
+
+export interface StrategyTradeBox {
+  id: string;
+  type: "LONG" | "SHORT";
+  entryTime: number;
+  exitTime: number;
+  entryPrice: number;
+  exitPrice: number;
+  tpPrice: number;
+  slPrice: number;
+  profitUsd: number;
+  isWin: boolean;
+  entryBadge: string;
+  exitBadge: string;
+}
+
+export interface StrategySovereignGuard {
+  label: string;
+  value: string;
+  color?: string;
+}
+
 export interface StrategyChartContract {
   strategyId: string;
   name: string;
@@ -45,6 +77,9 @@ export interface StrategyChartContract {
   series: StrategyLineSeries[];
   markers: StrategyMarker[];
   priceLevels: StrategyPriceLevel[];
+  nativeIndicators?: StrategyNativeIndicatorConfig[];
+  tradeBoxes?: StrategyTradeBox[];
+  sovereignGuards?: StrategySovereignGuard[];
   summary: {
     state: string;
     description: string;
@@ -59,5 +94,8 @@ export interface StrategyChartContract {
       price: number;
       label: string;
     } | null;
+    hudMetrics?: StrategyHudMetric[];
   };
 }
+
+

@@ -22,7 +22,7 @@ export async function GET(request: NextRequest, { params }: Props) {
     }
 
     const { searchParams } = new URL(request.url);
-    const count = parseInt(searchParams.get("count") || "300", 10);
+    const count = parseInt(searchParams.get("count") || "5000", 10);
     const timeframe = searchParams.get("timeframe") || strategy.timeframe;
 
     // Fetch authoritative live/historical market candles

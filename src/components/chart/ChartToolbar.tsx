@@ -8,10 +8,13 @@ interface Props {
   strategyName: string;
   symbol: string;
   timeframe: string;
+  candleCount: number;
   status: "LIVE" | "HISTORICAL" | "CONNECTING" | "ERROR";
   onTimeframeChange: (tf: string) => void;
   onTogglePanel: () => void;
   panelOpen: boolean;
+  showBoxes: boolean;
+  onToggleBoxes: () => void;
 }
 
 const TIMEFRAMES = [
@@ -23,15 +26,25 @@ const TIMEFRAMES = [
   { label: "1D", value: "D" },
 ];
 
+const PINE_STRATEGIES = [
+  { id: "PS-01", name: "Grandmaster", badge: "82.6% WR" },
+  { id: "PS-02", name: "Apex", badge: "88.5% WR" },
+  { id: "PS-03", name: "Strict 1:2 R:R", badge: "74.1% WR" },
+  { id: "PS-04", name: "Elite", badge: "80.7% WR" },
+];
+
 export function ChartToolbar({
   strategyId,
   strategyName,
   symbol,
   timeframe,
+  candleCount,
   status,
   onTimeframeChange,
   onTogglePanel,
   panelOpen,
+  showBoxes,
+  onToggleBoxes,
 }: Props) {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -59,12 +72,33 @@ export function ChartToolbar({
 
         <div className="chart-strategy-badge">
           <span className="chart-id-chip">{strategyId}</span>
-          <span className="chart-name-title">{strategyName}</span>
+          {strategyId.toUpperCase().startsWith("PS-") ? (
+            <select
+              className="chart-strategy-select"
+              value={strategyId.toUpperCase()}
+              onChange={(e) => {
+                window.location.href = `/chart/${e.target.value}`;
+              }}
+              title="Switch Champion Pine Strategy Chart"
+            >
+              {PINE_STRATEGIES.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.name} ({p.badge})
+                </option>
+              ))}
+            </select>
+          ) : (
+            <span className="chart-name-title">{strategyName}</span>
+          )}
         </div>
 
         <div className="chart-symbol-badge">
           <span className="chart-symbol">{symbol}</span>
           <span className="chart-tf-tag">{timeframe}</span>
+        </div>
+
+        <div className="chart-bars-badge" title="Maximum historical dataset loaded">
+          <span>{candleCount.toLocaleString()} Bars (Max)</span>
         </div>
       </div>
 
@@ -83,6 +117,17 @@ export function ChartToolbar({
       </div>
 
       <div className="chart-toolbar-right">
+        {/* Toggle On-Chart Position Tool Boxes */}
+        <button
+          className={`chart-toggle-pill ${showBoxes ? "active" : ""}`}
+          onClick={onToggleBoxes}
+          title="Toggle Visual Long/Short Position Tool Boxes on Chart"
+        >
+          <span className="pill-dot" />
+          <span>Position Boxes</span>
+        </button>
+
+
         <div className={`chart-status-pill ${isLive ? "live" : "connecting"}`}>
           <span className="chart-status-dot" />
           <span>{isLive ? "TradingView Live Feed" : "Connecting Feed..."}</span>
