@@ -306,6 +306,53 @@ const PINE_SCRIPT_STRATEGIES = [
 ];
 
 export const INITIAL_STRATEGIES: StrategySeedItem[] = [
+  ...PINE_SCRIPT_STRATEGIES.map((ps) => {
+    const id = `PS-${String(ps.num).padStart(2, "0")}`;
+    const slug = id.toLowerCase();
+    const { eq, dd } = generateSeries(ps.num + 30, 120, 0.004);
+
+    return {
+      id,
+      slug,
+      name: ps.name,
+      description: ps.desc,
+      implementationType: "PINE_SCRIPT" as const,
+      instrument: ps.instrument,
+      timeframe: ps.timeframe,
+      category: ps.category,
+      currentVersion: "1.0.0",
+      visibilityStatus: "PUBLIC" as const,
+      trialEligibility: true,
+      supportedUsageModes: ["chart", "alert", "broker"],
+      netProfitUsd: ps.netProfitUsd,
+      metrics: {
+        netReturn: ps.ret,
+        maxDrawdown: ps.dd,
+        profitFactor: ps.pf,
+        winRate: ps.win,
+        totalTrades: ps.trades,
+        averageTrade: +(ps.ret / ps.trades * 2.2).toFixed(2),
+        sharpeRatio: ps.sharpe,
+        backtestPeriod: "2026-08-02 to 2026-10-23 (5,050 M15 bars)",
+        transactionCosts: "Spread $0.20/oz, slippage $0.05/oz, 1.0% risk per trade",
+        slippageAssumptions: "Fixed $0.05/oz slippage model on next-bar-open execution",
+        dataSource: "TradingView Institutional Feed (XAUUSD M15)",
+        validationType: "BACKTESTED" as const,
+        isDemo: false,
+      },
+      researchReport: {
+        hypothesis: ps.hypothesis,
+        methodology: "TradingView Pine Script v5 strategy backtested over 5,050 M15 bars (2 Aug to 23 Oct 2026). Spread $0.20/oz, slippage $0.05/oz.",
+        riskRules: ps.riskRules,
+        knownLimitations: ps.knownLimitations,
+        dataCleaning: "Filtered for weekend rollover gaps and illiquid hours.",
+        executionProtocol: `TradingView Pine Script v5 strategy file: ${ps.fileName}. Available via cloud alert webhooks or direct broker chart integration.`,
+      },
+      equitySeries: eq,
+      drawdownSeries: dd,
+    };
+  }),
+
   ...MT5_PYTHON_ENSEMBLES.map((ens) => {
     const id = `PY-${String(ens.num).padStart(2, "0")}`;
     const slug = id.toLowerCase();
@@ -350,53 +397,6 @@ export const INITIAL_STRATEGIES: StrategySeedItem[] = [
         knownLimitations: "Backtest executed on MetaTrader 5 historical broker data. Live market execution subject to broker liquidity and slippage during central bank rate announcements.",
         dataCleaning: "Sourced from real broker MetaTrader 5 export (360,000 bars, September 2021 to September 2026). Zero interpolation; realistic broker tick execution.",
         executionProtocol: "Available via live_runner.py automated MT5 execution bot or automated VPS webhook relay.",
-      },
-      equitySeries: eq,
-      drawdownSeries: dd,
-    };
-  }),
-
-  ...PINE_SCRIPT_STRATEGIES.map((ps) => {
-    const id = `PS-${String(ps.num).padStart(2, "0")}`;
-    const slug = id.toLowerCase();
-    const { eq, dd } = generateSeries(ps.num + 30, 120, 0.004);
-
-    return {
-      id,
-      slug,
-      name: ps.name,
-      description: ps.desc,
-      implementationType: "PINE_SCRIPT" as const,
-      instrument: ps.instrument,
-      timeframe: ps.timeframe,
-      category: ps.category,
-      currentVersion: "1.0.0",
-      visibilityStatus: "PUBLIC" as const,
-      trialEligibility: true,
-      supportedUsageModes: ["chart", "alert", "broker"],
-      netProfitUsd: ps.netProfitUsd,
-      metrics: {
-        netReturn: ps.ret,
-        maxDrawdown: ps.dd,
-        profitFactor: ps.pf,
-        winRate: ps.win,
-        totalTrades: ps.trades,
-        averageTrade: +(ps.ret / ps.trades * 2.2).toFixed(2),
-        sharpeRatio: ps.sharpe,
-        backtestPeriod: "2026-08-02 to 2026-10-23 (5,050 M15 bars)",
-        transactionCosts: "Spread $0.20/oz, slippage $0.05/oz, 1.0% risk per trade",
-        slippageAssumptions: "Fixed $0.05/oz slippage model on next-bar-open execution",
-        dataSource: "TradingView Institutional Feed (XAUUSD M15)",
-        validationType: "BACKTESTED" as const,
-        isDemo: false,
-      },
-      researchReport: {
-        hypothesis: ps.hypothesis,
-        methodology: "TradingView Pine Script v5 strategy backtested over 5,050 M15 bars (2 Aug to 23 Oct 2026). Spread $0.20/oz, slippage $0.05/oz.",
-        riskRules: ps.riskRules,
-        knownLimitations: ps.knownLimitations,
-        dataCleaning: "Filtered for weekend rollover gaps and illiquid hours.",
-        executionProtocol: `TradingView Pine Script v5 strategy file: ${ps.fileName}. Available via cloud alert webhooks or direct broker chart integration.`,
       },
       equitySeries: eq,
       drawdownSeries: dd,
@@ -462,3 +462,10 @@ export const INITIAL_PLANS = [
     active: true
   }
 ];
+
+export function getStrategySortOrder(s: { id: string; implementationType?: string }): number {
+  const isPine = s.implementationType === "PINE_SCRIPT" || s.id.startsWith("PS-");
+  const numMatch = s.id.match(/\d+/);
+  const num = numMatch ? parseInt(numMatch[0], 10) : 999;
+  return isPine ? num : 100 + num;
+}

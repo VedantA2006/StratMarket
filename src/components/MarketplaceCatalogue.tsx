@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { StrategySeedItem } from "@/lib/db/seed-data";
+import { StrategySeedItem, getStrategySortOrder } from "@/lib/db/seed-data";
 import { StrategyDetailModal } from "./StrategyDetailModal";
 
 interface Props {
@@ -18,7 +18,7 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
   const [instrument, setInstrument] = useState("All instruments");
   const [timeframe, setTimeframe] = useState("All timeframes");
   const [category, setCategory] = useState("All categories");
-  const [sort, setSort] = useState<"name" | "upd" | "pf" | "dd">("name");
+  const [sort, setSort] = useState<"order" | "name" | "upd" | "pf" | "dd">("order");
   const [selectedStrategy, setSelectedStrategy] = useState<StrategySeedItem | null>(null);
 
   const clearFilters = () => {
@@ -27,7 +27,7 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
     setInstrument("All instruments");
     setTimeframe("All timeframes");
     setCategory("All categories");
-    setSort("name");
+    setSort("order");
   };
 
   const filteredStrategies = useMemo(() => {
@@ -59,11 +59,12 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
         return true;
       })
       .sort((a, b) => {
+        if (sort === "order") return getStrategySortOrder(a) - getStrategySortOrder(b);
         if (sort === "name") return a.name.localeCompare(b.name);
         if (sort === "pf") return b.metrics.profitFactor - a.metrics.profitFactor;
         if (sort === "dd") return a.metrics.maxDrawdown - b.metrics.maxDrawdown;
         if (sort === "upd") return b.metrics.netReturn - a.metrics.netReturn;
-        return 0;
+        return getStrategySortOrder(a) - getStrategySortOrder(b);
       });
   }, [initialStrategies, query, type, instrument, timeframe, category, sort]);
 
@@ -120,6 +121,7 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
           value={sort}
           onChange={(e) => setSort(e.target.value as any)}
         >
+          <option value="order">Strategy ID (Pine Script → Python)</option>
           <option value="name">Alphabetical</option>
           <option value="upd">Net return</option>
           <option value="pf">Profit factor</option>

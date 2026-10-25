@@ -54,6 +54,27 @@ describe("Marketplace Catalogue & Filtering", () => {
     }
   });
 
+  it("sorts strategies by default: Pine Script number-wise (PS-01 to PS-04) then Python number-wise (PY-01 to PY-10)", async () => {
+    const list = await db.getStrategies();
+    const ids = list.map((s) => s.id);
+    expect(ids).toEqual([
+      "PS-01",
+      "PS-02",
+      "PS-03",
+      "PS-04",
+      "PY-01",
+      "PY-02",
+      "PY-03",
+      "PY-04",
+      "PY-05",
+      "PY-06",
+      "PY-07",
+      "PY-08",
+      "PY-09",
+      "PY-10",
+    ]);
+  });
+
   it("keeps private and draft strategies hidden from public listings", async () => {
     // Hide PY-05
     await db.updateStrategyStatus("PY-05", "PRIVATE");

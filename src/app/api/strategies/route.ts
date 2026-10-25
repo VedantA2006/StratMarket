@@ -8,7 +8,7 @@ const QuerySchema = z.object({
   timeframe: z.string().optional(),
   category: z.string().optional(),
   type: z.string().optional(),
-  sort: z.enum(["name", "upd", "pf", "dd"]).optional().default("name"),
+  sort: z.enum(["order", "name", "upd", "pf", "dd"]).optional().default("order"),
 });
 
 export async function GET(request: NextRequest) {
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
       timeframe: searchParams.get("timeframe") || undefined,
       category: searchParams.get("category") || undefined,
       type: searchParams.get("type") || undefined,
-      sort: searchParams.get("sort") || "name",
+      sort: searchParams.get("sort") || "order",
     });
 
     if (!parsed.success) {

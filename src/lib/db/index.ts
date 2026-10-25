@@ -1,7 +1,7 @@
 // StratMarket Unified Database & Repository Service
 // Supports PostgreSQL via Prisma with self-contained fallback repository for seamless development and testing.
 
-import { INITIAL_STRATEGIES, INITIAL_PLANS, StrategySeedItem } from "./seed-data";
+import { INITIAL_STRATEGIES, INITIAL_PLANS, StrategySeedItem, getStrategySortOrder } from "./seed-data";
 import bcrypt from "bcryptjs";
 
 export interface UserRecord {
@@ -323,7 +323,7 @@ export const db = {
       list = list.filter((s) => s.visibilityStatus === "PUBLIC");
     }
 
-    if (!filters) return list;
+    if (!filters) return list.sort((a, b) => getStrategySortOrder(a) - getStrategySortOrder(b));
 
     // Search query (name, id, instrument)
     if (filters.query && filters.query.trim()) {
@@ -363,6 +363,10 @@ export const db = {
     // Sorting
     if (filters.sort) {
       switch (filters.sort) {
+        case "order":
+        case "default":
+          list.sort((a, b) => getStrategySortOrder(a) - getStrategySortOrder(b));
+          break;
         case "name":
           list.sort((a, b) => a.name.localeCompare(b.name));
           break;
@@ -373,10 +377,14 @@ export const db = {
           list.sort((a, b) => a.metrics.maxDrawdown - b.metrics.maxDrawdown);
           break;
         case "upd":
-        default:
           list.sort((a, b) => b.metrics.netReturn - a.metrics.netReturn);
           break;
+        default:
+          list.sort((a, b) => getStrategySortOrder(a) - getStrategySortOrder(b));
+          break;
       }
+    } else {
+      list.sort((a, b) => getStrategySortOrder(a) - getStrategySortOrder(b));
     }
 
     return list;
