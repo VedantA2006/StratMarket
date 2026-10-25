@@ -131,17 +131,19 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
         {(["All", "Python", "Pine Script"] as const).map((t) => (
           <button
             key={t}
-            className={`chip ${type === t ? "on" : ""}`}
+            className={`chip ${type === t ? "on" : ""} ${
+              t === "Python" ? "chip-py" : t === "Pine Script" ? "chip-pn" : ""
+            }`}
             onClick={() => setType(t)}
           >
-            {t === "All" ? "All strategies" : t}
+            {t === "All" ? "All strategies (14)" : t === "Python" ? "🐍 Python MT5 (10)" : "🌲 Pine Script v5 (4)"}
           </button>
         ))}
       </div>
 
       <div className="meta">
         <span id="count">
-          {filteredStrategies.length} of {initialStrategies.length} strategies · illustrative metrics
+          {filteredStrategies.length} of {initialStrategies.length} strategies · institutional metrics
         </span>
         <button className="chip" id="clear" onClick={clearFilters}>
           Clear filters
@@ -150,42 +152,57 @@ export function MarketplaceCatalogue({ initialStrategies }: Props) {
 
       <div className="grid" id="grid">
         {filteredStrategies.length > 0 ? (
-          filteredStrategies.map((s) => (
-            <a
-              key={s.id}
-              href={`/strategies/${s.slug}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <div className="row">
-                <span className={`badge ${s.implementationType === "PYTHON" ? "py" : "pn"}`}>
-                  {s.implementationType === "PYTHON" ? "Python" : "Pine Script"}
-                </span>
-                <span>{s.id}</span>
-              </div>
-              <h3>{s.name}</h3>
-              <div className="row">
-                {s.instrument} · {s.timeframe} · {s.category}
-              </div>
-              <p>{s.description}</p>
-              <div className="mm">
-                <div>
-                  Net return*<b>{s.metrics.netReturn}%</b>
+          filteredStrategies.map((s) => {
+            const isPython = s.implementationType === "PYTHON";
+            return (
+              <a
+                key={s.id}
+                href={`/strategies/${s.slug}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`card ${isPython ? "card-python" : "card-pine"}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <div className="card-top-accent" />
+                <div className="row" style={{ alignItems: "center" }}>
+                  <span className={`badge ${isPython ? "badge-python" : "badge-pine"}`}>
+                    <span className={isPython ? "badge-dot-py" : "badge-dot-pn"}></span>
+                    {isPython ? "Python MT5" : "Pine Script v5"}
+                  </span>
+                  <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "12px", color: "var(--mut)", fontWeight: 600 }}>
+                    {s.id}
+                  </span>
                 </div>
-                <div>
-                  Max DD*<b>{s.metrics.maxDrawdown}%</b>
+                <h3>{s.name}</h3>
+                <div className="row" style={{ fontSize: "12.5px" }}>
+                  <span>{s.instrument} · {s.timeframe} · {s.category}</span>
+                  <span style={{ color: isPython ? "#4cc79a" : "#60a5fa", fontWeight: 600 }}>
+                    {isPython ? "MetaTrader 5" : "TradingView"}
+                  </span>
                 </div>
-                <div>
-                  Profit factor*<b>{s.metrics.profitFactor}</b>
+                <p>{s.description}</p>
+                <div className="mm">
+                  <div>
+                    Net return*<b style={{ color: isPython ? "#e8c46a" : "#60a5fa" }}>+{s.metrics.netReturn}%</b>
+                  </div>
+                  <div>
+                    Max DD*<b style={{ color: "#4cc79a" }}>{s.metrics.maxDrawdown}%</b>
+                  </div>
+                  <div>
+                    Profit factor*<b>{s.metrics.profitFactor}</b>
+                  </div>
                 </div>
-              </div>
-              <span className="note" style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "auto", color: "var(--tx)", fontWeight: 500 }}>
-                View Performance Report ↗
-              </span>
-            </a>
-          ))
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto", paddingTop: "8px" }}>
+                  <span className={isPython ? "note-tag-py" : "note-tag-pn"}>
+                    {isPython ? "⚡ Full Automation" : "📊 Chart Strategy"}
+                  </span>
+                  <span className="note" style={{ display: "inline-flex", alignItems: "center", gap: "5px", color: "var(--tx)", fontWeight: 600, fontSize: "12px" }}>
+                    View Report ↗
+                  </span>
+                </div>
+              </a>
+            );
+          })
         ) : (
           <div className="empty">
             No strategies match your criteria. Clear a filter to view more strategies.

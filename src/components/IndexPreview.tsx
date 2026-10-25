@@ -60,25 +60,31 @@ export function IndexPreview({ initialStrategies }: IndexPreviewProps) {
   return (
     <>
       <div id="ix">
-        {previewList.map((s) => (
-          <a
-            key={s.id}
-            href={`/strategies/${s.slug}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ir"
-            onPointerOver={() => setHoveredStrategy(s)}
-            onPointerLeave={() => setHoveredStrategy(null)}
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            <span className="n">{s.id}</span>
-            <span className="t">{s.name}</span>
-            <span className="m">
-              {s.instrument} · {s.timeframe}
-            </span>
-            <span className="a">↗</span>
-          </a>
-        ))}
+        {previewList.map((s) => {
+          const isPython = s.implementationType === "PYTHON";
+          return (
+            <a
+              key={s.id}
+              href={`/strategies/${s.slug}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ir"
+              onPointerOver={() => setHoveredStrategy(s)}
+              onPointerLeave={() => setHoveredStrategy(null)}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <span className="n">{s.id}</span>
+              <span className={isPython ? "badge-mini-py" : "badge-mini-pn"}>
+                {isPython ? "Python" : "Pine"}
+              </span>
+              <span className="t">{s.name}</span>
+              <span className="m">
+                {s.instrument} · {s.timeframe}
+              </span>
+              <span className="a">↗</span>
+            </a>
+          );
+        })}
       </div>
 
       {/* Floating Hover Preview Card */}

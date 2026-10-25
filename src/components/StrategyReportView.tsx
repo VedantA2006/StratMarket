@@ -186,8 +186,9 @@ if (shortCondition)
         </Link>
 
         <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
-          <span className={`badge ${isPython ? "py" : "pn"}`} style={{ padding: "4px 10px", fontSize: "12px", borderRadius: "6px" }}>
-            {isPython ? "Python MT5 Ensemble" : "Pine Script v5"}
+          <span className={`badge ${isPython ? "badge-python" : "badge-pine"}`} style={{ padding: "5px 12px", fontSize: "12.5px" }}>
+            <span className={isPython ? "badge-dot-py" : "badge-dot-pn"}></span>
+            {isPython ? "Python MT5 Ensemble" : "Pine Script v5 Indicator"}
           </span>
           <span className="badge" style={{ background: "rgba(255,255,255,0.08)", padding: "4px 10px", fontSize: "12px", borderRadius: "6px" }}>
             {strategy.instrument} · {strategy.timeframe}
@@ -207,9 +208,9 @@ if (shortCondition)
 
       {/* Hero Header */}
       <section className="report-hero" style={{ padding: "0 0 36px", borderBottom: "1px solid var(--line)" }}>
-        <span className="tag" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "5px 14px", borderRadius: "99px" }}>
-          <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#4cc79a", display: "inline-block", boxShadow: "0 0 8px #4cc79a" }}></span>
-          <b>StratMarket Verified</b> · Institutional Quantitative Tear Sheet
+        <span className="tag" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "5px 14px", borderRadius: "99px", border: isPython ? "1px solid rgba(76, 199, 154, 0.3)" : "1px solid rgba(59, 130, 246, 0.3)" }}>
+          <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: isPython ? "#4cc79a" : "#60a5fa", display: "inline-block", boxShadow: isPython ? "0 0 8px #4cc79a" : "0 0 8px #60a5fa" }}></span>
+          <b>StratMarket Verified</b> · {isPython ? "MetaTrader 5 Quantitative Tear Sheet" : "TradingView Pine Script v5 Tear Sheet"}
         </span>
         
         <h1 style={{ fontSize: "clamp(34px, 5.5vw, 60px)", margin: "16px 0 16px", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.05 }}>
